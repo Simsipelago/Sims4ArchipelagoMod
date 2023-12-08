@@ -9,7 +9,9 @@ from sims4communitylib.persistence.persistence_services.common_persistence_servi
 
 @CommonDataManagerRegistry.common_data_manager()
 class S4APDataManager(CommonDataManager):
-    """ Manage checks sent, items received and points spent """
+    """ Manage checks sent, items received and points spent
+    Also has to store Seed, hostname and Port to enable the game to send a warning if any of those change
+     """
 
     @property
     def mod_identity(self) -> CommonModIdentity:
@@ -25,6 +27,6 @@ class S4APDataManager(CommonDataManager):
         from sims4communitylib.persistence.persistence_services.common_file_persistence_service import \
             CommonFilePersistenceService
         result: Tuple[CommonPersistenceService] = (
-            CommonFilePersistenceService(),
+            CommonFilePersistenceService(per_save=True, per_save_slot=False),
         )
         return result

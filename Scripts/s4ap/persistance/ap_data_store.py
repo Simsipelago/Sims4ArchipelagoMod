@@ -5,7 +5,10 @@ from sims4communitylib.persistence.data_stores.common_data_store import CommonDa
 class S4APSettings:
     MOD_VERSION = 'mod_version'  # Fixed at time of first start
     RECEIVED_DATAPACKAGE_VERSION = 'received_datapackage_version'  # Replaced and checked by GetDataPackage
-    SEED_NAME = 'seed_name'  # Set from RoomInfo and if set checked against it to prevent booting of multiple seeds per save
+    SEED_NAME = 'seed_name'  # From RoomInfo and if set checked against it to prevent booting of multiple seeds per save
+    HOST_NAME = 'host'  # From Login and if set checked against it to prevent booting of multiple seeds per save
+    PORT_NUMBER = 'port'  # From Login and if set checked against it to prevent booting of multiple seeds per save
+    PLAYER = 'player'  # From RoomInfo and if set checked against it to prevent booting of multiple seeds per save
 
 
 class S4APGenericDataStore(CommonDataStore):
@@ -14,7 +17,7 @@ class S4APGenericDataStore(CommonDataStore):
     # noinspection PyMissingOrEmptyDocstring
     @classmethod
     def get_identifier(cls) -> str:
-        return 'example_generic_settings'
+        return 's4ap_generic_settings'
 
     # noinspection PyMissingOrEmptyDocstring
     @property
@@ -29,5 +32,8 @@ class S4APGenericDataStore(CommonDataStore):
         return {
             S4APSettings.MOD_VERSION: self._version,
             S4APSettings.SEED_NAME: None,
-            S4APSettings.RECEIVED_DATAPACKAGE_VERSION: 0
+            S4APSettings.RECEIVED_DATAPACKAGE_VERSION: 0,
+            S4APSettings.HOST_NAME: None,
+            S4APSettings.PORT_NUMBER: 0,
+            S4APSettings.PLAYER: None
         }.copy()

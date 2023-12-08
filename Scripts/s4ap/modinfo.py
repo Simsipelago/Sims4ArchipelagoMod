@@ -3,8 +3,6 @@ from sims4communitylib.mod_support.common_mod_info import CommonModInfo
 
 class ModInfo(CommonModInfo):
     """ Mod info for randomizer Mod"""
-    # To create a Mod Identity for this mod, simply do ModInfo.get_identity(). Please refrain from using the ModInfo
-    # of The Sims 4 Community Library in your own mod and instead use yours!
     _FILE_PATH: str = str(__file__)
 
     @property

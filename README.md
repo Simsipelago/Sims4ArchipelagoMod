@@ -11,9 +11,11 @@ https://github.com/ColonolNutty/Sims4CommunityLibrary
 ## Installing the mod
 
 1. Check the "releases" page for the newest release. 
-2. Download the release package and copy the Sims4Archipelago.ts4script file to your Sims 4 Installation directory into
+2. Download the release package and unpack the files to your Sims 4 Installation directory into
 the /Mods folder.
-   
+
+   The Package should contain a .ts4script and a .package file   
+
    The default directory should be something like _C:\Users\<Username>\Documents\Electronic Arts\The Sims 4_
 3. Go to the [Sims4CommunityLibrary github](https://github.com/ColonolNutty/Sims4CommunityLibrary) and follow 
 installation directions there
@@ -47,6 +49,8 @@ your workspace follow these steps:
      * Change the third parameter (should be a 0) to *socket.AF_INET* 
 4. To build the mod, run the compile.py script from the template project. This should create a *Sims4Archipelago.ts4script*
    in the *Release/s4ap* folder. Copy this to your mods folder
+5. To make changes to the .package, you need to install Sims4Studio. This should only matter if you want to add new
+   localization options.
 
 ## Copyright
 
