@@ -49,14 +49,16 @@ your workspace follow these steps:
      * Change the third parameter (should be a 0) to *socket.AF_INET* 
 4. To build the mod, run the compile.py script from the template project. This should create a *Sims4Archipelago.ts4script*
    in the *Release/s4ap* folder. Copy this to your mods folder
-5. To make changes to the .package, you need to install Sims4Studio. This should only matter if you want to add new
+5. To make changes to the .package, you need proto install Sims4Studio. This should only matter if you want to add new
    localization options.
 
 ## Copyright
 
 This mod is licensed under MIT license (check LICENSE for details)
 
-### S4CL Attribution
+### Attributions
 The Sims 4 Community Library is licensed under the Creative Commons Attribution 4.0 International public license (CC BY 4.0). https://creativecommons.org/licenses/by/4.0/ https://creativecommons.org/licenses/by/4.0/legalcode
 
 S4CL Copyright (c) COLONOLNUTTY
+
+This project includes some elements of the [websocket client](https://github.com/websocket-client/websocket-client/tree/master) and [rel](https://github.com/bubbleboy14/registeredeventlistener).
