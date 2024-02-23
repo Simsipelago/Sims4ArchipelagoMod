@@ -4,16 +4,11 @@
 # EA Scripts
 EA
 
-# Libraries
-Libraries/**/*
-
 # Additional non mod related items
 Scripts/compile
-Scripts/rel
 Scripts/randomizer
 Scripts/s4cl_sample_mod_scripts
 Scripts/TheBin
-Scripts/websocket
 
 # Logs
 compilelog.txt
@@ -50,8 +45,5 @@ custom_scripts_for_decompile/**/*.py
 **/*.lnk
 **/*.xml___jb_old___
 Tunings/Temp
-Utilities
-decompile_scripts.py
-settings.py
 # Project exclude paths
 /Release/
