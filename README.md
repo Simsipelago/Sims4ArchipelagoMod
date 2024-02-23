@@ -61,4 +61,4 @@ The Sims 4 Community Library is licensed under the Creative Commons Attribution 
 
 S4CL Copyright (c) COLONOLNUTTY
 
-This project includes some elements of the [websocket client](https://github.com/websocket-client/websocket-client/tree/master) and [rel](https://github.com/bubbleboy14/registeredeventlistener).
+This project includes some elements of the [websocket client](https://github.com/websocket-client/websocket-client/tree/master) and [rel](https://github.com/bubbleboy14/registeredeventlistener). It also includes their dependencies.
