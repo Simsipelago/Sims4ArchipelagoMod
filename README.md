@@ -49,7 +49,7 @@ your workspace follow these steps:
      * Change the third parameter (should be a 0) to *socket.AF_INET* 
 4. To build the mod, run the compile.py script from the template project. This should create a *Sims4Archipelago.ts4script*
    in the *Release/s4ap* folder. Copy this to your mods folder
-5. To make changes to the .package, you need proto install Sims4Studio. This should only matter if you want to add new
+5. To make changes to the .package, you need to install Sims4Studio. This should only matter if you want to add new
    localization options.
 
 ## Copyright
