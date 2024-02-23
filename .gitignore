@@ -2,7 +2,11 @@
 .idea
 
 # EA Scripts
-EA
+EA/*.zip
+EA/base
+EA/core
+EA/generated
+EA/simulation
 
 # Additional non mod related items
 Scripts/randomizer
@@ -25,7 +29,6 @@ Utilities/*.pyc
 **/*.pyc
 */*.pyc
 */*.pyo
-custom_scripts_for_decompile
 custom_scripts_for_decompile/*.py
 custom_scripts_for_decompile/*.pyc
 custom_scripts_for_decompile/*.pyo
