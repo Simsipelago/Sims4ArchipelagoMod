@@ -30,7 +30,7 @@ If you want to build the mod yourself, there's a few extra steps involved.
 Check installation instructions there to set up your workspace 
 2. After you prepared the template project, your project should run on Python 3.7 and include the EA scripts as well as 
 the Sims4CommunityLibrary files.
-3. Additionally, this mod uses websocket and rel to connect to the Archipelago Servers. To set this up in
+3. Additionally, this mod uses [websocket](https://github.com/websocket-client/websocket-client) and [rel](https://github.com/bubbleboy14/registeredeventlistener) to connect to the Archipelago Servers. To set this up in
 your workspace follow these steps:
    * Download the websocket client source code and rel source code or install them and copy them from your Python 3.7 
      installation into the main folder
