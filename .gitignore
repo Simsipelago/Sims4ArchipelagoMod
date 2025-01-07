@@ -8,9 +8,7 @@ EA/**/*
 Libraries/**/*
 
 # Additional non mod related items
-Scripts/compile
 Scripts/randomizer
-Scripts/s4cl_sample_mod_scripts
 Scripts/TheBin
 
 # Logs
@@ -29,7 +27,6 @@ Utilities/*.pyc
 **/*.pyc
 */*.pyc
 */*.pyo
-custom_scripts_for_decompile
 custom_scripts_for_decompile/*.py
 custom_scripts_for_decompile/*.pyc
 custom_scripts_for_decompile/*.pyo
