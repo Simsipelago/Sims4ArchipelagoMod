@@ -31,7 +31,7 @@ def lock_skills(skillcap: int, skill_name):
     skill_id = skill_name.replace("statistic_Skill_AdultMajor_", '')
     skill_id = re.sub(r'(?<=[a-z])(?=[A-Z])', '_', skill_id)
     if 'bartending' in skill_id.lower():
-        skill_id = skill_id.replace('bartending', 'mixology')
+        skill_id = skill_id.lower().replace('bartending', 'mixology')
     trait = f"lock_{skill_id.replace('skill_', '')}_skill"
     logger.debug(f"Skill Id: {skill_id}")
     logger.debug(f"Trait: {trait}")
