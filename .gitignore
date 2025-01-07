@@ -5,7 +5,8 @@
 EA/**/*
 
 # Libraries
-Libraries/S4CL/*
+Libraries/S4CL/**/*
+Libraries/S4CL/*.py
 
 # Additional non mod related items
 Scripts/randomizer
