@@ -1,15 +1,19 @@
 from typing import Any, Dict
+
 from sims4communitylib.persistence.data_stores.common_data_store import CommonDataStore
 
 
 class S4APSettings:
     MOD_VERSION = 'mod_version'  # Fixed at time of first start
-    RECEIVED_DATAPACKAGE_VERSION = 'received_datapackage_version'  # Replaced and checked by GetDataPackage
     SEED_NAME = 'seed_name'  # From RoomInfo and if set checked against it to prevent booting of multiple seeds per save
     HOST_NAME = 'host'  # From Login and if set checked against it to prevent booting of multiple seeds per save
     PORT_NUMBER = 'port'  # From Login and if set checked against it to prevent booting of multiple seeds per save
     PLAYER = 'player'  # From RoomInfo and if set checked against it to prevent booting of multiple seeds per save
-
+    INDEX = 'index'  # Index received from ReceivedItems
+    ITEMS = 'items'  # Items received from ReceivedItems
+    ITEM_IDS = 'item_ids'  # Item ids received from ReceivedItems
+    LOCATIONS = 'locations'  # The Locations for the received items in ReceivedItems
+    SENDERS = 'senders'  # The players who sent the item
 
 class S4APGenericDataStore(CommonDataStore):
     """ Manager of generic stuff. """
@@ -32,8 +36,12 @@ class S4APGenericDataStore(CommonDataStore):
         return {
             S4APSettings.MOD_VERSION: self._version,
             S4APSettings.SEED_NAME: None,
-            S4APSettings.RECEIVED_DATAPACKAGE_VERSION: 0,
             S4APSettings.HOST_NAME: None,
             S4APSettings.PORT_NUMBER: 0,
-            S4APSettings.PLAYER: None
+            S4APSettings.PLAYER: None,
+            S4APSettings.INDEX: None,
+            S4APSettings.ITEMS: None,
+            S4APSettings.ITEM_IDS: None,
+            S4APSettings.LOCATIONS: None,
+            S4APSettings.SENDERS: None,
         }.copy()

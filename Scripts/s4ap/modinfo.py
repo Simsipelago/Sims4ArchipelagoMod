@@ -9,7 +9,7 @@ class ModInfo(CommonModInfo):
     def _name(self) -> str:
         # This is the name that'll be used whenever a Messages.txt or Exceptions.txt file is created
         # <_name>_Messages.txt and <_name>_Exceptions.txt.
-        return 'sims_4_archipelago_mod'
+        return 's4ap'
 
     @property
     def _version(self) -> str:
@@ -19,12 +19,12 @@ class ModInfo(CommonModInfo):
     @property
     def _author(self) -> str:
         # This is your name.
-        return 'MrSummer360'
+        return 'Cactus'
 
     @property
     def _base_namespace(self) -> str:
         # This is the name of the root package
-        return 'sims_4_archipelago_mod'
+        return 's4ap'
 
     @property
     def _file_path(self) -> str:

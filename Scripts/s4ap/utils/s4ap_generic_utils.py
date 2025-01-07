@@ -8,25 +8,18 @@ from sims4communitylib.utils.save_load.common_save_utils import CommonSaveUtils
 
 
 class S4APUtils:
+
     @staticmethod
     def trigger_autosave(*_) -> bool:
         try:
             if CommonZoneSpinEventDispatcher().game_loading or not CommonZoneSpinEventDispatcher().game_loaded:
                 return False
-            CommonBasicNotification(
-                'Autosaving S4AP on check',
-                0
-            ).show()
             import sims4.commands
             save_game_data = SaveGameData(CommonSaveUtils.get_save_slot_id(), 'S4APAutosave', True,
                                           5000002)
             persistence_service = services.get_persistence_service()
             persistence_service.save_using(persistence_service.save_game_gen, save_game_data, send_save_message=True,
                                            check_cooldown=False)
-            CommonBasicNotification(
-                'S4AP Finished Autosaving',
-                0
-            ).show()
             return True
         except Exception as ex:
             CommonBasicNotification(
