@@ -48,11 +48,10 @@ custom_scripts_for_decompile/**/*.py
 **/*.lnk
 **/*.xml___jb_old___
 Tunings/Temp
-Utilities
 decompile_scripts.py
 settings.py
 # Project exclude paths
-/Release/
+/Release/**/*
 
 # MacOS Specific Files
 
