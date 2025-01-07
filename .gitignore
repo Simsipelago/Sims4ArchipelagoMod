@@ -2,7 +2,7 @@
 .idea
 
 # EA Scripts
-EA
+EA/**/*
 
 # Libraries
 Libraries/**/*
