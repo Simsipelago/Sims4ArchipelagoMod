@@ -88,6 +88,7 @@ def parse_message(data):
                                            player=slot_name):
             # if settings don't match then cancels
             cancel = True
+            print_json(None, 'items.json')
 
         else:
             cancel = False  # if values match then don't cancel
