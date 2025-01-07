@@ -6,8 +6,8 @@ EA/*
 !/EA/*.md
 
 # Libraries
-Libraries/S4CL/**/*
-Libraries/S4CL/*.py
+#Libraries/S4CL/**/*
+#Libraries/S4CL/*.py
 !Libraries/S4CL/*.md
 
 # Additional non mod related items
