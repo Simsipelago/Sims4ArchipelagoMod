@@ -32,7 +32,7 @@ def lock_skills(skillcap: int, skill_name):
     skill_id = re.sub(r'(?<=[a-z])(?=[A-Z])', '_', skill_id)
     if 'bartending' in skill_id.lower():
         skill_id = skill_id.lower().replace('bartending', 'mixology')
-    trait = f"lock_{skill_id.replace('skill_', '')}_skill"
+    trait = f"lock_{skill_id.lower().replace('skill_', '')}_skill"
     logger.debug(f"Skill Id: {skill_id}")
     logger.debug(f"Trait: {trait}")
     skill = TunableInstanceParam(Types.STATISTIC)(skill_name)
@@ -81,15 +81,15 @@ class ResetSimData:
             for skill in CommonSimSkillUtils.get_all_skills_available_for_sim_gen(sim_info):
                 CommonSimSkillUtils.remove_skill(sim_info, skill)
                 skill_id = skill.skill_type.__name__.replace("statistic_Skill_AdultMajor_", '')
-                skill_id.lower()
-                if 'fitness' in skill_id:
-                    trait = skill_id.replace('skill_', '')
-                elif 'homestyle' in skill_id:
-                    trait = skill_id.replace('homestyle', '')
-                elif 'bartending' in skill_id:
-                    trait = skill_id.replace('bartending', 'mixology')
+                skill_id_lower = skill_id.lower()
+                if 'fitness' in skill_id_lower:
+                    trait = skill_id_lower.replace('skill_', '')
+                elif 'homestyle' in skill_id_lower:
+                    trait = skill_id_lower.replace('homestyle', '')
+                elif 'bartending' in skill_id_lower:
+                    trait = skill_id_lower.replace('bartending', 'mixology')
                 else:
-                    trait = skill_id
+                    trait = skill_id_lower
                 remove_lock_trait(sim_info, f"lock_{trait}_skill")
 
     def show_reset_notif(self):
