@@ -30,26 +30,9 @@ If you want to build the mod yourself, there's a few extra steps involved.
 Check installation instructions there to set up your workspace 
 2. After you prepared the template project, your project should run on Python 3.7 and include the EA scripts as well as 
 the Sims4CommunityLibrary files.
-3. Additionally, this mod uses [websocket](https://github.com/websocket-client/websocket-client) and [rel](https://github.com/bubbleboy14/registeredeventlistener) to connect to the Archipelago Servers. To set this up in
-your workspace follow these steps:
-   * Download the websocket client source code and rel source code or install them and copy them from your Python 3.7 
-     installation into the main folder
-   * open the compile.py script from the Template project and change the following code:
-     **names_of_modules_include=('s4ap', 'websocket', 'rel'),**
-   * a few of the included files are for testing purposes only and will cause problems when being bundled with the mod so 
-     we delete them: 
-     * websocket/tests
-     * websocket/_wsdump.py
-     * rel/tests.py
-     * rel/tools.py
-   * The runtime inside The Sims 4 doesn't support IPv6, so you have to explicitly
-     set the protocol to IPv4 in the websocket client code. To do so, follow these steps:
-     * open the file *websocket/_http.py*
-     * look for the function *_get_addrinfo_list*
-     * Change the third parameter (should be a 0) to *socket.AF_INET* 
-4. To build the mod, run the compile.py script from the template project. This should create a *Sims4Archipelago.ts4script*
+3. To build the mod, run the compile.py script from the template project. This should create a *Sims4Archipelago.ts4script*
    in the *Release/s4ap* folder. Copy this to your mods folder
-5. To make changes to the .package, you need to install Sims4Studio. This should only matter if you want to add new
+4. To make changes to the .package, you need to install Sims4Studio. This should only matter if you want to add new
    localization options.
 
 ## Copyright
