@@ -45,7 +45,9 @@ class S4APSessionStoreUtils:
                     reset.show_reset_notif()
                     S4APDataManagerUtils.get().reset()
                     self.save_seed_values(host_name, port, seed_name, player)
+                    print_json({}, 'items.json')
                     print_json(True, 'sync.json')
+                    print_json({}, 'items.json')
                     print_json({}, 'locations_cached.json')
                     CommonEventRegistry.get().dispatch(AllowReceiveItems(True))
                     return False  # if okay is chosen then save seed values and resync items
@@ -70,6 +72,7 @@ class S4APSessionStoreUtils:
                 reset = ResetSimData()
                 reset.reset_all_skills()
                 reset.show_reset_notif()
+                print_json({}, 'items.json')
                 print_json(True, 'sync.json')
                 print_json({}, 'locations_cached.json')
                 CommonEventRegistry.get().dispatch(AllowReceiveItems(True))

@@ -163,7 +163,7 @@ careers_list = [
     "Double Agent (Secret Agent / Villain 8)",
     "[Redacted] (Secret Agent / Villain  9)",
     "Supreme Villain (Secret Agent / Villain 10)",
-    "Triple Agent (Secret Agent / Villain 10)",
+    "Triple Agent (Secret Agent / Villain 11)",
     "Consignment Commentator (Style Influencer 2)",
     "Wearable Wordsmith (Style Influencer 3)",
     "Ensemble Author (Style Influencer 4)",
