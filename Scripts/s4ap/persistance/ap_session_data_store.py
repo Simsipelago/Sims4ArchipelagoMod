@@ -1,7 +1,6 @@
 from typing import Any
-
-from s4ap.events.Utils.allow_read_items import AllowReceiveItems
 from s4ap.jsonio.s4ap_json import print_json
+from s4ap.events.Utils.allow_read_items import AllowReceiveItems
 from s4ap.logging.s4ap_logger import S4APLogger
 from s4ap.persistance.ap_data_store import S4APGenericDataStore, S4APSettings
 from s4ap.persistance.ap_data_utils import S4APDataManagerUtils
@@ -42,12 +41,12 @@ class S4APSessionStoreUtils:
                     logger.debug("Ok Chosen, Saving data...")
                     reset = ResetSimData()
                     reset.reset_all_skills()
+                    reset.remove_all_s4ap_traits()
                     reset.show_reset_notif()
                     S4APDataManagerUtils.get().reset()
                     self.save_seed_values(host_name, port, seed_name, player)
                     print_json({}, 'items.json')
                     print_json(True, 'sync.json')
-                    print_json({}, 'items.json')
                     print_json({}, 'locations_cached.json')
                     CommonEventRegistry.get().dispatch(AllowReceiveItems(True))
                     return False  # if okay is chosen then save seed values and resync items
@@ -71,6 +70,7 @@ class S4APSessionStoreUtils:
                 logger.debug("Ok Chosen, Saving data...")
                 reset = ResetSimData()
                 reset.reset_all_skills()
+                reset.remove_all_s4ap_traits()
                 reset.show_reset_notif()
                 print_json({}, 'items.json')
                 print_json(True, 'sync.json')

@@ -1,5 +1,6 @@
 import time
 
+from s4ap.enums.S4APLocalization import S4APTraitId
 from s4ap.logging.s4ap_logger import S4APLogger
 from s4ap.modinfo import ModInfo
 from s4ap.persistance.ap_session_data_store import S4APSessionStoreUtils
@@ -8,8 +9,12 @@ from sims4communitylib.enums.common_currency_modify_reasons import CommonCurrenc
 from sims4communitylib.events.event_handling.common_event import CommonEvent
 from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
 from sims4communitylib.notifications.common_basic_notification import CommonBasicNotification
+from sims4communitylib.utils.sims.common_career_utils import CommonCareerUtils
+from sims4communitylib.utils.sims.common_household_utils import CommonHouseholdUtils
+from sims4communitylib.utils.sims.common_sim_career_utils import CommonSimCareerUtils
 from sims4communitylib.utils.sims.common_sim_currency_utils import CommonSimCurrencyUtils
 from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+from sims4communitylib.utils.sims.common_trait_utils import CommonTraitUtils
 
 log = S4APLogger.get_log()
 log.enable()
@@ -72,7 +77,6 @@ class HandleReceiveItemEvent:
                         ]
                     ]
 
-                    #TODO make sure this code block properly filters out the items
                     item_info = list(zip(*filtered_items[0]))  # item_info = [item, item_id, player, location]
                     log.debug('item_info filtered')
                     log.debug(f"Existing item IDs: {data_store.get_item_ids()}")
@@ -124,6 +128,34 @@ class HandleReceiveItemEvent:
                 CommonSimCurrencyUtils.add_simoleons_to_household(CommonSimUtils.get_active_sim_info(), int(number),
                                                                   CommonCurrencyModifyReason.CHEAT)
                 time.sleep(0.2)
+            elif 'boost' in item.lower():
+                if 'career' in item.lower():
+                    for sim_info in CommonHouseholdUtils.get_sim_info_of_all_sims_in_active_household_generator():
+                        for career in CommonSimCareerUtils.get_all_careers_for_sim_gen(sim_info):
+                            if career is None:
+                                break
+                            old_work_performance = CommonCareerUtils.get_work_performance(career)
+                            work_performance_left_to_add = 100 - old_work_performance
+                            career.add_work_performance(work_performance_left_to_add)
+                            career.resend_career_data()
+            if 'multiplier' in item.lower():
+                boost_count = data_store.get_items().count(item)
+                if boost_count == 1:
+                    add_trait = S4APTraitId.SKILL_GAIN_BOOST_2_5X
+                elif boost_count == 2:
+                    rem_traits = (S4APTraitId.SKILL_GAIN_BOOST_2_5X,)
+                    add_trait = S4APTraitId.SKILL_GAIN_BOOST_3X
+                elif boost_count == 3:
+                    rem_traits = (S4APTraitId.SKILL_GAIN_BOOST_2_5X, S4APTraitId.SKILL_GAIN_BOOST_3X)
+                    add_trait = S4APTraitId.SKILL_GAIN_BOOST_3_5X
+                elif boost_count == 4:
+                    rem_traits = (S4APTraitId.SKILL_GAIN_BOOST_2_5X, S4APTraitId.SKILL_GAIN_BOOST_3X,
+                                  S4APTraitId.SKILL_GAIN_BOOST_3_5X)
+                    add_trait = S4APTraitId.SKILL_GAIN_BOOST_4X
+                for sim_info in CommonHouseholdUtils.get_sim_info_of_all_sims_in_active_household_generator():
+                    if rem_traits is not None:
+                        CommonTraitUtils.remove_traits(sim_info, rem_traits)
+                    CommonTraitUtils.add_trait(sim_info, add_trait)
             elif 'skill' in item.lower():
                 if data_store.get_items().count(item) < 3:
                     count = 3

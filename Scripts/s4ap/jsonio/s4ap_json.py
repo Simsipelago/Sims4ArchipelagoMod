@@ -13,10 +13,7 @@ if not os.path.exists(os.path.join(ModData, 's4ap')):
 
 
 def print_json(obj: object, name: str = 'items.json'):
-    try:
-        CommonJSONIOUtils.write_to_file(os.path.join(ModData, 's4ap', name), obj)
-    except Exception as e:
-        log.debug(e)
+    CommonJSONIOUtils.write_to_file(os.path.join(ModData, 's4ap', name), obj)
 
 
 def read_json(name: str = 'items.json'):

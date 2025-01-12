@@ -10,8 +10,6 @@ from s4ap.persistance.ap_session_data_store import S4APSessionStoreUtils
 from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
 from sims4communitylib.events.interval.common_interval_event_service import CommonIntervalEventRegistry
 from sims4communitylib.events.save.events.save_loaded import S4CLSaveLoadedEvent
-from sims4communitylib.services.commands.common_console_command import CommonConsoleCommand
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
 from sims4communitylib.utils.common_log_utils import CommonLogUtils
 
 logger = S4APLogger.get_log()
@@ -41,14 +39,6 @@ class DetectGameStatus:
             file_data[file] = {}
         cancel = True
         logger.debug('save loaded')
-
-
-@CommonConsoleCommand(ModInfo.get_identity(), 's4ap.connect', 'attempts to reconnect')
-def _connect(output: CommonConsoleCommandOutput):
-    global file_data
-    for file in files:
-        file_data[file] = {}
-    output('retrying connection')
 
 
 @CommonIntervalEventRegistry.run_every(ModInfo.get_identity().name, milliseconds=500)
@@ -88,7 +78,7 @@ def parse_message(data):
                                            player=slot_name):
             # if settings don't match then cancels
             cancel = True
-            print_json(None, 'items.json')
+            print_json({})
 
         else:
             cancel = False  # if values match then don't cancel
@@ -113,8 +103,8 @@ def parse_message(data):
 @CommonEventRegistry.handle_events(ModInfo.get_identity())
 def _handle_allow_receive_items(event_data: AllowReceiveItems):
     global cancel
+    global file_data
     cancel = not event_data.is_allowed
     print_json(True, 'sync.json')
-    global file_data
     for file in files:
         file_data[file] = {}
