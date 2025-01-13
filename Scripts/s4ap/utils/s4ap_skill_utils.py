@@ -8,6 +8,7 @@ from s4ap.enums.S4APLocalization import S4APTraitId
 from s4ap.events.skill_event_dispatcher import SimSkillLeveledUpEvent
 from s4ap.logging.s4ap_logger import S4APLogger
 from s4ap.modinfo import ModInfo
+from sims4communitylib.enums.traits_enum import CommonTraitId
 from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
 from sims4communitylib.notifications.common_basic_notification import CommonBasicNotification
 from sims4communitylib.utils.sims.common_household_utils import CommonHouseholdUtils
@@ -87,9 +88,12 @@ class ResetSimData:
         notif.show()
 
     def remove_all_s4ap_traits(self):
-        for trait, _ in vars(S4APTraitId).items():
-            if not trait.startswith("_"):  # Skip built-in attributes like __doc__
-                trait_value = getattr(S4APTraitId, trait)
-                logger.debug(f"{trait}: {trait_value}")
+        # Get all traits from the base class CommonTraitId
+        common_trait_ids = set(vars(CommonTraitId).keys())
+        for trait, trait_value in vars(S4APTraitId).items():
+            # Check if the trait is not a built-in attribute and is unique to S4APTraitId
+            if not trait.startswith("_") and trait not in common_trait_ids:
+                logger.debug(f"Removing trait {trait}: {trait_value}")
                 for sim_info in CommonHouseholdUtils.get_sim_info_of_all_sims_in_active_household_generator():
                     CommonTraitUtils.remove_trait(sim_info, trait_value)
+

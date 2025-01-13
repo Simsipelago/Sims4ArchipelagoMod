@@ -3,7 +3,7 @@ from sims4communitylib.enums.strings_enum import CommonStringId
 from sims4communitylib.enums.traits_enum import CommonTraitId
 
 
-class S4APTraitId:
+class S4APTraitId(CommonTraitId):
     LOCK_MIXOLOGY_SKILL: 'S4APTraitId' = 3494693146
     LOCK_MISCHIEF_SKILL: 'S4APTraitId' = 3494693147
     LOCK_HANDINESS_SKILL: 'S4APTraitId' = 3494693148
@@ -28,8 +28,7 @@ class S4APTraitId:
     SKILL_GAIN_BOOST_3X: 'S4APTraitId' = 3511470832
     SKILL_GAIN_BOOST_3_5X: 'S4APTraitId' = 3511470833
     SKILL_GAIN_BOOST_4X: 'S4APTraitId' = 3511470838
-
-
+    SHOW_RECEIVED_SKILLS: 'S4APTraitId' = 3511470836
 
 class S4APStringId(CommonStringId):
     # ap_client

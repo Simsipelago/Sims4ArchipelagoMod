@@ -142,6 +142,7 @@ class HandleReceiveItemEvent:
                 boost_count = data_store.get_items().count(item)
                 if boost_count == 1:
                     add_trait = S4APTraitId.SKILL_GAIN_BOOST_2_5X
+                    rem_traits = None
                 elif boost_count == 2:
                     rem_traits = (S4APTraitId.SKILL_GAIN_BOOST_2_5X,)
                     add_trait = S4APTraitId.SKILL_GAIN_BOOST_3X
@@ -157,10 +158,8 @@ class HandleReceiveItemEvent:
                         CommonTraitUtils.remove_traits(sim_info, rem_traits)
                     CommonTraitUtils.add_trait(sim_info, add_trait)
             elif 'skill' in item.lower():
-                if data_store.get_items().count(item) < 3:
-                    count = 3
-                else:
-                    count = data_store.get_items().count(item)
+                count = data_store.get_items().count(item)
+                count += 2
                 skill = item.replace(" Skill", '').replace(" ", "")
                 if 'fitness' in skill.lower():
                     skill = f"skill_{skill}"
