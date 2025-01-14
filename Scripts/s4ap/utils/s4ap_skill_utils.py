@@ -1,16 +1,13 @@
 import re
 
-from server_commands.argument_helpers import TunableInstanceParam
-from sims4.resources import Types
-
-
 from s4ap.enums.S4APLocalization import S4APTraitId
 from s4ap.events.skill_event_dispatcher import SimSkillLeveledUpEvent
 from s4ap.logging.s4ap_logger import S4APLogger
 from s4ap.modinfo import ModInfo
-from sims4communitylib.enums.traits_enum import CommonTraitId
+from s4ap.persistance.ap_session_data_store import S4APSessionStoreUtils
+from server_commands.argument_helpers import TunableInstanceParam
+from sims4.resources import Types
 from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
-from sims4communitylib.notifications.common_basic_notification import CommonBasicNotification
 from sims4communitylib.utils.sims.common_household_utils import CommonHouseholdUtils
 from sims4communitylib.utils.sims.common_sim_name_utils import CommonSimNameUtils
 from sims4communitylib.utils.sims.common_sim_skill_utils import CommonSimSkillUtils
@@ -20,8 +17,9 @@ logger = S4APLogger.get_log()
 logger.enable()
 
 
-def lock_skills(skillcap: int, skill_name):
+def lock_skills(skillcap: int, skill_name, from_level_up: bool):
     logger.debug(f"Skill cap is {skillcap}")
+    data_store = S4APSessionStoreUtils()
     if skillcap < 2:
         skillcap = 2
     if not skill_name.startswith("statistic_Skill_AdultMajor_") and not 'fitness' in skill_name.lower():
@@ -31,6 +29,25 @@ def lock_skills(skillcap: int, skill_name):
     skill_id = re.sub(r'(?<=[a-z])(?=[A-Z])', '_', skill_id)
     if 'bartending' in skill_id.lower():
         skill_id = skill_id.lower().replace('bartending', 'mixology')
+    if from_level_up is True and data_store.get_items() is not None:
+        skill_id_lower = skill_id.replace("_", " ").strip().lower()
+        item_name = skill_id_lower
+        if 'fitness' in skill_id_lower:
+            item_name = skill_id_lower.replace('skill_', '').strip()
+        elif 'homestyle' in skill_id_lower:
+            item_name = skill_id_lower.replace('homestyle', '').strip()
+        elif 'gourmet' in skill_id_lower:
+            item_name = skill_id_lower.replace("cooking", "").strip()
+        elif 'bartending' in skill_id_lower:
+            item_name = skill_id_lower.replace('bartending', 'mixology').strip()
+        logger.debug(f"item_name: {item_name}")
+        for item in data_store.get_items():
+            if item_name in item.lower():
+                skillcap = data_store.get_items().count(item)
+                logger.debug(f"new skillcap: {skillcap}")
+                break
+            else:
+                continue
     trait = f"lock_{skill_id.lower().replace('skill_', '')}_skill"
     logger.debug(f"Skill Id: {skill_id}")
     logger.debug(f"Trait: {trait}")
@@ -71,29 +88,4 @@ def remove_lock_trait(sim_info, trait):
 @CommonEventRegistry.handle_events(ModInfo.get_identity())
 def _lock_on_level_up(event_data: SimSkillLeveledUpEvent):
     skill_name = event_data.skill.skill_type.__name__
-    lock_skills(event_data.new_skill_level, skill_name)
-
-
-class ResetSimData:
-    def reset_all_skills(self):
-        for sim_info in CommonHouseholdUtils.get_sim_info_of_all_sims_in_active_household_generator():
-            for skill in CommonSimSkillUtils.get_all_skills_available_for_sim_gen(sim_info):
-                CommonSimSkillUtils.remove_skill(sim_info, skill)
-
-    def show_reset_notif(self):
-        notif = CommonBasicNotification(
-            'Progress Reset Completed',
-            "Your Sim's skills have been successfully reset. Please switch to a different sim or leave the lot and revisit to ensure the changes are visible in the UI."
-        )
-        notif.show()
-
-    def remove_all_s4ap_traits(self):
-        # Get all traits from the base class CommonTraitId
-        common_trait_ids = set(vars(CommonTraitId).keys())
-        for trait, trait_value in vars(S4APTraitId).items():
-            # Check if the trait is not a built-in attribute and is unique to S4APTraitId
-            if not trait.startswith("_") and trait not in common_trait_ids:
-                logger.debug(f"Removing trait {trait}: {trait_value}")
-                for sim_info in CommonHouseholdUtils.get_sim_info_of_all_sims_in_active_household_generator():
-                    CommonTraitUtils.remove_trait(sim_info, trait_value)
-
+    lock_skills(event_data.new_skill_level, skill_name, True)

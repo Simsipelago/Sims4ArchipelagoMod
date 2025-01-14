@@ -49,6 +49,9 @@ def _handle_show_max_skills_phone(event_data: S4CLSimTraitAddedEvent):
                     skill_name = skill_name.replace('bartending', 'mixology')
                 skill_name = skill_name.title()
                 max_skill = skills_and_levels.get(f"{skill_name} Skill")
+                if max_skill is not None:
+                    if max_skill > 10:
+                        max_skill = 10
                 options.add(ObjectPickerRow(
                     option_id=option,
                     name=CommonLocalizationUtils.create_localized_string(

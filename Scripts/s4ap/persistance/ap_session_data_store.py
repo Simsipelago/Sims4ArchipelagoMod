@@ -5,7 +5,7 @@ from s4ap.logging.s4ap_logger import S4APLogger
 from s4ap.persistance.ap_data_store import S4APGenericDataStore, S4APSettings
 from s4ap.persistance.ap_data_utils import S4APDataManagerUtils
 from s4ap.utils.s4ap_generic_utils import S4APUtils
-from s4ap.utils.s4ap_skill_utils import ResetSimData
+from s4ap.utils.s4ap_reset_utils import ResetSimData
 from sims4communitylib.dialogs.ok_cancel_dialog import CommonOkCancelDialog
 from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
 from sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils

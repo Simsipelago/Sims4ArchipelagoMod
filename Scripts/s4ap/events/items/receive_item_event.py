@@ -15,7 +15,7 @@ from sims4communitylib.utils.sims.common_sim_career_utils import CommonSimCareer
 from sims4communitylib.utils.sims.common_sim_currency_utils import CommonSimCurrencyUtils
 from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
 from sims4communitylib.utils.sims.common_trait_utils import CommonTraitUtils
-
+from collections import Counter
 log = S4APLogger.get_log()
 log.enable()
 
@@ -61,30 +61,32 @@ class HandleReceiveItemEvent:
         elif int(event_data.index) == 0:
             if (data_store.get_item_ids() and data_store.get_items() and data_store.get_senders() and data_store.get_locations()) is not None:
                 if data_store.get_item_ids() != event_data.item_ids:
-                    stored_items = set(zip(
+                    stored_items = list(zip(
                         data_store.get_items() or [],
                         data_store.get_item_ids() or [],
                         data_store.get_senders() or [],
                         data_store.get_locations() or []
                     ))
-                    incoming_items = zip(event_data.items, event_data.item_ids, event_data.players,
-                                         event_data.locations)
-                    filtered_items = [
-                        [
-                            (item, item_id, player, location)
-                            for item, item_id, player, location in incoming_items
-                            if (item, item_id, player, location) not in stored_items
-                        ]
-                    ]
 
-                    item_info = list(zip(*filtered_items[0]))  # item_info = [item, item_id, player, location]
-                    log.debug('item_info filtered')
-                    log.debug(f"Existing item IDs: {data_store.get_item_ids()}")
-                    log.debug(f"Incoming item IDs: {event_data.item_ids}")
-                    log.debug(f"item_info items: {item_info[0]}")
-                    data_store.save_item_info(event_data.items, event_data.item_ids, event_data.locations,
-                                              event_data.players)  # saves the new item info
+                    incoming_items = list(
+                        zip(event_data.items, event_data.item_ids, event_data.players, event_data.locations))
+
+                    # Use Counter to count occurrences in each list
+                    stored_counter = Counter(stored_items)
+                    incoming_counter = Counter(incoming_items)
+
+                    # Subtract stored items from incoming items
+                    filtered_counter = incoming_counter - stored_counter
+
+                    # Convert back to a flat list of tuples
+                    filtered_items = list(filtered_counter.elements())
+                    item_info = list(zip(*filtered_items))
+
                     if item_info:
+                        log.debug('item_info filtered')
+                        log.debug(f"item_info items: {item_info[0]}")
+                        data_store.save_item_info(event_data.items, event_data.item_ids, event_data.locations,
+                                                  event_data.players)
                         handle_item.handle_items(item_info[0])
                         handle_item.show_received_notification(item_info[0], item_info[2], item_info[3])
                     else:
@@ -167,7 +169,7 @@ class HandleReceiveItemEvent:
                     skill = f"homestyle{skill}"
                 elif 'mixology' in skill.lower():
                     skill = skill.lower().replace('mixology', 'bartending')
-                lock_skills(count, skill)
+                lock_skills(count, skill, False)
 
     def show_received_notification(self, items, players, locations):
         notif = CommonBasicNotification(
