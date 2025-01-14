@@ -43,7 +43,7 @@ def lock_skills(skillcap: int, skill_name, from_level_up: bool):
         logger.debug(f"item_name: {item_name}")
         for item in data_store.get_items():
             if item_name in item.lower():
-                skillcap = data_store.get_items().count(item)
+                skillcap = data_store.get_items().count(item) + 2
                 logger.debug(f"new skillcap: {skillcap}")
                 break
             else:
