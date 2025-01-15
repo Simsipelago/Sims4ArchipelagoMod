@@ -151,7 +151,7 @@ class HandleReceiveItemEvent:
                 elif boost_count == 3:
                     rem_traits = (S4APTraitId.SKILL_GAIN_BOOST_2_5X, S4APTraitId.SKILL_GAIN_BOOST_3X)
                     add_trait = S4APTraitId.SKILL_GAIN_BOOST_3_5X
-                elif boost_count == 4:
+                elif boost_count >= 4:
                     rem_traits = (S4APTraitId.SKILL_GAIN_BOOST_2_5X, S4APTraitId.SKILL_GAIN_BOOST_3X,
                                   S4APTraitId.SKILL_GAIN_BOOST_3_5X)
                     add_trait = S4APTraitId.SKILL_GAIN_BOOST_4X

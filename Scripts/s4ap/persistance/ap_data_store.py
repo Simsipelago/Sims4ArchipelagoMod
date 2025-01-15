@@ -14,6 +14,8 @@ class S4APSettings:
     ITEM_IDS = 'item_ids'  # Item ids received from ReceivedItems
     LOCATIONS = 'locations'  # The Locations for the received items in ReceivedItems
     SENDERS = 'senders'  # The players who sent the item
+    GOAL = 'goal' # the goal of the game
+    CAREER = 'career' # the chosen career for logic
 
 class S4APGenericDataStore(CommonDataStore):
     """ Manager of generic stuff. """
@@ -44,4 +46,6 @@ class S4APGenericDataStore(CommonDataStore):
             S4APSettings.ITEM_IDS: None,
             S4APSettings.LOCATIONS: None,
             S4APSettings.SENDERS: None,
+            S4APSettings.GOAL: None,
+            S4APSettings.CAREER: None,
         }.copy()

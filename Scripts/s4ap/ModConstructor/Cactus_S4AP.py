@@ -18,7 +18,7 @@ def inject_to(target_object, target_function_name):
     return _inject_to
 
 Cactus_S4AP_ObjectIds_Phone = (14965,)
-Cactus_S4AP_InteractionIds_Phone = (3311995953,)
+Cactus_S4AP_InteractionIds_Phone = (2692191732,3311995953,4268385422,)
 @inject_to(InstanceManager, 'load_data_into_class_instances')
 def Cactus_S4AP_AddSuperAffordances_Phone(original, self):
     original(self)

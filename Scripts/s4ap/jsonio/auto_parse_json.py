@@ -73,7 +73,10 @@ def parse_message(data):
         port = data["port"]
         seed_name = data["seed_name"]
         slot_name = data["name"]
+        goal = data["goal"]
+        career = data["career"]
         data_store = S4APSessionStoreUtils()
+        data_store.save_goal_and_career(goal, career)
         if data_store.check_session_values(host_name=host, port=port, seed_name=seed_name,
                                            player=slot_name):
             # if settings don't match then cancels

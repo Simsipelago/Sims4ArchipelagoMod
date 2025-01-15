@@ -7,6 +7,7 @@ from sims4communitylib.events.event_handling.common_event import CommonEvent
 from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
 from sims4communitylib.services.common_service import CommonService
 from sims4communitylib.utils.common_injection_utils import CommonInjectionUtils
+from sims4communitylib.utils.sims.common_household_utils import CommonHouseholdUtils
 
 log = S4APLogger.get_log()
 log.enable()
@@ -39,7 +40,9 @@ def _on_milestone_complete(original, self, *args, **kwargs):
     result = original(self, *args, **kwargs)
     career = self._current_track.get_career_name(self._sim_info).hash
     level = self._user_level
-    OnCareerPromotionEvent.get()._on_promotion(career, level)
+    sim_info = self._sim_info
+    if sim_info in CommonHouseholdUtils.get_sim_info_of_all_sims_in_active_household_generator():
+        OnCareerPromotionEvent.get()._on_promotion(career, level)
     return result
 
 

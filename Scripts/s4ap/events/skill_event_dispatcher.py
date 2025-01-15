@@ -70,7 +70,7 @@ def _on_skill_level_up(event_data: SimSkillLeveledUpEvent):
     elif 'homestyle' in skill_id:
         location_name = skill_id.replace('homestyle ', '')
     elif 'gourmet' in skill_id:
-        location_name = skill_id.replace("cooking ", "")
+        location_name = skill_id.replace(" cooking", "")
     elif 'bartending' in skill_id:
         location_name = skill_id.replace('bartending', 'mixology')
     else:

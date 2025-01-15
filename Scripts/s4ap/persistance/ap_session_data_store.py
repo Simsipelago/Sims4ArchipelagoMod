@@ -133,6 +133,11 @@ class S4APSessionStoreUtils:
         self._set_value(S4APSettings.SENDERS, senders)
         S4APUtils.trigger_autosave()
 
+    def save_goal_and_career(self, goal: str, career: str):
+        self._set_value(S4APSettings.GOAL, goal)
+        self._set_value(S4APSettings.CAREER, career)
+        S4APUtils.trigger_autosave()
+
     def get_items(self) -> str:
         return self._get_value(S4APSettings.ITEMS)
 
@@ -147,6 +152,12 @@ class S4APSessionStoreUtils:
 
     def get_seed_name(self) -> str:
         return self._get_value(S4APSettings.SEED_NAME)
+
+    def get_goal(self) -> str:
+        return self._get_value(S4APSettings.GOAL)
+
+    def get_career(self) -> str:
+        return self._get_value(S4APSettings.CAREER)
 
     def _get_value(self, key: str) -> Any:
         generic_settings_data_store: S4APGenericDataStore = self._data_manager.get_generic_settings_data()
