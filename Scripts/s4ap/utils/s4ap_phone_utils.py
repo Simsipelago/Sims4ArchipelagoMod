@@ -1,11 +1,13 @@
 import re
 
 from aspirations.aspiration_types import AspriationType
-from s4ap.enums.S4APLocalization import S4APTraitId, HashLookup
+from s4ap.enums.S4APLocalization import S4APTraitId, HashLookup, S4APBaseGameSkills
 from s4ap.jsonio.s4ap_json import print_json
 from s4ap.logging.s4ap_logger import S4APLogger
 from s4ap.modinfo import ModInfo
 from s4ap.persistance.ap_session_data_store import S4APSessionStoreUtils
+from server_commands.argument_helpers import TunableInstanceParam
+from sims4.resources import Types
 from sims4communitylib.dialogs.choose_object_dialog import CommonChooseObjectDialog
 from sims4communitylib.dialogs.common_choice_outcome import CommonChoiceOutcome
 from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
@@ -30,7 +32,7 @@ def _handle_show_max_skills_phone(event_data: S4CLSimTraitAddedEvent):
     if event_data.trait_id == S4APTraitId.SHOW_RECEIVED_SKILLS:
         CommonTraitUtils.remove_trait(event_data.sim_info, S4APTraitId.SHOW_RECEIVED_SKILLS)
         data_store = S4APSessionStoreUtils()
-        options = set()
+        options = []
         skills_and_levels = {}
         if data_store.get_items() is not None:
             for item in data_store.get_items():
@@ -41,32 +43,30 @@ def _handle_show_max_skills_phone(event_data: S4CLSimTraitAddedEvent):
                     max_skill = item_count + 2
                     skills_and_levels[item] = max_skill
         option = 1
-        for skill in CommonSkillUtils.get_all_skills_gen():
-            skill_id = skill.skill_type.__name__
-            if 'fitness' in skill_id.lower() or skill_id.startswith(
-                    "statistic_Skill_AdultMajor_") and not 'knitting' in skill_id.lower() and not 'flower' in skill_id.lower():
-                skill_name = skill_id.replace("statistic_Skill_AdultMajor_", '')
-                skill_name = re.sub(r'(?<=[a-z])(?=[A-Z])', ' ', skill_name).lower()
-                if 'fitness' in skill_name:
-                    skill_name = skill_name.replace('skill_', '')
-                elif 'homestyle' in skill_name:
-                    skill_name = skill_name.replace('homestyle ', '')
-                elif 'gourmet' in skill_name:
-                    skill_name = skill_name.replace(" cooking", "")
-                elif 'bartending' in skill_name:
-                    skill_name = skill_name.replace('bartending', 'mixology')
-                skill_name = skill_name.title()
-                max_skill = skills_and_levels.get(f"{skill_name} Skill")
-                if max_skill is not None:
-                    if max_skill > 10:
-                        max_skill = 10
-                options.add(ObjectPickerRow(
-                    option_id=option,
-                    name=CommonLocalizationUtils.create_localized_string(
-                        f'{skill_name} Max is {max_skill or 2}'),
-                    icon=skill.icon
-                ))
-                option += 1
+        skills = {}
+        for skill in S4APBaseGameSkills.BASE_GAME_ADULT_SKILLS:
+            if skill == "Fitness":
+                skill_id = f'skill_Fitness'
+            elif skill == "Homestyle Cooking":
+                skill_id = f'statistic_Skill_AdultMajor_{skill}'
+                skill = skill.replace("Homestyle ", "")
+            else:
+                skill_id = f'statistic_Skill_AdultMajor_{skill}'
+            skill_id = skill_id.replace(" ", "")
+            skill_icon = TunableInstanceParam(Types.STATISTIC)(skill_id).icon
+            max_skill = skills_and_levels.get(f"{skill} Skill")
+            if max_skill is not None:
+                if max_skill > 10:
+                    max_skill = 10
+            skills[skill] = [max_skill, skill_icon]
+        for item, item_info in sorted(skills.items()):
+            options.append(ObjectPickerRow(
+                option_id=option,
+                name=CommonLocalizationUtils.create_localized_string(
+                    f'{item} Max is {item_info[0] or 2}'),
+                icon=item_info[1]
+            ))
+            option += 1
 
         def _on_chosen(_, outcome: CommonChoiceOutcome):
             if outcome == CommonChoiceOutcome.CHOICE_MADE:
@@ -142,6 +142,7 @@ def _resync_locations(event_data: S4CLSimTraitAddedEvent):
                     if milestone_display_name is not None:
                         locations.append(milestone_display_name)
         print_json(locations, 'locations_cached.json')
+        print_json(True, 'sync.json')
         notif = CommonBasicNotification(
             'Locations Resynced',
             ''
@@ -173,10 +174,12 @@ def _show_aspiration_and_career(event_data: S4CLSimTraitAddedEvent):
                     display = '3.5 Skill Multiplier'
                 elif item_count >= 4:
                     display = '4 Skill Multiplier'
+                else:
+                    display = 'No Skill Multiplier'
             else:
                 display = 'No Skill Multiplier'
         else:
-            display = 'No skill multiplier'
+            display = 'No Skill Multiplier'
         def _on_chosen(_, outcome: CommonChoiceOutcome):
             if outcome == CommonChoiceOutcome.CHOICE_MADE:
                 dialog.show(on_chosen=_on_chosen)

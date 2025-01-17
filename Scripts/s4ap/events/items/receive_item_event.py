@@ -110,16 +110,18 @@ class HandleReceiveItemEvent:
 
         else:
             log.debug('Index is > than previous index')
-            if data_store.get_items() is not None:
+            if (data_store.get_items() and data_store.get_item_ids() and data_store.get_locations() and data_store.get_senders()) is not None:
                 updated_items = data_store.get_items() + event_data.items
-                if data_store.get_item_ids() is not None:
-                    updated_item_ids = data_store.get_item_ids() + event_data.item_ids
-                    updated_locations = data_store.get_locations() + event_data.locations
-                    updated_players = data_store.get_senders() + event_data.players
-                    data_store.save_item_info(updated_items, updated_item_ids, updated_locations, updated_players)
-                    handle_item.handle_items(event_data.items)
-                    handle_item.show_received_notification(event_data.items, event_data.players, event_data.locations)
-                # Combines both of the old and new items & item_ids and saves them
+                updated_item_ids = data_store.get_item_ids() + event_data.item_ids
+                updated_locations = data_store.get_locations() + event_data.locations
+                updated_players = data_store.get_senders() + event_data.players
+                data_store.save_item_info(updated_items, updated_item_ids, updated_locations, updated_players)
+                handle_item.handle_items(event_data.items)
+                handle_item.show_received_notification(event_data.items, event_data.players, event_data.locations)
+            else:  # Combines both of the old and new items & item_ids and saves them
+                data_store.save_item_info(event_data.items, event_data.item_ids, event_data.locations, event_data.players)
+                handle_item.handle_items(event_data.items)
+                handle_item.show_received_notification(event_data.items, event_data.players, event_data.locations)
 
     def handle_items(self, items):
         data_store = S4APSessionStoreUtils()

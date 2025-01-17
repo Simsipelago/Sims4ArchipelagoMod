@@ -58,6 +58,10 @@ class S4APStringId(CommonStringId):
 class S4APIconId(CommonIconId):
     AP_LOGO_BLUE: 'S4APIconId' = 0xBD85B76B1017163F
 
+class S4APBaseGameSkills:
+    BASE_GAME_ADULT_SKILLS = {"Charisma", "Comedy", "Fishing", "Fitness", "Gardening", "Guitar", "Handiness", "Logic",
+                              "Mischief", "Mixology", "Painting", "Piano", "Programming", "Rocket Science", "Violin",
+                              "Writing", "Homestyle Cooking", "Gourmet Cooking", "Video Gaming", "Photography"}
 
 careers_list = [
     "Module Cleaner (Astronaut 2)",
