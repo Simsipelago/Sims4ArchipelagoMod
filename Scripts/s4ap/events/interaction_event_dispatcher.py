@@ -45,9 +45,6 @@ def _on_interaction_started(event_data: S4CLInteractionStartedEvent):
     interaction_name = CommonInteractionUtils.get_interaction_short_name(interaction)
     interaction_id = CommonInteractionUtils.get_interaction_id(interaction)
     sim = event_data.sim_info
-    # interaction_id = getattr(event_data.interaction, "guid64", None)  # Use None if not available
-    # if interaction_id is None:
-    #     interaction_id = getattr(event_data.interaction, "id", None)  # Try "id" as a fallback
 
     # Check if the Sim is part of the active household
     if not CommonHouseholdUtils.is_part_of_active_household(sim):
