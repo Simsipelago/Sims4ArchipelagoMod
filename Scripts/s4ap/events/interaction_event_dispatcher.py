@@ -17,7 +17,15 @@ from ui.ui_dialog_notification import UiDialogNotification
 logger = S4APLogger.get_log()
 logger.enable()
 
-BLOCKED_INTERACTIONS = {14241, 40413, 14426, 14427, 13443, 151354, 14428, 13439, 13950, 13952, 39965}
+BLOCKED_INTERACTIONS = {14428, 39965}
+
+TOILET_INTERACTIONS = {151354, 13443, 14427, 40413, 14426}
+
+SHOWER_INTERACTIONS = {13439, 13950, 13952}
+
+SINK_INTERACTIONS = {14241}
+
+BATHROOM_INTERACTIONS = {*TOILET_INTERACTIONS, *SHOWER_INTERACTIONS, *SINK_INTERACTIONS}
 
 def show_blocked_interaction_notification(sim, interaction_name, description_identifier=None):
     """ Show a notification to the player when an interaction is blocked. """
