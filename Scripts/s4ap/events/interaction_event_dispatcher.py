@@ -40,6 +40,8 @@ NEED_INTERACTIONS = {13994, 77557}
 
 BLOCKED_INTERACTIONS = {14428, *BATHROOM_INTERACTIONS, *WORK_INTERACTIONS, *FRIDGE_INTERACTIONS, *NEED_INTERACTIONS}
 
+SKIP_LOGGING = ['sim-stand', 'mixer_AtWork_Default', 'sim-standExclusive', 'stand_Passive']
+
 def show_blocked_interaction_notification(sim, interaction_name, description_identifier=None):
     """ Show a notification to the player when an interaction is blocked. """
     notification = CommonBasicNotification(
