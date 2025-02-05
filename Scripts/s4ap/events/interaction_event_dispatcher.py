@@ -8,6 +8,7 @@ from sims4communitylib.events.interaction.events.interaction_pre_run import S4CL
 from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
 from sims4communitylib.utils.sims.common_household_utils import CommonHouseholdUtils
 from sims4communitylib.utils.sims.common_sim_interaction_utils import CommonSimInteractionUtils
+from sims4communitylib.utils.resources.common_interaction_utils import CommonInteractionUtils
 from sims4communitylib.notifications.common_basic_notification import CommonBasicNotification
 from sims4communitylib.enums.strings_enum import CommonStringId
 from sims4communitylib.utils.common_icon_utils import CommonIconUtils
@@ -41,11 +42,12 @@ def show_blocked_interaction_notification(sim, interaction_name, description_ide
 @CommonEventRegistry.handle_events(ModInfo.get_identity())
 def _on_interaction_started(event_data: S4CLInteractionStartedEvent):
     interaction = event_data.interaction
-    interaction_name = getattr(event_data.interaction.affordance, 'instance_name', str(event_data.interaction.affordance))
+    interaction_name = CommonInteractionUtils.get_interaction_short_name(interaction)
+    interaction_id = CommonInteractionUtils.get_interaction_id(interaction)
     sim = event_data.sim_info
-    interaction_id = getattr(event_data.interaction, "guid64", None)  # Use None if not available
-    if interaction_id is None:
-        interaction_id = getattr(event_data.interaction, "id", None)  # Try "id" as a fallback
+    # interaction_id = getattr(event_data.interaction, "guid64", None)  # Use None if not available
+    # if interaction_id is None:
+    #     interaction_id = getattr(event_data.interaction, "id", None)  # Try "id" as a fallback
 
     # Check if the Sim is part of the active household
     if not CommonHouseholdUtils.is_part_of_active_household(sim):
@@ -65,9 +67,9 @@ def _on_interaction_started(event_data: S4CLInteractionStartedEvent):
 def _on_interaction_pre_run(event_data: S4CLInteractionPreRunEvent):
     """ Cancel blocked interactions before they are fully executed. """
     interaction = event_data.interaction
-    interaction_name = getattr(interaction.affordance, 'instance_name', str(interaction.affordance))
+    interaction_name = CommonInteractionUtils.get_interaction_short_name(interaction)
+    interaction_id = CommonInteractionUtils.get_interaction_id(interaction)
     sim = event_data.interaction.sim.sim_info
-    interaction_id = getattr(interaction, "guid64", None) or getattr(interaction, "id", None)  # Fallback
 
     # Check if the Sim is part of the active household
     if not CommonHouseholdUtils.is_part_of_active_household(sim):
