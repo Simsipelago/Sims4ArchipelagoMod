@@ -4,6 +4,7 @@ from protocolbuffers.Consts_pb2 import description
 from s4ap.logging.s4ap_logger import S4APLogger
 from s4ap.modinfo import ModInfo
 from sims4communitylib.events.interaction.events.interaction_started import S4CLInteractionStartedEvent
+from sims4communitylib.events.interaction.events.interaction_pre_run import S4CLInteractionPreRunEvent
 from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
 from sims4communitylib.utils.sims.common_household_utils import CommonHouseholdUtils
 from sims4communitylib.utils.sims.common_sim_interaction_utils import CommonSimInteractionUtils
@@ -48,4 +49,26 @@ def _on_interaction_started(event_data: S4CLInteractionStartedEvent):
         logger.debug(f"Blocked interaction: {interaction_name} (ID: {interaction_id}) for Sim {sim}")
 
         # Cancel the interaction
+        CommonSimInteractionUtils.cancel_interaction(interaction, "Blocked Interaction")
+
+@CommonEventRegistry.handle_events(ModInfo.get_identity())
+def _on_interaction_pre_run(event_data: S4CLInteractionPreRunEvent):
+    """ Cancel blocked interactions before they are fully executed. """
+    interaction = event_data.interaction
+    interaction_name = getattr(interaction.affordance, 'instance_name', str(interaction.affordance))
+    sim = event_data.interaction.sim.sim_info
+    interaction_id = getattr(interaction, "guid64", None) or getattr(interaction, "id", None)  # Fallback
+
+    # Check if the Sim is part of the active household
+    if not CommonHouseholdUtils.is_part_of_active_household(sim):
+        return  # Ignore Sims outside the household
+
+    logger.debug(f"Sim {sim} attempting interaction: {interaction_name} (ID: {interaction_id})")
+
+    # Block interaction if it's in the blocked list
+    if interaction_id in BLOCKED_INTERACTIONS:
+        logger.debug(f"Blocking interaction: {interaction_name} (ID: {interaction_id}) for Sim {sim}")
+        show_blocked_interaction_notification(sim, interaction_name)
+
+        # **Cancel the interaction before it fully runs**
         CommonSimInteractionUtils.cancel_interaction(interaction, "Blocked Interaction")
