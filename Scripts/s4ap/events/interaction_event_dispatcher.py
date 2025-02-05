@@ -56,7 +56,10 @@ def _on_interaction_started(event_data: S4CLInteractionStartedEvent):
     if not CommonHouseholdUtils.is_part_of_active_household(sim):
         return  # Ignore Sims outside the household
 
-    if interaction_name == 'sim-stand':
+    SKIP_LOGGING = ['sim-stand', 'mixer_AtWork_Default', 'sim-standExclusive']
+
+
+    if interaction_name in SKIP_LOGGING:
         return # avoid logging this interaction
 
     # Log interaction attempt
