@@ -50,34 +50,38 @@ def _on_interaction_started(event_data: S4CLInteractionStartedEvent):
     if not CommonHouseholdUtils.is_part_of_active_household(sim):
         return  # Ignore Sims outside the household
 
+    if interaction_name == 'sim-stand':
+        return # avoid logging this interaction
+
     # Log interaction attempt
     logger.debug(f"Sim {sim} attempting interaction: {interaction_name} (ID: {interaction_id})")
 
     # Check if the interaction is blocked
     if interaction_id in BLOCKED_INTERACTIONS:
         logger.debug(f"Blocked interaction: {interaction_name} (ID: {interaction_id}) for Sim {sim}")
+        show_blocked_interaction_notification(sim, interaction_name)
 
         # Cancel the interaction
         CommonSimInteractionUtils.cancel_interaction(interaction, "Blocked Interaction")
 
-@CommonEventRegistry.handle_events(ModInfo.get_identity())
-def _on_interaction_pre_run(event_data: S4CLInteractionPreRunEvent):
-    """ Cancel blocked interactions before they are fully executed. """
-    interaction = event_data.interaction
-    interaction_name = CommonInteractionUtils.get_interaction_short_name(interaction)
-    interaction_id = CommonInteractionUtils.get_interaction_id(interaction)
-    sim = event_data.interaction.sim.sim_info
-
-    # Check if the Sim is part of the active household
-    if not CommonHouseholdUtils.is_part_of_active_household(sim):
-        return  # Ignore Sims outside the household
-
-    logger.debug(f"Sim {sim} attempting interaction: {interaction_name} (ID: {interaction_id})")
-
-    # Block interaction if it's in the blocked list
-    if interaction_id in BLOCKED_INTERACTIONS:
-        logger.debug(f"Blocking interaction: {interaction_name} (ID: {interaction_id}) for Sim {sim}")
-        show_blocked_interaction_notification(sim, interaction_name)
-
-        # **Cancel the interaction before it fully runs**
-        CommonSimInteractionUtils.cancel_interaction(interaction, "Blocked Interaction")
+# @CommonEventRegistry.handle_events(ModInfo.get_identity())
+# def _on_interaction_pre_run(event_data: S4CLInteractionPreRunEvent):
+#     """ Cancel blocked interactions before they are fully executed. """
+#     interaction = event_data.interaction
+#     interaction_name = CommonInteractionUtils.get_interaction_short_name(interaction)
+#     interaction_id = CommonInteractionUtils.get_interaction_id(interaction)
+#     sim = event_data.interaction.sim.sim_info
+#
+#     # Check if the Sim is part of the active household
+#     if not CommonHouseholdUtils.is_part_of_active_household(sim):
+#         return  # Ignore Sims outside the household
+#
+#     logger.debug(f"Sim {sim} attempting interaction: {interaction_name} (ID: {interaction_id})")
+#
+#     # Block interaction if it's in the blocked list
+#     if interaction_id in BLOCKED_INTERACTIONS:
+#         logger.debug(f"Blocking interaction: {interaction_name} (ID: {interaction_id}) for Sim {sim}")
+#         show_blocked_interaction_notification(sim, interaction_name)
+#
+#         # **Cancel the interaction before it fully runs**
+#         CommonSimInteractionUtils.cancel_interaction(interaction, "Blocked Interaction")
