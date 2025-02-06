@@ -19,8 +19,6 @@ from s4ap.enums.interactions import BLOCKED_INTERACTIONS
 logger = S4APLogger.get_log()
 logger.enable()
 
-
-
 SKIP_LOGGING = ['sim-stand', 'mixer_AtWork_Default', 'sim-standExclusive', 'stand_Passive']
 
 def show_blocked_interaction_notification(sim, interaction_name, description_identifier=None):
