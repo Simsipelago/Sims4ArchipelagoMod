@@ -1,26 +1,48 @@
-from sims4.resources import Types
-import services
-import sims4
+import sims4.resources as resources
+from sims4communitylib.utils.common_injection_utils import inject
 from ui.ui_dialog_picker import UiSkillsSimPicker
+from s4ap.logging.s4ap_logger import S4APLogger
+import services
 
-# Store the original function so we can call it later
-_original_build_customize_picker = UiSkillsSimPicker._build_customize_picker
+# Initialize logger
+logger = S4APLogger.get_log()
+logger.enable()
 
-def _patched_build_customize_picker(self, picker_data):
-    # Call the original method first to retain existing functionality
-    _original_build_customize_picker(self, picker_data)
+@inject(UiSkillsSimPicker, "_build_customize_picker")
+def _show_all_skills(original, self, picker_data, *args, **kwargs):
+    logger.debug("Injecting into _build_customize_picker")
 
-    # Add all skills, even if the Sim hasn't gained experience in them
+    original(self, picker_data, *args, **kwargs)  # Call the original function
+
+    if not picker_data or not hasattr(picker_data, "sim_picker_data"):
+        logger.error("picker_data is invalid or missing sim_picker_data")
+        return
+
+    logger.debug(f"picker_data.sim_picker_data.row_data count: {len(picker_data.sim_picker_data.row_data)}")
+
     for row in picker_data.sim_picker_data.row_data:
         sim_info = services.sim_info_manager().get(row.sim_id)
-        all_skills = services.get_instance_manager(Types.STATISTIC).get_ordered_types(class_restrictions=('Skill',))
+        if sim_info is None:
+            logger.warning(f"SimInfo not found for Sim ID {row.sim_id}")
+            continue
+
+        logger.debug(f"Processing Sim: {sim_info.full_name} (ID: {row.sim_id})")
+
+        all_skills = services.get_instance_manager(resources.Types.STATISTIC).get_all()
 
         for skill in all_skills:
+            if not getattr(skill, 'is_skill', False):  # Ensure it's a skill
+                continue
+
+            if not hasattr(row, "skills"):
+                logger.error(f"Row has no 'skills' attribute for Sim {sim_info.full_name}")
+                continue
+
             skill_data = row.skills.add()
             skill_data.skill_id = skill.guid64
-            skill_data.current_points = int(
-                sim_info.get_stat_value(skill.skill_type) or 0)  # Default to 0 if uninitialized
+            skill_data.current_points = int(sim_info.get_stat_value(skill)) if sim_info.has_statistic(skill) else 0
             skill_data.tooltip = skill.stat_name
 
-# Override the method in the class
-UiSkillsSimPicker._build_customize_picker = _patched_build_customize_picker
+            logger.debug(f"Added skill: {skill.stat_name} (ID: {skill.guid64}) | Points: {skill_data.current_points}")
+
+    logger.info("Skill injection complete")
