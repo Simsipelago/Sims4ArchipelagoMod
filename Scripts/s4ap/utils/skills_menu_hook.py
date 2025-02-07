@@ -1,5 +1,6 @@
 import sims4.resources as resources
-from sims4communitylib.utils.common_injection_utils import inject
+from s4ap.modinfo import ModInfo
+from sims4communitylib.utils.common_injection_utils import CommonInjectionUtils
 from ui.ui_dialog_picker import UiSkillsSimPicker
 from s4ap.logging.s4ap_logger import S4APLogger
 import services
@@ -8,7 +9,7 @@ import services
 logger = S4APLogger.get_log()
 logger.enable()
 
-@inject(UiSkillsSimPicker, "_build_customize_picker")
+@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), UiSkillsSimPicker, "_build_customize_picker")
 def _show_all_skills(original, self, picker_data, *args, **kwargs):
     logger.debug("Injecting into _build_customize_picker")
 
