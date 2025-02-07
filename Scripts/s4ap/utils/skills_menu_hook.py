@@ -9,25 +9,31 @@ import services
 logger = S4APLogger.get_log()
 logger.enable()
 
+# Check if the function exists before injecting
+if hasattr(UiSkillsSimPicker, "_build_customize_picker"):
+    logger.info("✅ _build_customize_picker exists and is being injected into!")
+else:
+    logger.error("❌ _build_customize_picker does NOT exist! Injection may fail!")
+
 @CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), UiSkillsSimPicker, "_build_customize_picker")
 def _show_all_skills(original, self, picker_data, *args, **kwargs):
-    logger.debug("Injecting into _build_customize_picker")
+    logger.info("✅ Successfully injected into _build_customize_picker!")
 
     original(self, picker_data, *args, **kwargs)  # Call the original function
 
     if not picker_data or not hasattr(picker_data, "sim_picker_data"):
-        logger.error("picker_data is invalid or missing sim_picker_data")
+        logger.error("❌ picker_data is invalid or missing sim_picker_data")
         return
 
-    logger.debug(f"picker_data.sim_picker_data.row_data count: {len(picker_data.sim_picker_data.row_data)}")
+    logger.debug(f"📌 picker_data.sim_picker_data.row_data count: {len(picker_data.sim_picker_data.row_data)}")
 
     for row in picker_data.sim_picker_data.row_data:
         sim_info = services.sim_info_manager().get(row.sim_id)
         if sim_info is None:
-            logger.warning(f"SimInfo not found for Sim ID {row.sim_id}")
+            logger.warning(f"⚠️ SimInfo not found for Sim ID {row.sim_id}")
             continue
 
-        logger.debug(f"Processing Sim: {sim_info.full_name} (ID: {row.sim_id})")
+        logger.debug(f"🔍 Processing Sim: {sim_info.full_name} (ID: {row.sim_id})")
 
         all_skills = services.get_instance_manager(resources.Types.STATISTIC).get_all()
 
@@ -36,7 +42,7 @@ def _show_all_skills(original, self, picker_data, *args, **kwargs):
                 continue
 
             if not hasattr(row, "skills"):
-                logger.error(f"Row has no 'skills' attribute for Sim {sim_info.full_name}")
+                logger.error(f"🚨 Row has no 'skills' attribute for Sim {sim_info.full_name}")
                 continue
 
             skill_data = row.skills.add()
@@ -44,6 +50,6 @@ def _show_all_skills(original, self, picker_data, *args, **kwargs):
             skill_data.current_points = int(sim_info.get_stat_value(skill)) if sim_info.has_statistic(skill) else 0
             skill_data.tooltip = skill.stat_name
 
-            logger.debug(f"Added skill: {skill.stat_name} (ID: {skill.guid64}) | Points: {skill_data.current_points}")
+            logger.debug(f"✅ Added skill: {skill.stat_name} (ID: {skill.guid64}) | Points: {skill_data.current_points}")
 
-    logger.info("Skill injection complete")
+    logger.info("✅ Skill injection complete!")
