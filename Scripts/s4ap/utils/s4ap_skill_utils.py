@@ -74,8 +74,8 @@ def add_lock_trait(sim_info, trait, skill_id):
     if hasattr(S4APTraitId, trait_upper):
         trait_id = getattr(S4APTraitId, trait_upper)
         CommonTraitUtils.add_trait(sim_info, trait_id)
-        logger.debug(trait_id)
-    logger.debug(f"Locking skill and adding trait {trait_upper} locking {skill_id} for Sim {CommonSimNameUtils.get_first_name(sim_info)}.")
+        logger.debug(f"Locking skill and adding trait {trait_upper} locking {skill_id} for Sim {CommonSimNameUtils.get_first_name(sim_info)}.")
+    logger.debug(trait_upper)
 
 
 def remove_lock_trait(sim_info, trait, skill_id):
@@ -83,8 +83,8 @@ def remove_lock_trait(sim_info, trait, skill_id):
     if hasattr(S4APTraitId, trait_upper):
         trait_id = getattr(S4APTraitId, trait_upper)
         CommonTraitUtils.remove_trait(sim_info, trait_id)
-        logger.debug(trait_id)
-    logger.debug(f"Unlocking skill and removing trait {trait_upper} locking {skill_id} for Sim {CommonSimNameUtils.get_first_name(sim_info)}.")
+        logger.debug(f"Unlocking skill and removing trait {trait_upper} locking {skill_id} for Sim {CommonSimNameUtils.get_first_name(sim_info)}.")
+    logger.debug(trait_upper)
 
 
 @CommonEventRegistry.handle_events(ModInfo.get_identity())
