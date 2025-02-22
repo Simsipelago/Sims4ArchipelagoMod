@@ -61,21 +61,21 @@ def lock_skills(skillcap: int, skill_name, from_level_up: bool):
                 remove_lock_trait(sim_info, trait, skill_id)
             elif skillcap == current_level:
                 logger.debug('Skill cap is == as current level')
-                add_lock_trait(sim_info, trait)
+                add_lock_trait(sim_info, trait, skill_id)
             elif skillcap < current_level:
                 logger.debug('Skill cap is < than current level')
                 CommonSimSkillUtils.set_current_skill_level(sim_info, skill, skillcap)
-                add_lock_trait(sim_info, trait)
+                add_lock_trait(sim_info, trait, skill_id)
     except Exception as ex:
         logger.debug(f"Exception occurred: {ex}")
 
-def add_lock_trait(sim_info, trait):
+def add_lock_trait(sim_info, trait, skill_id):
     trait_upper = trait.upper()
     if hasattr(S4APTraitId, trait_upper):
         trait_id = getattr(S4APTraitId, trait_upper)
         CommonTraitUtils.add_trait(sim_info, trait_id)
         logger.debug(trait_id)
-    logger.debug(trait_upper)
+    logger.debug(f"Locking skill and adding trait {trait_upper} locking {skill_id} for Sim {CommonSimNameUtils.get_first_name(sim_info)}.")
 
 
 def remove_lock_trait(sim_info, trait, skill_id):
