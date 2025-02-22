@@ -76,6 +76,6 @@ def _on_skill_level_up(event_data: SimSkillLeveledUpEvent):
     else:
         location_name = skill_id
     location_name = location_name.strip()
-    logger.debug(f'Skill leveled up:{location_name}')
+    logger.debug(f'Skill leveled up: {location_name}')
     location_name = f'{location_name.title()} Skill {event_data.new_skill_level}'
     CommonEventRegistry.get().dispatch(SendLocationEvent(location_name))
