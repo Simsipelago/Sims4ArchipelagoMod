@@ -58,7 +58,7 @@ def lock_skills(skillcap: int, skill_name, from_level_up: bool):
             logger.debug(f"{CommonSimNameUtils.get_first_name(sim_info)}'s Current level is {current_level}.")
             if skillcap > current_level:
                 logger.debug('Skill cap is > than current level')
-                remove_lock_trait(sim_info, trait)
+                remove_lock_trait(sim_info, trait, skill_id)
             elif skillcap == current_level:
                 logger.debug('Skill cap is == as current level')
                 add_lock_trait(sim_info, trait)
@@ -78,13 +78,13 @@ def add_lock_trait(sim_info, trait):
     logger.debug(trait_upper)
 
 
-def remove_lock_trait(sim_info, trait):
+def remove_lock_trait(sim_info, trait, skill_id):
     trait_upper = trait.upper()
     if hasattr(S4APTraitId, trait_upper):
         trait_id = getattr(S4APTraitId, trait_upper)
         CommonTraitUtils.remove_trait(sim_info, trait_id)
         logger.debug(trait_id)
-    logger.debug(trait_upper)
+    logger.debug(f"Unlocking skill and removing trait {trait_upper} locking {skill_id} for Sim {CommonSimNameUtils.get_first_name(sim_info)}.")
 
 
 @CommonEventRegistry.handle_events(ModInfo.get_identity())
