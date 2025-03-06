@@ -60,12 +60,15 @@ def _handle_show_max_skills_phone(event_data: S4CLSimTraitAddedEvent):
             if max_skill is not None:
                 if max_skill > 10:
                     max_skill = 10
-            skills[skill] = [max_skill, skill_icon]
+            skills[skill] = [max_skill, skill_icon, skill_id]
         for item, item_info in sorted(skills.items()):
+            max_level, skill_icon, skill_id = item_info  # Unpack values properly
+            current_level = CommonSimSkillUtils.get_current_skill_level(event_data.sim_info, skill_id, False)
+
             options.append(ObjectPickerRow(
                 option_id=option,
                 name=CommonLocalizationUtils.create_localized_string(
-                    f'{item} Max is {item_info[0] or 2}'),
+                    f'{item} Max is {item_info[0] or 2} ({current_level})'),
                 icon=item_info[1]
             ))
             option += 1
