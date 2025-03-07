@@ -1,5 +1,6 @@
 import re
 
+import services
 from aspirations.aspiration_types import AspriationType
 from s4ap.enums.S4APLocalization import S4APTraitId, HashLookup, S4APBaseGameSkills
 from s4ap.jsonio.s4ap_json import print_json
@@ -63,7 +64,9 @@ def _handle_show_max_skills_phone(event_data: S4CLSimTraitAddedEvent):
             skills[skill] = [max_skill, skill_icon, skill_id]
         for item, item_info in sorted(skills.items()):
             max_level, skill_icon, skill_id = item_info  # Unpack values properly
-            current_level = CommonSimSkillUtils.get_current_skill_level(event_data.sim_info, Types.STATISTIC(skill_id), False)
+            statistic_manager = services.get_instance_manager(Types.STATISTIC)
+            skill = statistic_manager.get(skill_id)
+            current_level = CommonSimSkillUtils.get_current_skill_level(event_data.sim_info, skill, False)
 
             options.append(ObjectPickerRow(
                 option_id=option,
