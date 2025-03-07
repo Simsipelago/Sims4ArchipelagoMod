@@ -63,7 +63,7 @@ def _handle_show_max_skills_phone(event_data: S4CLSimTraitAddedEvent):
             skills[skill] = [max_skill, skill_icon, skill_id]
         for item, item_info in sorted(skills.items()):
             max_level, skill_icon, skill_id = item_info  # Unpack values properly
-            current_level = CommonSimSkillUtils.get_current_skill_level(event_data.sim_info, skill_id, False)
+            current_level = CommonSimSkillUtils.get_current_skill_level(event_data.sim_info, Types.STATISTIC(skill_id), False)
 
             options.append(ObjectPickerRow(
                 option_id=option,
