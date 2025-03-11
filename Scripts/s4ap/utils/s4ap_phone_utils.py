@@ -64,8 +64,10 @@ def _handle_show_max_skills_phone(event_data: S4CLSimTraitAddedEvent):
             skills[skill] = [max_skill, skill_icon, skill_id]
         for item, item_info in sorted(skills.items()):
             max_level, skill_icon, skill_id = item_info  # Unpack values properly
+
+            skill = TunableInstanceParam(Types.STATISTIC)(skill_id)
             statistic_manager = services.get_instance_manager(Types.STATISTIC)
-            skill = statistic_manager.get(skill_id)
+            # skill = statistic_manager.get(skill_id)
             current_level = CommonSimSkillUtils.get_current_skill_level(event_data.sim_info, skill, False)
 
             logger.debug(f"Retrieved current level for {skill} is: {current_level}")
