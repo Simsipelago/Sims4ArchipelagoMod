@@ -68,6 +68,8 @@ def _handle_show_max_skills_phone(event_data: S4CLSimTraitAddedEvent):
             skill = statistic_manager.get(skill_id)
             current_level = CommonSimSkillUtils.get_current_skill_level(event_data.sim_info, skill, False)
 
+            logger.debug(f"Retrieved current level for {skill} is: {current_level}")
+
             options.append(ObjectPickerRow(
                 option_id=option,
                 name=CommonLocalizationUtils.create_localized_string(
