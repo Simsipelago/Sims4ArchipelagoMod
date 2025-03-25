@@ -53,7 +53,10 @@ def _handle_show_max_skills_phone(event_data: S4CLSimTraitAddedEvent):
             elif skill == "Mixology":
                 skill_id = f'statistic_Skill_AdultMajor_Bartending'
             elif skill == "Gourmet Cooking":
-                skill_id = f'statistic_skill_AdultMajor_GourmetCooking'
+                str1 = skill[0:6]
+                str2 = skill[8:14]
+                skill = str1 + str2
+                skill_id = f'statistic_skill_AdultMajor_{skill}'
             else:
                 skill_id = f'statistic_Skill_AdultMajor_{skill}'
             skill_id = skill_id.replace(" ", "")
