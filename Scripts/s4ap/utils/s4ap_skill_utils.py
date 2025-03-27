@@ -50,6 +50,8 @@ def lock_skills(skillcap: int, skill_name, from_level_up: bool):
                 else:
                     continue
         trait = f"lock_{skill_id.lower().replace('skill_', '')}_skill"
+        if 'gourmet' in trait:
+            trait = "lock_gourmet_cooking_skill"
         logger.debug(f"Skill Id: {skill_id}")
         logger.debug(f"Trait: {trait}")
         skill = TunableInstanceParam(Types.STATISTIC)(skill_name)

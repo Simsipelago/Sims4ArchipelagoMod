@@ -55,5 +55,7 @@ Tunings/Temp
 Utilities
 decompile_scripts.py
 settings.py
+Pipfile
+.DS_Store
 # Project exclude paths
 /Release/
