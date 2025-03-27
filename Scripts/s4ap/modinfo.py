@@ -14,7 +14,7 @@ class ModInfo(CommonModInfo):
     @property
     def _version(self) -> str:
         # Mod version
-        return '0.1.11b'
+        return '0.1.12'
 
     @property
     def _author(self) -> str:
