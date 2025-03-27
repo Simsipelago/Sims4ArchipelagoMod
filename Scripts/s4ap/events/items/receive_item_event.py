@@ -169,6 +169,8 @@ class HandleReceiveItemEvent:
                     skill = f"skill_{skill}"
                 elif 'cooking' in skill.lower():
                     skill = f"homestyle{skill}"
+                elif 'gourmet' in skill.lower():
+                    skill = f"{skill}cooking"
                 elif 'mixology' in skill.lower():
                     skill = skill.lower().replace('mixology', 'bartending')
                 lock_skills(count, skill, False)
