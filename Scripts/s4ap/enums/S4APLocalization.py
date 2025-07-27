@@ -236,7 +236,7 @@ class HashLookup:
             878940205: 'Bodybuilder (Bodybuilder 4)',
             4242223517: 'Ill at Easel (Painter Extraordinaire 1)',
             895036271: 'Fine Artist (Painter Extraordinaire 2)',
-            3120966586: 'Brushing with Greatness',
+            3120966586: 'Brushing with Greatness (Painter Extraordinaire 3)',
             786880649: 'Painter Extraordinaire (Painter Extraordinaire 4)',
             2259533262: 'Fledge-linguist (Bestselling Author 1)',
             2252361604: 'Competent Wordsmith (Bestselling Author 2)',
