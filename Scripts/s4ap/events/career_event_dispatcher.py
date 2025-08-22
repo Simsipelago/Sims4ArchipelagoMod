@@ -30,7 +30,7 @@ class CarrerPromotionEvent(CommonEvent):
 class OnCareerPromotionEvent(CommonService):
 
     def _on_promotion(self, career, user_level: int, *_, **__):
-        log.debug(f'here is the career: {career}')
+        log.debug(f'here is the career: {career} {user_level}')
         CommonEventRegistry.get().dispatch(CarrerPromotionEvent(career, user_level))
 
 
