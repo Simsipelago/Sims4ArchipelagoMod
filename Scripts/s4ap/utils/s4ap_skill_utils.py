@@ -20,13 +20,13 @@ logger.enable()
 
 def lock_skills(skillcap: int, skill_name, from_level_up: bool):
     try:
+        logger.debug(f"Processing level up for {skill_name}")
         logger.debug(f"Skill cap is {skillcap}")
         data_store = S4APSessionStoreUtils()
         if skillcap < 2:
             skillcap = 2
         if not skill_name.startswith("statistic_Skill_AdultMajor_") and not 'fitness' in skill_name.lower():
             skill_name = f"statistic_Skill_AdultMajor_{skill_name}"
-        logger.debug(f'{skill_name}')
         skill_id = skill_name.replace("statistic_Skill_AdultMajor_", '')
         skill_id = re.sub(r'(?<=[a-z])(?=[A-Z])', '_', skill_id)
         if 'bartending' in skill_id.lower():
@@ -58,15 +58,15 @@ def lock_skills(skillcap: int, skill_name, from_level_up: bool):
         skill = TunableInstanceParam(Types.STATISTIC)(skill_name)
         for sim_info in CommonHouseholdUtils.get_sim_info_of_all_sims_in_active_household_generator():
             current_level = CommonSimSkillUtils.get_current_skill_level(sim_info, skill, False)
-            logger.debug(f"{S4APUtils.get_sim_first_name(sim_info)}'s Current level is {current_level}.")
+            logger.debug(f"{S4APUtils.get_sim_first_name(sim_info)}'s Current {skill_id} level is {current_level}.")
             if skillcap > current_level:
-                logger.debug('Skill cap is > than current level')
+                logger.debug(f"{skill_id} skill cap is > than current level, unlocking skill.")
                 remove_lock_trait(sim_info, trait)
             elif skillcap == current_level:
-                logger.debug('Skill cap is == as current level')
+                logger.debug(f"{skill_id} skill cap is the same as the current level, locking skill.")
                 add_lock_trait(sim_info, trait)
             elif skillcap < current_level:
-                logger.debug('Skill cap is < than current level')
+                logger.debug(f"{skill_id} skill cap is < than current level, locking skill and setting skill level to {skillcap}")
                 CommonSimSkillUtils.set_current_skill_level(sim_info, skill, skillcap)
                 add_lock_trait(sim_info, trait)
     except Exception as ex:
