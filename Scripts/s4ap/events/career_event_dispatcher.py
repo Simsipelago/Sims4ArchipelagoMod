@@ -3,6 +3,7 @@ from s4ap.enums.S4APLocalization import HashLookup
 from s4ap.events.checks.send_check_event import SendLocationEvent
 from s4ap.logging.s4ap_logger import S4APLogger
 from s4ap.modinfo import ModInfo
+from s4ap.utils.s4ap_generic_utils import S4APUtils
 from sims4communitylib.events.event_handling.common_event import CommonEvent
 from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
 from sims4communitylib.services.common_service import CommonService
@@ -29,10 +30,10 @@ class CarrerPromotionEvent(CommonEvent):
 
 class OnCareerPromotionEvent(CommonService):
 
-    def _on_promotion(self, career, user_level: int, *_, **__):
+    def _on_promotion(self, career, user_level: int, name: str, *_, **__):
         career_name = HashLookup().get_career_name(career, user_level)
         log.debug(f'here is the career: {career} {user_level} ({career_name})')
-        log.debug(f'Promoted to {career_name}')
+        log.debug(f'{name} was promoted to {career_name}')
         CommonEventRegistry.get().dispatch(CarrerPromotionEvent(career, user_level))
 
 
@@ -44,7 +45,8 @@ def _on_milestone_complete(original, self, *args, **kwargs):
     level = self._user_level
     sim_info = self._sim_info
     if sim_info in CommonHouseholdUtils.get_sim_info_of_all_sims_in_active_household_generator():
-        OnCareerPromotionEvent.get()._on_promotion(career, level)
+        sim_name = S4APUtils.get_sim_first_name(sim_info)
+        OnCareerPromotionEvent.get()._on_promotion(career, level, sim_name)
     return result
 
 
