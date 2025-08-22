@@ -5,6 +5,7 @@ from s4ap.events.skill_event_dispatcher import SimSkillLeveledUpEvent
 from s4ap.logging.s4ap_logger import S4APLogger
 from s4ap.modinfo import ModInfo
 from s4ap.persistance.ap_session_data_store import S4APSessionStoreUtils
+from s4ap.utils.s4ap_generic_utils import S4APUtils
 from server_commands.argument_helpers import TunableInstanceParam
 from sims4.resources import Types
 from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
@@ -57,7 +58,7 @@ def lock_skills(skillcap: int, skill_name, from_level_up: bool):
         skill = TunableInstanceParam(Types.STATISTIC)(skill_name)
         for sim_info in CommonHouseholdUtils.get_sim_info_of_all_sims_in_active_household_generator():
             current_level = CommonSimSkillUtils.get_current_skill_level(sim_info, skill, False)
-            logger.debug(f"{CommonSimNameUtils.get_first_name(sim_info)}'s Current level is {current_level}.")
+            logger.debug(f"{S4APUtils.get_sim_first_name(sim_info)}'s Current level is {current_level}.")
             if skillcap > current_level:
                 logger.debug('Skill cap is > than current level')
                 remove_lock_trait(sim_info, trait)
