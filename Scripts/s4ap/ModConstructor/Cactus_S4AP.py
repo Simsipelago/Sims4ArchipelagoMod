@@ -20,8 +20,8 @@ def inject_to(target_object, target_function_name):
 Cactus_S4AP_ObjectIds_Phone = (14965,)
 Cactus_S4AP_InteractionIds_Phone = (2692191732,3311995953,4268385422,)
 @inject_to(InstanceManager, 'load_data_into_class_instances')
-def Cactus_S4AP_AddSuperAffordances_Phone(original, self):
-    original(self)
+def Cactus_S4AP_AddSuperAffordances_Phone(original, self, *args, **kwargs):
+    original(self, *args, **kwargs)
     if self.TYPE == Types.OBJECT:
         affordance_manager = services.affordance_manager()
         sa_list = []
