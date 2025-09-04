@@ -60,13 +60,13 @@ def lock_skills(skillcap: int, skill_name, from_level_up: bool):
             current_level = CommonSimSkillUtils.get_current_skill_level(sim_info, skill, False)
             logger.debug(f"{S4APUtils.get_sim_first_name(sim_info)}'s Current {skill_id} level is {current_level}.")
             if skillcap > current_level:
-                logger.debug(f"{skill_id} skill cap is > than current level, unlocking skill.")
+                logger.debug(f"{skill_id} skill cap is greater than current level, unlocking skill.")
                 remove_lock_trait(sim_info, trait)
             elif skillcap == current_level:
                 logger.debug(f"{skill_id} skill cap is the same as the current level, locking skill.")
                 add_lock_trait(sim_info, trait)
             elif skillcap < current_level:
-                logger.debug(f"{skill_id} skill cap is < than current level, locking skill and setting skill level to {skillcap}")
+                logger.debug(f"{skill_id} skill cap is less than current level, locking skill and setting skill level to {skillcap}")
                 CommonSimSkillUtils.set_current_skill_level(sim_info, skill, skillcap)
                 add_lock_trait(sim_info, trait)
     except Exception as ex:
