@@ -102,14 +102,16 @@ def _lock_on_level_up(event_data: SimSkillLeveledUpEvent):
 
 class S4APSkillUtils:
 
-    def get_current_skill_level(sim_info: SimInfo, skill: TunableInstanceParam(Types.STATISTIC)) -> float:
+    @staticmethod
+    def get_current_skill_level(self, sim_info: SimInfo, skill: TunableInstanceParam(Types.STATISTIC)) -> float:
         skill_stat = sim_info.get_statistic(skill, add=False)
         if skill_stat is None:
             return 0.0
         skill_level: float = skill_stat.get_user_value()
         return skill_level
 
-    def set_current_skill_level(sim_info: SimInfo, skill: TunableInstanceParam(Types.STATISTIC), level: float) -> bool:
+    @staticmethod
+    def set_current_skill_level(self, sim_info: SimInfo, skill: TunableInstanceParam(Types.STATISTIC), level: float) -> bool:
         skill_stat = sim_info.get_statistic(skill, add=False)
         if skill_stat is None:
             return False
@@ -117,6 +119,7 @@ class S4APSkillUtils:
         skill_stat.set_value(exp)
         return True
 
+    @staticmethod
     def get_all_skills_available_for_sim_gen(sim_info: SimInfo) -> Iterator[Skill]:
         sim = S4APUtils.get_sim_instance(sim_info)
         if sim is None:
@@ -125,19 +128,21 @@ class S4APSkillUtils:
         def _is_skill_available_for_sim(skill: Skill) -> bool:
             return skill.can_add(sim)
 
-        yield from get_all_skills_gen(include_skill_callback=_is_skill_available_for_sim)
+        yield from S4APSkillUtils.get_all_skills_gen(include_skill_callback=_is_skill_available_for_sim)
 
+    @staticmethod
     def get_all_skills_gen(include_skill_callback: Callable[[Skill], bool] = None) -> Iterator[Skill]:
         statistic_manager = services.get_instance_manager(Types.STATISTIC)
         for skill in statistic_manager.get_ordered_types(only_subclasses_of=Skill):
             skill: Skill = skill
-            skill_id = get_skill_id(skill)
+            skill_id = S4APSkillUtils.get_skill_id(skill)
             if skill_id is None:
                 continue
             if include_skill_callback is not None and not include_skill_callback(skill):
                 continue
             yield skill
 
+    @staticmethod
     def get_skill_id(skill_identifier: Union[int, Skill]) -> Union[int, None]:
         """get_skill_id(skill_identifier)
 
