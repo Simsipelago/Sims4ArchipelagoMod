@@ -6,10 +6,9 @@ EA/*
 !EA/README.md
 
 # Libraries
-Libraries/**
+Libraries/*/
 
 # Additional non mod related items
-Scripts/compile
 Scripts/rel
 Scripts/randomizer
 Scripts/s4cl_sample_mod_scripts
