@@ -11,7 +11,6 @@ from server_commands.argument_helpers import TunableInstanceParam
 from sims.sim_info import SimInfo
 from sims4.resources import Types
 from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
-from statistics.skill import Skill
 
 logger = S4APLogger.get_log()
 logger.enable()
