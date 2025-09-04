@@ -3,7 +3,6 @@ from s4ap.enums.S4APLocalization import HashLookup
 from s4ap.events.checks.send_check_event import SendLocationEvent
 from s4ap.logging.s4ap_logger import S4APLogger
 from s4ap.modinfo import ModInfo
-from s4ap.utils.s4ap_generic_utils import S4APUtils
 from s4ap.utils.s4ap_sim_utils import S4APSimUtils
 from sims4communitylib.events.event_handling.common_event import CommonEvent
 from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
