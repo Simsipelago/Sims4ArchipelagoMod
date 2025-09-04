@@ -6,13 +6,12 @@ from s4ap.logging.s4ap_logger import S4APLogger
 from s4ap.modinfo import ModInfo
 from s4ap.persistance.ap_session_data_store import S4APSessionStoreUtils
 from s4ap.utils.s4ap_generic_utils import S4APUtils
+from s4ap.utils.s4ap_household_utils import S4APHouseholdUtils
 from server_commands.argument_helpers import TunableInstanceParam
+from sims.sim_info import SimInfo
 from sims4.resources import Types
 from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
-from sims4communitylib.utils.sims.common_household_utils import CommonHouseholdUtils
-from sims4communitylib.utils.sims.common_sim_name_utils import CommonSimNameUtils
-from sims4communitylib.utils.sims.common_sim_skill_utils import CommonSimSkillUtils
-from sims4communitylib.utils.sims.common_trait_utils import CommonTraitUtils
+from statistics.skill import Skill
 
 logger = S4APLogger.get_log()
 logger.enable()
@@ -56,8 +55,8 @@ def lock_skills(skillcap: int, skill_name, from_level_up: bool):
         logger.debug(f"Skill Id: {skill_id}")
         logger.debug(f"Trait: {trait}")
         skill = TunableInstanceParam(Types.STATISTIC)(skill_name)
-        for sim_info in CommonHouseholdUtils.get_sim_info_of_all_sims_in_active_household_generator():
-            current_level = CommonSimSkillUtils.get_current_skill_level(sim_info, skill, False)
+        for sim_info in S4APHouseholdUtils.get_sim_info_of_all_sims_in_active_household_generator():
+            current_level = get_current_skill_level(sim_info, skill)
             logger.debug(f"{S4APUtils.get_sim_first_name(sim_info)}'s Current {skill_id} level is {current_level}.")
             if skillcap > current_level:
                 logger.debug(f"{skill_id} skill cap is greater than current level, unlocking skill.")
@@ -67,7 +66,7 @@ def lock_skills(skillcap: int, skill_name, from_level_up: bool):
                 add_lock_trait(sim_info, trait)
             elif skillcap < current_level:
                 logger.debug(f"{skill_id} skill cap is less than current level, locking skill and setting skill level to {skillcap}")
-                CommonSimSkillUtils.set_current_skill_level(sim_info, skill, skillcap)
+                set_current_skill_level(sim_info, skill, skillcap)
                 add_lock_trait(sim_info, trait)
     except Exception as ex:
         logger.debug(f"Exception occurred: {ex}")
@@ -76,7 +75,9 @@ def add_lock_trait(sim_info, trait):
     trait_upper = trait.upper()
     if hasattr(S4APTraitId, trait_upper):
         trait_id = getattr(S4APTraitId, trait_upper)
-        CommonTraitUtils.add_trait(sim_info, trait_id)
+        trait = TunableInstanceParam(Types.TRAIT)(trait_id)
+        if not sim_info.has_trait(trait):
+            sim_info.add_trait(trait)
         logger.debug(trait_id)
     logger.debug(trait_upper)
 
@@ -85,7 +86,9 @@ def remove_lock_trait(sim_info, trait):
     trait_upper = trait.upper()
     if hasattr(S4APTraitId, trait_upper):
         trait_id = getattr(S4APTraitId, trait_upper)
-        CommonTraitUtils.remove_trait(sim_info, trait_id)
+        trait = trait = TunableInstanceParam(Types.TRAIT)(trait_id)
+        if sim_info.has_trait(trait):
+            sim_info.remove_trait(trait)
         logger.debug(trait_id)
     logger.debug(trait_upper)
 
@@ -94,3 +97,18 @@ def remove_lock_trait(sim_info, trait):
 def _lock_on_level_up(event_data: SimSkillLeveledUpEvent):
     skill_name = event_data.skill.skill_type.__name__
     lock_skills(event_data.new_skill_level, skill_name, True)
+
+def get_current_skill_level(sim_info: SimInfo, skill: TunableInstanceParam(Types.STATISTIC)) -> float:
+    skill_stat = sim_info.get_statistic(skill, add=False)
+    if skill_stat is None:
+        return 0.0
+    skill_level: float = skill_stat.get_user_value()
+    return skill_level
+
+def set_current_skill_level(sim_info: SimInfo, skill: TunableInstanceParam(Types.STATISTIC), level: float) -> bool:
+    skill_stat = sim_info.get_statistic(skill, add=False)
+    if skill_stat is None:
+        return False
+    exp = skill_stat.convert_from_user_value(level)
+    skill_stat.set_value(exp)
+    return True
