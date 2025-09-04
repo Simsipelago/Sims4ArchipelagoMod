@@ -1,19 +1,20 @@
 from s4ap.enums.S4APLocalization import S4APTraitId
 from s4ap.logging.s4ap_logger import S4APLogger
+from s4ap.utils.s4ap_household_utils import S4APHouseholdUtils
+from s4ap.utils.s4ap_skill_utils import get_all_skills_available_for_sim_gen
+from server_commands.argument_helpers import TunableInstanceParam
+from sims4.resources import Types
 from sims4communitylib.enums.traits_enum import CommonTraitId
 from sims4communitylib.notifications.common_basic_notification import CommonBasicNotification
-from sims4communitylib.utils.sims.common_household_utils import CommonHouseholdUtils
-from sims4communitylib.utils.sims.common_sim_skill_utils import CommonSimSkillUtils
-from sims4communitylib.utils.sims.common_trait_utils import CommonTraitUtils
 
 logger = S4APLogger.get_log()
 logger.enable()
 
 class ResetSimData:
     def reset_all_skills(self):
-        for sim_info in CommonHouseholdUtils.get_sim_info_of_all_sims_in_active_household_generator():
-            for skill in CommonSimSkillUtils.get_all_skills_available_for_sim_gen(sim_info):
-                CommonSimSkillUtils.remove_skill(sim_info, skill)
+        for sim_info in S4APHouseholdUtils.get_sim_info_of_all_sims_in_active_household_generator():
+            for skill in get_all_skills_available_for_sim_gen(sim_info):
+                sim_info.remove_statistic(skill)
 
     def show_reset_notif(self):
         notif = CommonBasicNotification(
@@ -29,5 +30,7 @@ class ResetSimData:
             # Check if the trait is not a built-in attribute and is unique to S4APTraitId
             if not trait.startswith("_") and trait not in common_trait_ids:
                 logger.debug(f"Removing trait {trait}: {trait_value}")
-                for sim_info in CommonHouseholdUtils.get_sim_info_of_all_sims_in_active_household_generator():
-                    CommonTraitUtils.remove_trait(sim_info, trait_value)
+                trait_instance = TunableInstanceParam(Types.TRAIT)(trait_value)
+                for sim_info in S4APHouseholdUtils.get_sim_info_of_all_sims_in_active_household_generator():
+                    if sim_info.has_trait(trait_instance):
+                        sim_info.remove_trait(trait_instance)

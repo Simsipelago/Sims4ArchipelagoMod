@@ -36,3 +36,8 @@ class S4APUtils:
         if sim_info is None or not hasattr('first_name'):
             return ''
         return getattr(sim_info, 'first_name')
+
+    @classmethod
+    def get_sim_instance(cls, sim_identifier: SimInfo):
+        if isinstance(sim_identifier, SimInfo):
+            return sim_identifier.get_sim_instance()
