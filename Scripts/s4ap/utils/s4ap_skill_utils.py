@@ -7,7 +7,6 @@ from s4ap.events.skill_event_dispatcher import SimSkillLeveledUpEvent
 from s4ap.logging.s4ap_logger import S4APLogger
 from s4ap.modinfo import ModInfo
 from s4ap.persistance.ap_session_data_store import S4APSessionStoreUtils
-from s4ap.utils.s4ap_generic_utils import S4APUtils
 from s4ap.utils.s4ap_household_utils import S4APHouseholdUtils
 from s4ap.utils.s4ap_sim_utils import S4APSimUtils
 from server_commands.argument_helpers import TunableInstanceParam
