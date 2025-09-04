@@ -9,6 +9,7 @@ from s4ap.modinfo import ModInfo
 from s4ap.persistance.ap_session_data_store import S4APSessionStoreUtils
 from s4ap.utils.s4ap_generic_utils import S4APUtils
 from s4ap.utils.s4ap_household_utils import S4APHouseholdUtils
+from s4ap.utils.s4ap_sim_utils import S4APSimUtils
 from server_commands.argument_helpers import TunableInstanceParam
 from sims.sim_info import SimInfo
 from sims4.resources import Types
@@ -59,7 +60,7 @@ def lock_skills(skillcap: int, skill_name, from_level_up: bool):
         skill = TunableInstanceParam(Types.STATISTIC)(skill_name)
         for sim_info in S4APHouseholdUtils.get_sim_info_of_all_sims_in_active_household_generator():
             current_level = S4APSkillUtils.get_current_skill_level(sim_info, skill)
-            logger.debug(f"{S4APUtils.get_sim_first_name(sim_info)}'s Current {skill_id} level is {current_level}.")
+            logger.debug(f"{S4APSimUtils.get_sim_first_name(sim_info)}'s Current {skill_id} level is {current_level}.")
             if skillcap > current_level:
                 logger.debug(f"{skill_id} skill cap is greater than current level, unlocking skill.")
                 remove_lock_trait(sim_info, trait)
@@ -121,7 +122,7 @@ class S4APSkillUtils:
 
     @staticmethod
     def get_all_skills_available_for_sim_gen(sim_info: SimInfo) -> Iterator[Skill]:
-        sim = S4APUtils.get_sim_instance(sim_info)
+        sim = S4APSimUtils.get_sim_instance(sim_info)
         if sim is None:
             return tuple()
 
