@@ -14,7 +14,7 @@ log = S4APLogger.get_log()
 log.enable()
 
 
-class CarrerPromotionEvent(CommonEvent):
+class CareerPromotionEvent(CommonEvent):
     def __init__(self, career, current_level):
         self._career = career
         self._current_level = current_level
@@ -34,7 +34,7 @@ class OnCareerPromotionEvent(CommonService):
         career_name = HashLookup().get_career_name(career, user_level)
         log.debug(f'here is the career: {career} {user_level} ({career_name})')
         log.debug(f'{name} was promoted to {career_name}')
-        CommonEventRegistry.get().dispatch(CarrerPromotionEvent(career, user_level))
+        CommonEventRegistry.get().dispatch(CareerPromotionEvent(career, user_level))
 
 
 @CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), CareerBase,
@@ -51,7 +51,7 @@ def _on_milestone_complete(original, self, *args, **kwargs):
 
 
 @CommonEventRegistry.handle_events(ModInfo.get_identity())
-def _send_notif_on_event_handle(event_data: CarrerPromotionEvent):
+def _send_notif_on_event_handle(event_data: CareerPromotionEvent):
     lookup = HashLookup()
     CommonEventRegistry.get().dispatch(
         SendLocationEvent(f'{lookup.get_career_name(event_data.career, event_data.current_level)}'))
