@@ -11,7 +11,7 @@ from typing import Tuple, Dict, List, Any
 from s4ap.sims4communitylib.exceptions.common_exceptions_handler import CommonExceptionHandler
 from s4ap.sims4communitylib.logging.has_log import HasLog
 from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.modinfo import ModInfo
 from s4ap.sims4communitylib.services.common_service import CommonService
 from s4ap.sims4communitylib.utils.common_json_io_utils import CommonJSONIOUtils
 from s4ap.sims4communitylib.utils.common_log_registry import CommonMessageType
