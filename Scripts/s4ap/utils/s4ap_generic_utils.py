@@ -1,6 +1,7 @@
 import services
 from s4ap.modinfo import ModInfo
 from services.persistence_service import SaveGameData
+from sims4.resources import Types
 from sims4communitylib.events.zone_spin.common_zone_spin_event_dispatcher import CommonZoneSpinEventDispatcher
 from sims4communitylib.exceptions.common_exceptions_handler import CommonExceptionHandler
 from sims4communitylib.notifications.common_basic_notification import CommonBasicNotification
@@ -35,3 +36,7 @@ class S4APUtils:
         if instance_manager is None:
             return None
         return instance_manager.get(instance_id)
+
+    def load_icon_by_id(icon_id: int):
+        manager = services.get_instance_manager(Types.PNG)
+        return manager.get(icon_id)  # Returns vanilla ResourceKey / instance

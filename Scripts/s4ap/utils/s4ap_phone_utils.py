@@ -7,6 +7,7 @@ from s4ap.logging.s4ap_logger import S4APLogger
 from s4ap.modinfo import ModInfo
 from s4ap.persistance.ap_session_data_store import S4APSessionStoreUtils
 from s4ap.utils.s4ap_career_utils import S4APCareerUtils
+from s4ap.utils.s4ap_generic_utils import S4APUtils
 from s4ap.utils.s4ap_household_utils import S4APHouseholdUtils
 from s4ap.utils.s4ap_skill_utils import S4APSkillUtils
 from server_commands.argument_helpers import TunableInstanceParam
@@ -16,7 +17,6 @@ from sims4communitylib.dialogs.common_choice_outcome import CommonChoiceOutcome
 from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
 from sims4communitylib.events.sim.events.sim_trait_added import S4CLSimTraitAddedEvent
 from sims4communitylib.notifications.common_basic_notification import CommonBasicNotification
-from sims4communitylib.utils.common_icon_utils import CommonIconUtils
 from sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
 from ui.ui_dialog_picker import ObjectPickerRow
 
@@ -195,17 +195,17 @@ def _show_aspiration_and_career(event_data: S4CLSimTraitAddedEvent):
             ObjectPickerRow(
                 option_id=1,
                 name= CommonLocalizationUtils.create_localized_string(goal.replace("_", " ").title()),
-                icon= CommonIconUtils.load_icon_by_id(1903793975082081275)
+                icon= S4APUtils.load_icon_by_id(1903793975082081275)
             ),
             ObjectPickerRow(
                 option_id=2,
                 name= CommonLocalizationUtils.create_localized_string(career.replace("_", " ").title()),
-                icon= CommonIconUtils.load_icon_by_id(12028399282094277793)
+                icon= S4APUtils.load_icon_by_id(12028399282094277793)
             ),
             ObjectPickerRow(
                 option_id=3,
                 name= CommonLocalizationUtils.create_localized_string(display),
-                icon= CommonIconUtils.load_icon_by_id(5906963266871873908)
+                icon= S4APUtils.load_icon_by_id(5906963266871873908)
             )
         ]
 
