@@ -1,4 +1,4 @@
-from sims4communitylib.mod_support.common_mod_info import CommonModInfo
+from s4ap.sims4communitylib.mod_support.common_mod_info import CommonModInfo
 
 
 class ModInfo(CommonModInfo):

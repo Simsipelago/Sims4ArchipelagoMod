@@ -6,7 +6,7 @@ from s4ap.utils.s4ap_skill_utils import S4APSkillUtils
 from server_commands.argument_helpers import TunableInstanceParam
 from sims4.localization import LocalizationHelperTuning
 from sims4.resources import Types
-from sims4communitylib.enums.traits_enum import CommonTraitId
+from s4ap.sims4communitylib.enums.traits_enum import CommonTraitId
 from ui.ui_dialog_notification import UiDialogNotification
 
 logger = S4APLogger.get_log()

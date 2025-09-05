@@ -3,7 +3,7 @@ from s4ap.jsonio.s4ap_json import print_json, read_json
 from s4ap.logging.s4ap_logger import S4APLogger
 from s4ap.modinfo import ModInfo
 from s4ap.utils.s4ap_generic_utils import S4APUtils
-from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
+from s4ap.sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
 
 logger = S4APLogger.get_log()
 logger.enable()

@@ -1,10 +1,10 @@
 from lib.typing import Tuple
 
 from s4ap.modinfo import ModInfo
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.persistence.data_management.common_data_manager import CommonDataManager
-from sims4communitylib.persistence.data_management.common_data_manager_registry import CommonDataManagerRegistry
-from sims4communitylib.persistence.persistence_services.common_persistence_service import CommonPersistenceService
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.persistence.data_management.common_data_manager import CommonDataManager
+from s4ap.sims4communitylib.persistence.data_management.common_data_manager_registry import CommonDataManagerRegistry
+from s4ap.sims4communitylib.persistence.persistence_services.common_persistence_service import CommonPersistenceService
 
 
 @CommonDataManagerRegistry.common_data_manager()

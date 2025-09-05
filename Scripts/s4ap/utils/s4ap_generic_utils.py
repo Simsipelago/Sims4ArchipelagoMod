@@ -3,8 +3,8 @@ from lib.typing import Union
 from s4ap.modinfo import ModInfo
 from services.persistence_service import SaveGameData
 from sims4.resources import Types
-from sims4communitylib.events.zone_spin.common_zone_spin_event_dispatcher import CommonZoneSpinEventDispatcher
-from sims4communitylib.exceptions.common_exceptions_handler import CommonExceptionHandler
+from s4ap.sims4communitylib.events.zone_spin.common_zone_spin_event_dispatcher import CommonZoneSpinEventDispatcher
+from s4ap.sims4communitylib.exceptions.common_exceptions_handler import CommonExceptionHandler
 from s4ap.utils.s4ap_save_utils import S4APSaveUtils
 from sims4.localization import LocalizationHelperTuning
 from ui.ui_dialog_notification import UiDialogNotification
