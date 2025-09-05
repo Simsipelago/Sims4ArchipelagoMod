@@ -1,4 +1,4 @@
-from functools import wraps
+from lib.functools import wraps
 import services
 import sims4.resources
 from sims4.tuning.instance_manager import InstanceManager
