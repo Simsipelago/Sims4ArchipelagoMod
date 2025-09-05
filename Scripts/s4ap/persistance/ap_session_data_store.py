@@ -133,7 +133,7 @@ class S4APSessionStoreUtils:
         self._set_value(S4APSettings.SENDERS, senders)
         S4APUtils.trigger_autosave()
 
-    def save_goal_and_career(self, goal: str, career: str):
+    def save_goal_and_career(self, goal: str, career: set):
         self._set_value(S4APSettings.GOAL, goal)
         self._set_value(S4APSettings.CAREER, career)
         S4APUtils.trigger_autosave()
@@ -156,7 +156,7 @@ class S4APSessionStoreUtils:
     def get_goal(self) -> str:
         return self._get_value(S4APSettings.GOAL)
 
-    def get_career(self) -> str:
+    def get_career(self) -> set:
         return self._get_value(S4APSettings.CAREER)
 
     def _get_value(self, key: str) -> Any:
