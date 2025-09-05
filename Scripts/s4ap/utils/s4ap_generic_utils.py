@@ -1,6 +1,7 @@
 import services
 from typing import Callable, Optional, Union
 from s4ap.modinfo import ModInfo
+from s4ap.utils.s4ap_sim_utils import S4APSimUtils
 from services.persistence_service import SaveGameData
 from sims.sim_info import SimInfo
 from sims4.resources import Types
@@ -54,7 +55,7 @@ class S4APUtils:
         description = LocalizationHelperTuning.get_raw_text(description_text)
 
         dialog = UiDialogNotification.TunableFactory().default(
-            None,
+            owner=type(self),
             title=title,
             text=description
         )
@@ -82,7 +83,7 @@ class S4APUtils:
         :param owner: SimInfo or None (defaults to None).
         """
         dialog = UiDialogOkCancel.TunableFactory().default(
-            owner,
+            S4APSimUtils.get_active_sim_info(),
             title=title,
             text=text,
             ok_text=ok_text,
