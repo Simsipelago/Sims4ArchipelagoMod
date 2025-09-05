@@ -3,9 +3,10 @@ from s4ap.logging.s4ap_logger import S4APLogger
 from s4ap.utils.s4ap_household_utils import S4APHouseholdUtils
 from s4ap.utils.s4ap_skill_utils import S4APSkillUtils
 from server_commands.argument_helpers import TunableInstanceParam
+from sims4.localization import LocalizationHelperTuning
 from sims4.resources import Types
 from sims4communitylib.enums.traits_enum import CommonTraitId
-from sims4communitylib.notifications.common_basic_notification import CommonBasicNotification
+from ui.ui_dialog_notification import UiDialogNotification
 
 logger = S4APLogger.get_log()
 logger.enable()
@@ -17,11 +18,13 @@ class ResetSimData:
                 sim_info.remove_statistic(skill)
 
     def show_reset_notif(self):
-        notif = CommonBasicNotification(
-            'Progress Reset Completed',
-            "Your Sim's skills have been successfully reset. Please switch to a different sim or leave the lot and revisit to ensure the changes are visible in the UI."
+        title = LocalizationHelperTuning.get_raw_text('Progress Reset Completed')
+        description = LocalizationHelperTuning.get_raw_text("Your Sim's skills have been successfully reset. Please switch to a different sim or leave the lot and revisit to ensure the changes are visible in the UI.")
+        dialog = UiDialogNotification.TunableFactory().default(
+            title=title,
+            text=description
         )
-        notif.show()
+        dialog.show_dialog()
 
     def remove_all_s4ap_traits(self):
         # Get all traits from the base class CommonTraitId
