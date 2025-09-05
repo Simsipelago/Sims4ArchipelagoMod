@@ -7,19 +7,15 @@ from s4ap.logging.s4ap_logger import S4APLogger
 from s4ap.modinfo import ModInfo
 from s4ap.persistance.ap_session_data_store import S4APSessionStoreUtils
 from s4ap.utils.s4ap_career_utils import S4APCareerUtils
-from s4ap.utils.s4ap_generic_utils import S4APUtils
 from s4ap.utils.s4ap_household_utils import S4APHouseholdUtils
 from s4ap.utils.s4ap_skill_utils import S4APSkillUtils
 from server_commands.argument_helpers import TunableInstanceParam
 from services import get_instance_manager
-from sims4.localization import LocalizationHelperTuning, TunableLocalizedStringFactory
+from sims4.localization import LocalizationHelperTuning
 from sims4.resources import Types
-from sims4communitylib.dialogs.choose_object_dialog import CommonChooseObjectDialog
-from sims4communitylib.dialogs.common_choice_outcome import CommonChoiceOutcome
 from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
 from sims4communitylib.events.sim.events.sim_trait_added import S4CLSimTraitAddedEvent
-from sims4communitylib.notifications.common_basic_notification import CommonBasicNotification
-from sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
+from ui.ui_dialog_notification import UiDialogNotification
 from ui.ui_dialog_picker import ObjectPickerRow, UiObjectPicker
 
 logger = S4APLogger.get_log()
@@ -68,22 +64,23 @@ def _handle_show_max_skills_phone(event_data: S4CLSimTraitAddedEvent):
         for item, item_info in sorted(skills.items()):
             options.append(ObjectPickerRow(
                 option_id=option,
-                name=CommonLocalizationUtils.create_localized_string(
-                    f'{item} Max is {item_info[0] or 2}'),
+                name = LocalizationHelperTuning.get_raw_text(f'{item} Max is {item_info[0] or 2}'),
                 icon=item_info[1]
             ))
             option += 1
 
-        def _on_chosen(_, outcome: CommonChoiceOutcome):
-            if outcome == CommonChoiceOutcome.CHOICE_MADE:
-                dialog.show(on_chosen=_on_chosen)
+        picker = UiObjectPicker.TunableFactory().default
+        picker.title = LocalizationHelperTuning.get_raw_text('Max Possible Skills')
+        picker.text = LocalizationHelperTuning.get_raw_text('The highest you can level your skills to.')
 
-        dialog = CommonChooseObjectDialog(
-            'Max Possible Skills',
-            'The highest you can level your skills to.',
-            choices=options
-        )
-        dialog.show(on_chosen=_on_chosen)
+        # Add the ObjectPickerRow objects directly
+        for row in options:
+            picker.add_row(row.option_id, row.name, icon_resource_key=row.icon)
+
+        def _on_chosen(dialog, option_id):
+            pass  # no action needed
+
+        picker.show(_on_chosen)
 
 @CommonEventRegistry.handle_events(ModInfo.get_identity())
 def _resync_locations(event_data: S4CLSimTraitAddedEvent):
@@ -151,11 +148,13 @@ def _resync_locations(event_data: S4CLSimTraitAddedEvent):
                         locations.append(milestone_display_name)
         print_json(locations, 'locations_cached.json')
         print_json(True, 'sync.json')
-        notif = CommonBasicNotification(
-            'Locations Resynced',
-            ''
+        title = LocalizationHelperTuning.get_raw_text('Locations Resynced')
+        description = LocalizationHelperTuning.get_raw_text('')
+        dialog = UiDialogNotification.TunableFactory().default(
+            title=title,
+            text=description
         )
-        notif.show()
+        dialog.show_dialog()
 
 @CommonEventRegistry.handle_events(ModInfo.get_identity())
 def _show_aspiration_and_career(event_data: S4CLSimTraitAddedEvent):
