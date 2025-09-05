@@ -5,7 +5,6 @@ from sims4communitylib.events.event_handling.common_event_registry import Common
 from sims4communitylib.events.zone_spin.events.zone_late_load import S4CLZoneLateLoadEvent
 from sims4communitylib.logging.has_class_log import HasClassLog
 from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.notifications.common_basic_notification import CommonBasicNotification
 from sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
 
 
