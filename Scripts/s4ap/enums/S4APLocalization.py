@@ -1,9 +1,6 @@
-from sims4communitylib.enums.icons_enum import CommonIconId
-from sims4communitylib.enums.strings_enum import CommonStringId
-from sims4communitylib.enums.traits_enum import CommonTraitId
+from enum import Int
 
-
-class S4APTraitId(CommonTraitId):
+class S4APTraitId(Int):
     LOCK_MIXOLOGY_SKILL: 'S4APTraitId' = 3494693146
     LOCK_MISCHIEF_SKILL: 'S4APTraitId' = 3494693147
     LOCK_HANDINESS_SKILL: 'S4APTraitId' = 3494693148
@@ -31,7 +28,7 @@ class S4APTraitId(CommonTraitId):
     SHOW_RECEIVED_SKILLS: 'S4APTraitId' = 3511470836
     RESYNC_LOCATIONS: 'S4APTraitId' = 2224316686
     SHOW_YAML_OPTIONS: 'S4APTraitId' = 2241086516
-class S4APStringId(CommonStringId):
+class S4APStringId(Int):
     # ap_client
     CONNECTION_REFUSED: 'S4APStringId' = 0x964EABE6
     CONNECTION_ERROR: 'S4APStringId' = 0xC50BC4AF
@@ -55,7 +52,7 @@ class S4APStringId(CommonStringId):
     CONFLICTING_CONNECTION_DATA_DESC: 'S4APStringId' = 0x3E4E79D3
 
 
-class S4APIconId(CommonIconId):
+class S4APIconId(Int):
     AP_LOGO_BLUE: 'S4APIconId' = 0xBD85B76B1017163F
 
 class S4APBaseGameSkills:
@@ -396,9 +393,3 @@ class HashLookup:
             for career_location in careers_list:
                 if career in career_location:
                     return career_location
-
-class SkillID(int):
-    ADULT_MAJOR_ACTING = 194727
-    ADULT_MAJOR_ARCHAEOLOGY = 174237
-    ADULT_MAJOR_BAKING = None
-    ADULT_MAJOR_BARTENDING = None
