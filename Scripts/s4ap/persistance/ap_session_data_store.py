@@ -9,8 +9,6 @@ from s4ap.utils.s4ap_localization_utils import S4APLocalizationUtils
 from s4ap.utils.s4ap_reset_utils import ResetSimData
 from sims4communitylib.dialogs.ok_cancel_dialog import CommonOkCancelDialog
 from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
-from sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
-from sims4communitylib.utils.localization.common_localized_string_colors import CommonLocalizedStringColor
 from ui.ui_dialog import UiDialogOkCancel
 
 logger = S4APLogger.get_log()
@@ -54,8 +52,7 @@ class S4APSessionStoreUtils:
 
                 # Prompt the user to either overwrite the previous session_data, or stop parsing the data packet and wait for the connection_status.json to update
                 dialog = UiDialogOkCancel.TunableFactory().default(
-                    title=CommonLocalizationUtils.create_localized_string('Warning!',
-                                                                    text_color=CommonLocalizedStringColor.RED),
+                    title = S4APLocalizationUtils.create_from_string("<font color='#9C1919'>Warning!</font>"),
                     description=S4APLocalizationUtils.create_from_string("There's a mismatch with your AP session data. If you press 'Overwrite,' all previous items will be resynced, and your Sims' skill levels will reset. If you'd rather keep your current progress, select 'Cancel' and switch to a different save file so you can come back to this session later."),
                     ok_text=S4APLocalizationUtils.create_from_string('Overwrite'),
                     cancel_text=S4APLocalizationUtils.create_from_string('Cancel'),
@@ -94,8 +91,7 @@ class S4APSessionStoreUtils:
 
             # Prompt the user to either overwrite the previous session_data, or stop parsing the data packet and wait for the connection_status.json to update
             dialog = UiDialogOkCancel.TunableFactory().default(
-                title=CommonLocalizationUtils.create_localized_string('Warning!',
-                                                                 text_color=CommonLocalizedStringColor.RED),
+                title = S4APLocalizationUtils.create_from_string("<font color='#9C1919'>Warning!</font>"),
                 description=S4APLocalizationUtils.create_from_string("Pressing 'Connect' will reset your Sims' skill levels and will sync the game to the client. If you don't want to use this save, click 'Cancel' and switch to a different one."),
                 ok_text=S4APLocalizationUtils.create_from_string('Connect'),
                 cancel_text=S4APLocalizationUtils.create_from_string('Cancel'),
