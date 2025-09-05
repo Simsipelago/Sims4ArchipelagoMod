@@ -8,7 +8,7 @@ from s4ap.utils.s4ap_sim_utils import S4APSimUtils
 from sims4communitylib.events.event_handling.common_event import CommonEvent
 from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
 from sims4communitylib.services.common_service import CommonService
-from sims4communitylib.utils.common_injection_utils import CommonInjectionUtils
+from lot51_core.utils.injection import inject_to
 
 log = S4APLogger.get_log()
 log.enable()
@@ -36,9 +36,7 @@ class OnCareerPromotionEvent(CommonService):
         log.debug(f'{name} was promoted to {career_name}')
         CommonEventRegistry.get().dispatch(CareerPromotionEvent(career, user_level))
 
-
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), CareerBase,
-                                         CareerBase._handle_promotion.__name__, handle_exceptions=True)
+@inject_to(CareerBase, CareerBase._handle_promotion.__name__)
 def _on_milestone_complete(original, self, *args, **kwargs):
     result = original(self, *args, **kwargs)
     career = self._current_track.get_career_name(self._sim_info).hash

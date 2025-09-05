@@ -9,7 +9,7 @@ from sims.sim_info import SimInfo
 from sims4communitylib.events.event_handling.common_event import CommonEvent
 from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
 from sims4communitylib.services.common_service import CommonService
-from sims4communitylib.utils.common_injection_utils import CommonInjectionUtils
+from lot51_core.utils.injection import inject_to
 from statistics.skill import Skill
 
 logger = S4APLogger.get_log()
@@ -51,8 +51,7 @@ class HandleSkillLevelUp(CommonService):
             sim_info = S4APSimUtils.get_sim_info(skill.tracker._owner)
             CommonEventRegistry.get().dispatch(SimSkillLeveledUpEvent(sim_info, skill, new_skill_level))
 
-
-@CommonInjectionUtils.inject_safely_into(ModInfo.get_identity(), Skill, Skill._handle_skill_up.__name__)
+@inject_to(Skill, Skill._handle_skill_up.__name__)
 def _common_on_sim_skill_level_up(original, self, *args, **kwargs):
     result = original(self, *args, **kwargs)
     HandleSkillLevelUp.get()._on_skill_updated(self, *args, **kwargs)
