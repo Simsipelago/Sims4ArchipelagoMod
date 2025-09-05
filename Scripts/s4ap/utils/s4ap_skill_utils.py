@@ -3,7 +3,7 @@ import re
 import services
 from typing import Callable, Iterator, Union
 from s4ap.enums.S4APLocalization import S4APTraitId
-from s4ap.events.skill_event_dispatcher import SimSkillLeveledUpEvent
+from s4ap.events.skill_events import SimSkillLeveledUpEvent
 from s4ap.logging.s4ap_logger import S4APLogger
 from s4ap.modinfo import ModInfo
 from s4ap.persistance.ap_session_data_store import S4APSessionStoreUtils
