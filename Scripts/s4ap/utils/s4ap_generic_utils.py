@@ -52,6 +52,7 @@ class S4APUtils:
         description = LocalizationHelperTuning.get_raw_text(description_text)
 
         dialog = UiDialogNotification.TunableFactory().default(
+            None,
             title=title,
             text=description
         )
