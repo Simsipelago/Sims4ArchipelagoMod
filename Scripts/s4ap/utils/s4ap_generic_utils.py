@@ -82,8 +82,14 @@ class S4APUtils:
         :param on_cancel: Callback if the user presses Cancel.
         :param owner: SimInfo or None (defaults to None).
         """
+
+        active_sim = S4APSimUtils.get_active_sim_info()
+        if active_sim is None:
+            # Skip showing the dialog if no active sim yet
+            return
+
         dialog = UiDialogOkCancel.TunableFactory().default(
-            S4APSimUtils.get_active_sim_info(),
+            active_sim,
             title=title,
             text=text,
             ok_text=ok_text,
