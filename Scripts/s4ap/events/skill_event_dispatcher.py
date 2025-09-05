@@ -3,13 +3,13 @@ import re
 from s4ap.events.checks.send_check_event import SendLocationEvent
 from s4ap.logging.s4ap_logger import S4APLogger
 from s4ap.modinfo import ModInfo
+from s4ap.utils.s4ap_sim_utils import S4APSimUtils
+from s4ap.utils.s4ap_skill_utils import S4APSkillUtils
 from sims.sim_info import SimInfo
 from sims4communitylib.events.event_handling.common_event import CommonEvent
 from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
 from sims4communitylib.services.common_service import CommonService
 from sims4communitylib.utils.common_injection_utils import CommonInjectionUtils
-from sims4communitylib.utils.resources.common_skill_utils import CommonSkillUtils
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
 from statistics.skill import Skill
 
 logger = S4APLogger.get_log()
@@ -40,7 +40,7 @@ class SimSkillLeveledUpEvent(CommonEvent):
     @property
     def skill_id(self) -> int:
         """The decimal identifier of the Skill."""
-        return CommonSkillUtils.get_skill_id(self.skill)
+        return S4APSkillUtils.get_skill_id(self.skill)
 
 
 class HandleSkillLevelUp(CommonService):
@@ -48,7 +48,7 @@ class HandleSkillLevelUp(CommonService):
         if skill.tracker is None or skill.tracker._owner is None:
             return
         if not skill.tracker._owner.is_npc:
-            sim_info = CommonSimUtils.get_sim_info(skill.tracker._owner)
+            sim_info = S4APSimUtils.get_sim_info(skill.tracker._owner)
             CommonEventRegistry.get().dispatch(SimSkillLeveledUpEvent(sim_info, skill, new_skill_level))
 
 
