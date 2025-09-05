@@ -1,0 +1,3 @@
+[submodule "Libraries/core-library"]
+	path = Libraries/core-library/lot51_core
+	url = https://github.com/lot51/core-library.git

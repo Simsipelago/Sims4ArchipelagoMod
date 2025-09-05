@@ -396,3 +396,9 @@ class HashLookup:
             for career_location in careers_list:
                 if career in career_location:
                     return career_location
+
+class SkillID(int):
+    ADULT_MAJOR_ACTING = 194727
+    ADULT_MAJOR_ARCHAEOLOGY = 174237
+    ADULT_MAJOR_BAKING = None
+    ADULT_MAJOR_BARTENDING = None

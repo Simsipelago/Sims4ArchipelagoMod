@@ -6,6 +6,9 @@ from s4ap.jsonio.s4ap_json import print_json
 from s4ap.logging.s4ap_logger import S4APLogger
 from s4ap.modinfo import ModInfo
 from s4ap.persistance.ap_session_data_store import S4APSessionStoreUtils
+from s4ap.utils.s4ap_career_utils import S4APCareerUtils
+from s4ap.utils.s4ap_household_utils import S4APHouseholdUtils
+from s4ap.utils.s4ap_skill_utils import S4APSkillUtils
 from server_commands.argument_helpers import TunableInstanceParam
 from sims4.resources import Types
 from sims4communitylib.dialogs.choose_object_dialog import CommonChooseObjectDialog
@@ -15,12 +18,6 @@ from sims4communitylib.events.sim.events.sim_trait_added import S4CLSimTraitAdde
 from sims4communitylib.notifications.common_basic_notification import CommonBasicNotification
 from sims4communitylib.utils.common_icon_utils import CommonIconUtils
 from sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
-from sims4communitylib.utils.resources.common_skill_utils import CommonSkillUtils
-from sims4communitylib.utils.sims.common_career_utils import CommonCareerUtils
-from sims4communitylib.utils.sims.common_household_utils import CommonHouseholdUtils
-from sims4communitylib.utils.sims.common_sim_career_utils import CommonSimCareerUtils
-from sims4communitylib.utils.sims.common_sim_skill_utils import CommonSimSkillUtils
-from sims4communitylib.utils.sims.common_trait_utils import CommonTraitUtils
 from ui.ui_dialog_picker import ObjectPickerRow
 
 logger = S4APLogger.get_log()
@@ -30,7 +27,9 @@ logger.enable()
 @CommonEventRegistry.handle_events(ModInfo.get_identity())
 def _handle_show_max_skills_phone(event_data: S4CLSimTraitAddedEvent):
     if event_data.trait_id == S4APTraitId.SHOW_RECEIVED_SKILLS:
-        CommonTraitUtils.remove_trait(event_data.sim_info, S4APTraitId.SHOW_RECEIVED_SKILLS)
+        received_skills_trait_instance = TunableInstanceParam(Types.TRAIT)(S4APTraitId.SHOW_RECEIVED_SKILLS)
+        if event_data.sim_info.has_trait(received_skills_trait_instance):
+            event_data.sim_info.remove_trait(received_skills_trait_instance)
         data_store = S4APSessionStoreUtils()
         options = []
         skills_and_levels = {}
@@ -87,14 +86,16 @@ def _handle_show_max_skills_phone(event_data: S4CLSimTraitAddedEvent):
 @CommonEventRegistry.handle_events(ModInfo.get_identity())
 def _resync_locations(event_data: S4CLSimTraitAddedEvent):
     if event_data.trait_id == S4APTraitId.RESYNC_LOCATIONS:
-        CommonTraitUtils.remove_trait(event_data.sim_info, S4APTraitId.RESYNC_LOCATIONS)
+        resync_trait_instance = TunableInstanceParam(Types.TRAIT)(S4APTraitId.RESYNC_LOCATIONS)
+        if event_data.sim_info.has_trait(resync_trait_instance):
+            event_data.sim_info.remove_trait(resync_trait_instance)
         lookup = HashLookup()
         locations = []
         skill_dict = {}
         careers_dict = {}
-        for sim_info in CommonHouseholdUtils.get_sim_info_of_all_sims_in_active_household_generator():
-            for skill in CommonSkillUtils.get_all_skills_gen():
-                skill_level = CommonSimSkillUtils.get_current_skill_level(sim_info, skill, False)
+        for sim_info in S4APHouseholdUtils.get_sim_info_of_all_sims_in_active_household_generator():
+            for skill in S4APSkillUtils.get_all_skills_gen():
+                skill_level = S4APSkillUtils.get_current_skill_level(sim_info, skill)
                 skill_name = skill.skill_type.__name__
                 if skill_name.startswith("statistic_Skill_AdultMajor_") or 'fitness' in skill_name.lower():
                     skill_name = skill_name.replace("statistic_Skill_AdultMajor_", "")
@@ -122,8 +123,8 @@ def _resync_locations(event_data: S4CLSimTraitAddedEvent):
                 for level in range(2, int(skill_level) + 1):
                     location_name = f'{skill_new_name.title()} Skill {level}'
                     locations.append(location_name)
-            for career in CommonSimCareerUtils.get_all_careers_for_sim_gen(sim_info):
-                career_id = CommonCareerUtils.get_career_guid(career)
+            for career in S4APCareerUtils.get_all_careers_for_sim_gen(sim_info):
+                career_id = S4APCareerUtils.get_career_guid(career)
                 career_level = career.user_level
                 if careers_dict.get(career_id) is not None:
                     if career_level > careers_dict.get(career_id):
@@ -131,9 +132,9 @@ def _resync_locations(event_data: S4CLSimTraitAddedEvent):
                 else:
                     careers_dict[career_id] = career_level
             for career_guid, level in careers_dict.items():
-                career = CommonCareerUtils.load_career_by_guid(career_guid)
+                career = S4APCareerUtils.load_career_by_guid(career_guid)
                 for i in range(1, level + 1):
-                    (_, _, career_track) = CommonCareerUtils.determine_entry_level_into_career_from_user_level(career, i)
+                    (_, _, career_track) = S4APCareerUtils.determine_entry_level_into_career_from_user_level(career, i)
                     career_hash =  career_track.get_career_name(sim_info).hash
                     career_name = lookup.get_career_name(career_hash, i)
                     if career_name is not None:
@@ -157,7 +158,9 @@ def _resync_locations(event_data: S4CLSimTraitAddedEvent):
 @CommonEventRegistry.handle_events(ModInfo.get_identity())
 def _show_aspiration_and_career(event_data: S4CLSimTraitAddedEvent):
     if event_data.trait_id == S4APTraitId.SHOW_YAML_OPTIONS:
-        CommonTraitUtils.remove_trait(event_data.sim_info, S4APTraitId.SHOW_YAML_OPTIONS)
+        yaml_options_trait_instance = TunableInstanceParam(Types.TRAIT)(S4APTraitId.SHOW_YAML_OPTIONS)
+        if event_data.sim_info.has_trait(yaml_options_trait_instance):
+            event_data.sim_info.remove_trait(yaml_options_trait_instance)
         data_store = S4APSessionStoreUtils()
         if data_store.get_goal() is not None:
             goal = data_store.get_goal()

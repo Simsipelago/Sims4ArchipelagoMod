@@ -1,7 +1,6 @@
 import services
 from s4ap.modinfo import ModInfo
 from services.persistence_service import SaveGameData
-from sims.sim_info import SimInfo
 from sims4communitylib.events.zone_spin.common_zone_spin_event_dispatcher import CommonZoneSpinEventDispatcher
 from sims4communitylib.exceptions.common_exceptions_handler import CommonExceptionHandler
 from sims4communitylib.notifications.common_basic_notification import CommonBasicNotification
@@ -30,9 +29,3 @@ class S4APUtils:
             CommonExceptionHandler.log_exception(ModInfo.get_identity(), 'An exception occurred while autosaving.',
                                                  exception=ex)
             return False
-
-
-    def get_sim_first_name(sim_info: SimInfo):
-        if sim_info is None or not hasattr('first_name'):
-            return ''
-        return getattr(sim_info, 'first_name')
