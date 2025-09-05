@@ -11,6 +11,8 @@ from s4ap.utils.s4ap_generic_utils import S4APUtils
 from s4ap.utils.s4ap_household_utils import S4APHouseholdUtils
 from s4ap.utils.s4ap_skill_utils import S4APSkillUtils
 from server_commands.argument_helpers import TunableInstanceParam
+from services import get_instance_manager
+from sims4.localization import LocalizationHelperTuning, TunableLocalizedStringFactory
 from sims4.resources import Types
 from sims4communitylib.dialogs.choose_object_dialog import CommonChooseObjectDialog
 from sims4communitylib.dialogs.common_choice_outcome import CommonChoiceOutcome
@@ -18,7 +20,7 @@ from sims4communitylib.events.event_handling.common_event_registry import Common
 from sims4communitylib.events.sim.events.sim_trait_added import S4CLSimTraitAddedEvent
 from sims4communitylib.notifications.common_basic_notification import CommonBasicNotification
 from sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
-from ui.ui_dialog_picker import ObjectPickerRow
+from ui.ui_dialog_picker import ObjectPickerRow, UiObjectPicker
 
 logger = S4APLogger.get_log()
 logger.enable()
@@ -188,30 +190,27 @@ def _show_aspiration_and_career(event_data: S4CLSimTraitAddedEvent):
                 display = 'No Skill Multiplier'
         else:
             display = 'No Skill Multiplier'
-        def _on_chosen(_, outcome: CommonChoiceOutcome):
-            if outcome == CommonChoiceOutcome.CHOICE_MADE:
-                dialog.show(on_chosen=_on_chosen)
+        # Build rows as tuples: (id, name, icon)
         options = [
-            ObjectPickerRow(
-                option_id=1,
-                name= CommonLocalizationUtils.create_localized_string(goal.replace("_", " ").title()),
-                icon= S4APUtils.load_icon_by_id(1903793975082081275)
-            ),
-            ObjectPickerRow(
-                option_id=2,
-                name= CommonLocalizationUtils.create_localized_string(career.replace("_", " ").title()),
-                icon= S4APUtils.load_icon_by_id(12028399282094277793)
-            ),
-            ObjectPickerRow(
-                option_id=3,
-                name= CommonLocalizationUtils.create_localized_string(display),
-                icon= S4APUtils.load_icon_by_id(5906963266871873908)
-            )
+            (1, LocalizationHelperTuning.get_raw_text(goal.replace("_", " ").title()), 1903793975082081275),
+            (2, LocalizationHelperTuning.get_raw_text(career.replace("_", " ").title()), 12028399282094277793),
+            (3, LocalizationHelperTuning.get_raw_text(display), 5906963266871873908)
         ]
 
-        dialog = CommonChooseObjectDialog(
-            'Your Yaml Options Plus Skill Multiplier',
-            'Options + Skill Multiplier',
-            choices=options
-        )
-        dialog.show(on_chosen=_on_chosen)
+        # Create the picker
+        picker = UiObjectPicker.TunableFactory().default
+
+        # Set title and description
+        picker.title = LocalizationHelperTuning.get_raw_text('Your Yaml Options Plus Skill Multiplier')
+        picker.text = LocalizationHelperTuning.get_raw_text('Options + Skill Multiplier')
+
+        # Add the rows
+        for opt_id, name, icon_id in options:
+            icon = get_instance_manager(Types.PNG).get(icon_id)
+            picker.add_row(opt_id, name, icon_resource_key=icon)
+
+        # Show dialog
+        def _on_chosen(dialog, option_id):
+            pass # player chose something, no need to do anything about it
+
+        picker.show(_on_chosen)
