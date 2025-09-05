@@ -8,17 +8,17 @@ Copyright (c) COLONOLNUTTY
 import random
 from typing import Tuple, Iterator, Union, Generic, TypeVar
 
-from sims4communitylib.systems.item_query.item_tests.common_loaded_item_test import CommonLoadedItemTest
-from sims4communitylib.systems.item_query.item_tests.common_loaded_item_is_available_test import \
+from s4ap.sims4communitylib.systems.item_query.item_tests.common_loaded_item_test import CommonLoadedItemTest
+from s4ap.sims4communitylib.systems.item_query.item_tests.common_loaded_item_is_available_test import \
     CommonLoadedItemIsAvailableTest
-from sims4communitylib.systems.item_query.query.common_loaded_item_filter import CommonLoadedItemFilter
+from s4ap.sims4communitylib.systems.item_query.query.common_loaded_item_filter import CommonLoadedItemFilter
 
-from sims4communitylib.systems.item_query.enums.common_query_method_type import CommonQueryMethodType
-from sims4communitylib.systems.item_query.dtos.common_loaded_item import CommonLoadedItem
-from sims4communitylib.systems.item_query.common_loaded_item_query_registry import CommonLoadedItemQueryRegistry
-from sims4communitylib.logging.has_log import HasLog
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.systems.item_query.query.common_loaded_item_filter_request import CommonLoadedItemFilterRequest
+from s4ap.sims4communitylib.systems.item_query.enums.common_query_method_type import CommonQueryMethodType
+from s4ap.sims4communitylib.systems.item_query.dtos.common_loaded_item import CommonLoadedItem
+from s4ap.sims4communitylib.systems.item_query.common_loaded_item_query_registry import CommonLoadedItemQueryRegistry
+from s4ap.sims4communitylib.logging.has_log import HasLog
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.systems.item_query.query.common_loaded_item_filter_request import CommonLoadedItemFilterRequest
 
 CommonLoadedItemType = TypeVar('CommonLoadedItemType', bound=CommonLoadedItem)
 

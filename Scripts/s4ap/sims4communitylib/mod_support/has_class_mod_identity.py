@@ -5,8 +5,8 @@ https://creativecommons.org/licenses/by/4.0/legalcode
 
 Copyright (c) COLONOLNUTTY
 """
-from sims4communitylib.mod_support.has_mod_identity import HasModIdentity
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.mod_support.has_mod_identity import HasModIdentity
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
 
 
 class HasClassModIdentity(HasModIdentity):

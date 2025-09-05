@@ -7,9 +7,9 @@ Copyright (c) COLONOLNUTTY
 """
 from typing import Any, Callable
 
-from sims4communitylib.utils.common_function_utils import CommonFunctionUtils
-from sims4communitylib.dialogs.option_dialogs.options.common_dialog_option_context import CommonDialogOptionContext
-from sims4communitylib.dialogs.option_dialogs.options.objects.common_dialog_select_option import CommonDialogSelectOption
+from s4ap.sims4communitylib.utils.common_function_utils import CommonFunctionUtils
+from s4ap.sims4communitylib.dialogs.option_dialogs.options.common_dialog_option_context import CommonDialogOptionContext
+from s4ap.sims4communitylib.dialogs.option_dialogs.options.objects.common_dialog_select_option import CommonDialogSelectOption
 
 
 class CommonDialogActionOption(CommonDialogSelectOption):

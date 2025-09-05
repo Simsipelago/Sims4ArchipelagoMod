@@ -6,12 +6,12 @@ https://creativecommons.org/licenses/by/4.0/legalcode
 Copyright (c) COLONOLNUTTY
 """
 from typing import Callable, Any, List, Union
-from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
-from sims4communitylib.events.zone_update.events.zone_update_event import S4CLZoneUpdateEvent
-from sims4communitylib.exceptions.common_exceptions_handler import CommonExceptionHandler
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.common_service import CommonService
+from s4ap.sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
+from s4ap.sims4communitylib.events.zone_update.events.zone_update_event import S4CLZoneUpdateEvent
+from s4ap.sims4communitylib.exceptions.common_exceptions_handler import CommonExceptionHandler
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.common_service import CommonService
 
 
 class CommonIntervalDispatcher:
@@ -33,7 +33,7 @@ class CommonIntervalDispatcher:
     :type run_once: bool
     """
     def __init__(self, mod_identifier: Union[str, CommonModIdentity], milliseconds: int, listening_func: Callable[..., Any], run_once: bool=False):
-        from sims4communitylib.utils.misc.common_mod_identity_utils import CommonModIdentityUtils
+        from s4ap.sims4communitylib.utils.misc.common_mod_identity_utils import CommonModIdentityUtils
         self._mod_name = CommonModIdentityUtils.determine_mod_name_from_identifier(mod_identifier)
         self._minimum_milliseconds_to_dispatch = milliseconds
         self._listening_func = listening_func
@@ -219,7 +219,7 @@ class CommonIntervalEventRegistry(CommonService):
     @staticmethod
     @CommonEventRegistry.handle_events(ModInfo.get_identity())
     def _update_game_tick_on_zone_update(event_data: S4CLZoneUpdateEvent) -> bool:
-        from sims4communitylib.events.zone_spin.common_zone_spin_event_dispatcher import CommonZoneSpinEventDispatcher
+        from s4ap.sims4communitylib.events.zone_spin.common_zone_spin_event_dispatcher import CommonZoneSpinEventDispatcher
         if event_data.is_paused or CommonZoneSpinEventDispatcher().game_loading:
             return False
         CommonIntervalEventRegistry.get()._attempt_to_dispatch(event_data.ticks_since_last_update)

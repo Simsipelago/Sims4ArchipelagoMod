@@ -6,12 +6,12 @@ https://creativecommons.org/licenses/by/4.0/legalcode
 Copyright (c) COLONOLNUTTY
 """
 from typing import List, Callable, Any, Union
-from sims4communitylib.events.event_handling.common_event import CommonEvent
-from sims4communitylib.events.event_handling.common_event_handler import CommonEventHandler
-from sims4communitylib.exceptions.common_exceptions_handler import CommonExceptionHandler
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.common_service import CommonService
+from s4ap.sims4communitylib.events.event_handling.common_event import CommonEvent
+from s4ap.sims4communitylib.events.event_handling.common_event_handler import CommonEventHandler
+from s4ap.sims4communitylib.exceptions.common_exceptions_handler import CommonExceptionHandler
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.common_service import CommonService
 
 
 class CommonEventRegistry(CommonService):

@@ -9,7 +9,7 @@ from typing import Dict, Union, Tuple, Iterator
 
 from sims.sim_info import SimInfo
 from sims.sim_info_types import Age
-from sims4communitylib.enums.enumtypes.common_int import CommonInt
+from s4ap.sims4communitylib.enums.enumtypes.common_int import CommonInt
 
 
 class CommonAge(CommonInt):
@@ -81,7 +81,7 @@ class CommonAge(CommonInt):
         :return: The CommonAge that represents what age a Sim is or INVALID if their age cannot be determined.
         :rtype: CommonAge
         """
-        from sims4communitylib.utils.sims.common_age_utils import CommonAgeUtils
+        from s4ap.sims4communitylib.utils.sims.common_age_utils import CommonAgeUtils
         if CommonAgeUtils.is_baby(sim_info):
             return CommonAge.BABY
         elif CommonAgeUtils.is_infant(sim_info):
@@ -168,7 +168,7 @@ class CommonAge(CommonInt):
         :return: The specified CommonAge translated to a localized string identifier. If no localized string id is found, the name property of the value will be used instead.
         :rtype: Union[int, str]
         """
-        from sims4communitylib.enums.strings_enum import CommonStringId
+        from s4ap.sims4communitylib.enums.strings_enum import CommonStringId
         display_name_mapping = {
             CommonAge.BABY: CommonStringId.BABY,
             CommonAge.INFANT: CommonStringId.INFANT,

@@ -9,16 +9,16 @@ from typing import Any
 
 from interactions.context import InteractionContext
 from sims.sim import Sim
-from sims4communitylib.classes.testing.common_test_result import CommonTestResult
-from sims4communitylib.enums.strings_enum import CommonStringId
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.utils.sims.common_sim_name_utils import CommonSimNameUtils
-from sims4communitylib.utils.sims.common_sim_pregnancy_utils import CommonSimPregnancyUtils
-from sims4communitylib.classes.interactions.common_immediate_super_interaction import CommonImmediateSuperInteraction
-from sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
-from sims4communitylib.utils.common_type_utils import CommonTypeUtils
+from s4ap.sims4communitylib.classes.testing.common_test_result import CommonTestResult
+from s4ap.sims4communitylib.enums.strings_enum import CommonStringId
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.utils.sims.common_sim_name_utils import CommonSimNameUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_pregnancy_utils import CommonSimPregnancyUtils
+from s4ap.sims4communitylib.classes.interactions.common_immediate_super_interaction import CommonImmediateSuperInteraction
+from s4ap.sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+from s4ap.sims4communitylib.utils.common_type_utils import CommonTypeUtils
 
 
 class S4CLDebugInduceLaborInteraction(CommonImmediateSuperInteraction):

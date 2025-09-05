@@ -22,35 +22,35 @@ from sims.outfits.outfit_tuning import OutfitTuning
 from sims.sim_info_lod import SimInfoLODLevel
 from sims.sim_info_types import SpeciesExtended, SimSerializationOption
 from sims4.resources import Types
-from sims4communitylib.classes.math.common_surface_identifier import CommonSurfaceIdentifier
-from sims4communitylib.enums.common_age import CommonAge
-from sims4communitylib.enums.common_bucks_types import CommonBucksType
-from sims4communitylib.enums.common_death_types import CommonDeathType
-from sims4communitylib.enums.common_gender import CommonGender
-from sims4communitylib.enums.common_species import CommonSpecies
-from sims4communitylib.enums.strings_enum import CommonStringId
-from sims4communitylib.exceptions.common_exceptions_handler import CommonExceptionHandler
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
+from s4ap.sims4communitylib.classes.math.common_surface_identifier import CommonSurfaceIdentifier
+from s4ap.sims4communitylib.enums.common_age import CommonAge
+from s4ap.sims4communitylib.enums.common_bucks_types import CommonBucksType
+from s4ap.sims4communitylib.enums.common_death_types import CommonDeathType
+from s4ap.sims4communitylib.enums.common_gender import CommonGender
+from s4ap.sims4communitylib.enums.common_species import CommonSpecies
+from s4ap.sims4communitylib.enums.strings_enum import CommonStringId
+from s4ap.sims4communitylib.exceptions.common_exceptions_handler import CommonExceptionHandler
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
     CommonConsoleCommandArgument
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
-from sims4communitylib.utils.cas.common_cas_utils import CommonCASUtils
-from sims4communitylib.utils.cas.common_outfit_utils import CommonOutfitUtils
-from sims4communitylib.utils.common_date_utils import CommonRealDateUtils
-from sims4communitylib.utils.common_log_registry import CommonLogRegistry
-from sims4communitylib.utils.common_resource_utils import CommonResourceUtils
-from sims4communitylib.utils.common_time_utils import CommonTimeUtils
-from sims4communitylib.utils.math.common_bitwise_utils import CommonBitwiseUtils
-from sims4communitylib.utils.resources.common_game_pack_utils import CommonGamePackUtils
-from sims4communitylib.utils.sims.common_age_utils import CommonAgeUtils
-from sims4communitylib.utils.sims.common_household_utils import CommonHouseholdUtils
-from sims4communitylib.utils.sims.common_sim_death_utils import CommonSimDeathUtils
-from sims4communitylib.utils.sims.common_sim_location_utils import CommonSimLocationUtils
-from sims4communitylib.classes.math.common_location import CommonLocation
-from sims4communitylib.classes.math.common_vector3 import CommonVector3
-from sims4communitylib.utils.sims.common_sim_name_utils import CommonSimNameUtils
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
-from sims4communitylib.utils.sims.common_trait_utils import CommonTraitUtils
+from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+from s4ap.sims4communitylib.utils.cas.common_cas_utils import CommonCASUtils
+from s4ap.sims4communitylib.utils.cas.common_outfit_utils import CommonOutfitUtils
+from s4ap.sims4communitylib.utils.common_date_utils import CommonRealDateUtils
+from s4ap.sims4communitylib.utils.common_log_registry import CommonLogRegistry
+from s4ap.sims4communitylib.utils.common_resource_utils import CommonResourceUtils
+from s4ap.sims4communitylib.utils.common_time_utils import CommonTimeUtils
+from s4ap.sims4communitylib.utils.math.common_bitwise_utils import CommonBitwiseUtils
+from s4ap.sims4communitylib.utils.resources.common_game_pack_utils import CommonGamePackUtils
+from s4ap.sims4communitylib.utils.sims.common_age_utils import CommonAgeUtils
+from s4ap.sims4communitylib.utils.sims.common_household_utils import CommonHouseholdUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_death_utils import CommonSimDeathUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_location_utils import CommonSimLocationUtils
+from s4ap.sims4communitylib.classes.math.common_location import CommonLocation
+from s4ap.sims4communitylib.classes.math.common_vector3 import CommonVector3
+from s4ap.sims4communitylib.utils.sims.common_sim_name_utils import CommonSimNameUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+from s4ap.sims4communitylib.utils.sims.common_trait_utils import CommonTraitUtils
 from statistics.commodity import Commodity
 from statistics.life_skill_statistic import LifeSkillStatistic
 from statistics.ranked_statistic import RankedStatistic
@@ -524,7 +524,7 @@ class CommonSimSpawnUtils:
         household: Household = None,
         source: str = 'testing'
     ) -> Union[SimInfo, None]:
-        from sims4communitylib.utils.sims.common_household_utils import CommonHouseholdUtils
+        from s4ap.sims4communitylib.utils.sims.common_household_utils import CommonHouseholdUtils
         household = household or CommonHouseholdUtils.create_empty_household(as_hidden_household=True)
         vanilla_gender = CommonGender.convert_to_vanilla(gender)
         vanilla_age = CommonAge.convert_to_vanilla(age)
@@ -534,7 +534,7 @@ class CommonSimSpawnUtils:
         first_name = first_name or CommonSimNameUtils.create_random_first_name(gender, species=species)
         last_name = last_name or CommonSimNameUtils.create_random_last_name(gender, species=species)
         traits = tuple([CommonTraitUtils.load_trait_by_id(trait_id) for trait_id in trait_ids if CommonTraitUtils.load_trait_by_id(trait_id) is not None])
-        from sims4communitylib.utils.sims.common_species_utils import CommonSpeciesUtils
+        from s4ap.sims4communitylib.utils.sims.common_species_utils import CommonSpeciesUtils
         sim_creator = SimCreator(
             gender=vanilla_gender,
             age=vanilla_age,
@@ -580,7 +580,7 @@ class CommonSimSpawnUtils:
             return False
         if CommonSimUtils.get_sim_instance(sim_info) is not None:
             return True
-        from sims4communitylib.utils.sims.common_age_utils import CommonAgeUtils
+        from s4ap.sims4communitylib.utils.sims.common_age_utils import CommonAgeUtils
         if CommonAgeUtils.is_baby(sim_info):
             # Sim is baby, they spawn differently.
             from sims.baby.baby_utils import create_and_place_baby
@@ -618,8 +618,8 @@ class CommonSimSpawnUtils:
         :return: True, if the Sim was spawned successfully. False, if not.
         :rtype: bool
         """
-        from sims4communitylib.utils.sims.common_sim_location_utils import CommonSimLocationUtils
-        from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_location_utils import CommonSimLocationUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
         active_sim_info = CommonSimUtils.get_active_sim_info()
         active_location = CommonSimLocationUtils.get_location(active_sim_info)
         active_position = None
@@ -647,7 +647,7 @@ class CommonSimSpawnUtils:
         :return: The cloned Sim Info or None if cloning failed.
         :rtype: Union[SimInfo, None]
         """
-        from sims4communitylib.utils.sims.common_household_utils import CommonHouseholdUtils
+        from s4ap.sims4communitylib.utils.sims.common_household_utils import CommonHouseholdUtils
         if household_override is not None:
             household = household_override
         else:
@@ -766,7 +766,7 @@ class CommonSimSpawnUtils:
             return None
         first_name: str = sim_save_data.get('first_name', None)
         last_name: str = sim_save_data.get('last_name', None)
-        from sims4communitylib.utils.sims.common_household_utils import CommonHouseholdUtils
+        from s4ap.sims4communitylib.utils.sims.common_household_utils import CommonHouseholdUtils
         household = household or CommonHouseholdUtils.create_empty_household(as_hidden_household=True)
         vanilla_gender = CommonGender.convert_to_vanilla(gender)
         vanilla_age = CommonAge.convert_to_vanilla(age)
@@ -777,7 +777,7 @@ class CommonSimSpawnUtils:
         first_name = first_name or CommonSimNameUtils.create_random_first_name(gender, species=species)
         last_name = last_name or CommonSimNameUtils.create_random_last_name(gender, species=species)
         traits = tuple([CommonTraitUtils.load_trait_by_id(trait_id) for trait_id in trait_ids if CommonTraitUtils.load_trait_by_id(trait_id) is not None])
-        from sims4communitylib.utils.sims.common_species_utils import CommonSpeciesUtils
+        from s4ap.sims4communitylib.utils.sims.common_species_utils import CommonSpeciesUtils
         breed_name = sim_save_data.get('breed_name', '')
         first_name_key = sim_save_data.get('first_name_key', 0)
         last_name_key = sim_save_data.get('last_name_key', 0)
@@ -836,7 +836,7 @@ class CommonSimSpawnUtils:
                 indexed_manager.object_load_times[species_def].time_spent_loading += time_elapsed
                 indexed_manager.object_load_times[species_def].loads += 1
             lod_logger.info('Loaded {} with lod {} in {} seconds.', sim_info.full_name, sim_info._lod.name, time_elapsed)
-            from sims4communitylib.utils.cas.common_outfit_utils import CommonOutfitUtils
+            from s4ap.sims4communitylib.utils.cas.common_outfit_utils import CommonOutfitUtils
             current_outfit = CommonOutfitUtils.get_current_outfit(sim_info)
             sim_info.outfit_type_and_index = current_outfit
             sim_info.resend_outfits()
@@ -849,7 +849,7 @@ class CommonSimSpawnUtils:
             indexed_manager.object_load_times[species_def].time_spent_loading += time_elapsed
             indexed_manager.object_load_times[species_def].loads += 1
             lod_logger.info('Loaded {} with lod {} in {} seconds.', sim_info.full_name, sim_info._lod.name, time_elapsed)
-        from sims4communitylib.utils.cas.common_outfit_utils import CommonOutfitUtils
+        from s4ap.sims4communitylib.utils.cas.common_outfit_utils import CommonOutfitUtils
         current_outfit = CommonOutfitUtils.get_current_outfit(sim_info)
         sim_info._base.outfit_type_and_index = current_outfit
         sim_info.resend_outfits()
@@ -2593,7 +2593,7 @@ class CommonSimSpawnUtils:
         """
         if sim_info is None:
             return False
-        from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
         sim = CommonSimUtils.get_sim_instance(sim_info)
         if sim is None:
             return True
@@ -2628,7 +2628,7 @@ class CommonSimSpawnUtils:
         """
         if sim_info is None:
             return False
-        from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
         sim = CommonSimUtils.get_sim_instance(sim_info)
         if sim is None:
             if on_despawn is not None:
@@ -3073,7 +3073,7 @@ def _s4cl_purge_non_household(output: CommonConsoleCommandOutput):
     output('Purging all Sims outside of the Active Household.')
     sim_count = 0
     sim_info_list = tuple(CommonSimUtils.get_sim_info_for_all_sims_generator())
-    from sims4communitylib.utils.sims.common_household_utils import CommonHouseholdUtils
+    from s4ap.sims4communitylib.utils.sims.common_household_utils import CommonHouseholdUtils
     for sim_info in sim_info_list:
         if CommonHouseholdUtils.is_part_of_active_household(sim_info):
             continue

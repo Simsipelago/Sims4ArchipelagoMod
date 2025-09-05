@@ -9,8 +9,8 @@ from typing import Tuple, Dict, Callable, Iterator
 
 import sims4.collections
 from rewards.reward import Reward
-from sims4communitylib.utils.common_resource_utils import CommonResourceUtils
-from sims4communitylib.utils.whims.common_satisfaction_reward_store_item import CommonSatisfactionRewardStoreItem
+from s4ap.sims4communitylib.utils.common_resource_utils import CommonResourceUtils
+from s4ap.sims4communitylib.utils.whims.common_satisfaction_reward_store_item import CommonSatisfactionRewardStoreItem
 
 # noinspection PyBroadException
 try:
@@ -168,5 +168,5 @@ class CommonSatisfactionRewardStoreUtils:
             return reward_definition_id
 
         from sims4.resources import Types
-        from sims4communitylib.utils.common_resource_utils import CommonResourceUtils
+        from s4ap.sims4communitylib.utils.common_resource_utils import CommonResourceUtils
         return CommonResourceUtils.load_instance(Types.REWARD, reward_definition_id)

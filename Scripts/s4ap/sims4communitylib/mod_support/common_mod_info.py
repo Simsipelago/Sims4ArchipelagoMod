@@ -5,8 +5,8 @@ https://creativecommons.org/licenses/by/4.0/legalcode
 
 Copyright (c) COLONOLNUTTY
 """
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.services.common_service import CommonService
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.services.common_service import CommonService
 
 
 class CommonModInfo(CommonService):
@@ -19,7 +19,7 @@ class CommonModInfo(CommonService):
     .. highlight:: python
     .. code-block:: python
 
-        from sims4communitylib.mod_support.common_mod_info import CommonModInfo
+        from s4ap.sims4communitylib.mod_support.common_mod_info import CommonModInfo
 
         # This is how the sims4communitylib.modinfo.ModInfo implementation works.
         class ModInfo(CommonModInfo):

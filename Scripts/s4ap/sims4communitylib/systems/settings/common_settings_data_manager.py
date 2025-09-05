@@ -6,9 +6,9 @@ https://creativecommons.org/licenses/by/4.0/legalcode
 Copyright (c) COLONOLNUTTY
 """
 from typing import Tuple
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.persistence.data_management.common_data_manager import CommonDataManager
-from sims4communitylib.persistence.persistence_services.common_persistence_service import CommonPersistenceService
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.persistence.data_management.common_data_manager import CommonDataManager
+from s4ap.sims4communitylib.persistence.persistence_services.common_persistence_service import CommonPersistenceService
 
 
 class CommonSettingsDataManager(CommonDataManager):
@@ -33,7 +33,7 @@ class CommonSettingsDataManager(CommonDataManager):
     # noinspection PyMissingOrEmptyDocstring
     @property
     def persistence_services(self) -> Tuple[CommonPersistenceService]:
-        from sims4communitylib.persistence.persistence_services.common_file_persistence_service import \
+        from s4ap.sims4communitylib.persistence.persistence_services.common_file_persistence_service import \
             CommonFilePersistenceService
         result: Tuple[CommonPersistenceService] = (
             CommonFilePersistenceService(per_save=False),

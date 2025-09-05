@@ -9,19 +9,19 @@ import random
 from objects.object_enums import ItemLocation
 from sims.sim_info import SimInfo
 from typing import Any, Callable, Union, Tuple, Iterator
-from sims4communitylib.classes.math.common_location import CommonLocation
-from sims4communitylib.classes.math.common_transform import CommonTransform
-from sims4communitylib.classes.math.common_vector3 import CommonVector3
-from sims4communitylib.logging._has_s4cl_class_log import _HasS4CLClassLog
-from sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.classes.math.common_location import CommonLocation
+from s4ap.sims4communitylib.classes.math.common_transform import CommonTransform
+from s4ap.sims4communitylib.classes.math.common_vector3 import CommonVector3
+from s4ap.sims4communitylib.logging._has_s4cl_class_log import _HasS4CLClassLog
+from s4ap.sims4communitylib.modinfo import ModInfo
 from carry.carry_postures import CarryingObject
 from objects.game_object import GameObject
 from objects.object_enums import ResetReason
-from sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
+from s4ap.sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
     CommonConsoleCommandArgument
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
-from sims4communitylib.utils.objects.common_object_ownership_utils import CommonObjectOwnershipUtils
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+from s4ap.sims4communitylib.utils.objects.common_object_ownership_utils import CommonObjectOwnershipUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
 
 
 class CommonObjectSpawnUtils(_HasS4CLClassLog):
@@ -103,7 +103,7 @@ class CommonObjectSpawnUtils(_HasS4CLClassLog):
         :return: An instance of the spawned Object or None if not successfully spawned.
         :rtype: GameObject
         """
-        from sims4communitylib.utils.objects.common_object_location_utils import CommonObjectLocationUtils
+        from s4ap.sims4communitylib.utils.objects.common_object_location_utils import CommonObjectLocationUtils
         game_object = cls.create_object(
             object_definition_id,
             on_object_initialize_callback=on_object_initialize_callback,
@@ -206,15 +206,15 @@ class CommonObjectSpawnUtils(_HasS4CLClassLog):
             if inventory is None or inventory.owner is None:
                 game_object.destroy(source=source, cause=cause, **kwargs)
             else:
-                from sims4communitylib.utils.objects.common_object_utils import CommonObjectUtils
+                from s4ap.sims4communitylib.utils.objects.common_object_utils import CommonObjectUtils
                 object_id = CommonObjectUtils.get_object_id(game_object)
                 if game_object.is_in_sim_inventory():
                     sim_info = CommonSimUtils.get_sim_info(inventory.owner)
-                    from sims4communitylib.utils.sims.common_sim_inventory_utils import CommonSimInventoryUtils
+                    from s4ap.sims4communitylib.utils.sims.common_sim_inventory_utils import CommonSimInventoryUtils
                     CommonSimInventoryUtils.remove_from_inventory(sim_info, object_id, count=1)
                 else:
                     inventory_game_object = CommonObjectUtils.get_game_object(inventory.owner)
-                    from sims4communitylib.utils.objects.common_object_inventory_utils import CommonObjectInventoryUtils
+                    from s4ap.sims4communitylib.utils.objects.common_object_inventory_utils import CommonObjectInventoryUtils
                     CommonObjectInventoryUtils.remove_from_inventory_by_id(inventory_game_object, object_id, count=1)
         else:
             game_object.destroy(source=source, cause=cause, **kwargs)
@@ -244,15 +244,15 @@ class CommonObjectSpawnUtils(_HasS4CLClassLog):
             if inventory is None or inventory.owner is None:
                 game_object.schedule_destroy_asap(post_delete_func=on_destroyed, source=source, cause=cause, **kwargs)
             else:
-                from sims4communitylib.utils.objects.common_object_utils import CommonObjectUtils
+                from s4ap.sims4communitylib.utils.objects.common_object_utils import CommonObjectUtils
                 object_id = CommonObjectUtils.get_object_id(game_object)
                 if game_object.is_in_sim_inventory():
                     sim_info = CommonSimUtils.get_sim_info(inventory.owner)
-                    from sims4communitylib.utils.sims.common_sim_inventory_utils import CommonSimInventoryUtils
+                    from s4ap.sims4communitylib.utils.sims.common_sim_inventory_utils import CommonSimInventoryUtils
                     CommonSimInventoryUtils.remove_from_inventory(sim_info, object_id, count=1)
                 else:
                     inventory_game_object = CommonObjectUtils.get_game_object(inventory.owner)
-                    from sims4communitylib.utils.objects.common_object_inventory_utils import CommonObjectInventoryUtils
+                    from s4ap.sims4communitylib.utils.objects.common_object_inventory_utils import CommonObjectInventoryUtils
                     CommonObjectInventoryUtils.remove_from_inventory_by_id(inventory_game_object, object_id, count=1)
         else:
             game_object.schedule_destroy_asap(post_delete_func=on_destroyed, source=source, cause=cause, **kwargs)
@@ -392,8 +392,8 @@ def _common_spawn_object(output: CommonConsoleCommandOutput, object_definition_i
         output('ERROR: object_definition_id must be a positive number above zero.')
         return
     output('Attempting to spawn object on the current lot with id \'{}\'.'.format(object_definition_id))
-    from sims4communitylib.utils.sims.common_sim_location_utils import CommonSimLocationUtils
-    from sims4communitylib.utils.objects.common_object_utils import CommonObjectUtils
+    from s4ap.sims4communitylib.utils.sims.common_sim_location_utils import CommonSimLocationUtils
+    from s4ap.sims4communitylib.utils.objects.common_object_utils import CommonObjectUtils
     sim_location = CommonSimLocationUtils.get_location(sim_info)
     game_object = CommonObjectSpawnUtils.spawn_object_on_lot(object_definition_id, sim_location)
     if game_object is not None:
@@ -402,7 +402,7 @@ def _common_spawn_object(output: CommonConsoleCommandOutput, object_definition_i
         CommonObjectSpawnUtils.get_log().debug(f'Object {game_object} spawned successfully. Can you see it? Object Id: {game_object_id}')
         CommonObjectSpawnUtils.get_log().disable()
         output(f'SUCCESS: Object {game_object} spawned successfully. Can you see it? Object Id: {game_object_id}')
-        from sims4communitylib.utils.sims.common_household_utils import CommonHouseholdUtils
+        from s4ap.sims4communitylib.utils.sims.common_household_utils import CommonHouseholdUtils
         CommonObjectOwnershipUtils.set_owning_household_id(game_object, CommonHouseholdUtils.get_household_id(sim_info))
     else:
         output(f'ERROR: Failed to spawn object with definition id {object_definition_id}.')

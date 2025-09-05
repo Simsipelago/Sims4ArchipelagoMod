@@ -7,10 +7,10 @@ Copyright (c) COLONOLNUTTY
 """
 from typing import Tuple, Union, Dict, Any, Iterator, TypeVar, Generic, Type
 
-from sims4communitylib.enums.enumtypes.common_versioned_int import CommonVersionedInt
-from sims4communitylib.enums.enumtypes.common_versioned_int_flags import CommonVersionedIntFlags
-from sims4communitylib.classes.serialization.common_serializable import CommonSerializable
-from sims4communitylib.utils.common_resource_utils import CommonResourceUtils
+from s4ap.sims4communitylib.enums.enumtypes.common_versioned_int import CommonVersionedInt
+from s4ap.sims4communitylib.enums.enumtypes.common_versioned_int_flags import CommonVersionedIntFlags
+from s4ap.sims4communitylib.classes.serialization.common_serializable import CommonSerializable
+from s4ap.sims4communitylib.utils.common_resource_utils import CommonResourceUtils
 
 CommonEnumType = TypeVar('CommonEnumType', CommonVersionedIntFlags, CommonVersionedInt)
 

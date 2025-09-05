@@ -7,14 +7,14 @@ Copyright (c) COLONOLNUTTY
 """
 from typing import Any
 
-from sims4communitylib.events.build_buy.events.build_buy_enter import S4CLBuildBuyEnterEvent
-from sims4communitylib.events.build_buy.events.build_buy_exit import S4CLBuildBuyExitEvent
-from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
-from sims4communitylib.logging.has_class_log import HasClassLog
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.common_service import CommonService
-from sims4communitylib.utils.common_injection_utils import CommonInjectionUtils
+from s4ap.sims4communitylib.events.build_buy.events.build_buy_enter import S4CLBuildBuyEnterEvent
+from s4ap.sims4communitylib.events.build_buy.events.build_buy_exit import S4CLBuildBuyExitEvent
+from s4ap.sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
+from s4ap.sims4communitylib.logging.has_class_log import HasClassLog
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.common_service import CommonService
+from s4ap.sims4communitylib.utils.common_injection_utils import CommonInjectionUtils
 from zone import Zone
 
 

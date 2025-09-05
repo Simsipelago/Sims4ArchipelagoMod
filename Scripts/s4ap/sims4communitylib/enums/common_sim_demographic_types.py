@@ -8,9 +8,9 @@ Copyright (c) COLONOLNUTTY
 from typing import Union, Tuple, Iterator, Dict, Set
 
 from protocolbuffers.Localization_pb2 import LocalizedString
-from sims4communitylib.enums.enumtypes.common_versioned_int_flags import CommonVersionedIntFlags
-from sims4communitylib.enums.strings_enum import CommonStringId
-from sims4communitylib.utils.math.common_bitwise_utils import CommonBitwiseUtils
+from s4ap.sims4communitylib.enums.enumtypes.common_versioned_int_flags import CommonVersionedIntFlags
+from s4ap.sims4communitylib.enums.strings_enum import CommonStringId
+from s4ap.sims4communitylib.utils.math.common_bitwise_utils import CommonBitwiseUtils
 
 
 class CommonSimDemographicType(CommonVersionedIntFlags):

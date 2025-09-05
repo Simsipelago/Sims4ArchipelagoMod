@@ -5,11 +5,11 @@ https://creativecommons.org/licenses/by/4.0/legalcode
 
 Copyright (c) COLONOLNUTTY
 """
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
     CommonConsoleCommandArgument
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
-from sims4communitylib.utils.common_log_registry import CommonLogRegistry
+from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+from s4ap.sims4communitylib.utils.common_log_registry import CommonLogRegistry
 
 
 @CommonConsoleCommand(

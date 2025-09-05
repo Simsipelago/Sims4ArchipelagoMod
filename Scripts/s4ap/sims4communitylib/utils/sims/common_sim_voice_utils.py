@@ -7,20 +7,20 @@ Copyright (c) COLONOLNUTTY
 """
 from typing import Union, Dict, List, Tuple
 from sims.sim_info import SimInfo
-from sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
-from sims4communitylib.classes.testing.common_test_result import CommonTestResult
-from sims4communitylib.enums.common_age import CommonAge
-from sims4communitylib.enums.common_gender import CommonGender
-from sims4communitylib.enums.common_species import CommonSpecies
-from sims4communitylib.enums.common_voice_actor_type import CommonVoiceActorType
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
+from s4ap.sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
+from s4ap.sims4communitylib.classes.testing.common_test_result import CommonTestResult
+from s4ap.sims4communitylib.enums.common_age import CommonAge
+from s4ap.sims4communitylib.enums.common_gender import CommonGender
+from s4ap.sims4communitylib.enums.common_species import CommonSpecies
+from s4ap.sims4communitylib.enums.common_voice_actor_type import CommonVoiceActorType
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
     CommonConsoleCommandArgument
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
-from sims4communitylib.utils.common_log_registry import CommonLogRegistry
-from sims4communitylib.utils.common_resource_utils import CommonResourceUtils
-from sims4communitylib.utils.sims.common_sim_type_utils import CommonSimTypeUtils
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+from s4ap.sims4communitylib.utils.common_log_registry import CommonLogRegistry
+from s4ap.sims4communitylib.utils.common_resource_utils import CommonResourceUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_type_utils import CommonSimTypeUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
 
 
 class CommonSimVoiceUtils:
@@ -138,7 +138,7 @@ class CommonSimVoiceUtils:
         :return: The result of setting the voice of the Sim to their default voice. True, if successful. False, if not.
         :rtype: CommonExecutionResult
         """
-        from sims4communitylib.utils.sims.common_gender_utils import CommonGenderUtils
+        from s4ap.sims4communitylib.utils.sims.common_gender_utils import CommonGenderUtils
         if CommonGenderUtils.is_male(sim_info):
             return CommonSimVoiceUtils.set_to_default_male_voice(sim_info)
         else:
@@ -155,9 +155,9 @@ class CommonSimVoiceUtils:
         :return: The result of setting the voice of the Sim to the default male voice. True, if successful. False, if not.
         :rtype: CommonExecutionResult
         """
-        from sims4communitylib.utils.sims.common_age_species_utils import CommonAgeSpeciesUtils
-        from sims4communitylib.utils.sims.common_species_utils import CommonSpeciesUtils
-        from sims4communitylib.utils.sims.common_age_utils import CommonAgeUtils
+        from s4ap.sims4communitylib.utils.sims.common_age_species_utils import CommonAgeSpeciesUtils
+        from s4ap.sims4communitylib.utils.sims.common_species_utils import CommonSpeciesUtils
+        from s4ap.sims4communitylib.utils.sims.common_age_utils import CommonAgeUtils
         if CommonAgeSpeciesUtils.is_teen_adult_or_elder_human(sim_info):
             return CommonSimVoiceUtils.set_voice_actor(sim_info, CommonVoiceActorType.ADULT_HUMAN_MASCULINE_1)
         elif CommonAgeSpeciesUtils.is_child_human(sim_info):
@@ -195,9 +195,9 @@ class CommonSimVoiceUtils:
         :return: The result of setting the voice of the Sim to the default female voice. True, if successful. False, if not.
         :rtype: CommonExecutionResult
         """
-        from sims4communitylib.utils.sims.common_age_species_utils import CommonAgeSpeciesUtils
-        from sims4communitylib.utils.sims.common_species_utils import CommonSpeciesUtils
-        from sims4communitylib.utils.sims.common_age_utils import CommonAgeUtils
+        from s4ap.sims4communitylib.utils.sims.common_age_species_utils import CommonAgeSpeciesUtils
+        from s4ap.sims4communitylib.utils.sims.common_species_utils import CommonSpeciesUtils
+        from s4ap.sims4communitylib.utils.sims.common_age_utils import CommonAgeUtils
         if CommonAgeSpeciesUtils.is_teen_adult_or_elder_human(sim_info):
             return CommonSimVoiceUtils.set_voice_actor(sim_info, CommonVoiceActorType.ADULT_HUMAN_FEMININE_1)
         elif CommonAgeSpeciesUtils.is_child_human(sim_info):
@@ -235,9 +235,9 @@ class CommonSimVoiceUtils:
         :return: A collection of voice actor types available for the Sim.
         :rtype: Tuple[CommonVoiceActorType]
         """
-        from sims4communitylib.utils.sims.common_age_species_utils import CommonAgeSpeciesUtils
-        from sims4communitylib.utils.sims.common_species_utils import CommonSpeciesUtils
-        from sims4communitylib.utils.sims.common_age_utils import CommonAgeUtils
+        from s4ap.sims4communitylib.utils.sims.common_age_species_utils import CommonAgeSpeciesUtils
+        from s4ap.sims4communitylib.utils.sims.common_species_utils import CommonSpeciesUtils
+        from s4ap.sims4communitylib.utils.sims.common_age_utils import CommonAgeUtils
         if CommonAgeSpeciesUtils.is_teen_adult_or_elder_human(sim_info):
             # noinspection PyTypeChecker
             result: Tuple[CommonVoiceActorType] = (

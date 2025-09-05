@@ -8,21 +8,21 @@ Copyright (c) COLONOLNUTTY
 import collections
 from typing import List, Dict, Any, Tuple, Set, Callable, Union, Iterator, TypeVar, Generic
 
-from sims4communitylib.classes.testing.common_test_result import CommonTestResult
-from sims4communitylib.systems.item_query.item_tests.common_loaded_item_test import CommonLoadedItemTest
-from sims4communitylib.systems.item_query.query.common_loaded_item_filter_request import CommonLoadedItemFilterRequest
-from sims4communitylib.systems.item_query.query.common_loaded_item_organizer import CommonLoadedItemOrganizer
-from sims4communitylib.systems.item_query.dtos.common_loaded_item import CommonLoadedItem
-from sims4communitylib.systems.item_query.common_loaded_item_registry import CommonLoadedItemRegistry
-from sims4communitylib.classes.time.common_stop_watch import CommonStopWatch
-from sims4communitylib.events.zone_spin.events.zone_early_load import S4CLZoneEarlyLoadEvent
-from sims4communitylib.events.zone_spin.events.zone_late_load import S4CLZoneLateLoadEvent
-from sims4communitylib.logging.has_log import HasLog
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.notifications.common_basic_notification import CommonBasicNotification
-from sims4communitylib.services.common_service import CommonService
-from sims4communitylib.systems.item_query.enums.common_query_method_type import CommonQueryMethodType
-from sims4communitylib.utils.misc.common_text_utils import CommonTextUtils
+from s4ap.sims4communitylib.classes.testing.common_test_result import CommonTestResult
+from s4ap.sims4communitylib.systems.item_query.item_tests.common_loaded_item_test import CommonLoadedItemTest
+from s4ap.sims4communitylib.systems.item_query.query.common_loaded_item_filter_request import CommonLoadedItemFilterRequest
+from s4ap.sims4communitylib.systems.item_query.query.common_loaded_item_organizer import CommonLoadedItemOrganizer
+from s4ap.sims4communitylib.systems.item_query.dtos.common_loaded_item import CommonLoadedItem
+from s4ap.sims4communitylib.systems.item_query.common_loaded_item_registry import CommonLoadedItemRegistry
+from s4ap.sims4communitylib.classes.time.common_stop_watch import CommonStopWatch
+from s4ap.sims4communitylib.events.zone_spin.events.zone_early_load import S4CLZoneEarlyLoadEvent
+from s4ap.sims4communitylib.events.zone_spin.events.zone_late_load import S4CLZoneLateLoadEvent
+from s4ap.sims4communitylib.logging.has_log import HasLog
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.notifications.common_basic_notification import CommonBasicNotification
+from s4ap.sims4communitylib.services.common_service import CommonService
+from s4ap.sims4communitylib.systems.item_query.enums.common_query_method_type import CommonQueryMethodType
+from s4ap.sims4communitylib.utils.misc.common_text_utils import CommonTextUtils
 
 CommonLoadedItemType = TypeVar('CommonLoadedItemType', bound=CommonLoadedItem)
 

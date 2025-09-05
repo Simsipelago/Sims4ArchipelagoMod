@@ -11,16 +11,16 @@ from objects.game_object import GameObject
 from server_commands.argument_helpers import TunableInstanceParam
 from sims.sim_info import SimInfo
 from sims4.resources import Types
-from sims4communitylib.enums.common_cloud_type import CommonCloudType
-from sims4communitylib.enums.common_temperature import CommonTemperature
-from sims4communitylib.enums.common_weather_effect_type import CommonWeatherEffectType
-from sims4communitylib.enums.common_weather_event_ids import CommonWeatherEventId
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
+from s4ap.sims4communitylib.enums.common_cloud_type import CommonCloudType
+from s4ap.sims4communitylib.enums.common_temperature import CommonTemperature
+from s4ap.sims4communitylib.enums.common_weather_effect_type import CommonWeatherEffectType
+from s4ap.sims4communitylib.enums.common_weather_event_ids import CommonWeatherEventId
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
     CommonConsoleCommandArgument
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
-from sims4communitylib.utils.common_time_utils import CommonTimeUtils
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+from s4ap.sims4communitylib.utils.common_time_utils import CommonTimeUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
 from weather.weather_enums import PrecipitationType, WeatherEffectType
 from weather.weather_event import WeatherEvent
 from weather.weather_service import WeatherService
@@ -217,7 +217,7 @@ class CommonWeatherUtils:
             return weather_event
 
         from sims4.resources import Types
-        from sims4communitylib.utils.common_resource_utils import CommonResourceUtils
+        from s4ap.sims4communitylib.utils.common_resource_utils import CommonResourceUtils
         return CommonResourceUtils.load_instance(Types.WEATHER_EVENT, weather_event)
 
 

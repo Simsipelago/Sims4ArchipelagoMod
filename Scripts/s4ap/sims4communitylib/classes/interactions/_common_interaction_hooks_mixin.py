@@ -17,8 +17,8 @@ from postures.posture_state import PostureState
 from protocolbuffers.Localization_pb2 import LocalizedString
 from scheduling import Timeline
 from sims.sim import Sim
-from sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
-from sims4communitylib.classes.testing.common_test_result import CommonTestResult
+from s4ap.sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
+from s4ap.sims4communitylib.classes.testing.common_test_result import CommonTestResult
 from singletons import DEFAULT
 
 

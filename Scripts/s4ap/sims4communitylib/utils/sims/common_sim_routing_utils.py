@@ -9,16 +9,16 @@ from interactions.context import InteractionContext
 from objects.terrain import Terrain
 from server.pick_info import PickType
 from sims.sim_info import SimInfo
-from sims4communitylib.classes.math.common_surface_identifier import CommonSurfaceIdentifier
-from sims4communitylib.classes.math.common_vector3 import CommonVector3
+from s4ap.sims4communitylib.classes.math.common_surface_identifier import CommonSurfaceIdentifier
+from s4ap.sims4communitylib.classes.math.common_vector3 import CommonVector3
 
-from sims4communitylib.classes.testing.common_test_result import CommonTestResult
-from sims4communitylib.utils.common_type_utils import CommonTypeUtils
-from sims4communitylib.utils.location.common_location_utils import CommonLocationUtils
-from sims4communitylib.utils.location.common_terrain_utils import CommonTerrainUtils
-from sims4communitylib.utils.resources.common_interaction_utils import CommonInteractionUtils
-from sims4communitylib.utils.sims.common_sim_body_utils import CommonSimBodyUtils
-from sims4communitylib.utils.terrain.common_terrain_location_utils import CommonTerrainLocationUtils
+from s4ap.sims4communitylib.classes.testing.common_test_result import CommonTestResult
+from s4ap.sims4communitylib.utils.common_type_utils import CommonTypeUtils
+from s4ap.sims4communitylib.utils.location.common_location_utils import CommonLocationUtils
+from s4ap.sims4communitylib.utils.location.common_terrain_utils import CommonTerrainUtils
+from s4ap.sims4communitylib.utils.resources.common_interaction_utils import CommonInteractionUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_body_utils import CommonSimBodyUtils
+from s4ap.sims4communitylib.utils.terrain.common_terrain_location_utils import CommonTerrainLocationUtils
 
 
 class CommonSimRoutingUtils:

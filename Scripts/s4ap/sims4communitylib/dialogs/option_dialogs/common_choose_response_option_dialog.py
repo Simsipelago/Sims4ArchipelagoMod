@@ -6,13 +6,13 @@ https://creativecommons.org/licenses/by/4.0/legalcode
 Copyright (c) COLONOLNUTTY
 """
 from typing import Any, Callable, Union
-from sims4communitylib.dialogs.common_choice_outcome import CommonChoiceOutcome
-from sims4communitylib.dialogs.common_choose_response_dialog import CommonChooseResponseDialog
-from sims4communitylib.dialogs.common_ui_response_dialog import CommonUiResponseDialog
-from sims4communitylib.dialogs.option_dialogs.common_option_dialog import CommonOptionDialog
-from sims4communitylib.dialogs.option_dialogs.options.response.common_dialog_response_option import \
+from s4ap.sims4communitylib.dialogs.common_choice_outcome import CommonChoiceOutcome
+from s4ap.sims4communitylib.dialogs.common_choose_response_dialog import CommonChooseResponseDialog
+from s4ap.sims4communitylib.dialogs.common_ui_response_dialog import CommonUiResponseDialog
+from s4ap.sims4communitylib.dialogs.option_dialogs.common_option_dialog import CommonOptionDialog
+from s4ap.sims4communitylib.dialogs.option_dialogs.options.response.common_dialog_response_option import \
     CommonDialogResponseOption
-from sims4communitylib.utils.common_function_utils import CommonFunctionUtils
+from s4ap.sims4communitylib.utils.common_function_utils import CommonFunctionUtils
 
 
 class CommonChooseResponseOptionDialog(CommonOptionDialog):

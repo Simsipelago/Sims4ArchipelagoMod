@@ -11,22 +11,22 @@ from typing import Any, Union, Callable, Iterator, Tuple
 
 from protocolbuffers.Localization_pb2 import LocalizedString
 from sims.sim_info import SimInfo
-from sims4communitylib.dialogs.choose_objects_dialog import CommonChooseObjectsDialog
-from sims4communitylib.dialogs.option_dialogs.common_choose_options_dialog import CommonChooseOptionsDialog
-from sims4communitylib.dialogs.option_dialogs.options.common_dialog_option_context import CommonDialogOptionContext, \
+from s4ap.sims4communitylib.dialogs.choose_objects_dialog import CommonChooseObjectsDialog
+from s4ap.sims4communitylib.dialogs.option_dialogs.common_choose_options_dialog import CommonChooseOptionsDialog
+from s4ap.sims4communitylib.dialogs.option_dialogs.options.common_dialog_option_context import CommonDialogOptionContext, \
     DialogOptionValueType
-from sims4communitylib.dialogs.option_dialogs.options.objects.common_dialog_option_category import \
+from s4ap.sims4communitylib.dialogs.option_dialogs.options.objects.common_dialog_option_category import \
     CommonDialogObjectOptionCategory
-from sims4communitylib.enums.strings_enum import CommonStringId
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.commands.common_console_command import CommonConsoleCommand
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
-from sims4communitylib.utils.common_function_utils import CommonFunctionUtils
-from sims4communitylib.dialogs.option_dialogs.options.objects.common_dialog_object_option import CommonDialogObjectOption
-from sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
-from sims4communitylib.utils.localization.common_localized_string_colors import CommonLocalizedStringColor
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+from s4ap.sims4communitylib.enums.strings_enum import CommonStringId
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.commands.common_console_command import CommonConsoleCommand
+from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+from s4ap.sims4communitylib.utils.common_function_utils import CommonFunctionUtils
+from s4ap.sims4communitylib.dialogs.option_dialogs.options.objects.common_dialog_object_option import CommonDialogObjectOption
+from s4ap.sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
+from s4ap.sims4communitylib.utils.localization.common_localized_string_colors import CommonLocalizedStringColor
+from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
 from ui.ui_dialog import UiDialogBase
 from ui.ui_dialog_picker import UiObjectPicker
 
@@ -85,7 +85,7 @@ class CommonChooseObjectsOptionDialog(CommonChooseOptionsDialog):
             per_page=2
         )
 
-        from sims4communitylib.utils.common_icon_utils import CommonIconUtils
+        from s4ap.sims4communitylib.utils.common_icon_utils import CommonIconUtils
 
         # We add the options, in this case we have three options.
         option_dialog.add_option(
@@ -364,7 +364,7 @@ def _common_testing_show_choose_objects_option_dialog(output: CommonConsoleComma
         per_page=2
     )
 
-    from sims4communitylib.utils.common_icon_utils import CommonIconUtils
+    from s4ap.sims4communitylib.utils.common_icon_utils import CommonIconUtils
 
     option_dialog.add_option(
         CommonDialogObjectOption(

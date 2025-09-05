@@ -8,20 +8,20 @@ Copyright (c) COLONOLNUTTY
 from typing import Tuple, TYPE_CHECKING, Dict, List, Callable, Union, Iterator
 
 from sims.sim_info import SimInfo
-from sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
-from sims4communitylib.classes.testing.common_test_result import CommonTestResult
-from sims4communitylib.logging._has_s4cl_class_log import _HasS4CLClassLog
-from sims4communitylib.utils.math.common_bitwise_utils import CommonBitwiseUtils
-from sims4communitylib.utils.sims.common_sim_occult_type_utils import CommonSimOccultTypeUtils
-from sims4communitylib.utils.sims.common_sim_type_utils import CommonSimTypeUtils
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+from s4ap.sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
+from s4ap.sims4communitylib.classes.testing.common_test_result import CommonTestResult
+from s4ap.sims4communitylib.logging._has_s4cl_class_log import _HasS4CLClassLog
+from s4ap.sims4communitylib.utils.math.common_bitwise_utils import CommonBitwiseUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_occult_type_utils import CommonSimOccultTypeUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_type_utils import CommonSimTypeUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
 
 if TYPE_CHECKING:
-    from sims4communitylib.enums.common_age import CommonAge
-    from sims4communitylib.enums.common_gender import CommonGender
-    from sims4communitylib.enums.common_species import CommonSpecies
-    from sims4communitylib.enums.common_occult_type import CommonOccultType
-    from sims4communitylib.enums.common_sim_demographic_types import CommonSimDemographicType
+    from s4ap.sims4communitylib.enums.common_age import CommonAge
+    from s4ap.sims4communitylib.enums.common_gender import CommonGender
+    from s4ap.sims4communitylib.enums.common_species import CommonSpecies
+    from s4ap.sims4communitylib.enums.common_occult_type import CommonOccultType
+    from s4ap.sims4communitylib.enums.common_sim_demographic_types import CommonSimDemographicType
 
 
 class CommonSimDemographicTypeUtils(_HasS4CLClassLog):
@@ -35,9 +35,9 @@ class CommonSimDemographicTypeUtils(_HasS4CLClassLog):
     @classmethod
     def determine_sim_demographic_flags(cls, sim_info: SimInfo) -> 'CommonSimDemographicType':
         """Determine the demographics of a Sim as flags."""
-        from sims4communitylib.enums.common_age import CommonAge
-        from sims4communitylib.enums.common_gender import CommonGender
-        from sims4communitylib.enums.common_species import CommonSpecies
+        from s4ap.sims4communitylib.enums.common_age import CommonAge
+        from s4ap.sims4communitylib.enums.common_gender import CommonGender
+        from s4ap.sims4communitylib.enums.common_species import CommonSpecies
         value: 'CommonSimDemographicType' = cls.convert_from_age(CommonAge.get_age(sim_info))
         value = CommonBitwiseUtils.add_flags(value, cls.convert_from_species(CommonSpecies.get_species(sim_info)))
         value = CommonBitwiseUtils.add_flags(value, cls.convert_from_gender(CommonGender.get_gender(sim_info)))
@@ -47,10 +47,10 @@ class CommonSimDemographicTypeUtils(_HasS4CLClassLog):
     @classmethod
     def determine_sim_demographics(cls, sim_info: SimInfo) -> Tuple['CommonSimDemographicType']:
         """Determine the demographics of a Sim as a collection."""
-        from sims4communitylib.enums.common_age import CommonAge
-        from sims4communitylib.enums.common_gender import CommonGender
-        from sims4communitylib.enums.common_species import CommonSpecies
-        from sims4communitylib.enums.common_sim_demographic_types import CommonSimDemographicType
+        from s4ap.sims4communitylib.enums.common_age import CommonAge
+        from s4ap.sims4communitylib.enums.common_gender import CommonGender
+        from s4ap.sims4communitylib.enums.common_species import CommonSpecies
+        from s4ap.sims4communitylib.enums.common_sim_demographic_types import CommonSimDemographicType
         values: List['CommonSimDemographicType'] = list()
         values.append(cls.convert_from_species(CommonSpecies.get_species(sim_info)))
         values.append(cls.convert_from_age(CommonAge.get_age(sim_info)))
@@ -80,7 +80,7 @@ class CommonSimDemographicTypeUtils(_HasS4CLClassLog):
         :rtype: bool
         """
         sim_demographic_flags = cls.determine_sim_demographic_flags(sim_info)
-        # from sims4communitylib.enums.common_sim_demographic_types import CommonSimDemographicType
+        # from s4ap.sims4communitylib.enums.common_sim_demographic_types import CommonSimDemographicType
         # if CommonBitwiseUtils.contains_any_flags(demographic_flags, CommonSimDemographicType.get_all_flags(exclude_values=(CommonSimDemographicType.CURRENTLY_CONTROLLED, CommonSimDemographicType.CONTROLLED, CommonSimDemographicType.HOUSEHOLD, CommonSimDemographicType.NON_HOUSEHOLD))):
         # demographic_flags must contain all the values from sim_demographic_flags. If WEREWOLF was not in demographic_flags but was in sim_demographic_flags, then this would return False.
         if match_all:
@@ -93,7 +93,7 @@ class CommonSimDemographicTypeUtils(_HasS4CLClassLog):
                 return False
 
         # # Handle the non mutually exclusive flags.
-        # from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+        # from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
         # if CommonBitwiseUtils.contains_all_flags(demographic_flags, CommonSimDemographicType.CURRENTLY_CONTROLLED) and CommonSimUtils.is_active_sim(sim_info):
         #     cls.get_log().format_with_message('Sim passed controlled flags', sim=sim_info, demographic_flags=demographic_flags, sim_demographic_flags=sim_demographic_flags)
         #     return True
@@ -127,8 +127,8 @@ class CommonSimDemographicTypeUtils(_HasS4CLClassLog):
         sim_demographics = cls.determine_sim_demographics(sim_info)
 
         # # Handle the non mutually exclusive flags.
-        # from sims4communitylib.enums.common_sim_demographic_types import CommonSimDemographicType
-        # from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+        # from s4ap.sims4communitylib.enums.common_sim_demographic_types import CommonSimDemographicType
+        # from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
         # if CommonSimDemographicType.CURRENTLY_CONTROLLED in demographics and CommonSimUtils.is_active_sim(sim_info):
         #     cls.get_log().format_with_message('Sim passed controlled flags', sim=sim_info, demographics=demographics, sim_demographics=sim_demographics)
         #     return True
@@ -161,8 +161,8 @@ class CommonSimDemographicTypeUtils(_HasS4CLClassLog):
     @classmethod
     def convert_to_age(cls, value: 'CommonSimDemographicType') -> 'CommonAge':
         """Convert a value to an Age value."""
-        from sims4communitylib.enums.common_sim_demographic_types import CommonSimDemographicType
-        from sims4communitylib.enums.common_age import CommonAge
+        from s4ap.sims4communitylib.enums.common_sim_demographic_types import CommonSimDemographicType
+        from s4ap.sims4communitylib.enums.common_age import CommonAge
         mapping: Dict[CommonSimDemographicType, CommonAge] = {
             CommonSimDemographicType.BABY: CommonAge.BABY,
             CommonSimDemographicType.INFANT: CommonAge.INFANT,
@@ -178,8 +178,8 @@ class CommonSimDemographicTypeUtils(_HasS4CLClassLog):
     @classmethod
     def convert_from_age(cls, value: 'CommonAge') -> 'CommonSimDemographicType':
         """Convert a value to a Sim demographic value."""
-        from sims4communitylib.enums.common_sim_demographic_types import CommonSimDemographicType
-        from sims4communitylib.enums.common_age import CommonAge
+        from s4ap.sims4communitylib.enums.common_sim_demographic_types import CommonSimDemographicType
+        from s4ap.sims4communitylib.enums.common_age import CommonAge
         mapping: Dict[CommonAge, CommonSimDemographicType] = {
             CommonAge.BABY: CommonSimDemographicType.BABY,
             CommonAge.INFANT: CommonSimDemographicType.INFANT,
@@ -195,8 +195,8 @@ class CommonSimDemographicTypeUtils(_HasS4CLClassLog):
     @classmethod
     def convert_to_gender(cls, value: 'CommonSimDemographicType') -> 'CommonGender':
         """Convert a value to a Gender value."""
-        from sims4communitylib.enums.common_sim_demographic_types import CommonSimDemographicType
-        from sims4communitylib.enums.common_gender import CommonGender
+        from s4ap.sims4communitylib.enums.common_sim_demographic_types import CommonSimDemographicType
+        from s4ap.sims4communitylib.enums.common_gender import CommonGender
         mapping: Dict[CommonSimDemographicType, CommonGender] = {
             CommonSimDemographicType.MALE: CommonGender.MALE,
             CommonSimDemographicType.FEMALE: CommonGender.FEMALE
@@ -206,8 +206,8 @@ class CommonSimDemographicTypeUtils(_HasS4CLClassLog):
     @classmethod
     def convert_from_gender(cls, value: 'CommonGender') -> 'CommonSimDemographicType':
         """Convert a value to a Sim demographic value."""
-        from sims4communitylib.enums.common_sim_demographic_types import CommonSimDemographicType
-        from sims4communitylib.enums.common_gender import CommonGender
+        from s4ap.sims4communitylib.enums.common_sim_demographic_types import CommonSimDemographicType
+        from s4ap.sims4communitylib.enums.common_gender import CommonGender
         mapping: Dict[CommonGender, CommonSimDemographicType] = {
             CommonGender.MALE: CommonSimDemographicType.MALE,
             CommonGender.FEMALE: CommonSimDemographicType.FEMALE
@@ -217,8 +217,8 @@ class CommonSimDemographicTypeUtils(_HasS4CLClassLog):
     @classmethod
     def convert_to_species(cls, value: 'CommonSimDemographicType') -> 'CommonSpecies':
         """Convert a value to a Species value."""
-        from sims4communitylib.enums.common_sim_demographic_types import CommonSimDemographicType
-        from sims4communitylib.enums.common_species import CommonSpecies
+        from s4ap.sims4communitylib.enums.common_sim_demographic_types import CommonSimDemographicType
+        from s4ap.sims4communitylib.enums.common_species import CommonSpecies
         mapping: Dict[CommonSimDemographicType, CommonSpecies] = {
             CommonSimDemographicType.HUMAN: CommonSpecies.HUMAN,
             CommonSimDemographicType.SMALL_DOG: CommonSpecies.SMALL_DOG,
@@ -232,8 +232,8 @@ class CommonSimDemographicTypeUtils(_HasS4CLClassLog):
     @classmethod
     def convert_from_species(cls, value: 'CommonSpecies') -> 'CommonSimDemographicType':
         """Convert a value to a Sim demographic value."""
-        from sims4communitylib.enums.common_sim_demographic_types import CommonSimDemographicType
-        from sims4communitylib.enums.common_species import CommonSpecies
+        from s4ap.sims4communitylib.enums.common_sim_demographic_types import CommonSimDemographicType
+        from s4ap.sims4communitylib.enums.common_species import CommonSpecies
         mapping: Dict[CommonSpecies, CommonSimDemographicType] = {
             CommonSpecies.HUMAN: CommonSimDemographicType.HUMAN,
             CommonSpecies.SMALL_DOG: CommonSimDemographicType.SMALL_DOG,
@@ -247,8 +247,8 @@ class CommonSimDemographicTypeUtils(_HasS4CLClassLog):
     @classmethod
     def convert_to_occult_type(cls, value: 'CommonSimDemographicType') -> 'CommonOccultType':
         """Convert a value to an Occult Type value."""
-        from sims4communitylib.enums.common_sim_demographic_types import CommonSimDemographicType
-        from sims4communitylib.enums.common_occult_type import CommonOccultType
+        from s4ap.sims4communitylib.enums.common_sim_demographic_types import CommonSimDemographicType
+        from s4ap.sims4communitylib.enums.common_occult_type import CommonOccultType
         mapping: Dict[CommonSimDemographicType, CommonOccultType] = {
             CommonSimDemographicType.ALIEN: CommonOccultType.ALIEN,
             CommonSimDemographicType.MERMAID: CommonOccultType.MERMAID,
@@ -266,8 +266,8 @@ class CommonSimDemographicTypeUtils(_HasS4CLClassLog):
     @classmethod
     def convert_from_occult_type(cls, value: 'CommonOccultType') -> 'CommonSimDemographicType':
         """Convert a value to a Sim demographic value."""
-        from sims4communitylib.enums.common_sim_demographic_types import CommonSimDemographicType
-        from sims4communitylib.enums.common_occult_type import CommonOccultType
+        from s4ap.sims4communitylib.enums.common_sim_demographic_types import CommonSimDemographicType
+        from s4ap.sims4communitylib.enums.common_occult_type import CommonOccultType
         mapping: Dict[CommonOccultType, CommonSimDemographicType] = {
             CommonOccultType.ALIEN: CommonSimDemographicType.ALIEN,
             CommonOccultType.MERMAID: CommonSimDemographicType.MERMAID,

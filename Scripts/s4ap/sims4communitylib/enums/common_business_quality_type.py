@@ -8,7 +8,7 @@ Copyright (c) COLONOLNUTTY
 from typing import Iterator, Tuple, Union
 
 from business.business_enums import BusinessQualityType
-from sims4communitylib.enums.enumtypes.common_int import CommonInt
+from s4ap.sims4communitylib.enums.enumtypes.common_int import CommonInt
 
 
 class CommonBusinessQualityType(CommonInt):

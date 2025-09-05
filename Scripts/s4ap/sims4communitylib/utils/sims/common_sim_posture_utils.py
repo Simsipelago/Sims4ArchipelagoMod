@@ -10,11 +10,11 @@ from typing import Tuple, Union, Any
 from postures.posture import Posture
 from postures.posture_state import PostureState
 from sims.sim_info import SimInfo
-from sims4communitylib.classes.testing.common_test_result import CommonTestResult
-from sims4communitylib.enums.common_posture_id import CommonPostureId
-from sims4communitylib.enums.enumtypes.common_int import CommonInt
-from sims4communitylib.logging._has_s4cl_class_log import _HasS4CLClassLog
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+from s4ap.sims4communitylib.classes.testing.common_test_result import CommonTestResult
+from s4ap.sims4communitylib.enums.common_posture_id import CommonPostureId
+from s4ap.sims4communitylib.enums.enumtypes.common_int import CommonInt
+from s4ap.sims4communitylib.logging._has_s4cl_class_log import _HasS4CLClassLog
+from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
 
 
 class CommonSimPostureUtils(_HasS4CLClassLog):
@@ -85,8 +85,8 @@ class CommonSimPostureUtils(_HasS4CLClassLog):
         :return: True, if the Sim can be picked up. False, it not.
         :rtype: bool
         """
-        from sims4communitylib.utils.sims.common_species_utils import CommonSpeciesUtils
-        from sims4communitylib.utils.sims.common_age_utils import CommonAgeUtils
+        from s4ap.sims4communitylib.utils.sims.common_species_utils import CommonSpeciesUtils
+        from s4ap.sims4communitylib.utils.sims.common_age_utils import CommonAgeUtils
         if CommonSpeciesUtils.is_fox(sim_info) or CommonSpeciesUtils.is_small_dog(sim_info) or CommonSpeciesUtils.is_cat(sim_info):
             cls.get_log().format_with_message('Success, Sim is a fox, small dog, or cat and thus may be picked up.', sim=sim_info)
             return CommonTestResult.TRUE
@@ -96,7 +96,7 @@ class CommonSimPostureUtils(_HasS4CLClassLog):
         if CommonSpeciesUtils.is_human(sim_info) and (CommonAgeUtils.is_toddler(sim_info) or CommonAgeUtils.is_baby(sim_info)):
             cls.get_log().format_with_message('Success, Sim is a toddler or baby human and thus may be picked up.', sim=sim_info)
             return CommonTestResult.TRUE
-        from sims4communitylib.enums.strings_enum import CommonStringId
+        from s4ap.sims4communitylib.enums.strings_enum import CommonStringId
         return CommonTestResult(False, reason=f'{sim_info} cannot be picked up.', tooltip_text=CommonStringId.S4CL_SIM_CANNOT_BE_PICKED_UP, tooltip_tokens=(sim_info,))
 
     @classmethod
@@ -262,5 +262,5 @@ class CommonSimPostureUtils(_HasS4CLClassLog):
             return posture
 
         from sims4.resources import Types
-        from sims4communitylib.utils.common_resource_utils import CommonResourceUtils
+        from s4ap.sims4communitylib.utils.common_resource_utils import CommonResourceUtils
         return CommonResourceUtils.load_instance(Types.POSTURE, posture)

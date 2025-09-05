@@ -8,7 +8,7 @@ Copyright (c) COLONOLNUTTY
 from typing import Union, TypeVar, Type
 
 from objects.components import ComponentContainer, Component
-from sims4communitylib.enums.types.component_types import CommonComponentType
+from s4ap.sims4communitylib.enums.types.component_types import CommonComponentType
 
 
 CommonExpectedReturnType = TypeVar('CommonExpectedReturnType', bound=Component)

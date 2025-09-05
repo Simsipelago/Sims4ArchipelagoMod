@@ -7,7 +7,7 @@ Copyright (c) COLONOLNUTTY
 """
 import os
 from typing import Union
-from sims4communitylib.enums.enumtypes.common_int import CommonInt
+from s4ap.sims4communitylib.enums.enumtypes.common_int import CommonInt
 
 ON_RTD = os.environ.get('READTHEDOCS', None) == 'True'
 

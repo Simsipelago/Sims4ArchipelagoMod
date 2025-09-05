@@ -11,15 +11,15 @@ from buffs.appearance_modifier.appearance_modifier import AppearanceModifier
 from buffs.buff import Buff
 from sims.sim_info import SimInfo
 from sims4.tuning.tunable import TunableList, TunableTuple, TunableVariant, OptionalTunable
-from sims4communitylib.classes.appearance_modifiers.common_attach_cas_parts_appearance_modifier import \
+from s4ap.sims4communitylib.classes.appearance_modifiers.common_attach_cas_parts_appearance_modifier import \
     CommonAttachCASPartsAppearanceModifier
-from sims4communitylib.dtos.common_cas_part import CommonCASPart
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.utils.cas.common_cas_utils import CommonCASUtils
-from sims4communitylib.utils.sims.common_age_utils import CommonAgeUtils
-from sims4communitylib.utils.sims.common_gender_utils import CommonGenderUtils
-from sims4communitylib.utils.sims.common_species_utils import CommonSpeciesUtils
+from s4ap.sims4communitylib.dtos.common_cas_part import CommonCASPart
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.utils.cas.common_cas_utils import CommonCASUtils
+from s4ap.sims4communitylib.utils.sims.common_age_utils import CommonAgeUtils
+from s4ap.sims4communitylib.utils.sims.common_gender_utils import CommonGenderUtils
+from s4ap.sims4communitylib.utils.sims.common_species_utils import CommonSpeciesUtils
 from tunable_multiplier import TunableMultiplier
 
 

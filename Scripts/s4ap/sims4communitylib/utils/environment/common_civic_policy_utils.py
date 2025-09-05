@@ -10,14 +10,14 @@ from typing import Union, Tuple
 from civic_policies.base_civic_policy import BaseCivicPolicy
 from civic_policies.street_civic_policy import StreetCivicPolicy
 from civic_policies.street_civic_policy_provider import StreetProvider
-from sims4communitylib.enums.common_civic_policy_status_type import CommonCivicPolicyStatusType
-from sims4communitylib.enums.common_street_civic_policy_ids import CommonStreetCivicPolicyId
-from sims4communitylib.enums.common_venue_civic_policy_ids import CommonVenueCivicPolicyId
-from sims4communitylib.logging._has_s4cl_class_log import _HasS4CLClassLog
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.commands.common_console_command import CommonConsoleCommand
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
-from sims4communitylib.utils.location.common_location_utils import CommonLocationUtils
+from s4ap.sims4communitylib.enums.common_civic_policy_status_type import CommonCivicPolicyStatusType
+from s4ap.sims4communitylib.enums.common_street_civic_policy_ids import CommonStreetCivicPolicyId
+from s4ap.sims4communitylib.enums.common_venue_civic_policy_ids import CommonVenueCivicPolicyId
+from s4ap.sims4communitylib.logging._has_s4cl_class_log import _HasS4CLClassLog
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.commands.common_console_command import CommonConsoleCommand
+from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+from s4ap.sims4communitylib.utils.location.common_location_utils import CommonLocationUtils
 from venues.civic_policies.venue_civic_policy import VenueCivicPolicy
 from venues.civic_policies.venue_civic_policy_provider import VenueCivicPolicyProvider
 
@@ -379,7 +379,7 @@ class CommonCivicPolicyUtils(_HasS4CLClassLog):
             return policy
 
         from sims4.resources import Types
-        from sims4communitylib.utils.common_resource_utils import CommonResourceUtils
+        from s4ap.sims4communitylib.utils.common_resource_utils import CommonResourceUtils
         return CommonResourceUtils.load_instance(Types.SNIPPET, policy)
 
 

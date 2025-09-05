@@ -11,8 +11,8 @@ from json import JSONEncoder, JSONDecoder
 from os import DirEntry
 from typing import Union, Any, Iterator, Dict, Type, Callable
 
-from sims4communitylib.classes.serialization.common_serializable import CommonSerializable
-from sims4communitylib.utils.common_io_utils import CommonIOUtils
+from s4ap.sims4communitylib.classes.serialization.common_serializable import CommonSerializable
+from s4ap.sims4communitylib.utils.common_io_utils import CommonIOUtils
 
 
 class CommonJSONIOUtils:

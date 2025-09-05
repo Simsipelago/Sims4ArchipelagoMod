@@ -9,23 +9,23 @@ import services
 from typing import List, Callable, Dict, Tuple
 from sims.outfits.outfit_enums import OutfitCategory, BodyType
 from sims.sim_info import SimInfo
-from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
-from sims4communitylib.events.sim.events.sim_set_current_outfit import S4CLSimSetCurrentOutfitEvent
-from sims4communitylib.events.zone_spin.events.zone_late_load import S4CLZoneLateLoadEvent
-from sims4communitylib.logging.has_log import HasLog
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
+from s4ap.sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
+from s4ap.sims4communitylib.events.sim.events.sim_set_current_outfit import S4CLSimSetCurrentOutfitEvent
+from s4ap.sims4communitylib.events.zone_spin.events.zone_late_load import S4CLZoneLateLoadEvent
+from s4ap.sims4communitylib.logging.has_log import HasLog
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
     CommonConsoleCommandArgument
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
-from sims4communitylib.services.common_service import CommonService
-from sims4communitylib.services.sim.cas.common_sim_outfit_io import CommonSimOutfitIO
-from sims4communitylib.utils.cas.common_outfit_utils import CommonOutfitUtils
-from sims4communitylib.utils.common_function_utils import CommonFunctionUtils
-from sims4communitylib.utils.sims.common_household_utils import CommonHouseholdUtils
-from sims4communitylib.utils.sims.common_sim_location_utils import CommonSimLocationUtils
-from sims4communitylib.utils.sims.common_sim_spawn_utils import CommonSimSpawnUtils
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+from s4ap.sims4communitylib.services.common_service import CommonService
+from s4ap.sims4communitylib.services.sim.cas.common_sim_outfit_io import CommonSimOutfitIO
+from s4ap.sims4communitylib.utils.cas.common_outfit_utils import CommonOutfitUtils
+from s4ap.sims4communitylib.utils.common_function_utils import CommonFunctionUtils
+from s4ap.sims4communitylib.utils.sims.common_household_utils import CommonHouseholdUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_location_utils import CommonSimLocationUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_spawn_utils import CommonSimSpawnUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
 
 
 class CommonEditSimCloneInCASResponseHandle:
@@ -157,7 +157,7 @@ class CommonEditSimCloneInCASService(CommonService, HasLog):
         if setup_outfit is not None:
             setup_outfit(outfit_io)
 
-        # from sims4communitylib.utils.sims.common_occult_utils import CommonOccultUtils
+        # from s4ap.sims4communitylib.utils.sims.common_occult_utils import CommonOccultUtils
         # if CommonOccultUtils.has_any_occult(clone_sim_info):
         #     CommonOccultUtils.switch_to_occult_form(clone_sim_info, OccultType.HUMAN)
         if outfit_io.apply(apply_to_all_outfits_in_same_category=True, apply_to_outfit_category_and_index=self._outfit_category_and_index):

@@ -7,12 +7,12 @@ Copyright (c) COLONOLNUTTY
 """
 from typing import Union, Tuple, Any, Callable, List
 
-from sims4communitylib.dialogs.common_choice_outcome import CommonChoiceOutcome
-from sims4communitylib.dialogs.common_choose_dialog import CommonChooseDialog
-from sims4communitylib.dialogs.option_dialogs.common_choose_option_dialog import CommonChooseOptionDialog
-from sims4communitylib.dialogs.option_dialogs.options.common_dialog_option import CommonDialogOption
-from sims4communitylib.dialogs.option_dialogs.options.common_dialog_option_context import DialogOptionValueType
-from sims4communitylib.utils.common_function_utils import CommonFunctionUtils
+from s4ap.sims4communitylib.dialogs.common_choice_outcome import CommonChoiceOutcome
+from s4ap.sims4communitylib.dialogs.common_choose_dialog import CommonChooseDialog
+from s4ap.sims4communitylib.dialogs.option_dialogs.common_choose_option_dialog import CommonChooseOptionDialog
+from s4ap.sims4communitylib.dialogs.option_dialogs.options.common_dialog_option import CommonDialogOption
+from s4ap.sims4communitylib.dialogs.option_dialogs.options.common_dialog_option_context import DialogOptionValueType
+from s4ap.sims4communitylib.utils.common_function_utils import CommonFunctionUtils
 
 
 # noinspection PyMissingOrEmptyDocstring

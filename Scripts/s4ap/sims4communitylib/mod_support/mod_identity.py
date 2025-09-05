@@ -88,7 +88,7 @@ class CommonModIdentity:
 
     @staticmethod
     def _get_mod_name(mod_identifier: Union[str, 'CommonModIdentity']) -> Union[str, None]:
-        from sims4communitylib.utils.misc.common_mod_identity_utils import CommonModIdentityUtils
+        from s4ap.sims4communitylib.utils.misc.common_mod_identity_utils import CommonModIdentityUtils
         return CommonModIdentityUtils.determine_mod_name_from_identifier(mod_identifier)
 
     def __eq__(self, other: 'CommonModIdentity') -> bool:

@@ -5,7 +5,7 @@ https://creativecommons.org/licenses/by/4.0/legalcode
 
 Copyright (c) COLONOLNUTTY
 """
-from sims4communitylib.classes.math.common_weighted_value import CommonWeightedValue
+from s4ap.sims4communitylib.classes.math.common_weighted_value import CommonWeightedValue
 
 
 class CommonWeightedValueTally:

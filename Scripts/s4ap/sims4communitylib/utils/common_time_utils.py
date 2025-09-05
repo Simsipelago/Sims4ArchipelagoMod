@@ -10,10 +10,10 @@ import clock
 import services
 from clock import ClockSpeedMode, GameClock, ClockSpeedMultiplierType
 from date_and_time import DateAndTime, TimeSpan
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
     CommonConsoleCommandArgument
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
 from time_service import TimeService
 
 

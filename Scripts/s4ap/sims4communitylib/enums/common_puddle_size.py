@@ -6,7 +6,7 @@ https://creativecommons.org/licenses/by/4.0/legalcode
 Copyright (c) COLONOLNUTTY
 """
 from objects.puddles import PuddleSize
-from sims4communitylib.enums.enumtypes.common_int import CommonInt
+from s4ap.sims4communitylib.enums.enumtypes.common_int import CommonInt
 
 
 class CommonPuddleSize(CommonInt):

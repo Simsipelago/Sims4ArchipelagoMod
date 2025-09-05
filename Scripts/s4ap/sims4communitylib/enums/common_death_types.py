@@ -8,7 +8,7 @@ Copyright (c) COLONOLNUTTY
 from typing import Union
 
 from interactions.utils.death import DeathType
-from sims4communitylib.enums.enumtypes.common_int import CommonInt
+from s4ap.sims4communitylib.enums.enumtypes.common_int import CommonInt
 
 
 class CommonDeathType(CommonInt):

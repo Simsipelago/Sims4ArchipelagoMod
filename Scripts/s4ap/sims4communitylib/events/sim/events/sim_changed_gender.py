@@ -6,8 +6,8 @@ https://creativecommons.org/licenses/by/4.0/legalcode
 Copyright (c) COLONOLNUTTY
 """
 from sims.sim_info import SimInfo
-from sims4communitylib.enums.common_gender import CommonGender
-from sims4communitylib.events.event_handling.common_event import CommonEvent
+from s4ap.sims4communitylib.enums.common_gender import CommonGender
+from s4ap.sims4communitylib.events.event_handling.common_event import CommonEvent
 
 
 class S4CLSimChangedGenderEvent(CommonEvent):
@@ -20,8 +20,8 @@ class S4CLSimChangedGenderEvent(CommonEvent):
     .. highlight:: python
     .. code-block:: python
 
-        from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
-        from sims4communitylib.modinfo import ModInfo
+        from s4ap.sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
+        from s4ap.sims4communitylib.modinfo import ModInfo
 
         class ExampleEventListener:
 

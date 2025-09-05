@@ -8,7 +8,7 @@ Copyright (c) COLONOLNUTTY
 import os
 from typing import Union
 
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
 
 
 class CommonLogUtils:
@@ -106,7 +106,7 @@ class CommonLogUtils:
         documents_path = os.path.dirname(CommonLogUtils.get_mods_location_path())
         if os.path.exists(documents_path):
             return documents_path
-        from sims4communitylib.modinfo import ModInfo
+        from s4ap.sims4communitylib.modinfo import ModInfo
         root_file = os.path.normpath(os.path.dirname(os.path.realpath(ModInfo.get_identity().file_path))).replace(os.sep, '/')
         root_file_split = root_file.split('/')
         if 'Mods' not in root_file_split:
@@ -161,7 +161,7 @@ class CommonLogUtils:
 
     @staticmethod
     def _get_file_name(mod_identifier: Union[str, CommonModIdentity], file_name: str, custom_file_path: str=None) -> str:
-        from sims4communitylib.utils.misc.common_mod_identity_utils import CommonModIdentityUtils
+        from s4ap.sims4communitylib.utils.misc.common_mod_identity_utils import CommonModIdentityUtils
         mod_identifier = CommonModIdentityUtils.determine_mod_name_from_identifier(mod_identifier)
         file_path = CommonLogUtils.get_mod_logs_location_path()
         file_name = '{}_{}.txt'.format(mod_identifier, file_name)
@@ -190,7 +190,7 @@ class CommonLogUtils:
 
     @staticmethod
     def _get_old_file_path_name(mod_identifier: Union[str, CommonModIdentity], file_name: str, custom_file_path: str=None) -> str:
-        from sims4communitylib.utils.misc.common_mod_identity_utils import CommonModIdentityUtils
+        from s4ap.sims4communitylib.utils.misc.common_mod_identity_utils import CommonModIdentityUtils
         mod_identifier = CommonModIdentityUtils.determine_mod_name_from_identifier(mod_identifier)
         file_path = CommonLogUtils.get_mod_logs_location_path()
         old_file_name = 'Old_{}_{}.txt'.format(mod_identifier, file_name)
@@ -202,5 +202,5 @@ class CommonLogUtils:
 
     @staticmethod
     def _file_is_too_big(file_path: str) -> bool:
-        from sims4communitylib.s4cl_configuration import S4CLConfiguration
+        from s4ap.sims4communitylib.s4cl_configuration import S4CLConfiguration
         return os.path.getsize(file_path) > S4CLConfiguration().max_output_file_size_in_bytes

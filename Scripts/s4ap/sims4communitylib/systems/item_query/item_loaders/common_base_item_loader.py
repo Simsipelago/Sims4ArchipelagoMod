@@ -7,12 +7,12 @@ Copyright (c) COLONOLNUTTY
 """
 from typing import Tuple, Iterator, Any, Union, TypeVar, Generic
 
-from sims4communitylib.systems.item_query.dtos.common_loaded_item import CommonLoadedItem
+from s4ap.sims4communitylib.systems.item_query.dtos.common_loaded_item import CommonLoadedItem
 from sims4.resources import Types
-from sims4communitylib.logging.has_log import HasLog
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.services.common_service import CommonService
-from sims4communitylib.utils.common_resource_utils import CommonResourceUtils
+from s4ap.sims4communitylib.logging.has_log import HasLog
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.services.common_service import CommonService
+from s4ap.sims4communitylib.utils.common_resource_utils import CommonResourceUtils
 
 CommonLoadedItemType = TypeVar('CommonLoadedItemType', bound=CommonLoadedItem)
 

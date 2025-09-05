@@ -8,7 +8,7 @@ Copyright (c) COLONOLNUTTY
 from typing import Any
 
 from services.persistence_service import SaveGameData
-from sims4communitylib.events.event_handling.common_event import CommonEvent
+from s4ap.sims4communitylib.events.event_handling.common_event import CommonEvent
 
 
 class S4CLSaveSavedEvent(CommonEvent):
@@ -23,8 +23,8 @@ class S4CLSaveSavedEvent(CommonEvent):
     .. highlight:: python
     .. code-block:: python
 
-        from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
-        from sims4communitylib.modinfo import ModInfo
+        from s4ap.sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
+        from s4ap.sims4communitylib.modinfo import ModInfo
 
         class ExampleEventListener:
 

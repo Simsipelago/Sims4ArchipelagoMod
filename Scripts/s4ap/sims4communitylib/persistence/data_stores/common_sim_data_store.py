@@ -6,7 +6,7 @@ https://creativecommons.org/licenses/by/4.0/legalcode
 Copyright (c) COLONOLNUTTY
 """
 from typing import Dict, Any
-from sims4communitylib.persistence.data_stores.common_data_store import CommonDataStore
+from s4ap.sims4communitylib.persistence.data_stores.common_data_store import CommonDataStore
 
 
 class CommonSimDataStore(CommonDataStore):

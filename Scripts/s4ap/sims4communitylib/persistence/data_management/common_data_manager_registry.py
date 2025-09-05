@@ -7,14 +7,14 @@ Copyright (c) COLONOLNUTTY
 """
 from typing import Union, Dict, Any, Type, Callable
 
-from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
-from sims4communitylib.events.save.events.save_loaded import S4CLSaveLoadedEvent
-from sims4communitylib.events.save.events.save_saved import S4CLSaveSavedEvent
-from sims4communitylib.logging.has_class_log import HasClassLog
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.persistence.data_management.common_data_manager import CommonDataManager
-from sims4communitylib.services.common_service import CommonService
+from s4ap.sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
+from s4ap.sims4communitylib.events.save.events.save_loaded import S4CLSaveLoadedEvent
+from s4ap.sims4communitylib.events.save.events.save_saved import S4CLSaveSavedEvent
+from s4ap.sims4communitylib.logging.has_class_log import HasClassLog
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.persistence.data_management.common_data_manager import CommonDataManager
+from s4ap.sims4communitylib.services.common_service import CommonService
 
 
 class CommonDataManagerRegistry(CommonService, HasClassLog):
@@ -28,10 +28,10 @@ class CommonDataManagerRegistry(CommonService, HasClassLog):
     .. code-block:: python
 
         from typing import Tuple
-        from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-        from sims4communitylib.persistence.data_management.common_data_manager import CommonDataManager
-        from sims4communitylib.persistence.data_management.common_data_manager_registry import CommonDataManagerRegistry
-        from sims4communitylib.persistence.persistence_services.common_persistence_service import CommonPersistenceService
+        from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+        from s4ap.sims4communitylib.persistence.data_management.common_data_manager import CommonDataManager
+        from s4ap.sims4communitylib.persistence.data_management.common_data_manager_registry import CommonDataManagerRegistry
+        from s4ap.sims4communitylib.persistence.persistence_services.common_persistence_service import CommonPersistenceService
 
 
         # This attribute will register the data manager to the registry.
@@ -53,9 +53,9 @@ class CommonDataManagerRegistry(CommonService, HasClassLog):
             # noinspection PyMissingOrEmptyDocstring
             @property
             def persistence_services(self) -> Tuple[CommonPersistenceService]:
-                from sims4communitylib.persistence.persistence_services.common_hidden_household_persistence_service import \
+                from s4ap.sims4communitylib.persistence.persistence_services.common_hidden_household_persistence_service import \
                     CommonHiddenHouseholdPersistenceService
-                from sims4communitylib.persistence.persistence_services.common_file_persistence_service import \
+                from s4ap.sims4communitylib.persistence.persistence_services.common_file_persistence_service import \
                     CommonFilePersistenceService
                 # The order matters. The later services will override data loaded from the earlier services. In the follow, any data loaded from the file will override any matching data that was loaded from the hidden household.
                 result: Tuple[CommonPersistenceService] = (
@@ -113,13 +113,13 @@ class CommonDataManagerRegistry(CommonService, HasClassLog):
 
         """
         self.log.debug('Saving data managers.')
-        from sims4communitylib.persistence.common_game_object_data_storage import _CommonGameObjectDataStorageMetaclass
+        from s4ap.sims4communitylib.persistence.common_game_object_data_storage import _CommonGameObjectDataStorageMetaclass
         for (mod_name, data_storage_library) in _CommonGameObjectDataStorageMetaclass._game_object_storage_instances.items():
             data_storage_library: Dict[int, '_CommonGameObjectDataStorageMetaclass'] = data_storage_library
             for data_storage in data_storage_library.values():
                 if hasattr(data_storage, '_save_persisted_data'):
                     data_storage._save_persisted_data()
-        from sims4communitylib.persistence.common_sim_data_storage import _CommonSimDataStorageMetaclass
+        from s4ap.sims4communitylib.persistence.common_sim_data_storage import _CommonSimDataStorageMetaclass
         for (mod_name, data_storage_library) in _CommonSimDataStorageMetaclass._sim_storage_instances.items():
             data_storage_library: Dict[int, '_CommonSimDataStorageMetaclass'] = data_storage_library
             for data_storage in data_storage_library.values():
@@ -136,9 +136,9 @@ class CommonDataManagerRegistry(CommonService, HasClassLog):
         Clear all data managers in the registry.
         """
         self.log.debug('Clearing data managers.')
-        from sims4communitylib.persistence.common_game_object_data_storage import _CommonGameObjectDataStorageMetaclass
+        from s4ap.sims4communitylib.persistence.common_game_object_data_storage import _CommonGameObjectDataStorageMetaclass
         _CommonGameObjectDataStorageMetaclass._game_object_storage_instances = dict()
-        from sims4communitylib.persistence.common_sim_data_storage import _CommonSimDataStorageMetaclass
+        from s4ap.sims4communitylib.persistence.common_sim_data_storage import _CommonSimDataStorageMetaclass
         _CommonSimDataStorageMetaclass._sim_storage_instances = dict()
         for data_manager in self._data_managers.values():
             try:

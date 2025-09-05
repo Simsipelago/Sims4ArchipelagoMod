@@ -6,9 +6,9 @@ https://creativecommons.org/licenses/by/4.0/legalcode
 Copyright (c) COLONOLNUTTY
 """
 
-from sims4communitylib.utils.terrain.common_terrain_location_utils import CommonTerrainLocationUtils as NewCommonTerrainLocationUtils
+from s4ap.sims4communitylib.utils.terrain.common_terrain_location_utils import CommonTerrainLocationUtils as NewCommonTerrainLocationUtils
 
 
 class CommonTerrainUtils(NewCommonTerrainLocationUtils):
-    """An obsolete utility for manipulating terrain location. Use CommonTerrainLocationUtils from sims4communitylib.utils.terrain.common_terrain_location_utils instead."""
+    """An obsolete utility for manipulating terrain location. Use CommonTerrainLocationUtils from s4ap.sims4communitylib.utils.terrain.common_terrain_location_utils instead."""
     pass

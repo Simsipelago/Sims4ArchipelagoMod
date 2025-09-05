@@ -9,7 +9,7 @@ from typing import Union, Any, TYPE_CHECKING, Dict, Type
 from protocolbuffers.Math_pb2 import Quaternion as MathPb2Quaternion
 
 if TYPE_CHECKING:
-    from sims4communitylib.classes.math.common_vector3 import CommonVector3
+    from s4ap.sims4communitylib.classes.math.common_vector3 import CommonVector3
 
 # noinspection PyBroadException
 try:
@@ -253,7 +253,7 @@ class CommonQuaternion:
         :return: An instance of a CommonQuaternion.
         :rtype: CommonQuaternion
         """
-        from sims4communitylib.utils.common_math_utils import CommonMathUtils
+        from s4ap.sims4communitylib.utils.common_math_utils import CommonMathUtils
         return CommonQuaternion.from_radian(CommonMathUtils.degrees_to_radian(degrees))
 
     @staticmethod
@@ -285,7 +285,7 @@ class CommonQuaternion:
         """
         if quaternion is None:
             return 0.0
-        from sims4communitylib.utils.common_math_utils import CommonMathUtils
+        from s4ap.sims4communitylib.utils.common_math_utils import CommonMathUtils
         return CommonMathUtils.radian_to_degrees(CommonQuaternion.to_radian(quaternion))
 
     def __add__(self, other: Union[Quaternion, MathPb2Quaternion, 'CommonQuaternion', float]) -> 'CommonQuaternion':
@@ -309,7 +309,7 @@ class CommonQuaternion:
         :return: A normalized Quaternion.
         :rtype: CommonQuaternion
         """
-        from sims4communitylib.classes.math.common_vector3 import CommonVector3
+        from s4ap.sims4communitylib.classes.math.common_vector3 import CommonVector3
         q = CommonQuaternion.multiply(CommonQuaternion.multiply(quaternion, CommonQuaternion(vector.x, vector.y, vector.z, 0.0)), CommonQuaternion.conjugate(quaternion))  # q.w will be zero.
         return CommonVector3(q.x, q.y, q.z)
 

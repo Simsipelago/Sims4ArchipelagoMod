@@ -10,19 +10,19 @@ from typing import Callable, Iterator, List, Union
 from interactions.base.interaction import Interaction
 from objects.game_object import GameObject
 from objects.script_object import ScriptObject
-from sims4communitylib.enums.strings_enum import CommonStringId
-from sims4communitylib.logging.has_class_log import HasClassLog
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.notifications.common_basic_notification import CommonBasicNotification
-from sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
+from s4ap.sims4communitylib.enums.strings_enum import CommonStringId
+from s4ap.sims4communitylib.logging.has_class_log import HasClassLog
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.notifications.common_basic_notification import CommonBasicNotification
+from s4ap.sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
     CommonConsoleCommandArgument
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
-from sims4communitylib.utils.common_log_utils import CommonLogUtils
-from sims4communitylib.utils.common_type_utils import CommonTypeUtils
-from sims4communitylib.utils.objects.common_object_utils import CommonObjectUtils
-from sims4communitylib.utils.resources.common_interaction_utils import CommonInteractionUtils
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+from s4ap.sims4communitylib.utils.common_log_utils import CommonLogUtils
+from s4ap.sims4communitylib.utils.common_type_utils import CommonTypeUtils
+from s4ap.sims4communitylib.utils.objects.common_object_utils import CommonObjectUtils
+from s4ap.sims4communitylib.utils.resources.common_interaction_utils import CommonInteractionUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
 
 
 class CommonObjectInteractionUtils(HasClassLog):

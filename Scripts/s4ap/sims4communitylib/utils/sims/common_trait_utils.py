@@ -15,17 +15,17 @@ from sims.pregnancy.pregnancy_offspring_data import PregnancyOffspringData
 from sims.sim_info import SimInfo
 from sims.sim_info_base_wrapper import SimInfoBaseWrapper
 from sims4.resources import Types
-from sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
-from sims4communitylib.classes.testing.common_test_result import CommonTestResult
-from sims4communitylib.enums.traits_enum import CommonTraitId
-from sims4communitylib.logging._has_s4cl_class_log import _HasS4CLClassLog
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.notifications.common_basic_notification import CommonBasicNotification
-from sims4communitylib.services.commands.common_console_command import CommonConsoleCommandArgument, \
+from s4ap.sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
+from s4ap.sims4communitylib.classes.testing.common_test_result import CommonTestResult
+from s4ap.sims4communitylib.enums.traits_enum import CommonTraitId
+from s4ap.sims4communitylib.logging._has_s4cl_class_log import _HasS4CLClassLog
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.notifications.common_basic_notification import CommonBasicNotification
+from s4ap.sims4communitylib.services.commands.common_console_command import CommonConsoleCommandArgument, \
     CommonConsoleCommand
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
-from sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+from s4ap.sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
 from traits.traits import Trait
 
 
@@ -621,7 +621,7 @@ class CommonTraitUtils(_HasS4CLClassLog):
         ..warning:: Obsolete: Use :func:`~is_service_sim` in :class:`.CommonSimTypeUtils` instead.
 
         """
-        from sims4communitylib.utils.sims.common_sim_type_utils import CommonSimTypeUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_type_utils import CommonSimTypeUtils
         return CommonSimTypeUtils.is_service_sim(sim_info)
 
     @classmethod
@@ -808,7 +808,7 @@ class CommonTraitUtils(_HasS4CLClassLog):
         :return: The result of testing. True, if the Sim has a masculine frame. False, if not.
         :rtype: CommonTestResult
         """
-        from sims4communitylib.utils.sims.common_sim_gender_option_utils import CommonSimGenderOptionUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_gender_option_utils import CommonSimGenderOptionUtils
         return CommonSimGenderOptionUtils.has_masculine_frame(sim_info)
 
     @classmethod
@@ -822,7 +822,7 @@ class CommonTraitUtils(_HasS4CLClassLog):
         :return: The result of testing. True, if the Sim has a feminine frame. False, if not.
         :rtype: CommonTestResult
         """
-        from sims4communitylib.utils.sims.common_sim_gender_option_utils import CommonSimGenderOptionUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_gender_option_utils import CommonSimGenderOptionUtils
         return CommonSimGenderOptionUtils.has_feminine_frame(sim_info)
 
     @classmethod
@@ -836,7 +836,7 @@ class CommonTraitUtils(_HasS4CLClassLog):
         :return: The result of testing. True, if the Sim prefers menswear. False, if not.
         :rtype: CommonTestResult
         """
-        from sims4communitylib.utils.sims.common_sim_gender_option_utils import CommonSimGenderOptionUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_gender_option_utils import CommonSimGenderOptionUtils
         return CommonSimGenderOptionUtils.prefers_menswear(sim_info)
 
     @classmethod
@@ -850,7 +850,7 @@ class CommonTraitUtils(_HasS4CLClassLog):
         :return: The result of testing. True, if the Sim prefers womenswear. False, if not.
         :rtype: CommonTestResult
         """
-        from sims4communitylib.utils.sims.common_sim_gender_option_utils import CommonSimGenderOptionUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_gender_option_utils import CommonSimGenderOptionUtils
         return CommonSimGenderOptionUtils.prefers_womenswear(sim_info)
 
     @classmethod
@@ -867,7 +867,7 @@ class CommonTraitUtils(_HasS4CLClassLog):
         :return: The result of testing. True, if the Sim can impregnate other Sims. False, if not.
         :rtype: CommonTestResult
         """
-        from sims4communitylib.utils.sims.common_sim_gender_option_utils import CommonSimGenderOptionUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_gender_option_utils import CommonSimGenderOptionUtils
         return CommonSimGenderOptionUtils.can_impregnate(sim_info)
 
     @classmethod
@@ -884,7 +884,7 @@ class CommonTraitUtils(_HasS4CLClassLog):
         :return: The result of testing. True, if the Sim can not impregnate other Sims. False, if not.
         :rtype: CommonTestResult
         """
-        from sims4communitylib.utils.sims.common_sim_gender_option_utils import CommonSimGenderOptionUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_gender_option_utils import CommonSimGenderOptionUtils
         return CommonSimGenderOptionUtils.can_not_impregnate(sim_info)
 
     @classmethod
@@ -901,7 +901,7 @@ class CommonTraitUtils(_HasS4CLClassLog):
         :return: The result of testing. True, if the Sim can be impregnated. False, if not.
         :rtype: CommonTestResult
         """
-        from sims4communitylib.utils.sims.common_sim_gender_option_utils import CommonSimGenderOptionUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_gender_option_utils import CommonSimGenderOptionUtils
         return CommonSimGenderOptionUtils.can_be_impregnated(sim_info)
 
     @classmethod
@@ -918,7 +918,7 @@ class CommonTraitUtils(_HasS4CLClassLog):
         :return: The result of testing. True, if the Sim can not be impregnated. False, if not.
         :rtype: CommonTestResult
         """
-        from sims4communitylib.utils.sims.common_sim_gender_option_utils import CommonSimGenderOptionUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_gender_option_utils import CommonSimGenderOptionUtils
         return CommonSimGenderOptionUtils.can_not_be_impregnated(sim_info)
 
     @classmethod
@@ -938,7 +938,7 @@ class CommonTraitUtils(_HasS4CLClassLog):
         :return: The result of testing. True, if the Sim can create pregnancies. False, if not.
         :rtype: CommonTestResult
         """
-        from sims4communitylib.utils.sims.common_sim_gender_option_utils import CommonSimGenderOptionUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_gender_option_utils import CommonSimGenderOptionUtils
         return CommonSimGenderOptionUtils.can_create_pregnancy(sim_info)
 
     @classmethod
@@ -955,7 +955,7 @@ class CommonTraitUtils(_HasS4CLClassLog):
         :return: The result of testing. True, if the Sim can reproduce. False, if not.
         :rtype: CommonTestResult
         """
-        from sims4communitylib.utils.sims.common_sim_gender_option_utils import CommonSimGenderOptionUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_gender_option_utils import CommonSimGenderOptionUtils
         return CommonSimGenderOptionUtils.can_reproduce(sim_info)
 
     @classmethod
@@ -972,7 +972,7 @@ class CommonTraitUtils(_HasS4CLClassLog):
         :return: The result of testing. True, if the Sim can not reproduce. False, if not.
         :rtype: CommonTestResult
         """
-        from sims4communitylib.utils.sims.common_sim_gender_option_utils import CommonSimGenderOptionUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_gender_option_utils import CommonSimGenderOptionUtils
         return CommonSimGenderOptionUtils.can_not_reproduce(sim_info)
 
     @classmethod
@@ -986,7 +986,7 @@ class CommonTraitUtils(_HasS4CLClassLog):
         :return: The result of testing. True, if the Sim uses toilets while standing. False, if not.
         :rtype: CommonTestResult
         """
-        from sims4communitylib.utils.sims.common_sim_gender_option_utils import CommonSimGenderOptionUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_gender_option_utils import CommonSimGenderOptionUtils
         return CommonSimGenderOptionUtils.uses_toilet_standing(sim_info)
 
     @classmethod
@@ -1000,7 +1000,7 @@ class CommonTraitUtils(_HasS4CLClassLog):
         :return: The result of testing. True, if the Sim uses toilets while sitting. False, if not.
         :rtype: CommonTestResult
         """
-        from sims4communitylib.utils.sims.common_sim_gender_option_utils import CommonSimGenderOptionUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_gender_option_utils import CommonSimGenderOptionUtils
         return CommonSimGenderOptionUtils.uses_toilet_sitting(sim_info)
 
     @classmethod
@@ -1527,7 +1527,7 @@ class CommonTraitUtils(_HasS4CLClassLog):
             return trait
 
         from sims4.resources import Types
-        from sims4communitylib.utils.common_resource_utils import CommonResourceUtils
+        from s4ap.sims4communitylib.utils.common_resource_utils import CommonResourceUtils
         return CommonResourceUtils.load_instance(Types.TRAIT, trait)
 
 

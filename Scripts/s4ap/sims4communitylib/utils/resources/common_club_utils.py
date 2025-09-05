@@ -11,7 +11,7 @@ import services
 from clubs.club import Club
 from clubs.club_tuning import ClubRule
 from sims.sim_info import SimInfo
-from sims4communitylib.utils.common_function_utils import CommonFunctionUtils
+from s4ap.sims4communitylib.utils.common_function_utils import CommonFunctionUtils
 
 
 class CommonClubUtils:
@@ -50,7 +50,7 @@ class CommonClubUtils:
         :return: An iterator of all Sims in a Club that pass the include callback filter.
         :rtype: Iterator[SimInfo]
         """
-        from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
         for member_sim in club.members:
             sim_info = CommonSimUtils.get_sim_info(member_sim)
             if not include_club_member_callback(sim_info):

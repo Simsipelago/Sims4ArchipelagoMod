@@ -6,14 +6,14 @@ https://creativecommons.org/licenses/by/4.0/legalcode
 Copyright (c) COLONOLNUTTY
 """
 import math
-from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
-from sims4communitylib.events.zone_update.events.zone_update_event import S4CLZoneUpdateEvent
-from sims4communitylib.logging.has_log import HasLog
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.common_service import CommonService
-from sims4communitylib.utils.common_injection_utils import CommonInjectionUtils
-from sims4communitylib.utils.common_time_utils import CommonTimeUtils
+from s4ap.sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
+from s4ap.sims4communitylib.events.zone_update.events.zone_update_event import S4CLZoneUpdateEvent
+from s4ap.sims4communitylib.logging.has_log import HasLog
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.common_service import CommonService
+from s4ap.sims4communitylib.utils.common_injection_utils import CommonInjectionUtils
+from s4ap.sims4communitylib.utils.common_time_utils import CommonTimeUtils
 from zone import Zone
 
 

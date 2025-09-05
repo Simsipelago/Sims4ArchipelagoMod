@@ -11,8 +11,8 @@ from interactions.base.interaction import Interaction
 from interactions.interaction_queue import InteractionQueue
 from sims.sim import Sim
 from sims.sim_info import SimInfo
-from sims4communitylib.events.event_handling.common_event import CommonEvent
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+from s4ap.sims4communitylib.events.event_handling.common_event import CommonEvent
+from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
 
 
 class S4CLInteractionQueuedEvent(CommonEvent):
@@ -27,8 +27,8 @@ class S4CLInteractionQueuedEvent(CommonEvent):
     .. highlight:: python
     .. code-block:: python
 
-        from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
-        from sims4communitylib.modinfo import ModInfo
+        from s4ap.sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
+        from s4ap.sims4communitylib.modinfo import ModInfo
 
         class ExampleEventListener:
 

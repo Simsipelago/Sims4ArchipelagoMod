@@ -7,8 +7,8 @@ Copyright (c) COLONOLNUTTY
 """
 from typing import Union, Tuple, TypeVar
 
-from sims4communitylib.enums.enumtypes.common_int_flags import CommonIntFlags
-from sims4communitylib.utils.common_collection_utils import CommonCollectionUtils
+from s4ap.sims4communitylib.enums.enumtypes.common_int_flags import CommonIntFlags
+from s4ap.sims4communitylib.utils.common_collection_utils import CommonCollectionUtils
 
 CommonEnumFlagsTypeValueType = TypeVar('CommonEnumFlagsTypeValueType', int, CommonIntFlags)
 

@@ -10,17 +10,17 @@ from typing import Tuple
 from objects.game_object import GameObject
 from objects.script_object import ScriptObject
 from sims.sim import Sim
-from sims4communitylib.enums.affordance_list_ids import CommonAffordanceListId
-from sims4communitylib.enums.enumtypes.common_int import CommonInt
-from sims4communitylib.enums.interactions_enum import CommonInteractionId
-from sims4communitylib.services.interactions.interaction_registration_service import CommonInteractionRegistry, \
+from s4ap.sims4communitylib.enums.affordance_list_ids import CommonAffordanceListId
+from s4ap.sims4communitylib.enums.enumtypes.common_int import CommonInt
+from s4ap.sims4communitylib.enums.interactions_enum import CommonInteractionId
+from s4ap.sims4communitylib.services.interactions.interaction_registration_service import CommonInteractionRegistry, \
     CommonInteractionType, CommonScriptObjectInteractionHandler, CommonInteractionHandler
-from sims4communitylib.services.resources.common_instance_manager_modification_registry import \
+from s4ap.sims4communitylib.services.resources.common_instance_manager_modification_registry import \
     CommonInstanceManagerModificationRegistry
-from sims4communitylib.services.resources.modification_handlers.common_add_interactions_to_affordance_lists_handler import \
+from s4ap.sims4communitylib.services.resources.modification_handlers.common_add_interactions_to_affordance_lists_handler import \
     CommonAddInteractionsToAffordanceListsModificationHandler
-from sims4communitylib.utils.common_type_utils import CommonTypeUtils
-from sims4communitylib.utils.objects.common_object_state_utils import CommonObjectStateUtils
+from s4ap.sims4communitylib.utils.common_type_utils import CommonTypeUtils
+from s4ap.sims4communitylib.utils.objects.common_object_state_utils import CommonObjectStateUtils
 
 
 @CommonInteractionRegistry.register_interaction_handler(CommonInteractionType.ON_SCRIPT_OBJECT_LOAD)

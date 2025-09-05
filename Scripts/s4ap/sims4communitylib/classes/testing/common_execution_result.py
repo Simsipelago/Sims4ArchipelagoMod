@@ -9,9 +9,9 @@ from typing import Any, Union, Iterator
 
 from event_testing.results import TestResult
 from protocolbuffers.Localization_pb2 import LocalizedString
-from sims4communitylib.enums.strings_enum import CommonStringId
-from sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
-from sims4communitylib.utils.localization.common_localized_string_separators import CommonLocalizedStringSeparator
+from s4ap.sims4communitylib.enums.strings_enum import CommonStringId
+from s4ap.sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
+from s4ap.sims4communitylib.utils.localization.common_localized_string_separators import CommonLocalizedStringSeparator
 
 
 class CommonExecutionResult(TestResult):

@@ -7,11 +7,11 @@ Copyright (c) COLONOLNUTTY
 """
 import os
 from typing import Callable, Any, Union
-from sims4communitylib.classes.time.common_alarm_handle import CommonAlarmHandle
-from sims4communitylib.logging.has_class_log import HasClassLog
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.utils.common_time_utils import CommonTimeUtils
+from s4ap.sims4communitylib.classes.time.common_alarm_handle import CommonAlarmHandle
+from s4ap.sims4communitylib.logging.has_class_log import HasClassLog
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.utils.common_time_utils import CommonTimeUtils
 
 ON_RTD = os.environ.get('READTHEDOCS', None) == 'True'
 

@@ -7,8 +7,8 @@ Copyright (c) COLONOLNUTTY
 """
 from typing import Any, Union
 from sims4.math import Location
-from sims4communitylib.classes.math.common_surface_identifier import CommonSurfaceIdentifier
-from sims4communitylib.classes.math.common_transform import CommonTransform
+from s4ap.sims4communitylib.classes.math.common_surface_identifier import CommonSurfaceIdentifier
+from s4ap.sims4communitylib.classes.math.common_transform import CommonTransform
 
 
 class CommonLocation:

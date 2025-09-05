@@ -8,8 +8,8 @@ Copyright (c) COLONOLNUTTY
 from typing import Union
 
 from objects.terrain import Terrain
-from sims4communitylib.classes.math.common_surface_identifier import CommonSurfaceIdentifier
-from sims4communitylib.classes.math.common_vector3 import CommonVector3
+from s4ap.sims4communitylib.classes.math.common_surface_identifier import CommonSurfaceIdentifier
+from s4ap.sims4communitylib.classes.math.common_vector3 import CommonVector3
 
 
 class CommonTerrainLocationUtils:

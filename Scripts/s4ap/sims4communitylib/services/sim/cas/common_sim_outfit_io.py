@@ -12,12 +12,12 @@ from protocolbuffers import S4Common_pb2, Outfits_pb2
 from sims.outfits.outfit_enums import OutfitCategory, BodyType
 from sims.sim_info import SimInfo
 from sims.sim_info_base_wrapper import SimInfoBaseWrapper
-from sims4communitylib.enums.common_body_slot import CommonBodySlot
-from sims4communitylib.logging.has_log import HasLog
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.utils.cas.common_outfit_utils import CommonOutfitUtils
-from sims4communitylib.utils.common_resource_utils import CommonResourceUtils
-from sims4communitylib.utils.sims.common_sim_name_utils import CommonSimNameUtils
+from s4ap.sims4communitylib.enums.common_body_slot import CommonBodySlot
+from s4ap.sims4communitylib.logging.has_log import HasLog
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.utils.cas.common_outfit_utils import CommonOutfitUtils
+from s4ap.sims4communitylib.utils.common_resource_utils import CommonResourceUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_name_utils import CommonSimNameUtils
 
 
 class CommonSimOutfitIO(HasLog):
@@ -199,7 +199,7 @@ class CommonSimOutfitIO(HasLog):
         :return: True, if the CAS Part was attached successfully. False, if not.
         :rtype: bool
         """
-        from sims4communitylib.utils.cas.common_cas_utils import CommonCASUtils
+        from s4ap.sims4communitylib.utils.cas.common_cas_utils import CommonCASUtils
         if cas_part_id == -1 or cas_part_id is None:
             self.log.format_error_with_message('Attempted to attach a negative or None CAS Part to the outfit of a Sim!', sim=self.sim_info, body_type=body_type, cas_part_id=cas_part_id, outfit_category_and_index=self._outfit_category_and_index)
             return False

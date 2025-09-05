@@ -9,11 +9,11 @@ from typing import Union, Dict, Any, List, Tuple
 
 from sims.outfits.outfit_enums import BodyType, OutfitCategory
 from sims.sim_info import SimInfo
-from sims4communitylib.classes.serialization.common_serializable import CommonSerializable
-from sims4communitylib.enums.common_body_slot import CommonBodySlot
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.services.sim.cas.common_sim_outfit_io import CommonSimOutfitIO
-from sims4communitylib.utils.common_resource_utils import CommonResourceUtils
+from s4ap.sims4communitylib.classes.serialization.common_serializable import CommonSerializable
+from s4ap.sims4communitylib.enums.common_body_slot import CommonBodySlot
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.services.sim.cas.common_sim_outfit_io import CommonSimOutfitIO
+from s4ap.sims4communitylib.utils.common_resource_utils import CommonResourceUtils
 
 
 class CommonOutfit(CommonSerializable):

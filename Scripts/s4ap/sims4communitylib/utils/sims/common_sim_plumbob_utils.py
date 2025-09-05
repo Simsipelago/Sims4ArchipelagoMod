@@ -7,12 +7,12 @@ Copyright (c) COLONOLNUTTY
 """
 from interactions.utils.plumbbob import unslot_plumbbob, reslot_plumbbob
 from sims.sim_info import SimInfo
-from sims4communitylib.classes.math.common_vector3 import CommonVector3
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
+from s4ap.sims4communitylib.classes.math.common_vector3 import CommonVector3
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
     CommonConsoleCommandArgument
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
 
 
 class CommonSimPlumbobSlot:

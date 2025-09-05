@@ -9,12 +9,12 @@ from typing import Union
 
 from sims.funds import FamilyFunds
 from sims.sim_info import SimInfo
-from sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
-from sims4communitylib.enums.common_currency_modify_reasons import CommonCurrencyModifyReason
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
+from s4ap.sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
+from s4ap.sims4communitylib.enums.common_currency_modify_reasons import CommonCurrencyModifyReason
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
     CommonConsoleCommandArgument
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
 
 
 class CommonSimCurrencyUtils:
@@ -93,7 +93,7 @@ class CommonSimCurrencyUtils:
         :return: The FamilyFunds object of the Household of the specified Sim or None if the Sim did not have a Household.
         :rtype: Union[FamilyFunds, None]
         """
-        from sims4communitylib.utils.sims.common_household_utils import CommonHouseholdUtils
+        from s4ap.sims4communitylib.utils.sims.common_household_utils import CommonHouseholdUtils
         household = CommonHouseholdUtils.get_household(sim_info)
         if household is None:
             return None

@@ -11,12 +11,12 @@ from objects.terrain import TerrainPoint
 from routing import SurfaceType
 from server.pick_info import PickType
 from sims.sim_info import SimInfo
-from sims4communitylib.classes.math.common_surface_identifier import CommonSurfaceIdentifier
-from sims4communitylib.classes.math.common_vector3 import CommonVector3
-from sims4communitylib.logging.has_class_log import HasClassLog
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+from s4ap.sims4communitylib.classes.math.common_surface_identifier import CommonSurfaceIdentifier
+from s4ap.sims4communitylib.classes.math.common_vector3 import CommonVector3
+from s4ap.sims4communitylib.logging.has_class_log import HasClassLog
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
 
 
 class CommonTerrainInteractionUtils(HasClassLog):
@@ -49,7 +49,7 @@ class CommonTerrainInteractionUtils(HasClassLog):
         :return: A tuple of the terrain point and the interaction context created from the position and surface level for the Sim or (None, None) if an error occurs.
         :rtype: Tuple[Union[TerrainPoint, None], Union[InteractionContext, None]]
         """
-        from sims4communitylib.utils.location.common_location_utils import CommonLocationUtils
+        from s4ap.sims4communitylib.utils.location.common_location_utils import CommonLocationUtils
         from server_commands.sim_commands import _build_terrain_interaction_target_and_context
         sim = CommonSimUtils.get_sim_instance(sim_info)
         if sim is None:

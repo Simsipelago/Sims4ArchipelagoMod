@@ -8,7 +8,7 @@ Copyright (c) COLONOLNUTTY
 from typing import Union, Iterator, Tuple
 
 from sims.outfits.outfit_enums import BodyType
-from sims4communitylib.enums.enumtypes.common_int_flags import CommonIntFlags
+from s4ap.sims4communitylib.enums.enumtypes.common_int_flags import CommonIntFlags
 
 
 class CommonBodySlot(CommonIntFlags):

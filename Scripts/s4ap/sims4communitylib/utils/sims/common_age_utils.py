@@ -12,11 +12,11 @@ import services
 from event_testing.test_events import TestEvent
 from sims.sim_info import SimInfo
 from sims.sim_info_types import Age, Species, SpeciesExtended
-from sims4communitylib.enums.common_age import CommonAge
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
+from s4ap.sims4communitylib.enums.common_age import CommonAge
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
     CommonConsoleCommandArgument
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
 
 
 class CommonAgeUtils:
@@ -99,7 +99,7 @@ class CommonAgeUtils:
         if species == SpeciesExtended.FOX:
             return Age.ADULT
 
-        from sims4communitylib.utils.sims.common_species_utils import CommonSpeciesUtils
+        from s4ap.sims4communitylib.utils.sims.common_species_utils import CommonSpeciesUtils
         if CommonSpeciesUtils.is_animal_species(species) or species == SpeciesExtended.SMALLDOG:
             return Age.CHILD
         return None
@@ -240,7 +240,7 @@ class CommonAgeUtils:
         :rtype: bool
         """
         from sims4.resources import Types
-        from sims4communitylib.utils.common_resource_utils import CommonResourceUtils
+        from s4ap.sims4communitylib.utils.common_resource_utils import CommonResourceUtils
         age = cls.convert_to_approximate_age(age)
         if age is None:
             return False

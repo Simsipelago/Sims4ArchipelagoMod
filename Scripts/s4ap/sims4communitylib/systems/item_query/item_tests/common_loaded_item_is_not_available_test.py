@@ -5,11 +5,11 @@ https://creativecommons.org/licenses/by/4.0/legalcode
 
 Copyright (c) COLONOLNUTTY
 """
-from sims4communitylib.systems.item_query.dtos.common_loaded_item import CommonLoadedItem
-from sims4communitylib.systems.item_query.item_tests.common_loaded_item_test import CommonLoadedItemTest
-from sims4communitylib.classes.testing.common_test_result import CommonTestResult
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.systems.item_query.dtos.common_loaded_item import CommonLoadedItem
+from s4ap.sims4communitylib.systems.item_query.item_tests.common_loaded_item_test import CommonLoadedItemTest
+from s4ap.sims4communitylib.classes.testing.common_test_result import CommonTestResult
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.modinfo import ModInfo
 
 
 class CommonLoadedItemIsNotAvailableTest(CommonLoadedItemTest[CommonLoadedItem]):

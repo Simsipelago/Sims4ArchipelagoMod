@@ -7,10 +7,10 @@ Copyright (c) COLONOLNUTTY
 """
 from typing import Any, Callable, Union
 from protocolbuffers.Localization_pb2 import LocalizedString
-from sims4communitylib.dialogs.common_dialog import CommonDialog
-from sims4communitylib.logging.has_log import HasLog
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.utils.common_function_utils import CommonFunctionUtils
+from s4ap.sims4communitylib.dialogs.common_dialog import CommonDialog
+from s4ap.sims4communitylib.logging.has_log import HasLog
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.utils.common_function_utils import CommonFunctionUtils
 from ui.ui_dialog import UiDialogBase
 
 

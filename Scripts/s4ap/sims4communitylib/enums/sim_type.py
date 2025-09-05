@@ -7,7 +7,7 @@ Copyright (c) COLONOLNUTTY
 """
 from typing import Tuple, Iterator
 
-from sims4communitylib.enums.enumtypes.common_int_flags import CommonIntFlags
+from s4ap.sims4communitylib.enums.enumtypes.common_int_flags import CommonIntFlags
 
 
 class CommonSimType(CommonIntFlags):

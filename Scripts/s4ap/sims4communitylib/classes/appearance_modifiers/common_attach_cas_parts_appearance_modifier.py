@@ -10,16 +10,16 @@ from typing import Any, Tuple, Union, List
 
 from sims.outfits.outfit_enums import OutfitCategory, BodyTypeFlag, BodyType
 from sims.sim_info import SimInfo
-from sims4communitylib.dtos.common_cas_part import CommonCASPart
-from sims4communitylib.enums.buffs_enum import CommonBuffId
-from sims4communitylib.enums.common_appearance_modifier_type import CommonAppearanceModifierType
-from sims4communitylib.enums.common_body_slot import CommonBodySlot
-from sims4communitylib.logging.has_log import HasLog
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
+from s4ap.sims4communitylib.dtos.common_cas_part import CommonCASPart
+from s4ap.sims4communitylib.enums.buffs_enum import CommonBuffId
+from s4ap.sims4communitylib.enums.common_appearance_modifier_type import CommonAppearanceModifierType
+from s4ap.sims4communitylib.enums.common_body_slot import CommonBodySlot
+from s4ap.sims4communitylib.logging.has_log import HasLog
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
     CommonConsoleCommandArgument
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
 
 ON_RTD = os.environ.get('READTHEDOCS', None) == 'True'
 
@@ -296,7 +296,7 @@ class CommonAttachCASPartsAppearanceModifier(AppearanceModifier.BaseAppearanceMo
 
         self.log.format_with_message('Applying CAS Parts with ids', sim=original_unmodified_sim_info, cas_part_ids_and_body_types=cas_parts)
 
-        from sims4communitylib.utils.cas.common_cas_utils import CommonCASUtils
+        from s4ap.sims4communitylib.utils.cas.common_cas_utils import CommonCASUtils
         CommonCASUtils.attach_cas_parts_to_all_outfits_of_sim(modified_sim_info, cas_parts)
 
         body_types: Tuple[Union[CommonBodySlot, BodyType, int], ...] = tuple([cas_part.body_type for cas_part in cas_parts])
@@ -349,7 +349,7 @@ if not ON_RTD:
         if sim_info is None:
             return False
         output(f'Toggling bare feet example buff on Sim {sim_info}.')
-        from sims4communitylib.utils.sims.common_buff_utils import CommonBuffUtils
+        from s4ap.sims4communitylib.utils.sims.common_buff_utils import CommonBuffUtils
         if CommonBuffUtils.has_buff(sim_info, CommonBuffId.S4CL_EXAMPLE_APPLY_BARE_FEET):
             output(f'Removing bare feet example buff from Sim {sim_info}')
             CommonBuffUtils.remove_buff(sim_info, CommonBuffId.S4CL_EXAMPLE_APPLY_BARE_FEET)

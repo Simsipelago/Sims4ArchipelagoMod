@@ -9,13 +9,13 @@ from typing import Iterator, Union, Dict, Callable
 
 from sims.occult.occult_enums import OccultType
 from sims.sim_info import SimInfo
-from sims4communitylib.classes.testing.common_test_result import CommonTestResult
-from sims4communitylib.enums.common_occult_type import CommonOccultType
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
+from s4ap.sims4communitylib.classes.testing.common_test_result import CommonTestResult
+from s4ap.sims4communitylib.enums.common_occult_type import CommonOccultType
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
     CommonConsoleCommandArgument
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
-from sims4communitylib.utils.sims.common_sim_name_utils import CommonSimNameUtils
+from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+from s4ap.sims4communitylib.utils.sims.common_sim_name_utils import CommonSimNameUtils
 
 
 class CommonSimOccultTypeUtils:
@@ -80,7 +80,7 @@ class CommonSimOccultTypeUtils:
         if occult_type == CommonOccultType.NON_OCCULT:
             # Every Sim is always a Non-Occult
             return CommonTestResult.TRUE
-        from sims4communitylib.utils.sims.common_occult_utils import CommonOccultUtils
+        from s4ap.sims4communitylib.utils.sims.common_occult_utils import CommonOccultUtils
         occult_type_mappings: Dict[CommonOccultType, Callable[[SimInfo], CommonTestResult]] = {
             CommonOccultType.ALIEN: CommonOccultUtils.is_alien,
             CommonOccultType.MERMAID: CommonOccultUtils.is_mermaid,
@@ -114,7 +114,7 @@ class CommonSimOccultTypeUtils:
         """
         if occult_type == CommonOccultType.NONE:
             raise AssertionError('Cannot check if Sim is currently a NONE occult!'.format(CommonSimNameUtils.get_full_name(sim_info)))
-        from sims4communitylib.utils.sims.common_occult_utils import CommonOccultUtils
+        from s4ap.sims4communitylib.utils.sims.common_occult_utils import CommonOccultUtils
         occult_type_mappings: Dict[CommonOccultType, Callable[[SimInfo], CommonTestResult]] = {
             CommonOccultType.ALIEN: CommonOccultUtils.is_currently_an_alien,
             CommonOccultType.MERMAID: CommonOccultUtils.is_currently_a_mermaid,
@@ -142,7 +142,7 @@ class CommonSimOccultTypeUtils:
         :return: The CommonOccultType that represents what a Sim is.
         :rtype: CommonOccultType
         """
-        from sims4communitylib.utils.sims.common_occult_utils import CommonOccultUtils
+        from s4ap.sims4communitylib.utils.sims.common_occult_utils import CommonOccultUtils
         if CommonOccultUtils.is_robot(sim_info):
             return CommonOccultType.ROBOT
         elif CommonOccultUtils.is_scarecrow(sim_info):
@@ -177,7 +177,7 @@ class CommonSimOccultTypeUtils:
         :return: The CommonOccultType the Sim is currently appearing as, or CommonOccultType.NONE if they are not appearing as any Occult or are appearing as their HUMAN disguise/occult.
         :rtype: CommonOccultType
         """
-        from sims4communitylib.utils.sims.common_occult_utils import CommonOccultUtils
+        from s4ap.sims4communitylib.utils.sims.common_occult_utils import CommonOccultUtils
         if CommonOccultUtils.is_currently_a_mermaid(sim_info) or CommonOccultUtils.is_mermaid_in_mermaid_form(sim_info):
             return CommonOccultType.MERMAID
         elif CommonOccultUtils.is_robot(sim_info):

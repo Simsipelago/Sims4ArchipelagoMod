@@ -8,12 +8,12 @@ Copyright (c) COLONOLNUTTY
 from typing import Union, TYPE_CHECKING
 from sims4.math import Location as Math_Location
 from routing import Location
-from sims4communitylib.classes.math.common_quaternion import CommonQuaternion
-from sims4communitylib.classes.math.common_surface_identifier import CommonSurfaceIdentifier
-from sims4communitylib.classes.math.common_vector3 import CommonVector3
+from s4ap.sims4communitylib.classes.math.common_quaternion import CommonQuaternion
+from s4ap.sims4communitylib.classes.math.common_surface_identifier import CommonSurfaceIdentifier
+from s4ap.sims4communitylib.classes.math.common_vector3 import CommonVector3
 
 if TYPE_CHECKING:
-    from sims4communitylib.classes.math.common_location import CommonLocation
+    from s4ap.sims4communitylib.classes.math.common_location import CommonLocation
 
 
 class CommonRoutingLocation:
@@ -87,7 +87,7 @@ class CommonRoutingLocation:
         :return: An instance of a CommonRoutingLocation or None if the object failed to convert.
         :rtype: Union[CommonRoutingLocation, None]
         """
-        from sims4communitylib.classes.math.common_location import CommonLocation
+        from s4ap.sims4communitylib.classes.math.common_location import CommonLocation
         if location is None:
             return None
         if isinstance(location, CommonRoutingLocation):

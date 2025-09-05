@@ -6,13 +6,13 @@ https://creativecommons.org/licenses/by/4.0/legalcode
 Copyright (c) COLONOLNUTTY
 """
 from sims.sim_info import SimInfo
-from sims4communitylib.enums.traits_enum import CommonTraitId
-from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
-from sims4communitylib.events.sim.events.sim_spawned import S4CLSimSpawnedEvent
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.utils.sims.common_gender_utils import CommonGenderUtils
-from sims4communitylib.utils.sims.common_species_utils import CommonSpeciesUtils
-from sims4communitylib.utils.sims.common_trait_utils import CommonTraitUtils
+from s4ap.sims4communitylib.enums.traits_enum import CommonTraitId
+from s4ap.sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
+from s4ap.sims4communitylib.events.sim.events.sim_spawned import S4CLSimSpawnedEvent
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.utils.sims.common_gender_utils import CommonGenderUtils
+from s4ap.sims4communitylib.utils.sims.common_species_utils import CommonSpeciesUtils
+from s4ap.sims4communitylib.utils.sims.common_trait_utils import CommonTraitUtils
 
 
 class _S4CLAutoApplyTraits:

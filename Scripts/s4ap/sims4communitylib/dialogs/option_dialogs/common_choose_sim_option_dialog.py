@@ -10,21 +10,21 @@ from typing import Any, Union, Callable, Iterator
 
 from protocolbuffers.Localization_pb2 import LocalizedString
 from sims.sim_info import SimInfo
-from sims4communitylib.dialogs.common_choose_sim_dialog import CommonChooseSimDialog
-from sims4communitylib.dialogs.option_dialogs.common_choose_option_dialog import CommonChooseOptionDialog
-from sims4communitylib.dialogs.option_dialogs.options.sims.common_dialog_sim_option_context import \
+from s4ap.sims4communitylib.dialogs.common_choose_sim_dialog import CommonChooseSimDialog
+from s4ap.sims4communitylib.dialogs.option_dialogs.common_choose_option_dialog import CommonChooseOptionDialog
+from s4ap.sims4communitylib.dialogs.option_dialogs.options.sims.common_dialog_sim_option_context import \
     CommonDialogSimOptionContext
-from sims4communitylib.enums.strings_enum import CommonStringId
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.commands.common_console_command import CommonConsoleCommand
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
-from sims4communitylib.utils.common_function_utils import CommonFunctionUtils
-from sims4communitylib.dialogs.option_dialogs.options.sims.common_dialog_sim_option import CommonDialogSimOption
-from sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
-from sims4communitylib.utils.localization.common_localized_string_colors import CommonLocalizedStringColor
-from sims4communitylib.utils.sims.common_sim_name_utils import CommonSimNameUtils
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+from s4ap.sims4communitylib.enums.strings_enum import CommonStringId
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.commands.common_console_command import CommonConsoleCommand
+from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+from s4ap.sims4communitylib.utils.common_function_utils import CommonFunctionUtils
+from s4ap.sims4communitylib.dialogs.option_dialogs.options.sims.common_dialog_sim_option import CommonDialogSimOption
+from s4ap.sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
+from s4ap.sims4communitylib.utils.localization.common_localized_string_colors import CommonLocalizedStringColor
+from s4ap.sims4communitylib.utils.sims.common_sim_name_utils import CommonSimNameUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
 from ui.ui_dialog import UiDialogBase
 
 

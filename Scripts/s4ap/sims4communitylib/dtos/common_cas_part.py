@@ -8,7 +8,7 @@ Copyright (c) COLONOLNUTTY
 from typing import Union
 
 from sims.outfits.outfit_enums import BodyType
-from sims4communitylib.enums.common_body_slot import CommonBodySlot
+from s4ap.sims4communitylib.enums.common_body_slot import CommonBodySlot
 
 
 class CommonCASPart:
@@ -27,7 +27,7 @@ class CommonCASPart:
 
     def __init__(self, cas_part_id: int, body_type: Union[CommonBodySlot, BodyType, int, None] = None) -> None:
         self._cas_part_id = cas_part_id
-        from sims4communitylib.utils.cas.common_cas_utils import CommonCASUtils
+        from s4ap.sims4communitylib.utils.cas.common_cas_utils import CommonCASUtils
         self._body_type = body_type or CommonCASUtils.get_body_type_of_cas_part(cas_part_id)
 
     @property

@@ -6,17 +6,17 @@ https://creativecommons.org/licenses/by/4.0/legalcode
 Copyright (c) COLONOLNUTTY
 """
 from objects.game_object import GameObject
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
     CommonConsoleCommandArgument
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
-from sims4communitylib.utils.common_log_registry import CommonLogRegistry
-from sims4communitylib.utils.misc.common_fire_utils import CommonFireUtils
-from sims4communitylib.utils.objects.common_object_location_utils import CommonObjectLocationUtils
-from sims4communitylib.utils.objects.common_object_utils import CommonObjectUtils
-from sims4communitylib.utils.sims.common_sim_location_utils import CommonSimLocationUtils
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
-from sims4communitylib.utils.sims.common_trait_utils import CommonTraitUtils
+from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+from s4ap.sims4communitylib.utils.common_log_registry import CommonLogRegistry
+from s4ap.sims4communitylib.utils.misc.common_fire_utils import CommonFireUtils
+from s4ap.sims4communitylib.utils.objects.common_object_location_utils import CommonObjectLocationUtils
+from s4ap.sims4communitylib.utils.objects.common_object_utils import CommonObjectUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_location_utils import CommonSimLocationUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+from s4ap.sims4communitylib.utils.sims.common_trait_utils import CommonTraitUtils
 
 log = CommonLogRegistry().register_log(ModInfo.get_identity(), 's4cl_commands')
 log.enable()

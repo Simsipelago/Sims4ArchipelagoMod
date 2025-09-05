@@ -7,11 +7,11 @@ Copyright (c) COLONOLNUTTY
 """
 from typing import Any, Callable
 
-from sims4communitylib.dialogs.option_dialogs.options.common_dialog_option_context import DialogOptionValueType, \
+from s4ap.sims4communitylib.dialogs.option_dialogs.options.common_dialog_option_context import DialogOptionValueType, \
     CommonDialogOptionContext
-from sims4communitylib.utils.common_function_utils import CommonFunctionUtils
-from sims4communitylib.utils.common_icon_utils import CommonIconUtils
-from sims4communitylib.dialogs.option_dialogs.options.objects.common_dialog_object_option import \
+from s4ap.sims4communitylib.utils.common_function_utils import CommonFunctionUtils
+from s4ap.sims4communitylib.utils.common_icon_utils import CommonIconUtils
+from s4ap.sims4communitylib.dialogs.option_dialogs.options.objects.common_dialog_object_option import \
     CommonDialogObjectOption, DialogOptionIdentifierType
 
 

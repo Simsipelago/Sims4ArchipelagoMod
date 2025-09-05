@@ -50,7 +50,7 @@ class CommonStopWatch:
         :return: The number of milliseconds that occurred since the stop watch was started.
         :rtype: float
         """
-        from sims4communitylib.utils.common_time_utils import CommonTimeUtils
+        from s4ap.sims4communitylib.utils.common_time_utils import CommonTimeUtils
         return CommonTimeUtils.convert_seconds_to_milliseconds(self.interval())
 
     def stop(self) -> float:
@@ -78,5 +78,5 @@ class CommonStopWatch:
         :return: The number of milliseconds that occurred since starting the stop watch.
         :rtype: float
         """
-        from sims4communitylib.utils.common_time_utils import CommonTimeUtils
+        from s4ap.sims4communitylib.utils.common_time_utils import CommonTimeUtils
         return CommonTimeUtils.convert_seconds_to_milliseconds(self.stop())

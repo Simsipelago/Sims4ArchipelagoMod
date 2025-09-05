@@ -9,19 +9,19 @@ from objects.game_object import GameObject
 from typing import Union
 from objects.components.live_drag_component import LiveDragComponent
 from sims.sim_info import SimInfo
-from sims4communitylib.classes.math.common_location import CommonLocation
-from sims4communitylib.classes.math.common_quaternion import CommonQuaternion
-from sims4communitylib.classes.math.common_surface_identifier import CommonSurfaceIdentifier
-from sims4communitylib.classes.math.common_vector3 import CommonVector3
-from sims4communitylib.enums.types.component_types import CommonComponentType
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
+from s4ap.sims4communitylib.classes.math.common_location import CommonLocation
+from s4ap.sims4communitylib.classes.math.common_quaternion import CommonQuaternion
+from s4ap.sims4communitylib.classes.math.common_surface_identifier import CommonSurfaceIdentifier
+from s4ap.sims4communitylib.classes.math.common_vector3 import CommonVector3
+from s4ap.sims4communitylib.enums.types.component_types import CommonComponentType
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
     CommonConsoleCommandArgument
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
-from sims4communitylib.utils.common_component_utils import CommonComponentUtils
-from sims4communitylib.utils.location.common_location_utils import CommonLocationUtils
-from sims4communitylib.utils.objects.common_object_type_utils import CommonObjectTypeUtils
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+from s4ap.sims4communitylib.utils.common_component_utils import CommonComponentUtils
+from s4ap.sims4communitylib.utils.location.common_location_utils import CommonLocationUtils
+from s4ap.sims4communitylib.utils.objects.common_object_type_utils import CommonObjectTypeUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
 from world.lot import Lot
 
 
@@ -354,7 +354,7 @@ def _common_move_object_to_sim(output: CommonConsoleCommandOutput, game_object: 
         output('ERROR: No object was specified or the specified Game Object was not found.')
         return
     output(f'Attempting to move object {game_object} to Sim {sim_info}.')
-    from sims4communitylib.utils.sims.common_sim_location_utils import CommonSimLocationUtils
+    from s4ap.sims4communitylib.utils.sims.common_sim_location_utils import CommonSimLocationUtils
     if CommonObjectLocationUtils.set_location(game_object, CommonSimLocationUtils.get_location(sim_info)):
         output(f'SUCCESS: Object {game_object} was moved successfully to Sim {sim_info}.')
     else:

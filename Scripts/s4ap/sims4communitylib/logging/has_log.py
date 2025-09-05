@@ -6,11 +6,11 @@ https://creativecommons.org/licenses/by/4.0/legalcode
 Copyright (c) COLONOLNUTTY
 """
 from typing import TYPE_CHECKING, Union
-from sims4communitylib.mod_support.has_mod_identity import HasModIdentity
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.mod_support.has_mod_identity import HasModIdentity
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
 
 if TYPE_CHECKING:
-    from sims4communitylib.utils.common_log_registry import CommonLog, CommonLogRegistry
+    from s4ap.sims4communitylib.utils.common_log_registry import CommonLog, CommonLogRegistry
 
 
 class HasLog(HasModIdentity):
@@ -50,7 +50,7 @@ class HasLog(HasModIdentity):
         :rtype: CommonLog
         """
         if self._verbose_log is None:
-            from sims4communitylib.utils.common_log_registry import CommonLogRegistry
+            from s4ap.sims4communitylib.utils.common_log_registry import CommonLogRegistry
             self._verbose_log = CommonLogRegistry.get().register_log(self.mod_identity, self.verbose_log_identifier)
         return self._verbose_log
 
@@ -64,7 +64,7 @@ class HasLog(HasModIdentity):
         :rtype: CommonLog
         """
         if self._log is None:
-            from sims4communitylib.utils.common_log_registry import CommonLogRegistry
+            from s4ap.sims4communitylib.utils.common_log_registry import CommonLogRegistry
             self._log = CommonLogRegistry.get().register_log(self.mod_identity, self.log_identifier)
             if self._verbose_log is None:
                 self._verbose_log = CommonLogRegistry.get().register_log(self.mod_identity, self.verbose_log_identifier)

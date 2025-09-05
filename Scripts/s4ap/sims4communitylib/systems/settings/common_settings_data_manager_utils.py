@@ -7,12 +7,12 @@ Copyright (c) COLONOLNUTTY
 """
 from typing import Type, Union, Dict, Any, TypeVar
 
-from sims4communitylib.logging.has_log import HasLog
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.persistence.data_management.common_data_manager_registry import CommonDataManagerRegistry
-from sims4communitylib.persistence.data_stores.common_data_store import CommonDataStore
-from sims4communitylib.services.common_service import CommonService
-from sims4communitylib.systems.settings.common_settings_data_manager import CommonSettingsDataManager
+from s4ap.sims4communitylib.logging.has_log import HasLog
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.persistence.data_management.common_data_manager_registry import CommonDataManagerRegistry
+from s4ap.sims4communitylib.persistence.data_stores.common_data_store import CommonDataStore
+from s4ap.sims4communitylib.services.common_service import CommonService
+from s4ap.sims4communitylib.systems.settings.common_settings_data_manager import CommonSettingsDataManager
 
 CommonDataStoreType = TypeVar('CommonDataStoreType', bound=CommonDataStore)
 

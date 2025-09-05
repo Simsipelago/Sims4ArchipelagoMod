@@ -6,7 +6,7 @@ https://creativecommons.org/licenses/by/4.0/legalcode
 Copyright (c) COLONOLNUTTY
 """
 from typing import Any
-from sims4communitylib.enums.common_enum import CommonEnumMetaclass
+from s4ap.sims4communitylib.enums.common_enum import CommonEnumMetaclass
 
 
 class CommonEnumFloat(float):

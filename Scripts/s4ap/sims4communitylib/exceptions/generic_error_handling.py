@@ -8,10 +8,10 @@ Copyright (c) COLONOLNUTTY
 from pprint import pformat
 
 from broadcasters.broadcaster import Broadcaster
-from sims4communitylib.exceptions.common_exceptions_handler import CommonExceptionHandler
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.utils.common_injection_utils import CommonInjectionUtils
-from sims4communitylib.utils.resources.common_interaction_utils import CommonInteractionUtils
+from s4ap.sims4communitylib.exceptions.common_exceptions_handler import CommonExceptionHandler
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.utils.common_injection_utils import CommonInjectionUtils
+from s4ap.sims4communitylib.utils.resources.common_interaction_utils import CommonInteractionUtils
 
 
 # Some interactions cause an error in this function, this is here to catch those errors and provide more information about them.

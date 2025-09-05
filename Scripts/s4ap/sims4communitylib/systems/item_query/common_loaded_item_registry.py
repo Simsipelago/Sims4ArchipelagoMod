@@ -8,16 +8,16 @@ Copyright (c) COLONOLNUTTY
 from threading import Thread
 from typing import Iterator, Dict, List, Union, TypeVar, Generic, Tuple, Any
 
-from sims4communitylib.systems.item_query.persistence.common_loaded_item_cache import CommonLoadedItemCache
-from sims4communitylib.systems.item_query.persistence.common_loaded_item_cache_service import \
+from s4ap.sims4communitylib.systems.item_query.persistence.common_loaded_item_cache import CommonLoadedItemCache
+from s4ap.sims4communitylib.systems.item_query.persistence.common_loaded_item_cache_service import \
     CommonLoadedItemCacheService
-from sims4communitylib.systems.item_query.item_loaders.common_base_item_loader import CommonBaseItemLoader
-from sims4communitylib.systems.item_query.dtos.common_loaded_item import CommonLoadedItem
+from s4ap.sims4communitylib.systems.item_query.item_loaders.common_base_item_loader import CommonBaseItemLoader
+from s4ap.sims4communitylib.systems.item_query.dtos.common_loaded_item import CommonLoadedItem
 from sims4.callback_utils import CallableList
-from sims4communitylib.classes.time.common_stop_watch import CommonStopWatch
-from sims4communitylib.logging.has_log import HasLog
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.services.common_service import CommonService
+from s4ap.sims4communitylib.classes.time.common_stop_watch import CommonStopWatch
+from s4ap.sims4communitylib.logging.has_log import HasLog
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.services.common_service import CommonService
 
 CommonLoadedItemType = TypeVar('CommonLoadedItemType', bound=CommonLoadedItem)
 

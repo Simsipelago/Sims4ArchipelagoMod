@@ -7,7 +7,7 @@ Copyright (c) COLONOLNUTTY
 """
 from typing import Iterator, Tuple, Union
 
-from sims4communitylib.enums.enumtypes.common_int import CommonInt
+from s4ap.sims4communitylib.enums.enumtypes.common_int import CommonInt
 
 
 class CommonSide(CommonInt):
@@ -96,7 +96,7 @@ class CommonSide(CommonInt):
         :return: The specified value translated to a localized string identifier. If no localized string id is found, the name property of the value will be used instead.
         :rtype: Union[int, str]
         """
-        from sims4communitylib.enums.strings_enum import CommonStringId
+        from s4ap.sims4communitylib.enums.strings_enum import CommonStringId
         mapping = {
             CommonSide.LEFT: CommonStringId.S4CL_LEFT,
             CommonSide.RIGHT: CommonStringId.S4CL_RIGHT,

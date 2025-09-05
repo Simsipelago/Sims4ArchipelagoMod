@@ -9,7 +9,7 @@ from typing import Any
 
 from event_testing.resolver import DoubleSimResolver
 from interactions import ParticipantType, ParticipantTypeSituationSims
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
 
 
 class CommonDoubleSimResolver(DoubleSimResolver):

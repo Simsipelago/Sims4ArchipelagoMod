@@ -13,14 +13,14 @@ from sims.sim import Sim
 from sims.sim_info import SimInfo
 from sims.sim_info_base_wrapper import SimInfoBaseWrapper
 from sims.sim_info_manager import SimInfoManager
-from sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
-from sims4communitylib.classes.testing.common_test_result import CommonTestResult
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
+from s4ap.sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
+from s4ap.sims4communitylib.classes.testing.common_test_result import CommonTestResult
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
     CommonConsoleCommandArgument
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
-from sims4communitylib.utils.common_function_utils import CommonFunctionUtils
-from sims4communitylib.utils.misc.common_game_client_utils import CommonGameClientUtils
+from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+from s4ap.sims4communitylib.utils.common_function_utils import CommonFunctionUtils
+from s4ap.sims4communitylib.utils.misc.common_game_client_utils import CommonGameClientUtils
 
 
 class CommonSimUtils:
@@ -122,7 +122,7 @@ class CommonSimUtils:
         :return: An iterator of Sims found with the specified last name.
         :rtype: Iterator[SimInfo]
         """
-        from sims4communitylib.utils.sims.common_sim_name_utils import CommonSimNameUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_name_utils import CommonSimNameUtils
         last_name = last_name.lower()
 
         def _has_last_name(sim_info: SimInfo) -> bool:
@@ -141,7 +141,7 @@ class CommonSimUtils:
         :return: An iterator of Sims found with the specified first name.
         :rtype: Iterator[SimInfo]
         """
-        from sims4communitylib.utils.sims.common_sim_name_utils import CommonSimNameUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_name_utils import CommonSimNameUtils
         first_name = first_name.lower()
 
         def _has_first_name(sim_info: SimInfo) -> bool:
@@ -162,7 +162,7 @@ class CommonSimUtils:
         :return: An iterator of Sims found with the specified first and last name.
         :rtype: Iterator[SimInfo]
         """
-        from sims4communitylib.utils.sims.common_sim_name_utils import CommonSimNameUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_name_utils import CommonSimNameUtils
         first_name = first_name.lower()
         last_name = last_name.lower()
 

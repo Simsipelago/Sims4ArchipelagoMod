@@ -9,16 +9,16 @@ from typing import Tuple, Union
 
 from sims.global_gender_preference_tuning import GlobalGenderPreferenceTuning, GenderPreferenceType
 from sims.sim_info import SimInfo
-from sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
-from sims4communitylib.enums.common_gender import CommonGender
-from sims4communitylib.enums.common_gender_preference_type import CommonGenderPreferenceType
-from sims4communitylib.exceptions.common_exceptions_handler import CommonExceptionHandler
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
+from s4ap.sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
+from s4ap.sims4communitylib.enums.common_gender import CommonGender
+from s4ap.sims4communitylib.enums.common_gender_preference_type import CommonGenderPreferenceType
+from s4ap.sims4communitylib.exceptions.common_exceptions_handler import CommonExceptionHandler
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
     CommonConsoleCommandArgument
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
-from sims4communitylib.utils.sims.common_trait_utils import CommonTraitUtils
+from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+from s4ap.sims4communitylib.utils.sims.common_trait_utils import CommonTraitUtils
 
 
 class CommonSimGenderPreferenceUtils:
@@ -134,7 +134,7 @@ class CommonSimGenderPreferenceUtils:
         :return: A collection of the default preferred genders.
         :rtype: Tuple[CommonGender]
         """
-        from sims4communitylib.utils.sims.common_gender_utils import CommonGenderUtils
+        from s4ap.sims4communitylib.utils.sims.common_gender_utils import CommonGenderUtils
         if CommonGenderUtils.is_male(sim_info):
             return CommonGender.FEMALE,
         return CommonGender.MALE,
@@ -260,7 +260,7 @@ def _common_set_world_sexually_exploring(output: CommonConsoleCommandOutput, is_
     else:
         output('Attempting to set all Sims to be Not Sexually Exporing in their Sexual Orientation.')
     for sim_info in CommonSimUtils.get_sim_info_for_all_sims_generator():
-        from sims4communitylib.utils.sims.common_sim_gender_option_utils import CommonSimGenderOptionUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_gender_option_utils import CommonSimGenderOptionUtils
         CommonSimGenderOptionUtils.set_is_exploring_sexuality(sim_info, is_sexually_exploring)
 
 
@@ -352,7 +352,7 @@ def _common_set_gender_pref_of_all_female_sims(output: CommonConsoleCommandOutpu
     gender_name = gender.name
     sim_count = 0
     output(f'Setting {preference_type.name} gender preference of all Female Sims for gender {gender_name} to {is_attracted_to_gender}')
-    from sims4communitylib.utils.sims.common_gender_utils import CommonGenderUtils
+    from s4ap.sims4communitylib.utils.sims.common_gender_utils import CommonGenderUtils
     for sim_info in CommonSimUtils.get_sim_info_for_all_sims_generator(include_sim_callback=CommonGenderUtils.is_female):
         try:
             if CommonSimGenderPreferenceUtils.set_preference_for_gender(sim_info, gender, is_attracted_to_gender, preference_type=preference_type):
@@ -387,7 +387,7 @@ def _common_set_gender_pref_of_all_male_sims(output: CommonConsoleCommandOutput,
     gender_name = gender.name
     sim_count = 0
     output(f'Setting {preference_type.name} gender preference of all Male Sims for gender {gender_name} to {is_attracted_to_gender}')
-    from sims4communitylib.utils.sims.common_gender_utils import CommonGenderUtils
+    from s4ap.sims4communitylib.utils.sims.common_gender_utils import CommonGenderUtils
     for sim_info in CommonSimUtils.get_sim_info_for_all_sims_generator(include_sim_callback=CommonGenderUtils.is_male):
         try:
             if CommonSimGenderPreferenceUtils.set_preference_for_gender(sim_info, gender, is_attracted_to_gender, preference_type=preference_type):

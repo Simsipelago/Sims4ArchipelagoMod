@@ -7,8 +7,8 @@ Copyright (c) COLONOLNUTTY
 """
 from typing import Union
 
-from sims4communitylib.logging.has_log import HasLog
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.logging.has_log import HasLog
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
 
 
 class CommonConditionalAction(HasLog):

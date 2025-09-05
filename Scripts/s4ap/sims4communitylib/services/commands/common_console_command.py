@@ -13,15 +13,15 @@ from objects.game_object import GameObject
 from sims.sim_info import SimInfo
 from sims4.commands import CommandType, CommandRestrictionFlags, Output, CustomParam
 from sims4.common import Pack
-from sims4communitylib.logging.has_class_log import HasClassLog
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
-from sims4communitylib.services.common_service import CommonService
+from s4ap.sims4communitylib.logging.has_class_log import HasClassLog
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+from s4ap.sims4communitylib.services.common_service import CommonService
 from singletons import UNSET
 
 if TYPE_CHECKING:
-    from sims4communitylib.utils.common_log_registry import CommonLog
+    from s4ap.sims4communitylib.utils.common_log_registry import CommonLog
 
 
 class CommonConsoleCommandArgument:
@@ -275,7 +275,7 @@ class CommonConsoleCommandService(CommonService, HasClassLog):
         return f'{mod_name}.help'
 
     def _create_help_command(self, mod_identity: CommonModIdentity) -> None:
-        from sims4communitylib.utils.common_log_registry import CommonLogRegistry
+        from s4ap.sims4communitylib.utils.common_log_registry import CommonLogRegistry
         help_log = CommonLogRegistry().register_log(mod_identity, f'{mod_identity.name}_help')
         mod_name = CommonModIdentity._get_mod_name(mod_identity.name).lower()
         if mod_name not in self._commands_by_mod_name:
@@ -348,7 +348,7 @@ class CommonConsoleCommandService(CommonService, HasClassLog):
     @classmethod
     def command(cls, mod_identity: CommonModIdentity, *command_aliases: str, command_type: CommandType=CommandType.Live, command_restriction_flags: CommandRestrictionFlags=CommandRestrictionFlags.UNRESTRICTED, required_pack_flags: Pack=None, console_type: CommandType=None) -> Any:
         """Create a command."""
-        from sims4communitylib.utils.common_log_registry import CommonLogRegistry
+        from s4ap.sims4communitylib.utils.common_log_registry import CommonLogRegistry
         log = CommonLogRegistry().register_log(mod_identity, f'{mod_identity.name}_command_log')
         _command = cls._command(log, *command_aliases, command_type=command_type, command_restrictions=command_restriction_flags, pack=required_pack_flags, console_type=console_type)
 
@@ -516,7 +516,7 @@ class CommonConsoleCommandService(CommonService, HasClassLog):
     def _parse_arguments(cls, full_arg_spec: inspect.FullArgSpec, args: Tuple[str], arg_names: Tuple[str], kwargs_by_name, kwargs: Dict[str, Any], output: Union[CommonConsoleCommandOutput, Output]):
         (cleaned_args, cleaned_kwargs) = cls._clean_arguments(args)
 
-        from sims4communitylib.services.commands.common_console_command_parameters import CommonConsoleCommandParameter,\
+        from s4ap.sims4communitylib.services.commands.common_console_command_parameters import CommonConsoleCommandParameter,\
             CommonOptionalSimInfoConsoleCommandParameter, CommonRequiredGameObjectConsoleCommandParameter, \
             CommonRequiredSimInfoConsoleCommandParameter
         arg_length = len(cleaned_args)
@@ -609,11 +609,11 @@ class CommonConsoleCommandService(CommonService, HasClassLog):
                     output(f'ERROR: Invalid entry specified for bool {name}: {arg_value} (Expected one of {BOOL_TRUE} for True, or one of {BOOL_FALSE} for False.)')
                     raise ValueError('invalid literal for boolean parameter')
             else:
-                from sims4communitylib.enums.enumtypes.common_int import CommonInt
-                from sims4communitylib.enums.enumtypes.common_int_flags import CommonIntFlags
+                from s4ap.sims4communitylib.enums.enumtypes.common_int import CommonInt
+                from s4ap.sims4communitylib.enums.enumtypes.common_int_flags import CommonIntFlags
                 if inspect.isclass(arg_type) and (arg_type is CommonInt or arg_type is CommonIntFlags or issubclass(arg_type, CommonInt) or issubclass(arg_type, CommonIntFlags)):
                     if arg_value is not None:
-                        from sims4communitylib.utils.common_resource_utils import CommonResourceUtils
+                        from s4ap.sims4communitylib.utils.common_resource_utils import CommonResourceUtils
                         result = CommonResourceUtils.get_enum_by_name(arg_value.upper(), arg_type, default_value=default_value)
                         if result is None:
                             # noinspection PyUnresolvedReferences,PyTypeChecker

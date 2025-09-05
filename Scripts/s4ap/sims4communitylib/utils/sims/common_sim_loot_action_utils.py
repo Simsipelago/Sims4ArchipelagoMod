@@ -10,7 +10,7 @@ from typing import Tuple
 from event_testing.resolver import SingleSimResolver, DoubleSimResolver
 from interactions.utils.loot import LootActions
 from sims.sim_info import SimInfo
-from sims4communitylib.utils.resources.common_loot_action_utils import CommonLootActionUtils
+from s4ap.sims4communitylib.utils.resources.common_loot_action_utils import CommonLootActionUtils
 
 
 class CommonSimLootActionUtils:

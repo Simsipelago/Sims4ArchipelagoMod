@@ -30,7 +30,7 @@ class CommonInteractionsMixin:
             yield from self._cached_interactions
         else:
             cached_interactions = list()
-            from sims4communitylib.utils.resources.common_interaction_utils import CommonInteractionUtils
+            from s4ap.sims4communitylib.utils.resources.common_interaction_utils import CommonInteractionUtils
             for interaction_id in self.interaction_ids:
                 interaction = CommonInteractionUtils.load_interaction_by_id(interaction_id)
                 if interaction is None:

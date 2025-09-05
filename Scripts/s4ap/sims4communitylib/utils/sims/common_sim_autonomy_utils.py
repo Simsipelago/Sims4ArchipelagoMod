@@ -8,10 +8,10 @@ Copyright (c) COLONOLNUTTY
 from autonomy.settings import AutonomyState
 from objects.game_object import GameObject
 from sims.sim_info import SimInfo
-from sims4communitylib.enums.common_object_preference_tag import CommonObjectPreferenceTag
-from sims4communitylib.enums.types.component_types import CommonComponentType
-from sims4communitylib.utils.common_component_utils import CommonComponentUtils
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+from s4ap.sims4communitylib.enums.common_object_preference_tag import CommonObjectPreferenceTag
+from s4ap.sims4communitylib.enums.types.component_types import CommonComponentType
+from s4ap.sims4communitylib.utils.common_component_utils import CommonComponentUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
 
 
 class CommonSimAutonomyUtils:

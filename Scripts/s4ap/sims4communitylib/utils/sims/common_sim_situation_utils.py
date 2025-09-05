@@ -10,20 +10,20 @@ from typing import Callable, Iterator, Union, List, Tuple, Type
 
 from distributor.shared_messages import IconInfoData
 from sims.sim_info import SimInfo
-from sims4communitylib.enums.situations_enum import CommonSituationId
-from sims4communitylib.enums.tags_enum import CommonGameTag
-from sims4communitylib.logging.has_class_log import HasClassLog
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.notifications.common_basic_notification import CommonBasicNotification
-from sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
+from s4ap.sims4communitylib.enums.situations_enum import CommonSituationId
+from s4ap.sims4communitylib.enums.tags_enum import CommonGameTag
+from s4ap.sims4communitylib.logging.has_class_log import HasClassLog
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.notifications.common_basic_notification import CommonBasicNotification
+from s4ap.sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
     CommonConsoleCommandArgument
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
-from sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
-from sims4communitylib.utils.resources.common_situation_utils import CommonSituationUtils
+from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+from s4ap.sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
+from s4ap.sims4communitylib.utils.resources.common_situation_utils import CommonSituationUtils
 from situations.dynamic_situation_goal_tracker import DynamicSituationGoalTracker
 from situations.situation import Situation
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
 from situations.situation_goal import SituationGoal
 from situations.situation_goal_targeted_sim import SituationGoalTargetedSim
 from situations.situation_goal_tracker import SituationGoalTracker
@@ -325,7 +325,7 @@ class CommonSimSituationUtils(HasClassLog):
         """
         if sim_info is None:
             raise AssertionError('sim_info was None!')
-        from sims4communitylib.utils.resources.common_situation_utils import CommonSituationUtils
+        from s4ap.sims4communitylib.utils.resources.common_situation_utils import CommonSituationUtils
         situation_manager = CommonSituationUtils.get_situation_manager_for_zone()
         guest_list = SituationGuestList(invite_only=invite_only)
         guest_info = SituationGuestInfo.construct_from_purpose(CommonSimUtils.get_sim_id(sim_info), situation_job or situation_type.default_job(), purpose)
@@ -352,7 +352,7 @@ class CommonSimSituationUtils(HasClassLog):
         :param start_cooldown: Whether or not to start a cooldown for the situation. Default is True.
         :type start_cooldown: bool, optional
         """
-        from sims4communitylib.utils.sims.common_whim_utils import CommonWhimUtils
+        from s4ap.sims4communitylib.utils.sims.common_whim_utils import CommonWhimUtils
         if target_sim_info is not None:
             if CommonSimUtils.get_sim_instance(target_sim_info) is None:
                 return

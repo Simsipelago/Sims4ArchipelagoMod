@@ -9,10 +9,10 @@ from pprint import pformat
 from typing import Tuple, Iterator
 
 from sims.sim_info import SimInfo
-from sims4communitylib.enums.common_age import CommonAge
-from sims4communitylib.enums.common_gender import CommonGender
-from sims4communitylib.enums.common_occult_type import CommonOccultType
-from sims4communitylib.enums.common_species import CommonSpecies
+from s4ap.sims4communitylib.enums.common_age import CommonAge
+from s4ap.sims4communitylib.enums.common_gender import CommonGender
+from s4ap.sims4communitylib.enums.common_occult_type import CommonOccultType
+from s4ap.sims4communitylib.enums.common_species import CommonSpecies
 
 
 class CommonAvailableForSim:
@@ -126,7 +126,7 @@ class CommonAvailableForSim:
         :return: An available for matching the specified Sim.
         :rtype: CommonAvailableForSim
         """
-        from sims4communitylib.utils.sims.common_age_utils import CommonAgeUtils
+        from s4ap.sims4communitylib.utils.sims.common_age_utils import CommonAgeUtils
         gender = CommonGender.get_gender(sim_info)
         if gender == CommonGender.INVALID:
             genders = tuple()

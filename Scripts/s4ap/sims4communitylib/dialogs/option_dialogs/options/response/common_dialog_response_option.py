@@ -8,10 +8,10 @@ Copyright (c) COLONOLNUTTY
 from typing import Any, Callable, Union
 
 from protocolbuffers.Localization_pb2 import LocalizedString
-from sims4communitylib.dialogs.common_ui_dialog_response import CommonUiDialogResponse
-from sims4communitylib.dialogs.option_dialogs.options.response.common_dialog_response_option_context import \
+from s4ap.sims4communitylib.dialogs.common_ui_dialog_response import CommonUiDialogResponse
+from s4ap.sims4communitylib.dialogs.option_dialogs.options.response.common_dialog_response_option_context import \
     DialogResponseOptionValueType, CommonDialogResponseOptionContext
-from sims4communitylib.utils.common_function_utils import CommonFunctionUtils
+from s4ap.sims4communitylib.utils.common_function_utils import CommonFunctionUtils
 
 
 class CommonDialogResponseOption:

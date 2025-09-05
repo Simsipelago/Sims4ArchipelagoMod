@@ -7,8 +7,8 @@ Copyright (c) COLONOLNUTTY
 """
 from objects.proxy import ProxyObject
 from objects.script_object import ScriptObject
-from sims4communitylib.classes.filters.common_match_object_filter import CommonMatchObjectFilterBase
-from sims4communitylib.utils.common_type_utils import CommonTypeUtils
+from s4ap.sims4communitylib.classes.filters.common_match_object_filter import CommonMatchObjectFilterBase
+from s4ap.sims4communitylib.utils.common_type_utils import CommonTypeUtils
 
 
 class CommonMatchAllNonSimsObjectFilter(CommonMatchObjectFilterBase):

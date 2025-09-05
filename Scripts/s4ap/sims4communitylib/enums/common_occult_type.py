@@ -10,8 +10,8 @@ from typing import Union, Tuple, Iterator, Dict
 from protocolbuffers.Localization_pb2 import LocalizedString
 from sims.occult.occult_enums import OccultType
 from sims.sim_info import SimInfo
-from sims4communitylib.enums.enumtypes.common_int import CommonInt
-from sims4communitylib.enums.strings_enum import CommonStringId
+from s4ap.sims4communitylib.enums.enumtypes.common_int import CommonInt
+from s4ap.sims4communitylib.enums.strings_enum import CommonStringId
 
 
 class CommonOccultType(CommonInt):
@@ -86,7 +86,7 @@ class CommonOccultType(CommonInt):
         :return: The CommonOccultType that represents what a Sim is.
         :rtype: CommonOccultType
         """
-        from sims4communitylib.utils.sims.common_sim_occult_type_utils import CommonSimOccultTypeUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_occult_type_utils import CommonSimOccultTypeUtils
         return CommonSimOccultTypeUtils.determine_occult_type(sim_info)
 
     @staticmethod
@@ -101,7 +101,7 @@ class CommonOccultType(CommonInt):
         :return: The CommonOccultType the Sim is currently appearing as, or CommonOccultType.NONE if they are not appearing as any Occult or are appearing as their HUMAN disguise/occult.
         :rtype: CommonOccultType
         """
-        from sims4communitylib.utils.sims.common_sim_occult_type_utils import CommonSimOccultTypeUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_occult_type_utils import CommonSimOccultTypeUtils
         return CommonSimOccultTypeUtils.determine_current_occult_type(sim_info)
 
     @staticmethod
@@ -117,7 +117,7 @@ class CommonOccultType(CommonInt):
         :return: The specified CommonOccultType translated to OccultType, or None if the value could not be translated.
         :rtype: Union[OccultType, None]
         """
-        from sims4communitylib.utils.sims.common_sim_occult_type_utils import CommonSimOccultTypeUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_occult_type_utils import CommonSimOccultTypeUtils
         return CommonSimOccultTypeUtils.convert_custom_type_to_vanilla(occult_type)
 
     @staticmethod

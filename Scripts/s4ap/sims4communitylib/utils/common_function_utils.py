@@ -7,11 +7,11 @@ Copyright (c) COLONOLNUTTY
 """
 from typing import Any, Callable, Iterator, Union
 
-from sims4communitylib.classes.testing.common_enqueue_result import CommonEnqueueResult
-from sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
-from sims4communitylib.classes.testing.common_test_result import CommonTestResult
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.utils.common_log_registry import CommonLog
+from s4ap.sims4communitylib.classes.testing.common_enqueue_result import CommonEnqueueResult
+from s4ap.sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
+from s4ap.sims4communitylib.classes.testing.common_test_result import CommonTestResult
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.utils.common_log_registry import CommonLog
 
 
 class CommonFunctionUtils:
@@ -144,7 +144,7 @@ class CommonFunctionUtils:
         except Exception as ex:
             # noinspection PyBroadException
             try:
-                from sims4communitylib.exceptions.common_exceptions_handler import CommonExceptionHandler
+                from s4ap.sims4communitylib.exceptions.common_exceptions_handler import CommonExceptionHandler
                 CommonExceptionHandler.log_exception(
                     mod_identity,
                     f'Error occurred while running \'{primary_function.__name__}\'',

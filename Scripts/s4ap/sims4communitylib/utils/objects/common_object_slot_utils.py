@@ -12,13 +12,13 @@ from objects.components.slot_component import SlotComponent
 from objects.game_object import GameObject
 from objects.script_object import ScriptObject
 from objects.slots import SlotType
-from sims4communitylib.dtos.common_object_containment_slot import CommonObjectContainmentSlot
-from sims4communitylib.enums.common_slot_type import CommonSlotType
-from sims4communitylib.enums.types.component_types import CommonComponentType
-from sims4communitylib.utils.common_component_utils import CommonComponentUtils
-from sims4communitylib.utils.common_function_utils import CommonFunctionUtils
+from s4ap.sims4communitylib.dtos.common_object_containment_slot import CommonObjectContainmentSlot
+from s4ap.sims4communitylib.enums.common_slot_type import CommonSlotType
+from s4ap.sims4communitylib.enums.types.component_types import CommonComponentType
+from s4ap.sims4communitylib.utils.common_component_utils import CommonComponentUtils
+from s4ap.sims4communitylib.utils.common_function_utils import CommonFunctionUtils
 
-from sims4communitylib.utils.objects.common_object_utils import CommonObjectUtils
+from s4ap.sims4communitylib.utils.objects.common_object_utils import CommonObjectUtils
 
 
 class CommonObjectSlotUtils:

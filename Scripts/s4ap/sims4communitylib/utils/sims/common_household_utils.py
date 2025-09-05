@@ -11,16 +11,16 @@ import services
 from sims.household import Household
 from sims.sim_info import SimInfo
 from sims.sim_spawner import SimSpawner
-from sims4communitylib.logging.has_class_log import HasClassLog
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
+from s4ap.sims4communitylib.logging.has_class_log import HasClassLog
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
     CommonConsoleCommandArgument
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
 from world.lot import Lot
-from sims4communitylib.utils.sims.common_sim_name_utils import CommonSimNameUtils
-from sims4communitylib.utils.sims.common_sim_state_utils import CommonSimStateUtils
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_name_utils import CommonSimNameUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_state_utils import CommonSimStateUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
 
 
 class CommonHouseholdUtils(HasClassLog):
@@ -115,7 +115,7 @@ class CommonHouseholdUtils(HasClassLog):
         :return: The home zone identifier of the specified Household or -1 if a problem occurs.
         :rtype: int
         """
-        from sims4communitylib.utils.location.common_location_utils import CommonLocationUtils
+        from s4ap.sims4communitylib.utils.location.common_location_utils import CommonLocationUtils
         if household is None:
             return -1
         home_zone_id = cls.get_household_home_zone_id(household)
@@ -223,7 +223,7 @@ class CommonHouseholdUtils(HasClassLog):
         :return: True, if the Sim is on their home lot and alone. False, if not.
         :rtype: bool
         """
-        from sims4communitylib.utils.sims.common_sim_location_utils import CommonSimLocationUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_location_utils import CommonSimLocationUtils
         return cls.is_part_of_a_single_sim_household(sim_info) and CommonSimLocationUtils.is_at_home(sim_info)
 
     @classmethod

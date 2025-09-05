@@ -9,17 +9,17 @@ import os
 from typing import Tuple, Union, Iterator, Dict, List
 
 from sims4.utils import classproperty
-from sims4communitylib.classes.time.common_stop_watch import CommonStopWatch
-from sims4communitylib.dtos.common_cas_part import CommonCASPart
-from sims4communitylib.enums.common_body_slot import CommonBodySlot
-from sims4communitylib.logging._has_s4cl_class_log import _HasS4CLClassLog
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
+from s4ap.sims4communitylib.classes.time.common_stop_watch import CommonStopWatch
+from s4ap.sims4communitylib.dtos.common_cas_part import CommonCASPart
+from s4ap.sims4communitylib.enums.common_body_slot import CommonBodySlot
+from s4ap.sims4communitylib.logging._has_s4cl_class_log import _HasS4CLClassLog
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
     CommonConsoleCommandArgument
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
-from sims4communitylib.services.sim.cas.common_sim_outfit_io import CommonSimOutfitIO
-from sims4communitylib.utils.common_resource_utils import CommonResourceUtils
+from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+from s4ap.sims4communitylib.services.sim.cas.common_sim_outfit_io import CommonSimOutfitIO
+from s4ap.sims4communitylib.utils.common_resource_utils import CommonResourceUtils
 
 ON_RTD = os.environ.get('READTHEDOCS', None) == 'True'
 
@@ -190,7 +190,7 @@ class CommonCASUtils(_HasS4CLClassLog):
         for cas_part in cas_parts:
             cas_parts_by_body_type[int(CommonBodySlot.convert_to_vanilla(cas_part.body_type))] = cas_part
         cas_part_body_types = [int(CommonBodySlot.convert_to_vanilla(cas_part.body_type)) for cas_part in cas_parts]
-        from sims4communitylib.utils.cas.common_outfit_utils import CommonOutfitUtils
+        from s4ap.sims4communitylib.utils.cas.common_outfit_utils import CommonOutfitUtils
         current_outfit = CommonOutfitUtils.get_current_outfit(sim_info)
         from protocolbuffers import S4Common_pb2, Outfits_pb2
         saved_outfits = sim_info.save_outfits()
@@ -277,7 +277,7 @@ class CommonCASUtils(_HasS4CLClassLog):
         stop_watch = CommonStopWatch()
         try:
             stop_watch.start()
-            from sims4communitylib.utils.cas.common_outfit_utils import CommonOutfitUtils
+            from s4ap.sims4communitylib.utils.cas.common_outfit_utils import CommonOutfitUtils
             current_outfit = CommonOutfitUtils.get_current_outfit(sim_info)
             if outfit_category_and_index is None:
                 outfit_category_and_index = current_outfit
@@ -353,7 +353,7 @@ class CommonCASUtils(_HasS4CLClassLog):
         """
         _log = cls.get_log()
         cas_part_ids = tuple([cas_part.cas_part_id for cas_part in cas_parts])
-        from sims4communitylib.utils.cas.common_outfit_utils import CommonOutfitUtils
+        from s4ap.sims4communitylib.utils.cas.common_outfit_utils import CommonOutfitUtils
         current_outfit = CommonOutfitUtils.get_current_outfit(sim_info)
         from protocolbuffers import S4Common_pb2, Outfits_pb2
         saved_outfits = sim_info.save_outfits()
@@ -420,7 +420,7 @@ class CommonCASUtils(_HasS4CLClassLog):
         :return: True, if the CAS parts were successfully detached from the outfit of the Sim. False, if not.
         :rtype: bool
         """
-        from sims4communitylib.utils.cas.common_outfit_utils import CommonOutfitUtils
+        from s4ap.sims4communitylib.utils.cas.common_outfit_utils import CommonOutfitUtils
         current_outfit = CommonOutfitUtils.get_current_outfit(sim_info)
         if outfit_category_and_index is None:
             outfit_category_and_index = current_outfit
@@ -561,7 +561,7 @@ class CommonCASUtils(_HasS4CLClassLog):
         :return: True, if the body types were successfully detached from the outfit of the Sim. False, if not.
         :rtype: bool
         """
-        from sims4communitylib.utils.cas.common_outfit_utils import CommonOutfitUtils
+        from s4ap.sims4communitylib.utils.cas.common_outfit_utils import CommonOutfitUtils
         current_outfit = CommonOutfitUtils.get_current_outfit(sim_info)
         if outfit_category_and_index is None:
             outfit_category_and_index = current_outfit

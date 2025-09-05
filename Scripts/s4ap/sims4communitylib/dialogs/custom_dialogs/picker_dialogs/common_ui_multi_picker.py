@@ -7,7 +7,7 @@ Copyright (c) COLONOLNUTTY
 """
 from typing import Any, Dict
 from protocolbuffers.Localization_pb2 import LocalizedString
-from sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
+from s4ap.sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
 from protocolbuffers.Dialog_pb2 import UiDialogMessage, UiDialogMultiPicker
 from ui.ui_dialog_multi_picker import UiMultiPicker
 

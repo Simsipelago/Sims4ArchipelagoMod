@@ -13,20 +13,20 @@ from objects.components.state import StateComponent, ObjectStateValue, ObjectSta
 from objects.game_object import GameObject
 from server_commands.argument_helpers import TunableInstanceParam
 from sims4.resources import Types
-from sims4communitylib.enums.common_object_state_ids import CommonObjectStateId
-from sims4communitylib.enums.common_object_state_value_ids import CommonObjectStateValueId
-from sims4communitylib.enums.common_object_quality import CommonObjectQuality
-from sims4communitylib.enums.statistics_enum import CommonStatisticId
-from sims4communitylib.enums.types.component_types import CommonComponentType
-from sims4communitylib.logging._has_s4cl_class_log import _HasS4CLClassLog
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
+from s4ap.sims4communitylib.enums.common_object_state_ids import CommonObjectStateId
+from s4ap.sims4communitylib.enums.common_object_state_value_ids import CommonObjectStateValueId
+from s4ap.sims4communitylib.enums.common_object_quality import CommonObjectQuality
+from s4ap.sims4communitylib.enums.statistics_enum import CommonStatisticId
+from s4ap.sims4communitylib.enums.types.component_types import CommonComponentType
+from s4ap.sims4communitylib.logging._has_s4cl_class_log import _HasS4CLClassLog
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
     CommonConsoleCommandArgument
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
-from sims4communitylib.utils.common_component_utils import CommonComponentUtils
-from sims4communitylib.utils.common_resource_utils import CommonResourceUtils
-from sims4communitylib.utils.common_type_utils import CommonTypeUtils
+from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+from s4ap.sims4communitylib.utils.common_component_utils import CommonComponentUtils
+from s4ap.sims4communitylib.utils.common_resource_utils import CommonResourceUtils
+from s4ap.sims4communitylib.utils.common_type_utils import CommonTypeUtils
 from statistics.commodity import Commodity
 from statistics.commodity_tracker import CommodityTracker
 
@@ -638,7 +638,7 @@ class CommonObjectStateUtils(_HasS4CLClassLog):
             return object_state
 
         from sims4.resources import Types
-        from sims4communitylib.utils.common_resource_utils import CommonResourceUtils
+        from s4ap.sims4communitylib.utils.common_resource_utils import CommonResourceUtils
         result = CommonResourceUtils.load_instance(Types.OBJECT_STATE, object_state)
         return result
 
@@ -664,7 +664,7 @@ class CommonObjectStateUtils(_HasS4CLClassLog):
             return object_state_value
 
         from sims4.resources import Types
-        from sims4communitylib.utils.common_resource_utils import CommonResourceUtils
+        from s4ap.sims4communitylib.utils.common_resource_utils import CommonResourceUtils
         result = CommonResourceUtils.load_instance(Types.OBJECT_STATE, object_state_value)
         return result
 
@@ -729,6 +729,6 @@ def _common_set_object_state(output: CommonConsoleCommandOutput, game_object: Ga
 )
 def _common_modify_object_state(output: CommonConsoleCommandOutput, game_object: GameObject) -> bool:
     output(f'Opening dialog to modify object state of {game_object}.')
-    from sims4communitylib.debug.dialogs.common_change_object_state_dialog import CommonChangeObjectStateDialog
+    from s4ap.sims4communitylib.debug.dialogs.common_change_object_state_dialog import CommonChangeObjectStateDialog
     CommonChangeObjectStateDialog(game_object).open()
     return True

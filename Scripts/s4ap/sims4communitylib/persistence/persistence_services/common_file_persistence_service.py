@@ -8,11 +8,11 @@ Copyright (c) COLONOLNUTTY
 import os
 from typing import Dict, Any
 
-from sims4communitylib.exceptions.common_exceptions_handler import CommonExceptionHandler
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.persistence.persistence_services.common_persistence_service import CommonPersistenceService
-from sims4communitylib.utils.common_json_io_utils import CommonJSONIOUtils
-from sims4communitylib.utils.save_load.common_save_utils import CommonSaveUtils
+from s4ap.sims4communitylib.exceptions.common_exceptions_handler import CommonExceptionHandler
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.persistence.persistence_services.common_persistence_service import CommonPersistenceService
+from s4ap.sims4communitylib.utils.common_json_io_utils import CommonJSONIOUtils
+from s4ap.sims4communitylib.utils.save_load.common_save_utils import CommonSaveUtils
 
 
 class CommonFilePersistenceService(CommonPersistenceService):
@@ -38,7 +38,7 @@ class CommonFilePersistenceService(CommonPersistenceService):
         self._per_save_slot = per_save_slot
         self._folder_name = folder_name
         self._custom_file_name = custom_file_name
-        from sims4communitylib.utils.common_log_utils import CommonLogUtils
+        from s4ap.sims4communitylib.utils.common_log_utils import CommonLogUtils
         self._data_folder_path = data_folder_path or CommonLogUtils.get_mod_data_location_path()
 
     # noinspection PyMissingOrEmptyDocstring
@@ -108,7 +108,7 @@ class CommonFilePersistenceService(CommonPersistenceService):
             return os.path.join(folder_path, self._custom_file_name)
         if self._per_save:
             save_slot_guid = CommonSaveUtils.get_save_slot_guid()
-            from sims4communitylib.s4cl_configuration import S4CLConfiguration
+            from s4ap.sims4communitylib.s4cl_configuration import S4CLConfiguration
             if self._per_save_slot or S4CLConfiguration().persist_mod_data_per_save_slot:
                 save_slot_id = CommonSaveUtils.get_save_slot_id()
                 if save_slot_id == 0:

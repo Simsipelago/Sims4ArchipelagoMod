@@ -11,8 +11,8 @@ import services
 from clubs.club import Club
 from clubs.club_gathering_situation import ClubGatheringSituation
 from sims.sim_info import SimInfo
-from sims4communitylib.utils.common_function_utils import CommonFunctionUtils
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+from s4ap.sims4communitylib.utils.common_function_utils import CommonFunctionUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
 
 
 class CommonSimClubUtils:

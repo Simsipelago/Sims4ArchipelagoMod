@@ -7,8 +7,8 @@ Copyright (c) COLONOLNUTTY
 """
 from buffs.buff import Buff
 from sims.sim_info import SimInfo
-from sims4communitylib.events.event_handling.common_event import CommonEvent
-from sims4communitylib.utils.sims.common_buff_utils import CommonBuffUtils
+from s4ap.sims4communitylib.events.event_handling.common_event import CommonEvent
+from s4ap.sims4communitylib.utils.sims.common_buff_utils import CommonBuffUtils
 
 
 class S4CLSimBuffAddedEvent(CommonEvent):
@@ -21,8 +21,8 @@ class S4CLSimBuffAddedEvent(CommonEvent):
     .. highlight:: python
     .. code-block:: python
 
-        from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
-        from sims4communitylib.modinfo import ModInfo
+        from s4ap.sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
+        from s4ap.sims4communitylib.modinfo import ModInfo
 
         class ExampleEventListener:
 

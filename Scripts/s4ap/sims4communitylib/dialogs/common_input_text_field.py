@@ -8,9 +8,9 @@ Copyright (c) COLONOLNUTTY
 from typing import Union
 
 from protocolbuffers.Localization_pb2 import LocalizedString
-from sims4communitylib.enums.common_character_restrictions import CommonCharacterRestriction
-from sims4communitylib.enums.strings_enum import CommonStringId
-from sims4communitylib.utils.localization.common_localized_string_separators import CommonLocalizedStringSeparator
+from s4ap.sims4communitylib.enums.common_character_restrictions import CommonCharacterRestriction
+from s4ap.sims4communitylib.enums.strings_enum import CommonStringId
+from s4ap.sims4communitylib.utils.localization.common_localized_string_separators import CommonLocalizedStringSeparator
 
 
 class CommonInputTextField:

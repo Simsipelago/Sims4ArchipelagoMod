@@ -7,10 +7,10 @@ Copyright (c) COLONOLNUTTY
 """
 from typing import TypeVar, Generic
 
-from sims4communitylib.systems.item_query.dtos.common_loaded_item import CommonLoadedItem
-from sims4communitylib.classes.testing.common_test_result import CommonTestResult
-from sims4communitylib.logging.has_class_log import HasClassLog
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.systems.item_query.dtos.common_loaded_item import CommonLoadedItem
+from s4ap.sims4communitylib.classes.testing.common_test_result import CommonTestResult
+from s4ap.sims4communitylib.logging.has_class_log import HasClassLog
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
 
 
 CommonLoadedItemType = TypeVar('CommonLoadedItemType', bound=CommonLoadedItem)

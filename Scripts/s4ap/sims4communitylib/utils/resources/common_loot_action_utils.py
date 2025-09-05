@@ -101,5 +101,5 @@ class CommonLootActionUtils:
             return loot_actions_id
 
         from sims4.resources import Types
-        from sims4communitylib.utils.common_resource_utils import CommonResourceUtils
+        from s4ap.sims4communitylib.utils.common_resource_utils import CommonResourceUtils
         return CommonResourceUtils.load_instance(Types.ACTION, loot_actions_id)

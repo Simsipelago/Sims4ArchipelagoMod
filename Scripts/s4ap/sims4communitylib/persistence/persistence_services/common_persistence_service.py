@@ -7,9 +7,9 @@ Copyright (c) COLONOLNUTTY
 """
 from typing import Dict, Any
 
-from sims4communitylib.logging.has_log import HasLog
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.logging.has_log import HasLog
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.modinfo import ModInfo
 
 
 class CommonPersistenceService(HasLog):

@@ -13,18 +13,18 @@ from relationships.relationship_track import RelationshipTrack
 from server_commands.argument_helpers import TunableInstanceParam
 from sims.sim_info import SimInfo
 from sims4.resources import Types
-from sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
-from sims4communitylib.classes.testing.common_test_result import CommonTestResult
-from sims4communitylib.enums.relationship_bits_enum import CommonRelationshipBitId
-from sims4communitylib.enums.relationship_tracks_enum import CommonRelationshipTrackId
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
+from s4ap.sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
+from s4ap.sims4communitylib.classes.testing.common_test_result import CommonTestResult
+from s4ap.sims4communitylib.enums.relationship_bits_enum import CommonRelationshipBitId
+from s4ap.sims4communitylib.enums.relationship_tracks_enum import CommonRelationshipTrackId
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
     CommonConsoleCommandArgument
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
-from sims4communitylib.utils.common_log_registry import CommonLogRegistry
-from sims4communitylib.utils.sims.common_age_utils import CommonAgeUtils
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
-from sims4communitylib.utils.sims.common_species_utils import CommonSpeciesUtils
+from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+from s4ap.sims4communitylib.utils.common_log_registry import CommonLogRegistry
+from s4ap.sims4communitylib.utils.sims.common_age_utils import CommonAgeUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+from s4ap.sims4communitylib.utils.sims.common_species_utils import CommonSpeciesUtils
 
 
 class CommonRelationshipUtils:
@@ -820,7 +820,7 @@ class CommonRelationshipUtils:
             return relationship_bit
 
         from sims4.resources import Types
-        from sims4communitylib.utils.common_resource_utils import CommonResourceUtils
+        from s4ap.sims4communitylib.utils.common_resource_utils import CommonResourceUtils
         return CommonResourceUtils.load_instance(Types.RELATIONSHIP_BIT, relationship_bit)
 
     @classmethod
@@ -854,7 +854,7 @@ class CommonRelationshipUtils:
             return relationship_track
 
         from sims4.resources import Types
-        from sims4communitylib.utils.common_resource_utils import CommonResourceUtils
+        from s4ap.sims4communitylib.utils.common_resource_utils import CommonResourceUtils
         return CommonResourceUtils.load_instance(Types.STATISTIC, relationship_track)
 
     @classmethod

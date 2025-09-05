@@ -7,7 +7,7 @@ Copyright (c) COLONOLNUTTY
 """
 from typing import Union, Tuple, Iterator
 
-from sims4communitylib.enums.enumtypes.common_int import CommonInt
+from s4ap.sims4communitylib.enums.enumtypes.common_int import CommonInt
 from tag import TagCategory
 
 

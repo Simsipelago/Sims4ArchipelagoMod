@@ -10,9 +10,9 @@ from typing import Union, Any, Iterator
 from protocolbuffers.Localization_pb2 import LocalizedString
 from sims4.localization import LocalizationHelperTuning, _create_localized_string, create_tokens, \
     TunableLocalizedStringFactory
-from sims4communitylib.enums.strings_enum import CommonStringId
-from sims4communitylib.utils.localization.common_localized_string_colors import CommonLocalizedStringColor
-from sims4communitylib.utils.localization.common_localized_string_separators import CommonLocalizedStringSeparator
+from s4ap.sims4communitylib.enums.strings_enum import CommonStringId
+from s4ap.sims4communitylib.utils.localization.common_localized_string_colors import CommonLocalizedStringColor
+from s4ap.sims4communitylib.utils.localization.common_localized_string_separators import CommonLocalizedStringSeparator
 
 
 class CommonLocalizationUtils:

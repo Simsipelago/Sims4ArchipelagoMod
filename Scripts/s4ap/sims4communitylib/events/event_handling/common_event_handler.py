@@ -8,8 +8,8 @@ Copyright (c) COLONOLNUTTY
 import inspect
 from typing import Callable, Any, Union
 
-from sims4communitylib.events.event_handling.common_event import CommonEvent
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.events.event_handling.common_event import CommonEvent
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
 
 
 class CommonEventHandler:
@@ -37,7 +37,7 @@ class CommonEventHandler:
             raise AssertionError('Event Function \'{}\' is missing the required argument with name \'event_data\'')
         if 'self' in function_signature.parameters or 'cls' in function_signature.parameters:
             raise AssertionError('Event functions must be static methods. Mod Name: \'{}\', Function: \'{}\''.format(repr(mod_identifier), event_function.__name__))
-        from sims4communitylib.utils.misc.common_mod_identity_utils import CommonModIdentityUtils
+        from s4ap.sims4communitylib.utils.misc.common_mod_identity_utils import CommonModIdentityUtils
         self._mod_name = CommonModIdentityUtils.determine_mod_name_from_identifier(mod_identifier)
         self._event_function = event_function
         self._event_type = function_signature.parameters['event_data'].annotation

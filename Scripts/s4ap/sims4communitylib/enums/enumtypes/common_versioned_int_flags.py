@@ -7,8 +7,8 @@ Copyright (c) COLONOLNUTTY
 """
 from typing import Set, Dict
 
-from sims4communitylib.enums.enumtypes.common_int_flags import CommonIntFlags
-from sims4communitylib.enums.enumtypes.common_versioned_values_mixin import CommonVersionedValuesMixin
+from s4ap.sims4communitylib.enums.enumtypes.common_int_flags import CommonIntFlags
+from s4ap.sims4communitylib.enums.enumtypes.common_versioned_values_mixin import CommonVersionedValuesMixin
 
 
 class CommonVersionedIntFlags(CommonIntFlags, CommonVersionedValuesMixin):

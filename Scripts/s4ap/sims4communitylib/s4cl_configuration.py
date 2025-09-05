@@ -8,14 +8,14 @@ Copyright (c) COLONOLNUTTY
 import os
 from typing import Tuple, Dict, List, Any
 
-from sims4communitylib.exceptions.common_exceptions_handler import CommonExceptionHandler
-from sims4communitylib.logging.has_log import HasLog
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.common_service import CommonService
-from sims4communitylib.utils.common_json_io_utils import CommonJSONIOUtils
-from sims4communitylib.utils.common_log_registry import CommonMessageType
-from sims4communitylib.utils.common_resource_utils import CommonResourceUtils
+from s4ap.sims4communitylib.exceptions.common_exceptions_handler import CommonExceptionHandler
+from s4ap.sims4communitylib.logging.has_log import HasLog
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.common_service import CommonService
+from s4ap.sims4communitylib.utils.common_json_io_utils import CommonJSONIOUtils
+from s4ap.sims4communitylib.utils.common_log_registry import CommonMessageType
+from s4ap.sims4communitylib.utils.common_resource_utils import CommonResourceUtils
 
 ON_RTD = os.environ.get('READTHEDOCS', None) == 'True'
 

@@ -9,22 +9,22 @@ from typing import Any
 
 from objects.game_object import GameObject
 from objects.script_object import ScriptObject
-from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
-from sims4communitylib.events.game_object.events.game_object_added_to_inventory import S4CLGameObjectAddedToInventoryEvent
-from sims4communitylib.events.game_object.events.game_object_pre_despawned import S4CLGameObjectPreDespawnedEvent
-from sims4communitylib.events.game_object.events.game_object_pre_deleted import S4CLGameObjectPreDeletedEvent
-from sims4communitylib.events.game_object.events.game_object_initialized import S4CLGameObjectInitializedEvent
-from sims4communitylib.events.game_object.events.game_object_loaded import S4CLGameObjectLoadedEvent
-from sims4communitylib.events.game_object.events.game_object_pre_removed_from_inventory import \
+from s4ap.sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
+from s4ap.sims4communitylib.events.game_object.events.game_object_added_to_inventory import S4CLGameObjectAddedToInventoryEvent
+from s4ap.sims4communitylib.events.game_object.events.game_object_pre_despawned import S4CLGameObjectPreDespawnedEvent
+from s4ap.sims4communitylib.events.game_object.events.game_object_pre_deleted import S4CLGameObjectPreDeletedEvent
+from s4ap.sims4communitylib.events.game_object.events.game_object_initialized import S4CLGameObjectInitializedEvent
+from s4ap.sims4communitylib.events.game_object.events.game_object_loaded import S4CLGameObjectLoadedEvent
+from s4ap.sims4communitylib.events.game_object.events.game_object_pre_removed_from_inventory import \
     S4CLGameObjectPreRemovedFromInventoryEvent
-from sims4communitylib.events.game_object.events.game_object_spawned import S4CLGameObjectSpawnedEvent
-from sims4communitylib.events.game_object.events.game_object_added_to_game_object_inventory import \
+from s4ap.sims4communitylib.events.game_object.events.game_object_spawned import S4CLGameObjectSpawnedEvent
+from s4ap.sims4communitylib.events.game_object.events.game_object_added_to_game_object_inventory import \
     S4CLGameObjectAddedToGameObjectInventoryEvent
-from sims4communitylib.events.game_object.events.game_object_pre_removed_from_game_object_inventory import \
+from s4ap.sims4communitylib.events.game_object.events.game_object_pre_removed_from_game_object_inventory import \
     S4CLGameObjectPreRemovedFromGameObjectInventoryEvent
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.common_service import CommonService
-from sims4communitylib.utils.common_injection_utils import CommonInjectionUtils
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.common_service import CommonService
+from s4ap.sims4communitylib.utils.common_injection_utils import CommonInjectionUtils
 
 
 class CommonGameObjectEventDispatcherService(CommonService):
@@ -39,7 +39,7 @@ class CommonGameObjectEventDispatcherService(CommonService):
         return CommonEventRegistry.get().dispatch(S4CLGameObjectInitializedEvent(game_object))
 
     def _on_game_object_load(self, game_object: GameObject, *_, **__) -> bool:
-        from sims4communitylib.events.zone_spin.common_zone_spin_event_dispatcher import CommonZoneSpinEventDispatcher
+        from s4ap.sims4communitylib.events.zone_spin.common_zone_spin_event_dispatcher import CommonZoneSpinEventDispatcher
         if CommonZoneSpinEventDispatcher.get().game_loading:
             return False
         return CommonEventRegistry.get().dispatch(S4CLGameObjectLoadedEvent(game_object))

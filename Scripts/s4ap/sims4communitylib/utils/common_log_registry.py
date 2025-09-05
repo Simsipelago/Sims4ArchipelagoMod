@@ -9,13 +9,13 @@ import os
 from typing import List, Dict, Any, Union, Tuple, Iterator
 from pprint import pformat
 
-from sims4communitylib.enums.enumtypes.common_int import CommonInt
-from sims4communitylib.exceptions.common_stacktrace_utils import CommonStacktraceUtil
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.common_service import CommonService
-from sims4communitylib.utils.common_io_utils import CommonIOUtils
-from sims4communitylib.utils.common_log_utils import CommonLogUtils
+from s4ap.sims4communitylib.enums.enumtypes.common_int import CommonInt
+from s4ap.sims4communitylib.exceptions.common_stacktrace_utils import CommonStacktraceUtil
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.common_service import CommonService
+from s4ap.sims4communitylib.utils.common_io_utils import CommonIOUtils
+from s4ap.sims4communitylib.utils.common_log_utils import CommonLogUtils
 
 _log = None
 
@@ -45,7 +45,7 @@ class CommonLog:
     """
     def __init__(self, mod_identifier: Union[str, CommonModIdentity], log_name: str, custom_file_path: str = None):
         self._log_name = log_name
-        from sims4communitylib.utils.misc.common_mod_identity_utils import CommonModIdentityUtils
+        from s4ap.sims4communitylib.utils.misc.common_mod_identity_utils import CommonModIdentityUtils
         self._mod_name = CommonModIdentityUtils.determine_mod_name_from_identifier(mod_identifier)
         self._custom_file_path = custom_file_path
         self._enabled_message_types = tuple()
@@ -451,12 +451,12 @@ class CommonLog:
         return message_type in self._enabled_message_types
 
     def _log_message(self, message_type: CommonMessageType, message: str):
-        from sims4communitylib.utils.common_date_utils import CommonRealDateUtils
-        from sims4communitylib.exceptions.common_exceptions_handler import CommonExceptionHandler
+        from s4ap.sims4communitylib.utils.common_date_utils import CommonRealDateUtils
+        from s4ap.sims4communitylib.exceptions.common_exceptions_handler import CommonExceptionHandler
         current_date_time = CommonRealDateUtils.get_current_date_string()
         new_message = '{} {}: [{}]: {}\n'.format(current_date_time, getattr(message_type, 'name', str(message_type)), self.name, message)
         try:
-            from sims4communitylib.utils.common_io_utils import CommonIOUtils
+            from s4ap.sims4communitylib.utils.common_io_utils import CommonIOUtils
             file_path = self.messages_file_path
             os.makedirs(os.path.dirname(file_path), exist_ok=True)
             CommonIOUtils.write_to_file(file_path, new_message, ignore_errors=True)
@@ -464,8 +464,8 @@ class CommonLog:
             CommonExceptionHandler.log_exception(self.mod_name, 'Error occurred while attempting to log message: {}'.format(pformat(message)), exception=ex, custom_file_path=self._custom_file_path)
 
     def _log_error(self, message: str, exception: Exception = None, stack_trace: List[str] = None):
-        from sims4communitylib.utils.common_date_utils import CommonRealDateUtils
-        from sims4communitylib.exceptions.common_exceptions_handler import CommonExceptionHandler
+        from s4ap.sims4communitylib.utils.common_date_utils import CommonRealDateUtils
+        from s4ap.sims4communitylib.exceptions.common_exceptions_handler import CommonExceptionHandler
         try:
             exceptions = stack_trace or CommonStacktraceUtil.get_full_stack_trace()
             if exception is not None:
@@ -484,9 +484,9 @@ class CommonLog:
     def _update_args(self, *args: Any) -> Tuple[Any]:
         if not args:
             return args
-        from sims4communitylib.utils.common_type_utils import CommonTypeUtils
-        from sims4communitylib.utils.sims.common_sim_name_utils import CommonSimNameUtils
-        from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+        from s4ap.sims4communitylib.utils.common_type_utils import CommonTypeUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_name_utils import CommonSimNameUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
         new_args: List[Any] = list()
         for arg in args:
             if CommonTypeUtils.is_sim_or_sim_info(arg) or CommonTypeUtils.is_sim_info_base_wrapper(arg):
@@ -498,7 +498,7 @@ class CommonLog:
                 elif CommonTypeUtils.is_sim_info_base_wrapper(arg):
                     obj_type_acronym = 'SIBW'
                 if self._should_log_extra_sim_details:
-                    from sims4communitylib.utils.sims.common_sim_type_utils import CommonSimTypeUtils
+                    from s4ap.sims4communitylib.utils.sims.common_sim_type_utils import CommonSimTypeUtils
                     sim_info = CommonSimUtils.get_sim_info(arg)
                     sim_types = tuple(CommonSimTypeUtils.get_all_sim_types_gen(sim_info, combine_teen_young_adult_and_elder_age=False, combine_child_dog_types=False))
                     current_sim_type = CommonSimTypeUtils.determine_sim_type(sim_info, combine_teen_young_adult_and_elder_age=False, combine_child_dog_types=False, use_current_occult_type=True)
@@ -513,9 +513,9 @@ class CommonLog:
         if not kwargs:
             return kwargs
         new_kwargs: Dict[str, Any] = dict()
-        from sims4communitylib.utils.common_type_utils import CommonTypeUtils
-        from sims4communitylib.utils.sims.common_sim_name_utils import CommonSimNameUtils
-        from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+        from s4ap.sims4communitylib.utils.common_type_utils import CommonTypeUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_name_utils import CommonSimNameUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
         for (key, val) in kwargs.items():
             if CommonTypeUtils.is_sim_or_sim_info(val) or CommonTypeUtils.is_sim_info_base_wrapper(val):
                 obj_type_acronym = 'UnknownType'
@@ -527,7 +527,7 @@ class CommonLog:
                     obj_type_acronym = 'SIBW'
 
                 if self._should_log_extra_sim_details:
-                    from sims4communitylib.utils.sims.common_sim_type_utils import CommonSimTypeUtils
+                    from s4ap.sims4communitylib.utils.sims.common_sim_type_utils import CommonSimTypeUtils
                     sim_info = CommonSimUtils.get_sim_info(val)
                     sim_types = tuple(CommonSimTypeUtils.get_all_sim_types_gen(sim_info, combine_teen_young_adult_and_elder_age=False, combine_child_dog_types=False))
                     current_sim_type = CommonSimTypeUtils.determine_sim_type(sim_info, combine_teen_young_adult_and_elder_age=False, combine_child_dog_types=False, use_current_occult_type=True)
@@ -631,7 +631,7 @@ class CommonLogRegistry(CommonService):
         if log_name in self._registered_logs[mod_name]:
             return self._registered_logs[mod_name][log_name]
         log = CommonLog(mod_identifier, log_name, custom_file_path=custom_file_path)
-        from sims4communitylib.s4cl_configuration import S4CLConfiguration
+        from s4ap.sims4communitylib.s4cl_configuration import S4CLConfiguration
         if log_name in S4CLConfiguration().enable_logs:
             log.enable(message_types=S4CLConfiguration().enable_logs[log_name])
         self._registered_logs[mod_name][log_name] = log
@@ -656,7 +656,7 @@ class CommonLogRegistry(CommonService):
         return log
 
     def _delete_old_log_files(self) -> None:
-        from sims4communitylib.utils.common_io_utils import CommonIOUtils
+        from s4ap.sims4communitylib.utils.common_io_utils import CommonIOUtils
         files_to_delete = (
             os.path.join(CommonLogUtils.get_sims_documents_location_path(), 'mod_logs'),
         )

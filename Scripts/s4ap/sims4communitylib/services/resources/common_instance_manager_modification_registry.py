@@ -8,12 +8,12 @@ Copyright (c) COLONOLNUTTY
 from typing import Callable, Any, Type, List
 
 from sims4.tuning.instance_manager import InstanceManager
-from sims4communitylib.logging._has_s4cl_log import _HasS4CLLog
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.common_service import CommonService
-from sims4communitylib.services.resources.modification_handlers.common_instance_manager_modification_handler import \
+from s4ap.sims4communitylib.logging._has_s4cl_log import _HasS4CLLog
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.common_service import CommonService
+from s4ap.sims4communitylib.services.resources.modification_handlers.common_instance_manager_modification_handler import \
     CommonInstanceManagerModificationHandler
-from sims4communitylib.utils.common_injection_utils import CommonInjectionUtils
+from s4ap.sims4communitylib.utils.common_injection_utils import CommonInjectionUtils
 
 
 class CommonInstanceManagerModificationRegistry(CommonService, _HasS4CLLog):

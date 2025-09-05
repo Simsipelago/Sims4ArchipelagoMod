@@ -8,15 +8,15 @@ Copyright (c) COLONOLNUTTY
 from typing import Any
 
 from sims4.log import Logger
-from sims4communitylib.classes.time.common_stop_watch import CommonStopWatch
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.s4cl_configuration import S4CLConfiguration
-from sims4communitylib.services.commands.common_console_command import CommonConsoleCommand
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
-from sims4communitylib.services.common_service import CommonService
-from sims4communitylib.utils.common_injection_utils import CommonInjectionUtils
-from sims4communitylib.utils.common_log_registry import CommonLogRegistry, CommonLog
-from sims4communitylib.utils.misc.common_text_utils import CommonTextUtils
+from s4ap.sims4communitylib.classes.time.common_stop_watch import CommonStopWatch
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.s4cl_configuration import S4CLConfiguration
+from s4ap.sims4communitylib.services.commands.common_console_command import CommonConsoleCommand
+from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+from s4ap.sims4communitylib.services.common_service import CommonService
+from s4ap.sims4communitylib.utils.common_injection_utils import CommonInjectionUtils
+from s4ap.sims4communitylib.utils.common_log_registry import CommonLogRegistry, CommonLog
+from s4ap.sims4communitylib.utils.misc.common_text_utils import CommonTextUtils
 
 
 class _CommonVanillaLogOverride(CommonService):

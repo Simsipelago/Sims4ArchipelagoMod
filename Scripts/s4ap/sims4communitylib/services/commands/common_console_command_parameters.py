@@ -10,7 +10,7 @@ from typing import Union, Tuple, Any
 from objects.game_object import GameObject
 from sims.sim_info import SimInfo
 from sims4.commands import CustomParam
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
 
 
 class CommonConsoleCommandParameter(CustomParam):
@@ -41,8 +41,8 @@ class CommonRequiredSimInfoConsoleCommandParameter(CommonConsoleCommandParameter
     def get_value(cls, output: CommonConsoleCommandOutput, *args: str) -> SimInfo:
         """Retrieve the number of arguments taken and the value returned."""
         from singletons import UNSET
-        from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
-        from sims4communitylib.utils.sims.common_sim_name_utils import CommonSimNameUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_name_utils import CommonSimNameUtils
         if len(args) == 0:
             return UNSET
         sim_id = cls._get_target_id(args[0])
@@ -73,8 +73,8 @@ class CommonRequiredSimInfoConsoleCommandParameter(CommonConsoleCommandParameter
         return super().get_value(output, *args)
 
     def __new__(cls, output: CommonConsoleCommandOutput, *args: str) -> Union[SimInfo, None]:
-        from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
-        from sims4communitylib.utils.sims.common_sim_name_utils import CommonSimNameUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_name_utils import CommonSimNameUtils
         if len(args) == 0:
             return None
         int_val = cls._get_target_id(args[0])
@@ -100,7 +100,7 @@ class CommonOptionalSimInfoConsoleCommandParameter(CommonRequiredSimInfoConsoleC
     @classmethod
     def get_value(cls, output: CommonConsoleCommandOutput, *args: str) -> SimInfo:
         """Retrieve the number of arguments taken and the value returned."""
-        from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
         sim_info = super().get_value(output, *args)
         from singletons import UNSET
         if sim_info is UNSET:
@@ -108,7 +108,7 @@ class CommonOptionalSimInfoConsoleCommandParameter(CommonRequiredSimInfoConsoleC
         return sim_info
 
     def __new__(cls, output: CommonConsoleCommandOutput, *args: str) -> Union[SimInfo, None]:
-        from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
         return super().__new__(cls, output, *args) or CommonSimUtils.get_active_sim_info()
 
 
@@ -126,7 +126,7 @@ class CommonRequiredGameObjectConsoleCommandParameter(CommonConsoleCommandParame
     @classmethod
     def get_value(cls, output: CommonConsoleCommandOutput, *args: str) -> GameObject:
         """Retrieve the number of arguments taken and the value returned."""
-        from sims4communitylib.utils.objects.common_object_utils import CommonObjectUtils
+        from s4ap.sims4communitylib.utils.objects.common_object_utils import CommonObjectUtils
         from singletons import UNSET
         if len(args) == 0:
             return UNSET
@@ -139,7 +139,7 @@ class CommonRequiredGameObjectConsoleCommandParameter(CommonConsoleCommandParame
         return super().get_value(output, *args)
 
     def __new__(cls, output: CommonConsoleCommandOutput, *args: str) -> Union[GameObject, None]:
-        from sims4communitylib.utils.objects.common_object_utils import CommonObjectUtils
+        from s4ap.sims4communitylib.utils.objects.common_object_utils import CommonObjectUtils
         from singletons import UNSET
         if len(args) == 0:
             return UNSET

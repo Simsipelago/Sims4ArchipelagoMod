@@ -6,8 +6,8 @@ https://creativecommons.org/licenses/by/4.0/legalcode
 Copyright (c) COLONOLNUTTY
 """
 from sims.sim_info import SimInfo
-from sims4communitylib.utils.sims.common_age_utils import CommonAgeUtils
-from sims4communitylib.utils.sims.common_species_utils import CommonSpeciesUtils
+from s4ap.sims4communitylib.utils.sims.common_age_utils import CommonAgeUtils
+from s4ap.sims4communitylib.utils.sims.common_species_utils import CommonSpeciesUtils
 
 
 class CommonAgeSpeciesUtils:

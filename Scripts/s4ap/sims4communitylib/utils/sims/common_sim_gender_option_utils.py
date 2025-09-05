@@ -9,14 +9,14 @@ from typing import Union
 
 from sims.global_gender_preference_tuning import ExploringOptionsStatus, GlobalGenderPreferenceTuning
 from sims.sim_info import SimInfo
-from sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
-from sims4communitylib.classes.testing.common_test_result import CommonTestResult
-from sims4communitylib.enums.traits_enum import CommonTraitId
-from sims4communitylib.logging._has_s4cl_class_log import _HasS4CLClassLog
-from sims4communitylib.utils.sims.common_gender_utils import CommonGenderUtils
-from sims4communitylib.utils.sims.common_sim_voice_utils import CommonSimVoiceUtils
-from sims4communitylib.utils.sims.common_species_utils import CommonSpeciesUtils
-from sims4communitylib.utils.sims.common_trait_utils import CommonTraitUtils
+from s4ap.sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
+from s4ap.sims4communitylib.classes.testing.common_test_result import CommonTestResult
+from s4ap.sims4communitylib.enums.traits_enum import CommonTraitId
+from s4ap.sims4communitylib.logging._has_s4cl_class_log import _HasS4CLClassLog
+from s4ap.sims4communitylib.utils.sims.common_gender_utils import CommonGenderUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_voice_utils import CommonSimVoiceUtils
+from s4ap.sims4communitylib.utils.sims.common_species_utils import CommonSpeciesUtils
+from s4ap.sims4communitylib.utils.sims.common_trait_utils import CommonTraitUtils
 from traits.traits import Trait
 
 
@@ -96,7 +96,7 @@ class CommonSimGenderOptionUtils(_HasS4CLClassLog):
         :return: The result of testing. True, if the Sim can impregnate other Sims. False, if the Sim can not impregnate other Sims.
         :rtype: CommonTestResult
         """
-        from sims4communitylib.utils.sims.common_sim_pregnancy_utils import CommonSimPregnancyUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_pregnancy_utils import CommonSimPregnancyUtils
         return CommonSimPregnancyUtils.can_impregnate(sim_info)
 
     @staticmethod
@@ -130,7 +130,7 @@ class CommonSimGenderOptionUtils(_HasS4CLClassLog):
         :return: The result of testing. True, if the Sim can be impregnated. False, if the Sim can not be impregnated.
         :rtype: CommonTestResult
         """
-        from sims4communitylib.utils.sims.common_sim_pregnancy_utils import CommonSimPregnancyUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_pregnancy_utils import CommonSimPregnancyUtils
         return CommonSimPregnancyUtils.can_be_impregnated(sim_info)
 
     @staticmethod
@@ -365,7 +365,7 @@ class CommonSimGenderOptionUtils(_HasS4CLClassLog):
         """
         if sim_info is None:
             raise AssertionError('Argument sim_info was None')
-        from sims4communitylib.events.sim.common_sim_event_dispatcher import CommonSimEventDispatcherService
+        from s4ap.sims4communitylib.events.sim.common_sim_event_dispatcher import CommonSimEventDispatcherService
         CommonTraitUtils.remove_trait(sim_info, CommonTraitId.BREASTS_FORCE_OFF)
         CommonTraitUtils.remove_trait(sim_info, CommonTraitId.BREASTS_FORCE_ON)
         if has_breasts:
@@ -412,7 +412,7 @@ class CommonSimGenderOptionUtils(_HasS4CLClassLog):
             add_trait_result = CommonTraitUtils.add_trait(sim_info, CommonTraitId.GENDER_OPTIONS_FRAME_FEMININE)
             if not add_trait_result:
                 return add_trait_result
-        from sims4communitylib.events.sim.common_sim_event_dispatcher import CommonSimEventDispatcherService
+        from s4ap.sims4communitylib.events.sim.common_sim_event_dispatcher import CommonSimEventDispatcherService
         CommonSimEventDispatcherService()._on_sim_change_gender_options_body_frame(sim_info)
         return CommonExecutionResult.TRUE
 
@@ -446,7 +446,7 @@ class CommonSimGenderOptionUtils(_HasS4CLClassLog):
             add_trait_result = CommonTraitUtils.add_trait(sim_info, CommonTraitId.GENDER_OPTIONS_CLOTHING_WOMENS_WEAR)
             if not add_trait_result:
                 return add_trait_result
-        from sims4communitylib.events.sim.common_sim_event_dispatcher import CommonSimEventDispatcherService
+        from s4ap.sims4communitylib.events.sim.common_sim_event_dispatcher import CommonSimEventDispatcherService
         CommonSimEventDispatcherService()._on_sim_change_gender_options_clothing_preference(sim_info)
         return CommonExecutionResult.TRUE
 
@@ -468,7 +468,7 @@ class CommonSimGenderOptionUtils(_HasS4CLClassLog):
         """
         if sim_info is None:
             raise AssertionError('Argument sim_info was None')
-        from sims4communitylib.utils.sims.common_sim_pregnancy_utils import CommonSimPregnancyUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_pregnancy_utils import CommonSimPregnancyUtils
         can_be_impregnated_trait = CommonSimPregnancyUtils.determine_can_be_impregnated_trait(sim_info)
         can_not_be_impregnated_trait = CommonSimPregnancyUtils.determine_can_not_be_impregnated_trait(sim_info)
         if can_be_impregnated_trait is None:
@@ -496,7 +496,7 @@ class CommonSimGenderOptionUtils(_HasS4CLClassLog):
                     add_trait_result = CommonTraitUtils.add_trait(sim_info, CommonTraitId.PREGNANCY_OPTIONS_PET_CAN_NOT_REPRODUCE)
                     if not add_trait_result:
                         return add_trait_result
-        from sims4communitylib.events.sim.common_sim_event_dispatcher import CommonSimEventDispatcherService
+        from s4ap.sims4communitylib.events.sim.common_sim_event_dispatcher import CommonSimEventDispatcherService
         CommonSimEventDispatcherService()._on_sim_change_gender_options_can_be_impregnated(sim_info)
         return CommonExecutionResult.TRUE
 
@@ -518,7 +518,7 @@ class CommonSimGenderOptionUtils(_HasS4CLClassLog):
         """
         if sim_info is None:
             raise AssertionError('Argument sim_info was None')
-        from sims4communitylib.utils.sims.common_sim_pregnancy_utils import CommonSimPregnancyUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_pregnancy_utils import CommonSimPregnancyUtils
         can_impregnate_trait = CommonSimPregnancyUtils.determine_can_impregnate_trait(sim_info)
         can_not_impregnate_trait = CommonSimPregnancyUtils.determine_can_not_impregnate_trait(sim_info)
         if can_impregnate_trait is None:
@@ -546,7 +546,7 @@ class CommonSimGenderOptionUtils(_HasS4CLClassLog):
                     add_trait_result = CommonTraitUtils.add_trait(sim_info, CommonTraitId.PREGNANCY_OPTIONS_PET_CAN_NOT_REPRODUCE)
                     if not add_trait_result:
                         return add_trait_result
-        from sims4communitylib.events.sim.common_sim_event_dispatcher import CommonSimEventDispatcherService
+        from s4ap.sims4communitylib.events.sim.common_sim_event_dispatcher import CommonSimEventDispatcherService
         CommonSimEventDispatcherService()._on_sim_change_gender_options_can_impregnate(sim_info)
         return CommonExecutionResult.TRUE
 
@@ -610,7 +610,7 @@ class CommonSimGenderOptionUtils(_HasS4CLClassLog):
                 update_can_be_impregnated_result = CommonSimGenderOptionUtils.update_can_be_impregnated(sim_info, False)
                 if not update_can_be_impregnated_result:
                     return update_can_be_impregnated_result
-        from sims4communitylib.events.sim.common_sim_event_dispatcher import CommonSimEventDispatcherService
+        from s4ap.sims4communitylib.events.sim.common_sim_event_dispatcher import CommonSimEventDispatcherService
         CommonSimEventDispatcherService()._on_sim_change_gender_options_can_reproduce(sim_info)
         return CommonExecutionResult.TRUE
 
@@ -650,7 +650,7 @@ class CommonSimGenderOptionUtils(_HasS4CLClassLog):
             add_trait_result = CommonTraitUtils.add_trait(sim_info, toilet_sitting)
             if not add_trait_result:
                 return add_trait_result
-        from sims4communitylib.events.sim.common_sim_event_dispatcher import CommonSimEventDispatcherService
+        from s4ap.sims4communitylib.events.sim.common_sim_event_dispatcher import CommonSimEventDispatcherService
         CommonSimEventDispatcherService()._on_sim_change_gender_options_toilet_usage(sim_info)
         return CommonExecutionResult.TRUE
 
@@ -686,7 +686,7 @@ class CommonSimGenderOptionUtils(_HasS4CLClassLog):
                 if not add_trait_result:
                     return add_trait_result
 
-        from sims4communitylib.events.sim.common_sim_event_dispatcher import CommonSimEventDispatcherService
+        from s4ap.sims4communitylib.events.sim.common_sim_event_dispatcher import CommonSimEventDispatcherService
         CommonSimEventDispatcherService()._on_sim_change_gender_options_toilet_usage(sim_info)
         return CommonExecutionResult.TRUE
 
@@ -722,7 +722,7 @@ class CommonSimGenderOptionUtils(_HasS4CLClassLog):
                 if not add_trait_result:
                     return add_trait_result
 
-        from sims4communitylib.events.sim.common_sim_event_dispatcher import CommonSimEventDispatcherService
+        from s4ap.sims4communitylib.events.sim.common_sim_event_dispatcher import CommonSimEventDispatcherService
         CommonSimEventDispatcherService()._on_sim_change_gender_options_toilet_usage(sim_info)
         return CommonExecutionResult.TRUE
 

@@ -19,20 +19,20 @@ from rewards.reward_enums import RewardType
 from server_commands.argument_helpers import TunableInstanceParam
 from sims.sim_info import SimInfo
 from sims4.resources import Types
-from sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
-from sims4communitylib.classes.testing.common_test_result import CommonTestResult
-from sims4communitylib.logging._has_s4cl_class_log import _HasS4CLClassLog
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
+from s4ap.sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
+from s4ap.sims4communitylib.classes.testing.common_test_result import CommonTestResult
+from s4ap.sims4communitylib.logging._has_s4cl_class_log import _HasS4CLClassLog
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
     CommonConsoleCommandArgument
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
-from sims4communitylib.utils.common_time_utils import CommonTimeUtils
-from sims4communitylib.utils.location.common_location_utils import CommonLocationUtils
-from sims4communitylib.utils.sims.common_career_track_utils import CommonCareerTrackUtils
-from sims4communitylib.utils.sims.common_career_utils import CommonCareerUtils
-from sims4communitylib.utils.sims.common_household_utils import CommonHouseholdUtils
-from sims4communitylib.utils.sims.common_sim_type_utils import CommonSimTypeUtils
-from sims4communitylib.utils.sims.common_trait_utils import CommonTraitUtils
+from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+from s4ap.sims4communitylib.utils.common_time_utils import CommonTimeUtils
+from s4ap.sims4communitylib.utils.location.common_location_utils import CommonLocationUtils
+from s4ap.sims4communitylib.utils.sims.common_career_track_utils import CommonCareerTrackUtils
+from s4ap.sims4communitylib.utils.sims.common_career_utils import CommonCareerUtils
+from s4ap.sims4communitylib.utils.sims.common_household_utils import CommonHouseholdUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_type_utils import CommonSimTypeUtils
+from s4ap.sims4communitylib.utils.sims.common_trait_utils import CommonTraitUtils
 from singletons import DEFAULT
 
 

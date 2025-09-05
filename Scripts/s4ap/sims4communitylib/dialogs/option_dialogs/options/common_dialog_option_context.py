@@ -7,8 +7,8 @@ Copyright (c) COLONOLNUTTY
 """
 from typing import Union, Any, TypeVar, Iterator, Tuple, List
 from protocolbuffers.Localization_pb2 import LocalizedString
-from sims4communitylib.enums.strings_enum import CommonStringId
-from sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
+from s4ap.sims4communitylib.enums.strings_enum import CommonStringId
+from s4ap.sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
 
 DialogOptionValueType = TypeVar('DialogOptionValueType')
 

@@ -8,12 +8,12 @@ Copyright (c) COLONOLNUTTY
 from typing import Dict, Any, Tuple, Type
 
 from sims.sim_info import SimInfo
-from sims4communitylib.classes.serialization.common_serializable import CommonSerializable
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.persistence.data_management.common_data_manager import CommonDataManager
-from sims4communitylib.persistence.data_stores.common_data_store import CommonDataStore
-from sims4communitylib.persistence.common_sim_data_storage import CommonSimDataStorage
-from sims4communitylib.persistence.data_stores.common_sim_data_store import CommonSimDataStore
+from s4ap.sims4communitylib.classes.serialization.common_serializable import CommonSerializable
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.persistence.data_management.common_data_manager import CommonDataManager
+from s4ap.sims4communitylib.persistence.data_stores.common_data_store import CommonDataStore
+from s4ap.sims4communitylib.persistence.common_sim_data_storage import CommonSimDataStorage
+from s4ap.sims4communitylib.persistence.data_stores.common_sim_data_store import CommonSimDataStore
 
 
 class CommonPersistedSimDataStorage(CommonSimDataStorage):
@@ -34,7 +34,7 @@ class CommonPersistedSimDataStorage(CommonSimDataStorage):
             @classmethod
             def get_mod_identity(cls) -> CommonModIdentity:
                 # !!!Override with the CommonModIdentity of your own mod!!!
-                from sims4communitylib.modinfo import ModInfo
+                from s4ap.sims4communitylib.modinfo import ModInfo
                 return ModInfo.get_identity()
 
             @property
@@ -60,7 +60,7 @@ class CommonPersistedSimDataStorage(CommonSimDataStorage):
         super().__init__(sim_info)
         if self.__class__.__name__ is CommonPersistedSimDataStorage.__name__:
             raise RuntimeError('{} cannot be created directly. You must inherit from it to create an instance of it.'.format(self.__class__.__name__))
-        from sims4communitylib.persistence.data_management.common_data_manager_registry import CommonDataManagerRegistry
+        from s4ap.sims4communitylib.persistence.data_management.common_data_manager_registry import CommonDataManagerRegistry
         self._data_manager_registry = CommonDataManagerRegistry()
         self.__data_manager: CommonDataManager = None
         self._data = self._load_persisted_data()

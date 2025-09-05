@@ -7,7 +7,7 @@ Copyright (c) COLONOLNUTTY
 """
 from typing import Union
 
-from sims4communitylib.enums.statistics_enum import CommonStatisticId
+from s4ap.sims4communitylib.enums.statistics_enum import CommonStatisticId
 from statistics.base_statistic import BaseStatistic
 from statistics.statistic_instance_manager import StatisticInstanceManager
 
@@ -113,7 +113,7 @@ class CommonStatisticUtils:
             return statistic_id
 
         from sims4.resources import Types
-        from sims4communitylib.utils.common_resource_utils import CommonResourceUtils
+        from s4ap.sims4communitylib.utils.common_resource_utils import CommonResourceUtils
         return CommonResourceUtils.load_instance(Types.STATISTIC, statistic_id) or CommonResourceUtils.load_instance(Types.STATIC_COMMODITY, statistic_id)
 
     @staticmethod
@@ -126,6 +126,6 @@ class CommonStatisticUtils:
         :rtype: StatisticInstanceManager
         """
         from sims4.resources import Types
-        from sims4communitylib.utils.common_resource_utils import CommonResourceUtils
+        from s4ap.sims4communitylib.utils.common_resource_utils import CommonResourceUtils
         # noinspection PyTypeChecker
         return CommonResourceUtils.get_instance_manager(Types.STATISTIC)

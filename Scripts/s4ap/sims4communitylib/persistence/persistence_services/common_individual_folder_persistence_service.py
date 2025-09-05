@@ -8,10 +8,10 @@ Copyright (c) COLONOLNUTTY
 import os
 from typing import Dict, Any
 
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.persistence.persistence_services.common_persistence_service import CommonPersistenceService
-from sims4communitylib.utils.common_json_io_utils import CommonJSONIOUtils
-from sims4communitylib.utils.common_log_registry import CommonLogRegistry
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.persistence.persistence_services.common_persistence_service import CommonPersistenceService
+from s4ap.sims4communitylib.utils.common_json_io_utils import CommonJSONIOUtils
+from s4ap.sims4communitylib.utils.common_log_registry import CommonLogRegistry
 
 
 class CommonIndividualFolderPersistenceService(CommonPersistenceService):
@@ -37,7 +37,7 @@ class CommonIndividualFolderPersistenceService(CommonPersistenceService):
     ) -> None:
         super().__init__()
         self._main_file_name = main_file_name
-        from sims4communitylib.utils.common_log_utils import CommonLogUtils
+        from s4ap.sims4communitylib.utils.common_log_utils import CommonLogUtils
         self._data_folder_path = data_folder_path or CommonLogUtils.get_mod_data_location_path()
 
     # noinspection PyMissingOrEmptyDocstring

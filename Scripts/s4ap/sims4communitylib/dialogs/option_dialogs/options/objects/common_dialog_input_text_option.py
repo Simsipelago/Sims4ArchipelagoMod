@@ -8,16 +8,16 @@ Copyright (c) COLONOLNUTTY
 from typing import Any, Callable, Union, Iterator
 
 from protocolbuffers.Localization_pb2 import LocalizedString
-from sims4communitylib.dialogs.common_choice_outcome import CommonChoiceOutcome
-from sims4communitylib.dialogs.common_input_text_dialog import CommonInputTextDialog
-from sims4communitylib.enums.strings_enum import CommonStringId
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.utils.common_function_utils import CommonFunctionUtils
-from sims4communitylib.utils.common_icon_utils import CommonIconUtils
-from sims4communitylib.dialogs.option_dialogs.options.objects.common_dialog_object_option import \
+from s4ap.sims4communitylib.dialogs.common_choice_outcome import CommonChoiceOutcome
+from s4ap.sims4communitylib.dialogs.common_input_text_dialog import CommonInputTextDialog
+from s4ap.sims4communitylib.enums.strings_enum import CommonStringId
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.utils.common_function_utils import CommonFunctionUtils
+from s4ap.sims4communitylib.utils.common_icon_utils import CommonIconUtils
+from s4ap.sims4communitylib.dialogs.option_dialogs.options.objects.common_dialog_object_option import \
     CommonDialogObjectOption, DialogOptionIdentifierType
-from sims4communitylib.dialogs.option_dialogs.options.common_dialog_option_context import CommonDialogOptionContext
-from sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
+from s4ap.sims4communitylib.dialogs.option_dialogs.options.common_dialog_option_context import CommonDialogOptionContext
+from s4ap.sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
 
 
 class CommonDialogInputTextOption(CommonDialogObjectOption):

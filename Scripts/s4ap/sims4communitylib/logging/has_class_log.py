@@ -7,12 +7,12 @@ Copyright (c) COLONOLNUTTY
 """
 from typing import TYPE_CHECKING
 
-from sims4communitylib.logging.has_log import HasLog
-from sims4communitylib.mod_support.has_class_mod_identity import HasClassModIdentity
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.logging.has_log import HasLog
+from s4ap.sims4communitylib.mod_support.has_class_mod_identity import HasClassModIdentity
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
 
 if TYPE_CHECKING:
-    from sims4communitylib.utils.common_log_registry import CommonLog, CommonLogRegistry
+    from s4ap.sims4communitylib.utils.common_log_registry import CommonLog, CommonLogRegistry
 
 
 class HasClassLog(HasClassModIdentity, HasLog):
@@ -79,7 +79,7 @@ class HasClassLog(HasClassModIdentity, HasLog):
         :return: An instance of CommonLog
         :rtype: CommonLog
         """
-        from sims4communitylib.utils.common_log_registry import CommonLogRegistry
+        from s4ap.sims4communitylib.utils.common_log_registry import CommonLogRegistry
         if not hasattr(cls, '_log') or getattr(cls, '_log', None) is None:
             setattr(cls, '_log', CommonLogRegistry().register_log(cls.get_mod_identity(), cls.get_log_identifier()))
             if not hasattr(cls, '_verbose_log') or getattr(cls, '_verbose_log', None) is None:
@@ -99,7 +99,7 @@ class HasClassLog(HasClassModIdentity, HasLog):
         :return: An instance of CommonLog
         :rtype: CommonLog
         """
-        from sims4communitylib.utils.common_log_registry import CommonLogRegistry
+        from s4ap.sims4communitylib.utils.common_log_registry import CommonLogRegistry
         if not hasattr(cls, '_verbose_log') or getattr(cls, '_verbose_log', None) is None:
             setattr(cls, '_verbose_log', CommonLogRegistry().register_log(cls.get_mod_identity(), cls.get_verbose_log_identifier()))
         return getattr(cls, '_verbose_log', None)

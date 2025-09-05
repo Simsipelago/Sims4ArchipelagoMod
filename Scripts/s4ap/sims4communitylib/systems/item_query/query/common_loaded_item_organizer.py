@@ -7,9 +7,9 @@ Copyright (c) COLONOLNUTTY
 """
 from typing import Any, Tuple, Generic, TypeVar
 
-from sims4communitylib.enums.enumtypes.common_int import CommonInt
-from sims4communitylib.enums.enumtypes.common_int_flags import CommonIntFlags
-from sims4communitylib.systems.item_query.dtos.common_loaded_item import CommonLoadedItem
+from s4ap.sims4communitylib.enums.enumtypes.common_int import CommonInt
+from s4ap.sims4communitylib.enums.enumtypes.common_int_flags import CommonIntFlags
+from s4ap.sims4communitylib.systems.item_query.dtos.common_loaded_item import CommonLoadedItem
 
 CommonLoadedItemKeyType = TypeVar('CommonLoadedItemKeyType', int, CommonInt, CommonIntFlags)
 CommonLoadedItemType = TypeVar('CommonLoadedItemType', bound=CommonLoadedItem)

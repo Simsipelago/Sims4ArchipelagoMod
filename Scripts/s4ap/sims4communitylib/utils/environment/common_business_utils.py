@@ -23,7 +23,7 @@ class CommonBusinessUtils:
         :return: A Business Manager for the current zone.
         :rtype: BusinessManager
         """
-        from sims4communitylib.utils.location.common_location_utils import CommonLocationUtils
+        from s4ap.sims4communitylib.utils.location.common_location_utils import CommonLocationUtils
         return cls.get_business_manager_by_zone_id(CommonLocationUtils.get_current_zone_id())
 
     @classmethod
@@ -48,7 +48,7 @@ class CommonBusinessUtils:
         :return: The BusinessFunds object of the Business at the current Zone or None if the current Zone did not have a Business.
         :rtype: Union[BusinessFunds, None]
         """
-        from sims4communitylib.utils.location.common_location_utils import CommonLocationUtils
+        from s4ap.sims4communitylib.utils.location.common_location_utils import CommonLocationUtils
         return cls.get_business_funds_by_zone_id(CommonLocationUtils.get_current_zone_id())
 
     @classmethod

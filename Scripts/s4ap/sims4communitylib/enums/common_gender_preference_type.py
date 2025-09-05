@@ -8,7 +8,7 @@ Copyright (c) COLONOLNUTTY
 from typing import Dict, Union
 
 from sims.global_gender_preference_tuning import GenderPreferenceType
-from sims4communitylib.enums.enumtypes.common_int import CommonInt
+from s4ap.sims4communitylib.enums.enumtypes.common_int import CommonInt
 
 
 class CommonGenderPreferenceType(CommonInt):

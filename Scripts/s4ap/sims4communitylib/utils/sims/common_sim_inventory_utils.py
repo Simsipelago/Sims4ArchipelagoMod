@@ -10,19 +10,19 @@ from interactions.base.create_object_interaction import ObjectDefinition
 from objects.components.sim_inventory_component import SimInventoryComponent
 from objects.game_object import GameObject
 from sims.sim_info import SimInfo
-from sims4communitylib.classes.math.common_location import CommonLocation
-from sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
-from sims4communitylib.enums.types.component_types import CommonComponentType
-from sims4communitylib.logging._has_s4cl_class_log import _HasS4CLClassLog
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
+from s4ap.sims4communitylib.classes.math.common_location import CommonLocation
+from s4ap.sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
+from s4ap.sims4communitylib.enums.types.component_types import CommonComponentType
+from s4ap.sims4communitylib.logging._has_s4cl_class_log import _HasS4CLClassLog
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
     CommonConsoleCommandArgument
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
-from sims4communitylib.utils.common_component_utils import CommonComponentUtils
-from sims4communitylib.utils.common_function_utils import CommonFunctionUtils
-from sims4communitylib.utils.objects.common_object_spawn_utils import CommonObjectSpawnUtils
-from sims4communitylib.utils.objects.common_object_utils import CommonObjectUtils
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+from s4ap.sims4communitylib.utils.common_component_utils import CommonComponentUtils
+from s4ap.sims4communitylib.utils.common_function_utils import CommonFunctionUtils
+from s4ap.sims4communitylib.utils.objects.common_object_spawn_utils import CommonObjectSpawnUtils
+from s4ap.sims4communitylib.utils.objects.common_object_utils import CommonObjectUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
 
 
 class CommonSimInventoryUtils(_HasS4CLClassLog):
@@ -218,7 +218,7 @@ class CommonSimInventoryUtils(_HasS4CLClassLog):
         inventory_component: SimInventoryComponent = cls.get_inventory(sim_info)
         if inventory_component is None:
             return False
-        from sims4communitylib.utils.objects.common_object_ownership_utils import CommonObjectOwnershipUtils
+        from s4ap.sims4communitylib.utils.objects.common_object_ownership_utils import CommonObjectOwnershipUtils
         CommonObjectOwnershipUtils.set_owning_sim(game_object, sim_info)
         return inventory_component.player_try_add_object(game_object)
 
@@ -354,7 +354,7 @@ class CommonSimInventoryUtils(_HasS4CLClassLog):
         inventory_component: SimInventoryComponent = cls.get_inventory(sim_info_a)
         if inventory_component is None:
             return False
-        from sims4communitylib.utils.objects.common_object_ownership_utils import CommonObjectOwnershipUtils
+        from s4ap.sims4communitylib.utils.objects.common_object_ownership_utils import CommonObjectOwnershipUtils
         for inventory_object in inventory_component:
             inventory_object: GameObject = inventory_object
             CommonObjectOwnershipUtils.set_owning_sim(inventory_object, sim_info_b)

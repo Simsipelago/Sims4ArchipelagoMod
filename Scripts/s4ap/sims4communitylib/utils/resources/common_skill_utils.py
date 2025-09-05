@@ -6,7 +6,7 @@ https://creativecommons.org/licenses/by/4.0/legalcode
 Copyright (c) COLONOLNUTTY
 """
 from typing import Union, Iterator, Tuple, List, Callable
-from sims4communitylib.enums.skills_enum import CommonSkillId
+from s4ap.sims4communitylib.enums.skills_enum import CommonSkillId
 from statistics.skill import Skill
 
 
@@ -85,7 +85,7 @@ class CommonSkillUtils:
         :return: An iterator of Skills that pass the specified include_skill_callback.
         :rtype: Iterator[Skill]
         """
-        from sims4communitylib.utils.resources.common_statistic_utils import CommonStatisticUtils
+        from s4ap.sims4communitylib.utils.resources.common_statistic_utils import CommonStatisticUtils
         statistic_manager = CommonStatisticUtils.get_statistic_instance_manager()
         for skill in statistic_manager.get_ordered_types(only_subclasses_of=Skill):
             skill: Skill = skill
@@ -117,5 +117,5 @@ class CommonSkillUtils:
             skill_id: Skill = skill_id
             return skill_id
 
-        from sims4communitylib.utils.resources.common_statistic_utils import CommonStatisticUtils
+        from s4ap.sims4communitylib.utils.resources.common_statistic_utils import CommonStatisticUtils
         return CommonStatisticUtils.load_statistic_by_id(skill_id)

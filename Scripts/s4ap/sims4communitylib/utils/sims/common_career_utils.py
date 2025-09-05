@@ -30,7 +30,7 @@ class CommonCareerUtils:
         if career is None:
             return tuple()
 
-        from sims4communitylib.utils.sims.common_career_track_utils import CommonCareerTrackUtils
+        from s4ap.sims4communitylib.utils.sims.common_career_track_utils import CommonCareerTrackUtils
         return CommonCareerTrackUtils.get_career_levels(career.start_track, include_branches=include_branches)
 
     @classmethod
@@ -64,7 +64,7 @@ class CommonCareerUtils:
 
         career_tracks: List[TunableCareerTrack] = list()
         career_tracks.append(career.start_track)
-        from sims4communitylib.utils.sims.common_career_track_utils import CommonCareerTrackUtils
+        from s4ap.sims4communitylib.utils.sims.common_career_track_utils import CommonCareerTrackUtils
         branch_career_tracks = CommonCareerTrackUtils.get_branches(career.start_track, include_sub_branches=True)
         if branch_career_tracks:
             career_tracks.extend(branch_career_tracks)
@@ -168,7 +168,7 @@ class CommonCareerUtils:
             return career
 
         from sims4.resources import Types
-        from sims4communitylib.utils.common_resource_utils import CommonResourceUtils
+        from s4ap.sims4communitylib.utils.common_resource_utils import CommonResourceUtils
         return CommonResourceUtils.load_instance(Types.CAREER, career)
 
     @staticmethod
@@ -183,7 +183,7 @@ class CommonCareerUtils:
         :rtype: Iterator[Career]
         """
         from sims4.resources import Types
-        from sims4communitylib.utils.common_resource_utils import CommonResourceUtils
+        from s4ap.sims4communitylib.utils.common_resource_utils import CommonResourceUtils
         for (_, career) in CommonResourceUtils.load_all_instances(Types.CAREER):
             if include_career_callback is not None and not include_career_callback(career):
                 continue
@@ -205,7 +205,7 @@ class CommonCareerUtils:
         if career is None:
             return None, None, None
         track = CommonCareerUtils.get_starting_career_track(career)
-        from sims4communitylib.utils.sims.common_career_track_utils import CommonCareerTrackUtils
+        from s4ap.sims4communitylib.utils.sims.common_career_track_utils import CommonCareerTrackUtils
         return CommonCareerTrackUtils.determine_entry_level_into_career_track_by_user_level(track, desired_user_level)
 
     @staticmethod
@@ -248,5 +248,5 @@ class CommonCareerUtils:
         :rtype: InteractionInstanceManager
         """
         from sims4.resources import Types
-        from sims4communitylib.utils.common_resource_utils import CommonResourceUtils
+        from s4ap.sims4communitylib.utils.common_resource_utils import CommonResourceUtils
         return CommonResourceUtils.get_instance_manager(Types.CAREER)

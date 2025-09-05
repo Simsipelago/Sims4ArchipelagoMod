@@ -8,7 +8,7 @@ Copyright (c) COLONOLNUTTY
 from typing import Tuple, Any, Callable
 from protocolbuffers.Localization_pb2 import LocalizedString
 from sims.sim_info import SimInfo
-from sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
+from s4ap.sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
 from ui.ui_dialog_generic import UiDialogTextInputOkCancel
 
 
@@ -41,7 +41,7 @@ class _CommonUiDialogTextInputOkCancel(UiDialogTextInputOkCancel):
         """Build the message.
 
         """
-        from sims4communitylib.dialogs.utils.common_dialog_utils import CommonDialogUtils
+        from s4ap.sims4communitylib.dialogs.utils.common_dialog_utils import CommonDialogUtils
         msg = super().build_msg(additional_tokens=(), **kwargs)
         text_input_msg = msg.text_input.add()
         text_input_msg.text_input_name = CommonDialogUtils.TEXT_INPUT_NAME

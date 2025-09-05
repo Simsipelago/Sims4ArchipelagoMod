@@ -10,14 +10,14 @@ from typing import Tuple
 from sims.sim_info import SimInfo
 from sims.sim_spawner import SimSpawner
 from sims.sim_spawner_enums import SimNameType
-from sims4communitylib.enums.common_gender import CommonGender
-from sims4communitylib.enums.common_sim_name_type import CommonSimNameType
-from sims4communitylib.enums.common_species import CommonSpecies
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
+from s4ap.sims4communitylib.enums.common_gender import CommonGender
+from s4ap.sims4communitylib.enums.common_sim_name_type import CommonSimNameType
+from s4ap.sims4communitylib.enums.common_species import CommonSpecies
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
     CommonConsoleCommandArgument
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
-from sims4communitylib.utils.misc.common_text_utils import CommonTextUtils
+from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+from s4ap.sims4communitylib.utils.misc.common_text_utils import CommonTextUtils
 
 
 class CommonSimNameUtils:
@@ -177,7 +177,7 @@ class CommonSimNameUtils:
         if sim_name_type == SimNameType.DEFAULT:
             last_name = SimSpawner.get_last_name(family_name, vanilla_gender, species=vanilla_species)
         else:
-            from sims4communitylib.utils.sims.common_gender_utils import CommonGenderUtils
+            from s4ap.sims4communitylib.utils.sims.common_gender_utils import CommonGenderUtils
             last_name = SimSpawner._get_family_name_for_gender(language, family_name, CommonGenderUtils.is_female_gender(gender), sim_name_type=vanilla_sim_name_type)
         return last_name
 

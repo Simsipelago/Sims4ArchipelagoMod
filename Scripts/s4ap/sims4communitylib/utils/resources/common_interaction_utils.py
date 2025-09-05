@@ -17,12 +17,12 @@ from interactions.social.social_mixer_interaction import SocialMixerInteraction
 from interactions.social.social_super_interaction import SocialSuperInteraction
 from protocolbuffers.Localization_pb2 import LocalizedString
 from server.pick_info import PickInfo
-from sims4communitylib.classes.math.common_surface_identifier import CommonSurfaceIdentifier
-from sims4communitylib.classes.math.common_vector3 import CommonVector3
-from sims4communitylib.enums.interactions_enum import CommonInteractionId
-from sims4communitylib.enums.tags_enum import CommonGameTag
-from sims4communitylib.utils.common_resource_utils import CommonResourceUtils
-from sims4communitylib.utils.location.common_location_utils import CommonLocationUtils
+from s4ap.sims4communitylib.classes.math.common_surface_identifier import CommonSurfaceIdentifier
+from s4ap.sims4communitylib.classes.math.common_vector3 import CommonVector3
+from s4ap.sims4communitylib.enums.interactions_enum import CommonInteractionId
+from s4ap.sims4communitylib.enums.tags_enum import CommonGameTag
+from s4ap.sims4communitylib.utils.common_resource_utils import CommonResourceUtils
+from s4ap.sims4communitylib.utils.location.common_location_utils import CommonLocationUtils
 from tag import Tag
 
 
@@ -325,7 +325,7 @@ class CommonInteractionUtils:
         :return: An instance of type LocalizedString or None if a problem occurs.
         :rtype: Union[LocalizedString, None]
         """
-        from sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
+        from s4ap.sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
         if interaction is None or interaction.display_name is None:
             return None
         display_name_string_id = interaction.display_name._string_id
@@ -416,7 +416,7 @@ class CommonInteractionUtils:
             return interaction_id
 
         from sims4.resources import Types
-        from sims4communitylib.utils.common_resource_utils import CommonResourceUtils
+        from s4ap.sims4communitylib.utils.common_resource_utils import CommonResourceUtils
         return CommonResourceUtils.load_instance(Types.INTERACTION, interaction_id)
 
     @staticmethod
@@ -429,6 +429,6 @@ class CommonInteractionUtils:
         :rtype: InteractionInstanceManager
         """
         from sims4.resources import Types
-        from sims4communitylib.utils.common_resource_utils import CommonResourceUtils
+        from s4ap.sims4communitylib.utils.common_resource_utils import CommonResourceUtils
         # noinspection PyTypeChecker
         return CommonResourceUtils.get_instance_manager(Types.INTERACTION)

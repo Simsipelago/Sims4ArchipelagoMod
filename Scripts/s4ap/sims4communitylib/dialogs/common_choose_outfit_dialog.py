@@ -12,19 +12,19 @@ from pprint import pformat
 from protocolbuffers.Localization_pb2 import LocalizedString
 from sims.outfits.outfit_enums import OutfitCategory, HIDDEN_OUTFIT_CATEGORIES
 from sims.sim_info import SimInfo
-from sims4communitylib.dialogs.common_choice_outcome import CommonChoiceOutcome
-from sims4communitylib.dialogs.common_choose_dialog import CommonChooseDialog
-from sims4communitylib.dialogs.utils.common_dialog_utils import CommonDialogUtils
-from sims4communitylib.enums.strings_enum import CommonStringId
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.commands.common_console_command import CommonConsoleCommand
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
-from sims4communitylib.utils.cas.common_outfit_utils import CommonOutfitUtils
-from sims4communitylib.utils.common_function_utils import CommonFunctionUtils
-from sims4communitylib.utils.localization.common_localized_string_colors import CommonLocalizedStringColor
-from sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+from s4ap.sims4communitylib.dialogs.common_choice_outcome import CommonChoiceOutcome
+from s4ap.sims4communitylib.dialogs.common_choose_dialog import CommonChooseDialog
+from s4ap.sims4communitylib.dialogs.utils.common_dialog_utils import CommonDialogUtils
+from s4ap.sims4communitylib.enums.strings_enum import CommonStringId
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.commands.common_console_command import CommonConsoleCommand
+from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+from s4ap.sims4communitylib.utils.cas.common_outfit_utils import CommonOutfitUtils
+from s4ap.sims4communitylib.utils.common_function_utils import CommonFunctionUtils
+from s4ap.sims4communitylib.utils.localization.common_localized_string_colors import CommonLocalizedStringColor
+from s4ap.sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
 from ui.ui_dialog_picker import OutfitPickerRow, UiOutfitPicker
 
 
@@ -55,7 +55,7 @@ class CommonChooseOutfitDialog(CommonChooseDialog):
                 # LocalizedStrings within other LocalizedStrings
                 title_tokens = (CommonLocalizationUtils.create_localized_string(CommonStringId.TESTING_SOME_TEXT_FOR_TESTING, text_color=CommonLocalizedStringColor.GREEN),)
                 description_tokens = (CommonLocalizationUtils.create_localized_string(CommonStringId.TESTING_TEST_TEXT_WITH_SIM_FIRST_AND_LAST_NAME, tokens=(sim_info,), text_color=CommonLocalizedStringColor.BLUE),)
-                from sims4communitylib.utils.common_icon_utils import CommonIconUtils
+                from s4ap.sims4communitylib.utils.common_icon_utils import CommonIconUtils
                 dialog = CommonChooseOutfitDialog(
                     ModInfo.get_identity(),
                     CommonStringId.TESTING_TEST_TEXT_WITH_STRING_TOKEN,

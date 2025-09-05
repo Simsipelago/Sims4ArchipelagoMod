@@ -41,7 +41,7 @@ class CommonEnumMetaclass(type):
 
     @classmethod
     def _get_common_enum(mcs, enum_name: str, enum_value: Any, class_name: str):
-        from sims4communitylib.enums.enumtypes.object_enum import CommonEnumObject
+        from s4ap.sims4communitylib.enums.enumtypes.object_enum import CommonEnumObject
         return CommonEnumObject(enum_name, enum_value, class_name)
 
     @classmethod

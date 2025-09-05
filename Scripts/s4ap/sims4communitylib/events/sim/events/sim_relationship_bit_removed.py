@@ -7,7 +7,7 @@ Copyright (c) COLONOLNUTTY
 """
 from relationships.relationship_bit import RelationshipBit
 from sims.sim_info import SimInfo
-from sims4communitylib.events.event_handling.common_event import CommonEvent
+from s4ap.sims4communitylib.events.event_handling.common_event import CommonEvent
 
 
 class S4CLSimRelationshipBitRemovedEvent(CommonEvent):
@@ -20,8 +20,8 @@ class S4CLSimRelationshipBitRemovedEvent(CommonEvent):
     .. highlight:: python
     .. code-block:: python
 
-        from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
-        from sims4communitylib.modinfo import ModInfo
+        from s4ap.sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
+        from s4ap.sims4communitylib.modinfo import ModInfo
 
         class ExampleEventListener:
 
@@ -82,5 +82,5 @@ class S4CLSimRelationshipBitRemovedEvent(CommonEvent):
         :return: The decimal identifier of the RelationshipBit.
         :rtype: int
         """
-        from sims4communitylib.utils.sims.common_relationship_utils import CommonRelationshipUtils
+        from s4ap.sims4communitylib.utils.sims.common_relationship_utils import CommonRelationshipUtils
         return CommonRelationshipUtils.get_relationship_bit_guid(self.relationship_bit)

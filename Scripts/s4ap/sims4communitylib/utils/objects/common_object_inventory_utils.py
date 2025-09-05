@@ -10,11 +10,11 @@ from interactions.base.create_object_interaction import ObjectDefinition
 from objects.components.object_inventory_component import ObjectInventoryComponent
 from objects.game_object import GameObject
 from sims.sim_info import SimInfo
-from sims4communitylib.classes.math.common_location import CommonLocation
-from sims4communitylib.enums.types.component_types import CommonComponentType
-from sims4communitylib.utils.common_component_utils import CommonComponentUtils
-from sims4communitylib.utils.objects.common_object_spawn_utils import CommonObjectSpawnUtils
-from sims4communitylib.utils.objects.common_object_utils import CommonObjectUtils
+from s4ap.sims4communitylib.classes.math.common_location import CommonLocation
+from s4ap.sims4communitylib.enums.types.component_types import CommonComponentType
+from s4ap.sims4communitylib.utils.common_component_utils import CommonComponentUtils
+from s4ap.sims4communitylib.utils.objects.common_object_spawn_utils import CommonObjectSpawnUtils
+from s4ap.sims4communitylib.utils.objects.common_object_utils import CommonObjectUtils
 
 
 class CommonObjectInventoryUtils:
@@ -74,7 +74,7 @@ class CommonObjectInventoryUtils:
         inventory_component = CommonObjectInventoryUtils._get_inventory(game_object_container)
         if inventory_component is None:
             return False
-        from sims4communitylib.utils.objects.common_object_ownership_utils import CommonObjectOwnershipUtils
+        from s4ap.sims4communitylib.utils.objects.common_object_ownership_utils import CommonObjectOwnershipUtils
         CommonObjectOwnershipUtils.set_owning_household_id(game_object_to_move, CommonObjectOwnershipUtils.get_owning_household_id(game_object_container))
         return inventory_component.player_try_add_object(game_object_to_move)
 
@@ -204,7 +204,7 @@ class CommonObjectInventoryUtils:
         if inventory_component is None:
             return False
 
-        from sims4communitylib.utils.objects.common_object_ownership_utils import CommonObjectOwnershipUtils
+        from s4ap.sims4communitylib.utils.objects.common_object_ownership_utils import CommonObjectOwnershipUtils
         for inventory_object in inventory_component:
             CommonObjectOwnershipUtils.set_owning_sim(inventory_object, sim_info)
         return True

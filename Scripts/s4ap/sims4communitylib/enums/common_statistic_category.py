@@ -7,8 +7,8 @@ Copyright (c) COLONOLNUTTY
 """
 from typing import Union
 
-from sims4communitylib.enums.enumtypes.common_int import CommonInt
-from sims4communitylib.utils.common_resource_utils import CommonResourceUtils
+from s4ap.sims4communitylib.enums.enumtypes.common_int import CommonInt
+from s4ap.sims4communitylib.utils.common_resource_utils import CommonResourceUtils
 from statistics.statistic_categories import StatisticCategory
 
 

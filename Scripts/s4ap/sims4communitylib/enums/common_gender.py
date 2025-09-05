@@ -9,7 +9,7 @@ from typing import Union, Tuple, Iterator
 
 from sims.sim_info import SimInfo
 from sims.sim_info_types import Gender
-from sims4communitylib.enums.enumtypes.common_int import CommonInt
+from s4ap.sims4communitylib.enums.enumtypes.common_int import CommonInt
 
 
 class CommonGender(CommonInt):
@@ -75,7 +75,7 @@ class CommonGender(CommonInt):
         :return: The CommonGender that represents what gender a Sim is or CommonGender.INVALID if their gender cannot be determined.
         :rtype: CommonGender
         """
-        from sims4communitylib.utils.sims.common_gender_utils import CommonGenderUtils
+        from s4ap.sims4communitylib.utils.sims.common_gender_utils import CommonGenderUtils
         if CommonGenderUtils.is_male(sim_info):
             return CommonGender.MALE
         elif CommonGenderUtils.is_female(sim_info):
@@ -138,7 +138,7 @@ class CommonGender(CommonInt):
         :return: The specified CommonGender translated to a localized string identifier. If no localized string id is found, the name property of the value will be used instead.
         :rtype: Union[int, str]
         """
-        from sims4communitylib.enums.strings_enum import CommonStringId
+        from s4ap.sims4communitylib.enums.strings_enum import CommonStringId
         mapping = {
             CommonGender.MALE: CommonStringId.MALE,
             CommonGender.FEMALE: CommonStringId.FEMALE

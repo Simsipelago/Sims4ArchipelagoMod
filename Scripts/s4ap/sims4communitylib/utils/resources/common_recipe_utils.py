@@ -9,7 +9,7 @@ from crafting.recipe import Recipe
 from typing import Callable, Iterator, Union, Tuple, List
 
 from sims4.resources import Types
-from sims4communitylib.logging._has_s4cl_class_log import _HasS4CLClassLog
+from s4ap.sims4communitylib.logging._has_s4cl_class_log import _HasS4CLClassLog
 
 
 class CommonRecipeUtils(_HasS4CLClassLog):
@@ -92,7 +92,7 @@ class CommonRecipeUtils(_HasS4CLClassLog):
         :return: An iterator of Recipes that pass the specified include_recipe_callback.
         :rtype: Iterator[Recipe]
         """
-        from sims4communitylib.utils.resources.common_statistic_utils import CommonStatisticUtils
+        from s4ap.sims4communitylib.utils.resources.common_statistic_utils import CommonStatisticUtils
         statistic_manager = CommonStatisticUtils.get_statistic_instance_manager()
         for recipe in statistic_manager.get_ordered_types(only_subclasses_of=Recipe):
             recipe: Recipe = recipe
@@ -124,5 +124,5 @@ class CommonRecipeUtils(_HasS4CLClassLog):
             value_id: Recipe = value_id
             return value_id
 
-        from sims4communitylib.utils.common_resource_utils import CommonResourceUtils
+        from s4ap.sims4communitylib.utils.common_resource_utils import CommonResourceUtils
         return CommonResourceUtils.load_instance(Types.RECIPE, value_id)

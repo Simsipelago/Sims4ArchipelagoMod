@@ -166,7 +166,7 @@ class CommonTypeUtils:
         :return: True, if it is. False, if it is not.
         :rtype: bool
         """
-        from sims4communitylib.utils.objects.common_object_type_utils import CommonObjectTypeUtils
+        from s4ap.sims4communitylib.utils.objects.common_object_type_utils import CommonObjectTypeUtils
         return CommonObjectTypeUtils.is_swimming_pool(obj)
 
     @staticmethod
@@ -180,7 +180,7 @@ class CommonTypeUtils:
         :return: True, if it is. False, if it is not.
         :rtype: bool
         """
-        from sims4communitylib.utils.objects.common_object_type_utils import CommonObjectTypeUtils
+        from s4ap.sims4communitylib.utils.objects.common_object_type_utils import CommonObjectTypeUtils
         return CommonObjectTypeUtils.is_door(obj)
 
     @staticmethod
@@ -194,7 +194,7 @@ class CommonTypeUtils:
         :return: True, if it is. False, if it is not.
         :rtype: bool
         """
-        from sims4communitylib.classes.math.common_location import CommonLocation
+        from s4ap.sims4communitylib.classes.math.common_location import CommonLocation
         return isinstance(obj, Location) or isinstance(obj, CommonLocation)
 
     @staticmethod
@@ -267,5 +267,5 @@ class CommonTypeUtils:
         :return: True, if the Object is a Pool Seat. False, if not.
         :rtype: bool
         """
-        from sims4communitylib.utils.objects.common_object_type_utils import CommonObjectTypeUtils
+        from s4ap.sims4communitylib.utils.objects.common_object_type_utils import CommonObjectTypeUtils
         return CommonObjectTypeUtils.is_swimming_pool_seat(obj)

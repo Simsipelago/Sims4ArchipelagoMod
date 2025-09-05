@@ -7,7 +7,7 @@ Copyright (c) COLONOLNUTTY
 """
 from sims.sim_info import SimInfo
 from statistics.mood import Mood
-from sims4communitylib.enums.moods_enum import CommonMoodId
+from s4ap.sims4communitylib.enums.moods_enum import CommonMoodId
 
 
 class CommonMoodUtils:

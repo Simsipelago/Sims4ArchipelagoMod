@@ -11,10 +11,10 @@ from typing import Union, Callable
 from objects.game_object import GameObject
 from sims.sim import Sim
 from sims.sim_info import SimInfo
-from sims4communitylib.enums.common_object_quality import CommonObjectQuality
-from sims4communitylib.utils.common_type_utils import CommonTypeUtils
-from sims4communitylib.utils.objects.common_object_state_utils import CommonObjectStateUtils
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+from s4ap.sims4communitylib.enums.common_object_quality import CommonObjectQuality
+from s4ap.sims4communitylib.utils.common_type_utils import CommonTypeUtils
+from s4ap.sims4communitylib.utils.objects.common_object_state_utils import CommonObjectStateUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
 
 
 class CommonSimCraftingUtils:
@@ -68,12 +68,12 @@ class CommonSimCraftingUtils:
         crafting_sim = CommonSimUtils.get_sim_instance(crafting_sim_info)
         if crafting_sim is None:
             return None
-        from sims4communitylib.utils.resources.common_recipe_utils import CommonRecipeUtils
+        from s4ap.sims4communitylib.utils.resources.common_recipe_utils import CommonRecipeUtils
         recipe = CommonRecipeUtils.load_recipe_by_guid(recipe_id)
         try:
             from crafting.crafting_interactions import create_craftable
-            from sims4communitylib.utils.objects.common_object_ownership_utils import CommonObjectOwnershipUtils
-            from sims4communitylib.utils.sims.common_household_utils import CommonHouseholdUtils
+            from s4ap.sims4communitylib.utils.objects.common_object_ownership_utils import CommonObjectOwnershipUtils
+            from s4ap.sims4communitylib.utils.sims.common_household_utils import CommonHouseholdUtils
             quality_state = CommonObjectStateUtils.convert_quality_to_object_state_value(quality)
             if set_target_as_owner:
                 if CommonTypeUtils.is_sim_or_sim_info(inventory_target):

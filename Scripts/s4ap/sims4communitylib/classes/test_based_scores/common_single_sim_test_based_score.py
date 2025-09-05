@@ -10,10 +10,10 @@ from interactions import ParticipantType
 from interactions.base.interaction import Interaction
 from sims.sim_info import SimInfo
 from sims4.sim_irq_service import yield_to_irq
-from sims4communitylib.classes.test_based_scores.common_test_based_score import CommonTestBasedScore
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.utils.common_type_utils import CommonTypeUtils
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+from s4ap.sims4communitylib.classes.test_based_scores.common_test_based_score import CommonTestBasedScore
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.utils.common_type_utils import CommonTypeUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
 
 
 class CommonSingleSimTestBasedScore(CommonTestBasedScore):

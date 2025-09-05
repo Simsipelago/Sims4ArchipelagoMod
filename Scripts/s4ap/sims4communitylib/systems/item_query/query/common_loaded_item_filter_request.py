@@ -8,10 +8,10 @@ Copyright (c) COLONOLNUTTY
 from pprint import pformat
 from typing import Tuple, Callable, List, TypeVar, Generic, Iterator
 
-from sims4communitylib.systems.item_query.enums.common_query_method_type import CommonQueryMethodType
-from sims4communitylib.systems.item_query.item_tests.common_loaded_item_test import CommonLoadedItemTest
-from sims4communitylib.systems.item_query.query.common_loaded_item_key import CommonLoadedItemKey
-from sims4communitylib.systems.item_query.query.common_loaded_item_filter import CommonLoadedItemFilter
+from s4ap.sims4communitylib.systems.item_query.enums.common_query_method_type import CommonQueryMethodType
+from s4ap.sims4communitylib.systems.item_query.item_tests.common_loaded_item_test import CommonLoadedItemTest
+from s4ap.sims4communitylib.systems.item_query.query.common_loaded_item_key import CommonLoadedItemKey
+from s4ap.sims4communitylib.systems.item_query.query.common_loaded_item_filter import CommonLoadedItemFilter
 
 CommonLoadedItemFilterType = TypeVar('CommonLoadedItemFilterType', bound=CommonLoadedItemFilter)
 CommonLoadedItemTestType = TypeVar('CommonLoadedItemTestType', bound=CommonLoadedItemTest)

@@ -30,7 +30,7 @@ class CommonConsoleCommandOutput(CheatOutput):
         :return: An instance of the Sim that matches the target or None if not found.
         :rtype: Union[Sim, None]
         """
-        from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
         from server_commands.argument_helpers import get_optional_target
         sim = get_optional_target(target, self.connection)
         sim_info = CommonSimUtils.get_sim_info(sim)

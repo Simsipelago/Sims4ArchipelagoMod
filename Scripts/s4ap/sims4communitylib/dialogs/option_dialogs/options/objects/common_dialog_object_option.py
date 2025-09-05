@@ -6,10 +6,10 @@ https://creativecommons.org/licenses/by/4.0/legalcode
 Copyright (c) COLONOLNUTTY
 """
 from typing import Any, Callable, TypeVar
-from sims4communitylib.utils.common_function_utils import CommonFunctionUtils
+from s4ap.sims4communitylib.utils.common_function_utils import CommonFunctionUtils
 from ui.ui_dialog_picker import ObjectPickerRow
-from sims4communitylib.dialogs.option_dialogs.options.common_dialog_option import CommonDialogOption
-from sims4communitylib.dialogs.option_dialogs.options.common_dialog_option_context import CommonDialogOptionContext, \
+from s4ap.sims4communitylib.dialogs.option_dialogs.options.common_dialog_option import CommonDialogOption
+from s4ap.sims4communitylib.dialogs.option_dialogs.options.common_dialog_option_context import CommonDialogOptionContext, \
     DialogOptionValueType
 
 DialogOptionIdentifierType = TypeVar('DialogOptionIdentifierType')

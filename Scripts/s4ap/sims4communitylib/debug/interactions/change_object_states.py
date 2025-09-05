@@ -10,13 +10,13 @@ from typing import Any, Tuple
 from interactions import ParticipantType
 from interactions.context import InteractionContext
 from sims.sim import Sim
-from sims4communitylib.classes.interactions.common_immediate_super_interaction import CommonImmediateSuperInteraction
-from sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
-from sims4communitylib.classes.testing.common_test_result import CommonTestResult
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.utils.objects.common_object_utils import CommonObjectUtils
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+from s4ap.sims4communitylib.classes.interactions.common_immediate_super_interaction import CommonImmediateSuperInteraction
+from s4ap.sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
+from s4ap.sims4communitylib.classes.testing.common_test_result import CommonTestResult
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.utils.objects.common_object_utils import CommonObjectUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
 
 
 class S4CLDebugChangeObjectStatesInteraction(CommonImmediateSuperInteraction):
@@ -65,6 +65,6 @@ class S4CLDebugChangeObjectStatesInteraction(CommonImmediateSuperInteraction):
                     self.log.format_with_message('Had Sim Instance.', new_target=new_target)
                     interaction_target = new_target
 
-        from sims4communitylib.debug.dialogs.common_change_object_state_dialog import CommonChangeObjectStateDialog
+        from s4ap.sims4communitylib.debug.dialogs.common_change_object_state_dialog import CommonChangeObjectStateDialog
         CommonChangeObjectStateDialog(interaction_target).open()
         return CommonExecutionResult.TRUE

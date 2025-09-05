@@ -8,7 +8,7 @@ Copyright (c) COLONOLNUTTY
 from typing import Union
 
 from objects.puddles import PuddleLiquid
-from sims4communitylib.enums.enumtypes.common_int import CommonInt
+from s4ap.sims4communitylib.enums.enumtypes.common_int import CommonInt
 
 
 class CommonPuddleLiquid(CommonInt):

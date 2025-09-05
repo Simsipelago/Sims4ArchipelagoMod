@@ -7,8 +7,8 @@ Copyright (c) COLONOLNUTTY
 """
 from typing import TypeVar, Generic
 
-from sims4communitylib.systems.item_query.dtos.common_loaded_item import CommonLoadedItem
-from sims4communitylib.systems.caching.common_serializable_object_cache import CommonSerializableObjectCache
+from s4ap.sims4communitylib.systems.item_query.dtos.common_loaded_item import CommonLoadedItem
+from s4ap.sims4communitylib.systems.caching.common_serializable_object_cache import CommonSerializableObjectCache
 
 CommonLoadedItemCacheType = TypeVar('CommonLoadedItemCacheType', bound=CommonLoadedItem)
 

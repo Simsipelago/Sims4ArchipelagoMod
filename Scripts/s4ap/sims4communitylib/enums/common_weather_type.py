@@ -7,8 +7,8 @@ Copyright (c) COLONOLNUTTY
 """
 from typing import Tuple, Union, Iterator
 
-from sims4communitylib.enums.common_temperature import Temperature
-from sims4communitylib.enums.enumtypes.common_int import CommonInt
+from s4ap.sims4communitylib.enums.common_temperature import Temperature
+from s4ap.sims4communitylib.enums.enumtypes.common_int import CommonInt
 
 # noinspection PyBroadException
 try:

@@ -7,11 +7,11 @@ Copyright (c) COLONOLNUTTY
 """
 from typing import Union, Tuple, Any, Set, Iterator, Dict, Type
 
-from sims4communitylib.classes.serialization.common_serializable import CommonSerializable
-from sims4communitylib.classes.testing.common_test_result import CommonTestResult
-from sims4communitylib.logging.has_class_log import HasClassLog
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.utils.common_log_registry import CommonLog
+from s4ap.sims4communitylib.classes.serialization.common_serializable import CommonSerializable
+from s4ap.sims4communitylib.classes.testing.common_test_result import CommonTestResult
+from s4ap.sims4communitylib.logging.has_class_log import HasClassLog
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.utils.common_log_registry import CommonLog
 
 
 class CommonLoadedItem(CommonSerializable, HasClassLog):

@@ -9,27 +9,27 @@ from typing import Union
 from sims.pregnancy.pregnancy_enums import PregnancyOrigin
 from sims.pregnancy.pregnancy_tracker import PregnancyTracker
 from sims.sim_info import SimInfo
-from sims4communitylib.classes.testing.common_test_result import CommonTestResult
-from sims4communitylib.enums.buffs_enum import CommonBuffId
-from sims4communitylib.enums.common_object_state_value_ids import CommonObjectStateValueId
-from sims4communitylib.enums.strings_enum import CommonStringId
-from sims4communitylib.enums.traits_enum import CommonTraitId
-from sims4communitylib.logging.has_class_log import HasClassLog
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
+from s4ap.sims4communitylib.classes.testing.common_test_result import CommonTestResult
+from s4ap.sims4communitylib.enums.buffs_enum import CommonBuffId
+from s4ap.sims4communitylib.enums.common_object_state_value_ids import CommonObjectStateValueId
+from s4ap.sims4communitylib.enums.strings_enum import CommonStringId
+from s4ap.sims4communitylib.enums.traits_enum import CommonTraitId
+from s4ap.sims4communitylib.logging.has_class_log import HasClassLog
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
     CommonConsoleCommandArgument
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
-from sims4communitylib.utils.objects.common_object_state_utils import CommonObjectStateUtils
-from sims4communitylib.utils.sims.common_age_utils import CommonAgeUtils
-from sims4communitylib.utils.sims.common_buff_utils import CommonBuffUtils
-from sims4communitylib.utils.sims.common_relationship_utils import CommonRelationshipUtils
-from sims4communitylib.utils.sims.common_sim_name_utils import CommonSimNameUtils
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
-from sims4communitylib.utils.sims.common_species_utils import CommonSpeciesUtils
-from sims4communitylib.enums.statistics_enum import CommonStatisticId
-from sims4communitylib.utils.sims.common_household_utils import CommonHouseholdUtils
-from sims4communitylib.utils.sims.common_sim_statistic_utils import CommonSimStatisticUtils
+from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+from s4ap.sims4communitylib.utils.objects.common_object_state_utils import CommonObjectStateUtils
+from s4ap.sims4communitylib.utils.sims.common_age_utils import CommonAgeUtils
+from s4ap.sims4communitylib.utils.sims.common_buff_utils import CommonBuffUtils
+from s4ap.sims4communitylib.utils.sims.common_relationship_utils import CommonRelationshipUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_name_utils import CommonSimNameUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+from s4ap.sims4communitylib.utils.sims.common_species_utils import CommonSpeciesUtils
+from s4ap.sims4communitylib.enums.statistics_enum import CommonStatisticId
+from s4ap.sims4communitylib.utils.sims.common_household_utils import CommonHouseholdUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_statistic_utils import CommonSimStatisticUtils
 from statistics.commodity import Commodity
 
 
@@ -218,8 +218,8 @@ class CommonSimPregnancyUtils(HasClassLog):
         :return: The result of testing. True, if they can. False, if they cannot.
         :rtype: CommonTestResult
         """
-        from sims4communitylib.utils.sims.common_trait_utils import CommonTraitUtils
-        from sims4communitylib.enums.traits_enum import CommonTraitId
+        from s4ap.sims4communitylib.utils.sims.common_trait_utils import CommonTraitUtils
+        from s4ap.sims4communitylib.enums.traits_enum import CommonTraitId
         can_be_impregnated_trait = cls.determine_can_be_impregnated_trait(sim_info)
         can_not_be_impregnated_trait = cls.determine_can_not_be_impregnated_trait(sim_info)
         if can_be_impregnated_trait is None:
@@ -250,8 +250,8 @@ class CommonSimPregnancyUtils(HasClassLog):
         :return: The result of testing. True, if they can. False, if they cannot.
         :rtype: CommonTestResult
         """
-        from sims4communitylib.utils.sims.common_trait_utils import CommonTraitUtils
-        from sims4communitylib.enums.traits_enum import CommonTraitId
+        from s4ap.sims4communitylib.utils.sims.common_trait_utils import CommonTraitUtils
+        from s4ap.sims4communitylib.enums.traits_enum import CommonTraitId
         can_impregnate_trait = cls.determine_can_impregnate_trait(sim_info)
         can_not_impregnate_trait = cls.determine_can_not_impregnate_trait(sim_info)
         if can_impregnate_trait is None:
@@ -363,7 +363,7 @@ class CommonSimPregnancyUtils(HasClassLog):
         :rtype: Union[int, CommonBuffId]
         """
         log = cls.get_log()
-        from sims4communitylib.utils.sims.common_gender_utils import CommonGenderUtils
+        from s4ap.sims4communitylib.utils.sims.common_gender_utils import CommonGenderUtils
         sim_name = CommonSimNameUtils.get_full_name(sim_info)
         log.debug('Locating appropriate Buff for inducing labor in \'{}\'.'.format(sim_name))
         is_female = CommonGenderUtils.is_female(sim_info)

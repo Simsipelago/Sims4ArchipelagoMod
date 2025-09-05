@@ -12,20 +12,20 @@ from server_commands.argument_helpers import TunableInstanceParam
 from sims.sim_info import SimInfo
 from sims4 import commands
 from sims4.resources import Types
-from sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
-from sims4communitylib.classes.testing.common_test_result import CommonTestResult
-from sims4communitylib.enums.common_species import CommonSpecies
-from sims4communitylib.enums.enumtypes.common_int import CommonInt
-from sims4communitylib.logging._has_s4cl_class_log import _HasS4CLClassLog
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
+from s4ap.sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
+from s4ap.sims4communitylib.classes.testing.common_test_result import CommonTestResult
+from s4ap.sims4communitylib.enums.common_species import CommonSpecies
+from s4ap.sims4communitylib.enums.enumtypes.common_int import CommonInt
+from s4ap.sims4communitylib.logging._has_s4cl_class_log import _HasS4CLClassLog
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
     CommonConsoleCommandArgument
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
-from sims4communitylib.utils.sims.common_occult_utils import CommonOccultUtils
-from sims4communitylib.utils.sims.common_sim_statistic_utils import CommonSimStatisticUtils
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
-from sims4communitylib.utils.sims.common_species_utils import CommonSpeciesUtils
-from sims4communitylib.enums.motives_enum import CommonMotiveId
+from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+from s4ap.sims4communitylib.utils.sims.common_occult_utils import CommonOccultUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_statistic_utils import CommonSimStatisticUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+from s4ap.sims4communitylib.utils.sims.common_species_utils import CommonSpeciesUtils
+from s4ap.sims4communitylib.enums.motives_enum import CommonMotiveId
 
 
 class CommonSimMotiveUtils(_HasS4CLClassLog):

@@ -9,7 +9,7 @@ from typing import Tuple, Iterator, List, Union
 
 from interactions.constraints import Constraint
 from sims4.geometry import Polygon
-from sims4communitylib.classes.math.common_vector3 import CommonVector3
+from s4ap.sims4communitylib.classes.math.common_vector3 import CommonVector3
 
 
 class CommonPolygon:

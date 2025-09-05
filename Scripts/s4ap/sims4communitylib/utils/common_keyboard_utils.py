@@ -7,10 +7,10 @@ Copyright (c) COLONOLNUTTY
 """
 import os
 
-from sims4communitylib.enums.common_key import CommonKey
-from sims4communitylib.exceptions.common_exceptions_handler import CommonExceptionHandler
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.utils.common_log_registry import CommonLogRegistry
+from s4ap.sims4communitylib.enums.common_key import CommonKey
+from s4ap.sims4communitylib.exceptions.common_exceptions_handler import CommonExceptionHandler
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.utils.common_log_registry import CommonLogRegistry
 
 log = CommonLogRegistry().register_log(ModInfo.get_identity(), 'common_keyboard_utils')
 # noinspection PyBroadException

@@ -12,11 +12,11 @@ from objects.definition import Definition
 from objects.game_object import GameObject
 from objects.object_manager import ObjectManager
 from objects.script_object import ScriptObject
-from sims4communitylib.logging._has_s4cl_class_log import _HasS4CLClassLog
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.commands.common_console_command import CommonConsoleCommand
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
-from sims4communitylib.utils.common_function_utils import CommonFunctionUtils
+from s4ap.sims4communitylib.logging._has_s4cl_class_log import _HasS4CLClassLog
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.commands.common_console_command import CommonConsoleCommand
+from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+from s4ap.sims4communitylib.utils.common_function_utils import CommonFunctionUtils
 
 
 class CommonObjectUtils(_HasS4CLClassLog):
@@ -297,9 +297,9 @@ def _s4cl_testing_log_all_objects(output: CommonConsoleCommandOutput):
         all_objects_str_list = list()
         for game_object in CommonObjectUtils.get_instance_for_all_game_objects_generator():
             object_id = CommonObjectUtils.get_object_id(game_object)
-            from sims4communitylib.utils.objects.common_object_location_utils import CommonObjectLocationUtils
+            from s4ap.sims4communitylib.utils.objects.common_object_location_utils import CommonObjectLocationUtils
             object_location = CommonObjectLocationUtils.get_location(game_object)
-            from sims4communitylib.utils.common_type_utils import CommonTypeUtils
+            from s4ap.sims4communitylib.utils.common_type_utils import CommonTypeUtils
             if CommonTypeUtils.is_sim_or_sim_info(game_object):
                 all_objects_str_list.append(f'Sim {game_object} ({object_id}): Loc: {object_location}')
             else:

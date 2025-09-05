@@ -8,8 +8,8 @@ Copyright (c) COLONOLNUTTY
 from typing import Union, Any
 from protocolbuffers.Math_pb2 import Transform as MathPb2Transform
 
-from sims4communitylib.classes.math.common_quaternion import CommonQuaternion
-from sims4communitylib.classes.math.common_vector3 import CommonVector3
+from s4ap.sims4communitylib.classes.math.common_quaternion import CommonQuaternion
+from s4ap.sims4communitylib.classes.math.common_vector3 import CommonVector3
 
 # noinspection PyBroadException
 try:

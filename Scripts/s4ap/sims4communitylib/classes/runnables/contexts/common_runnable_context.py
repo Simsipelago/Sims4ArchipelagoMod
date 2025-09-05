@@ -8,12 +8,12 @@ Copyright (c) COLONOLNUTTY
 
 from typing import Union, Dict, Any, Tuple, TypeVar, Type
 
-from sims4communitylib.classes.serialization.common_serializable import CommonSerializable
-from sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
-from sims4communitylib.enums.enumtypes.common_int import CommonInt
-from sims4communitylib.enums.enumtypes.common_int_flags import CommonIntFlags
-from sims4communitylib.logging.has_class_log import HasClassLog
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.classes.serialization.common_serializable import CommonSerializable
+from s4ap.sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
+from s4ap.sims4communitylib.enums.enumtypes.common_int import CommonInt
+from s4ap.sims4communitylib.enums.enumtypes.common_int_flags import CommonIntFlags
+from s4ap.sims4communitylib.logging.has_class_log import HasClassLog
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
 
 CommonRunnableContextType = TypeVar('CommonRunnableContextType', bound="CommonRunnableContext")
 

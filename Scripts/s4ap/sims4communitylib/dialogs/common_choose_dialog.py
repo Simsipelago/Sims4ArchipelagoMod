@@ -8,10 +8,10 @@ Copyright (c) COLONOLNUTTY
 from abc import ABC
 from typing import Tuple, Any, Union, Iterator
 from protocolbuffers.Localization_pb2 import LocalizedString
-from sims4communitylib.dialogs.common_dialog import CommonDialog
-from sims4communitylib.enums.strings_enum import CommonStringId
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
+from s4ap.sims4communitylib.dialogs.common_dialog import CommonDialog
+from s4ap.sims4communitylib.enums.strings_enum import CommonStringId
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
 from ui.ui_dialog_picker import BasePickerRow
 
 

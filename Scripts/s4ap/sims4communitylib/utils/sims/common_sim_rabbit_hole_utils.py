@@ -10,9 +10,9 @@ from typing import Callable, Union
 from rabbit_hole.rabbit_hole import RabbitHole
 from services.rabbit_hole_service import RabbitHoleService
 from sims.sim_info import SimInfo
-from sims4communitylib.classes.testing.common_test_result import CommonTestResult
-from sims4communitylib.utils.sims.common_rabbit_hole_utils import CommonRabbitHoleUtils
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+from s4ap.sims4communitylib.classes.testing.common_test_result import CommonTestResult
+from s4ap.sims4communitylib.utils.sims.common_rabbit_hole_utils import CommonRabbitHoleUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
 
 
 class CommonSimRabbitHoleUtils:

@@ -9,9 +9,9 @@ import json
 from typing import Dict, Any
 
 from sims.household import Household
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.persistence.persistence_services.common_persistence_service import CommonPersistenceService
-from sims4communitylib.utils.sims.common_household_utils import CommonHouseholdUtils
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.persistence.persistence_services.common_persistence_service import CommonPersistenceService
+from s4ap.sims4communitylib.utils.sims.common_household_utils import CommonHouseholdUtils
 
 
 class CommonHiddenHouseholdPersistenceService(CommonPersistenceService):

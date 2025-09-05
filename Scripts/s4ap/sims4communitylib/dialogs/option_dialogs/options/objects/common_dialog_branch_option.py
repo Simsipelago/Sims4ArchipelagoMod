@@ -6,10 +6,10 @@ https://creativecommons.org/licenses/by/4.0/legalcode
 Copyright (c) COLONOLNUTTY
 """
 from typing import Any, Callable
-from sims4communitylib.dialogs.option_dialogs.common_option_dialog import CommonOptionDialog
-from sims4communitylib.utils.common_icon_utils import CommonIconUtils
-from sims4communitylib.dialogs.option_dialogs.options.objects.common_dialog_object_option import CommonDialogObjectOption
-from sims4communitylib.dialogs.option_dialogs.options.common_dialog_option_context import CommonDialogOptionContext
+from s4ap.sims4communitylib.dialogs.option_dialogs.common_option_dialog import CommonOptionDialog
+from s4ap.sims4communitylib.utils.common_icon_utils import CommonIconUtils
+from s4ap.sims4communitylib.dialogs.option_dialogs.options.objects.common_dialog_object_option import CommonDialogObjectOption
+from s4ap.sims4communitylib.dialogs.option_dialogs.options.common_dialog_option_context import CommonDialogOptionContext
 
 
 class CommonDialogOpenDialogOption(CommonDialogObjectOption):

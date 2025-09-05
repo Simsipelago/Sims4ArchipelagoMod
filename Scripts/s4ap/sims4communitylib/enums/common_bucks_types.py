@@ -8,7 +8,7 @@ Copyright (c) COLONOLNUTTY
 from typing import Iterator, Tuple, Union
 
 from bucks.bucks_enums import BucksType
-from sims4communitylib.enums.enumtypes.common_int import CommonInt
+from s4ap.sims4communitylib.enums.enumtypes.common_int import CommonInt
 
 
 class CommonBucksType(CommonInt):

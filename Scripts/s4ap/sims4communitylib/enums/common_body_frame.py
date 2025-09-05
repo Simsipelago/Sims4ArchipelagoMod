@@ -8,9 +8,9 @@ Copyright (c) COLONOLNUTTY
 from typing import Tuple, Iterator
 
 from sims.sim_info import SimInfo
-from sims4communitylib.enums.enumtypes.common_int import CommonInt
-from sims4communitylib.utils.sims.common_gender_utils import CommonGenderUtils
-from sims4communitylib.utils.sims.common_species_utils import CommonSpeciesUtils
+from s4ap.sims4communitylib.enums.enumtypes.common_int import CommonInt
+from s4ap.sims4communitylib.utils.sims.common_gender_utils import CommonGenderUtils
+from s4ap.sims4communitylib.utils.sims.common_species_utils import CommonSpeciesUtils
 
 
 class CommonBodyFrame(CommonInt):
@@ -63,7 +63,7 @@ class CommonBodyFrame(CommonInt):
         :return: The body frame of the Sim or INVALID if their current body frame cannot be determined.
         :rtype: CommonBodyFrame
         """
-        from sims4communitylib.utils.sims.common_sim_gender_option_utils import CommonSimGenderOptionUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_gender_option_utils import CommonSimGenderOptionUtils
         if CommonSpeciesUtils.is_animal(sim_info):
             if CommonGenderUtils.is_male(sim_info):
                 return CommonBodyFrame.MASCULINE

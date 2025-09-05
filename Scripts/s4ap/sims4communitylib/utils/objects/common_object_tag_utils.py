@@ -10,15 +10,15 @@ from objects.game_object import GameObject
 from typing import Tuple, Set, Union, Iterator, List
 
 from objects.script_object import ScriptObject
-from sims4communitylib.enums.tags_enum import CommonGameTag
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.notifications.common_basic_notification import CommonBasicNotification
-from sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
+from s4ap.sims4communitylib.enums.tags_enum import CommonGameTag
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.notifications.common_basic_notification import CommonBasicNotification
+from s4ap.sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
     CommonConsoleCommandArgument
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
-from sims4communitylib.utils.common_log_registry import CommonLogRegistry
-from sims4communitylib.utils.common_resource_utils import CommonResourceUtils
-from sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
+from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+from s4ap.sims4communitylib.utils.common_log_registry import CommonLogRegistry
+from s4ap.sims4communitylib.utils.common_resource_utils import CommonResourceUtils
+from s4ap.sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
 
 
 class CommonObjectTagUtils:
@@ -130,7 +130,7 @@ class CommonObjectTagUtils:
         obj_tag_list_names = ',\n'.join(obj_tags_list)
         text = ''
         text += f'Game Tags:\n{obj_tag_list_names}\n\n'
-        from sims4communitylib.utils.objects.common_object_utils import CommonObjectUtils
+        from s4ap.sims4communitylib.utils.objects.common_object_utils import CommonObjectUtils
         game_object_id = CommonObjectUtils.get_object_id(game_object)
         log.debug(f'Object {game_object} Tags ({game_object_id})')
         log.debug(text)

@@ -9,15 +9,15 @@ from typing import Union
 
 from sims.sim_info import SimInfo
 from sims.sim_info_types import Gender
-from sims4communitylib.enums.common_gender import CommonGender
-from sims4communitylib.enums.traits_enum import CommonTraitId
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
+from s4ap.sims4communitylib.enums.common_gender import CommonGender
+from s4ap.sims4communitylib.enums.traits_enum import CommonTraitId
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
     CommonConsoleCommandArgument
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
-from sims4communitylib.utils.cas.common_outfit_utils import CommonOutfitUtils
-from sims4communitylib.utils.sims.common_sim_voice_utils import CommonSimVoiceUtils
-from sims4communitylib.utils.sims.common_trait_utils import CommonTraitUtils
+from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+from s4ap.sims4communitylib.utils.cas.common_outfit_utils import CommonOutfitUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_voice_utils import CommonSimVoiceUtils
+from s4ap.sims4communitylib.utils.sims.common_trait_utils import CommonTraitUtils
 
 
 class CommonGenderUtils:
@@ -68,7 +68,7 @@ class CommonGenderUtils:
             new_trait_id = CommonTraitId.GENDER_FEMALE
             CommonTraitUtils.remove_trait(sim_info, CommonTraitId.GENDER_MALE)
         CommonTraitUtils.add_trait(sim_info, new_trait_id)
-        from sims4communitylib.events.sim.common_sim_event_dispatcher import CommonSimEventDispatcherService
+        from s4ap.sims4communitylib.events.sim.common_sim_event_dispatcher import CommonSimEventDispatcherService
         CommonSimEventDispatcherService()._on_sim_change_gender(sim_info)
         return True
 
@@ -92,7 +92,7 @@ class CommonGenderUtils:
         :return: True, if the Gender of the Sim was swapped successfully. False, if not.
         :rtype: bool
         """
-        from sims4communitylib.utils.sims.common_sim_gender_option_utils import CommonSimGenderOptionUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_gender_option_utils import CommonSimGenderOptionUtils
         result = False
         frame = CommonSimGenderOptionUtils.has_masculine_frame(sim_info).result
         prefers_menswear = CommonSimGenderOptionUtils.prefers_menswear(sim_info).result

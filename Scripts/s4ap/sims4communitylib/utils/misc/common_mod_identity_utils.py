@@ -8,7 +8,7 @@ Copyright (c) COLONOLNUTTY
 from typing import Union, TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from sims4communitylib.mod_support.mod_identity import CommonModIdentity
+    from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
 
 
 class CommonModIdentityUtils:
@@ -27,7 +27,7 @@ class CommonModIdentityUtils:
         :return: The name of the Mod or 'Unknown_Mod' if the name could not be determined.
         :rtype: str
         """
-        from sims4communitylib.mod_support.mod_identity import CommonModIdentity
+        from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
         if identifier is None:
             return 'Unknown_Mod'
         if isinstance(identifier, CommonModIdentity):

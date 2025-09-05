@@ -7,12 +7,12 @@ Copyright (c) COLONOLNUTTY
 """
 from typing import Dict, Any, Union
 
-from sims4communitylib.classes.math.common_location import CommonLocation
-from sims4communitylib.classes.math.common_quaternion import CommonQuaternion
-from sims4communitylib.classes.math.common_surface_identifier import CommonSurfaceIdentifier
-from sims4communitylib.classes.math.common_transform import CommonTransform
-from sims4communitylib.classes.math.common_vector3 import CommonVector3
-from sims4communitylib.classes.serialization.common_serializable import CommonSerializable
+from s4ap.sims4communitylib.classes.math.common_location import CommonLocation
+from s4ap.sims4communitylib.classes.math.common_quaternion import CommonQuaternion
+from s4ap.sims4communitylib.classes.math.common_surface_identifier import CommonSurfaceIdentifier
+from s4ap.sims4communitylib.classes.math.common_transform import CommonTransform
+from s4ap.sims4communitylib.classes.math.common_vector3 import CommonVector3
+from s4ap.sims4communitylib.classes.serialization.common_serializable import CommonSerializable
 
 
 class CommonSerializableLocation(CommonSerializable):

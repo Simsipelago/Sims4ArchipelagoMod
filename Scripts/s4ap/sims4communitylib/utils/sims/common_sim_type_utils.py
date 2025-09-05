@@ -7,16 +7,16 @@ Copyright (c) COLONOLNUTTY
 """
 from typing import Dict, Iterator
 from sims.sim_info import SimInfo
-from sims4communitylib.classes.testing.common_test_result import CommonTestResult
-from sims4communitylib.enums.common_age import CommonAge
-from sims4communitylib.enums.common_occult_type import CommonOccultType
-from sims4communitylib.enums.common_species import CommonSpecies
-from sims4communitylib.enums.sim_type import CommonSimType
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
+from s4ap.sims4communitylib.classes.testing.common_test_result import CommonTestResult
+from s4ap.sims4communitylib.enums.common_age import CommonAge
+from s4ap.sims4communitylib.enums.common_occult_type import CommonOccultType
+from s4ap.sims4communitylib.enums.common_species import CommonSpecies
+from s4ap.sims4communitylib.enums.sim_type import CommonSimType
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
     CommonConsoleCommandArgument
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
-from sims4communitylib.utils.sims.common_occult_utils import CommonOccultUtils
+from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+from s4ap.sims4communitylib.utils.sims.common_occult_utils import CommonOccultUtils
 
 
 class CommonSimTypeUtils:
@@ -2292,8 +2292,8 @@ class CommonSimTypeUtils:
         """
         if sim_info is None:
             raise AssertionError('Sim Info was None!')
-        from sims4communitylib.enums.traits_enum import CommonTraitId
-        from sims4communitylib.utils.sims.common_trait_utils import CommonTraitUtils
+        from s4ap.sims4communitylib.enums.traits_enum import CommonTraitId
+        from s4ap.sims4communitylib.utils.sims.common_trait_utils import CommonTraitUtils
         trait_ids = (
             CommonTraitId.IS_BUTLER,
             CommonTraitId.IS_CHALET_GARDENS_GHOST,
@@ -2338,8 +2338,8 @@ class CommonSimTypeUtils:
         """
         if sim_info is None:
             raise AssertionError('Sim Info was None!')
-        from sims4communitylib.enums.traits_enum import CommonTraitId
-        from sims4communitylib.utils.sims.common_trait_utils import CommonTraitUtils
+        from s4ap.sims4communitylib.enums.traits_enum import CommonTraitId
+        from s4ap.sims4communitylib.utils.sims.common_trait_utils import CommonTraitUtils
         trait_ids = (
             CommonTraitId.BATUU_ALIEN_BITH,  # trait_Batuu_Alien_Bith
             CommonTraitId.BATUU_ALIEN_TWILEK,  # trait_Batuu_Alien_Twilek
@@ -2408,7 +2408,7 @@ class CommonSimTypeUtils:
             raise AssertionError('Sim Info was None!')
         species = CommonSpecies.get_species(sim_info)
         age = CommonAge.get_age(sim_info)
-        from sims4communitylib.utils.sims.common_sim_occult_type_utils import CommonSimOccultTypeUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_occult_type_utils import CommonSimOccultTypeUtils
         for occult_type in CommonSimOccultTypeUtils.get_all_occult_types_for_sim_gen(sim_info):
             if CommonOccultUtils.is_robot(sim_info) and occult_type == CommonOccultType.NON_OCCULT:
                 continue

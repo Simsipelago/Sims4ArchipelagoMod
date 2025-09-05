@@ -9,10 +9,10 @@ import os
 from functools import wraps
 from typing import Any, Callable, TYPE_CHECKING
 
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
 
 if TYPE_CHECKING:
-    from sims4communitylib.utils.common_log_registry import CommonLog
+    from s4ap.sims4communitylib.utils.common_log_registry import CommonLog
 ON_RTD = os.environ.get('READTHEDOCS', None) == 'True'
 
 
@@ -137,7 +137,7 @@ class CommonInjectionUtils:
                             except Exception as ex:
                                 # noinspection PyBroadException
                                 try:
-                                    from sims4communitylib.exceptions.common_exceptions_handler import \
+                                    from s4ap.sims4communitylib.exceptions.common_exceptions_handler import \
                                         CommonExceptionHandler
                                     CommonExceptionHandler.log_exception(mod_identity, 'Error occurred while injecting into function \'{}\' of class \'{}\''.format(new_function.__name__, target_object.__name__), exception=ex)
                                 except Exception:
@@ -153,7 +153,7 @@ class CommonInjectionUtils:
                             except Exception as ex:
                                 # noinspection PyBroadException
                                 try:
-                                    from sims4communitylib.exceptions.common_exceptions_handler import CommonExceptionHandler
+                                    from s4ap.sims4communitylib.exceptions.common_exceptions_handler import CommonExceptionHandler
                                     CommonExceptionHandler.log_exception(mod_identity, 'Error occurred while injecting into function \'{}\' of class \'{}\''.format(new_function.__name__, target_object.__name__), exception=ex)
                                 except Exception:
                                     pass
@@ -170,7 +170,7 @@ class CommonInjectionUtils:
                             except Exception as ex:
                                 # noinspection PyBroadException
                                 try:
-                                    from sims4communitylib.exceptions.common_exceptions_handler import CommonExceptionHandler
+                                    from s4ap.sims4communitylib.exceptions.common_exceptions_handler import CommonExceptionHandler
                                     CommonExceptionHandler.log_exception(mod_identity, 'Error occurred while injecting into function \'{}\' of class \'{}\''.format(new_function.__name__, target_object.__name__), exception=ex)
                                 except Exception:
                                     pass
@@ -193,7 +193,7 @@ class CommonInjectionUtils:
                             except Exception as ex:
                                 # noinspection PyBroadException
                                 try:
-                                    from sims4communitylib.exceptions.common_exceptions_handler import CommonExceptionHandler
+                                    from s4ap.sims4communitylib.exceptions.common_exceptions_handler import CommonExceptionHandler
                                     CommonExceptionHandler.log_exception(mod_identity, 'Error occurred while injecting into function \'{}\' of class \'{}\''.format(new_function.__name__, target_object.__name__), exception=ex)
                                 except Exception:
                                     pass
@@ -208,7 +208,7 @@ class CommonInjectionUtils:
                         except Exception as ex:
                             # noinspection PyBroadException
                             try:
-                                from sims4communitylib.exceptions.common_exceptions_handler import CommonExceptionHandler
+                                from s4ap.sims4communitylib.exceptions.common_exceptions_handler import CommonExceptionHandler
                                 CommonExceptionHandler.log_exception(mod_identity, 'Error occurred while injecting into function \'{}\' of class \'{}\''.format(new_function.__name__, target_object.__name__), exception=ex)
                             except Exception:
                                 pass

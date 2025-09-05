@@ -8,8 +8,8 @@ Copyright (c) COLONOLNUTTY
 from typing import Union, Any, Iterator, Tuple, List, Set
 
 from interactions.base.interaction import Interaction
-from sims4communitylib.classes.testing.common_test_result import CommonTestResult
-from sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
+from s4ap.sims4communitylib.classes.testing.common_test_result import CommonTestResult
+from s4ap.sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
 
 
 class _CommonInteractionCustomMixin:

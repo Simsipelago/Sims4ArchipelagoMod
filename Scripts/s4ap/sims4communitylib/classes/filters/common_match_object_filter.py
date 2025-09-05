@@ -7,7 +7,7 @@ Copyright (c) COLONOLNUTTY
 """
 from interactions.utils.object_definition_or_tags import TunableObjectFilter
 from objects.script_object import ScriptObject
-from sims4communitylib.enums.common_object_filter_type import CommonObjectFilterType
+from s4ap.sims4communitylib.enums.common_object_filter_type import CommonObjectFilterType
 
 
 class CommonMatchObjectFilterBase(TunableObjectFilter):

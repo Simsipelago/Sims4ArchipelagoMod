@@ -8,7 +8,7 @@ Copyright (c) COLONOLNUTTY
 import os
 from interactions.base.interaction import Interaction
 from interactions.interaction_queue import InteractionQueue
-from sims4communitylib.events.event_handling.common_event import CommonEvent
+from s4ap.sims4communitylib.events.event_handling.common_event import CommonEvent
 
 ON_RTD = os.environ.get('READTHEDOCS', None) == 'True'
 
@@ -34,8 +34,8 @@ class S4CLInteractionPreRunEvent(CommonEvent):
     .. highlight:: python
     .. code-block:: python
 
-        from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
-        from sims4communitylib.modinfo import ModInfo
+        from s4ap.sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
+        from s4ap.sims4communitylib.modinfo import ModInfo
 
         class ExampleEventListener:
 

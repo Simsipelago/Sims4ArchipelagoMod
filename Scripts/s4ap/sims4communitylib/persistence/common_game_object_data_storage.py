@@ -10,11 +10,11 @@ from pprint import pformat
 from typing import Dict, Any, Callable
 from typing import Union
 from objects.game_object import GameObject
-from sims4communitylib.classes.serialization.common_serializable import CommonSerializable
-from sims4communitylib.logging.has_class_log import HasClassLog
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.utils.common_type_utils import CommonTypeUtils
-from sims4communitylib.utils.objects.common_object_utils import CommonObjectUtils
+from s4ap.sims4communitylib.classes.serialization.common_serializable import CommonSerializable
+from s4ap.sims4communitylib.logging.has_class_log import HasClassLog
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.utils.common_type_utils import CommonTypeUtils
+from s4ap.sims4communitylib.utils.objects.common_object_utils import CommonObjectUtils
 
 
 class _CommonGameObjectDataStorageMetaclass(type):
@@ -182,7 +182,7 @@ class CommonGameObjectDataStorage(_CommonGameObjectDataStorage):
             @classmethod
             def get_mod_identity(cls) -> CommonModIdentity:
                 # !!!Override with the CommonModIdentity of your own mod!!!
-                from sims4communitylib.modinfo import ModInfo
+                from s4ap.sims4communitylib.modinfo import ModInfo
                 return ModInfo.get_identity()
 
             @property
@@ -216,7 +216,7 @@ class _ExampleGameObjectDataStorage(CommonGameObjectDataStorage):
     @classmethod
     def get_mod_identity(cls) -> CommonModIdentity:
         # !!!Override with the CommonModIdentity of your own mod!!!
-        from sims4communitylib.modinfo import ModInfo
+        from s4ap.sims4communitylib.modinfo import ModInfo
         return ModInfo.get_identity()
 
     @property

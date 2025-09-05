@@ -27,7 +27,7 @@ class CommonObjectHouseholdUtils:
         :return: True, if the Household was successfully set as the owner. False, if not.
         :rtype: bool
         """
-        from sims4communitylib.utils.objects.common_object_ownership_utils import CommonObjectOwnershipUtils
+        from s4ap.sims4communitylib.utils.objects.common_object_ownership_utils import CommonObjectOwnershipUtils
         return CommonObjectOwnershipUtils.set_owning_household_id(game_object, household_id)
 
     @staticmethod
@@ -43,5 +43,5 @@ class CommonObjectHouseholdUtils:
         :return: The decimal identifier of the Household that owns the object.
         :rtype: int
         """
-        from sims4communitylib.utils.objects.common_object_ownership_utils import CommonObjectOwnershipUtils
+        from s4ap.sims4communitylib.utils.objects.common_object_ownership_utils import CommonObjectOwnershipUtils
         return CommonObjectOwnershipUtils.get_owning_household_id(game_object)

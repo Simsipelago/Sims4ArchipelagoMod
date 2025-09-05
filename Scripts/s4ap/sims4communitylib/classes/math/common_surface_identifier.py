@@ -71,7 +71,7 @@ class CommonSurfaceIdentifier:
         :return: An empty surface identifier.
         :rtype: CommonSurfaceIdentifier
         """
-        from sims4communitylib.utils.location.common_location_utils import CommonLocationUtils
+        from s4ap.sims4communitylib.utils.location.common_location_utils import CommonLocationUtils
         return CommonSurfaceIdentifier(CommonLocationUtils.get_current_zone_id(), secondary_id=secondary_id)
 
     @staticmethod

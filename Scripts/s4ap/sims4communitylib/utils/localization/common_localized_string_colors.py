@@ -5,8 +5,8 @@ https://creativecommons.org/licenses/by/4.0/legalcode
 
 Copyright (c) COLONOLNUTTY
 """
-from sims4communitylib.enums.enumtypes.common_int import CommonInt
-from sims4communitylib.enums.strings_enum import CommonStringId
+from s4ap.sims4communitylib.enums.enumtypes.common_int import CommonInt
+from s4ap.sims4communitylib.enums.strings_enum import CommonStringId
 
 
 class CommonLocalizedStringColor(CommonInt):

@@ -9,15 +9,15 @@ from typing import Callable
 
 from objects.components.state import ObjectState
 from objects.game_object import GameObject
-from sims4communitylib.dialogs.option_dialogs.options.common_dialog_option_context import CommonDialogOptionContext
-from sims4communitylib.dialogs.option_dialogs.options.objects.common_dialog_select_option import \
+from s4ap.sims4communitylib.dialogs.option_dialogs.options.common_dialog_option_context import CommonDialogOptionContext
+from s4ap.sims4communitylib.dialogs.option_dialogs.options.objects.common_dialog_select_option import \
     CommonDialogSelectOption
-from sims4communitylib.dialogs.option_dialogs.common_choose_object_option_dialog import CommonChooseObjectOptionDialog
-from sims4communitylib.logging._has_s4cl_log import _HasS4CLLog
-from sims4communitylib.utils.common_icon_utils import CommonIconUtils
-from sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
-from sims4communitylib.utils.objects.common_object_state_utils import CommonObjectStateUtils
-from sims4communitylib.utils.objects.common_object_utils import CommonObjectUtils
+from s4ap.sims4communitylib.dialogs.option_dialogs.common_choose_object_option_dialog import CommonChooseObjectOptionDialog
+from s4ap.sims4communitylib.logging._has_s4cl_log import _HasS4CLLog
+from s4ap.sims4communitylib.utils.common_icon_utils import CommonIconUtils
+from s4ap.sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
+from s4ap.sims4communitylib.utils.objects.common_object_state_utils import CommonObjectStateUtils
+from s4ap.sims4communitylib.utils.objects.common_object_utils import CommonObjectUtils
 
 
 class CommonChangeObjectStateDialog(_HasS4CLLog):

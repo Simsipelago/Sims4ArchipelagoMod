@@ -11,10 +11,10 @@ from typing import Tuple, Union, Any, Dict, List
 
 import build_buy
 from civic_policies.street_civic_policy_service import StreetService
-from sims4communitylib.classes.math.common_location import CommonLocation
-from sims4communitylib.classes.math.common_surface_identifier import CommonSurfaceIdentifier
-from sims4communitylib.classes.math.common_vector3 import CommonVector3
-from sims4communitylib.enums.common_region_id import CommonRegionId
+from s4ap.sims4communitylib.classes.math.common_location import CommonLocation
+from s4ap.sims4communitylib.classes.math.common_surface_identifier import CommonSurfaceIdentifier
+from s4ap.sims4communitylib.classes.math.common_vector3 import CommonVector3
+from s4ap.sims4communitylib.enums.common_region_id import CommonRegionId
 from world.region import Region
 from world.street import Street
 
@@ -24,7 +24,7 @@ except ImportError:
     # noinspection SpellCheckingInspection
     _buildbuy = build_buy
 from sims4.resources import Types
-from sims4communitylib.utils.common_resource_utils import CommonResourceUtils
+from s4ap.sims4communitylib.utils.common_resource_utils import CommonResourceUtils
 from venues.venue_tuning import Venue, VenueTypes
 from world.lot import Lot
 from zone import Zone
@@ -124,7 +124,7 @@ class CommonLocationUtils:
             return region
 
         from sims4.resources import Types
-        from sims4communitylib.utils.common_resource_utils import CommonResourceUtils
+        from s4ap.sims4communitylib.utils.common_resource_utils import CommonResourceUtils
         return CommonResourceUtils.load_instance(Types.REGION, region)
 
     @staticmethod
@@ -472,7 +472,7 @@ class CommonLocationUtils:
         :return: True, if the distance between Position A and Position B is less than or equal to the specified distance in squares. False, if not.
         :return: bool
         """
-        from sims4communitylib.utils.common_math_utils import CommonMathUtils
+        from s4ap.sims4communitylib.utils.common_math_utils import CommonMathUtils
         distance_between_positions = CommonMathUtils.calculate_distance(position_a, position_b, flatten_positions=False)
         return distance_between_positions <= distance_in_squares
 
@@ -683,7 +683,7 @@ class CommonLocationUtils:
             return venue
 
         from sims4.resources import Types
-        from sims4communitylib.utils.common_resource_utils import CommonResourceUtils
+        from s4ap.sims4communitylib.utils.common_resource_utils import CommonResourceUtils
         return CommonResourceUtils.load_instance(Types.VENUE, venue)
 
     @classmethod

@@ -14,11 +14,11 @@ from objects.prop_object import BasicPropObject
 from reservation.reservation_handler import _ReservationHandler
 from reservation.reservation_result import ReservationResult
 from sims.sim_info import SimInfo
-from sims4communitylib.enums.common_slot_type import CommonSlotType
-from sims4communitylib.enums.types.component_types import CommonComponentType
-from sims4communitylib.utils.common_component_utils import CommonComponentUtils
-from sims4communitylib.utils.objects.common_object_utils import CommonObjectUtils
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+from s4ap.sims4communitylib.enums.common_slot_type import CommonSlotType
+from s4ap.sims4communitylib.enums.types.component_types import CommonComponentType
+from s4ap.sims4communitylib.utils.common_component_utils import CommonComponentUtils
+from s4ap.sims4communitylib.utils.objects.common_object_utils import CommonObjectUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
 
 
 class CommonObjectReservationUtils:
@@ -53,7 +53,7 @@ class CommonObjectReservationUtils:
         """
         if game_object is None:
             return False
-        from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
         sim = CommonSimUtils.get_sim_instance(sim_info)
         if sim is None:
             return False
@@ -70,7 +70,7 @@ class CommonObjectReservationUtils:
         :return: A collection of Sims using the object.
         :rtype: Tuple[SimInfo]
         """
-        from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
         if game_object is None:
             return tuple()
         sim_info_user_list: List[SimInfo] = []

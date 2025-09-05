@@ -10,7 +10,7 @@ from typing import Union, Tuple
 from objects.fire.fire import Fire
 from objects.game_object import GameObject
 from services.fire_service import FireService
-from sims4communitylib.classes.math.common_location import CommonLocation
+from s4ap.sims4communitylib.classes.math.common_location import CommonLocation
 
 
 class CommonFireUtils:

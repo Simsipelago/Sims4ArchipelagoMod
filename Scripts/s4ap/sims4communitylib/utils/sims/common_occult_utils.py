@@ -11,27 +11,27 @@ from typing import Iterator, Tuple, Union
 from sims.occult.occult_enums import OccultType
 from sims.sim_info import SimInfo
 from sims.sim_info_base_wrapper import SimInfoBaseWrapper
-from sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
-from sims4communitylib.classes.testing.common_test_result import CommonTestResult
-from sims4communitylib.dtos.common_cas_part import CommonCASPart
-from sims4communitylib.enums.buffs_enum import CommonBuffId
-from sims4communitylib.enums.common_bucks_types import CommonBucksType
-from sims4communitylib.enums.common_occult_type import CommonOccultType
-from sims4communitylib.enums.traits_enum import CommonTraitId
-from sims4communitylib.logging._has_s4cl_class_log import _HasS4CLClassLog
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
+from s4ap.sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
+from s4ap.sims4communitylib.classes.testing.common_test_result import CommonTestResult
+from s4ap.sims4communitylib.dtos.common_cas_part import CommonCASPart
+from s4ap.sims4communitylib.enums.buffs_enum import CommonBuffId
+from s4ap.sims4communitylib.enums.common_bucks_types import CommonBucksType
+from s4ap.sims4communitylib.enums.common_occult_type import CommonOccultType
+from s4ap.sims4communitylib.enums.traits_enum import CommonTraitId
+from s4ap.sims4communitylib.logging._has_s4cl_class_log import _HasS4CLClassLog
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
     CommonConsoleCommandArgument
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
-from sims4communitylib.utils.cas.common_cas_utils import CommonCASUtils
-from sims4communitylib.utils.common_type_utils import CommonTypeUtils
-from sims4communitylib.utils.sims.common_buff_utils import CommonBuffUtils
-from sims4communitylib.utils.sims.common_sim_appearance_modifier_utils import CommonSimAppearanceModifierUtils
-from sims4communitylib.utils.sims.common_sim_bucks_utils import CommonSimBucksUtils
-from sims4communitylib.utils.sims.common_sim_loot_action_utils import CommonSimLootActionUtils
-from sims4communitylib.utils.sims.common_sim_spell_utils import CommonSimSpellUtils
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
-from sims4communitylib.utils.sims.common_trait_utils import CommonTraitUtils
+from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+from s4ap.sims4communitylib.utils.cas.common_cas_utils import CommonCASUtils
+from s4ap.sims4communitylib.utils.common_type_utils import CommonTypeUtils
+from s4ap.sims4communitylib.utils.sims.common_buff_utils import CommonBuffUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_appearance_modifier_utils import CommonSimAppearanceModifierUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_bucks_utils import CommonSimBucksUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_loot_action_utils import CommonSimLootActionUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_spell_utils import CommonSimSpellUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+from s4ap.sims4communitylib.utils.sims.common_trait_utils import CommonTraitUtils
 try:
     from traits.trait_type import TraitType
 except ModuleNotFoundError:
@@ -116,7 +116,7 @@ class CommonOccultUtils(_HasS4CLClassLog):
         """
         if sim_info is None:
             raise AssertionError('Argument sim_info was None')
-        from sims4communitylib.utils.sims.common_sim_occult_type_utils import CommonSimOccultTypeUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_occult_type_utils import CommonSimOccultTypeUtils
         occult_type = CommonSimOccultTypeUtils.determine_occult_type(sim_info)
         if occult_type not in (CommonOccultType.NON_OCCULT, CommonOccultType.NONE):
             return CommonTestResult(True, reason=f'Sim had an occult type. {occult_type}')
@@ -528,7 +528,7 @@ class CommonOccultUtils(_HasS4CLClassLog):
             198147
         )
         chosen_id = random.choice(scarecrow_cas_part_ids)
-        from sims4communitylib.utils.cas.common_outfit_utils import CommonOutfitUtils
+        from s4ap.sims4communitylib.utils.cas.common_outfit_utils import CommonOutfitUtils
         if CommonCASUtils.attach_cas_part_to_all_outfits_of_sim(sim_info, CommonCASPart(chosen_id)):
             current_outfit_category_and_index = CommonOutfitUtils.get_current_outfit(sim_info)
             CommonOutfitUtils.trigger_outfit_generated(sim_info, current_outfit_category_and_index)
@@ -566,7 +566,7 @@ class CommonOccultUtils(_HasS4CLClassLog):
             CommonCASPart(198147)
         )
 
-        from sims4communitylib.utils.cas.common_outfit_utils import CommonOutfitUtils
+        from s4ap.sims4communitylib.utils.cas.common_outfit_utils import CommonOutfitUtils
         if CommonCASUtils.detach_cas_parts_from_all_outfits_of_sim(sim_info, scarecrow_cas_parts):
             current_outfit_category_and_index = CommonOutfitUtils.get_current_outfit(sim_info)
             CommonOutfitUtils.trigger_outfit_generated(sim_info, current_outfit_category_and_index)
@@ -1868,7 +1868,7 @@ def _common_print_occult_sim_infos(output: CommonConsoleCommandOutput, sim_info:
             obj_type_acronym = 'S'
         elif CommonTypeUtils.is_sim_info_base_wrapper(occult_sim_info):
             obj_type_acronym = 'SIBW'
-        from sims4communitylib.utils.sims.common_sim_type_utils import CommonSimTypeUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_type_utils import CommonSimTypeUtils
         sim_types = tuple(CommonSimTypeUtils.get_all_sim_types_gen(occult_sim_info, combine_teen_young_adult_and_elder_age=False, combine_child_dog_types=False))
         sim_types_str = ', '.join([sim_type.name for sim_type in sim_types])
         current_sim_type = CommonSimTypeUtils.determine_sim_type(occult_sim_info, combine_teen_young_adult_and_elder_age=False, combine_child_dog_types=False, use_current_occult_type=True)

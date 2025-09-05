@@ -10,12 +10,12 @@ from interactions.base.interaction import Interaction
 from objects.script_object import ScriptObject
 from services.terrain_service import TerrainService
 from sims.sim import Sim
-from sims4communitylib.enums.enumtypes.common_int import CommonInt
-from sims4communitylib.logging._has_s4cl_log import _HasS4CLLog
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.common_service import CommonService
-from sims4communitylib.utils.common_injection_utils import CommonInjectionUtils
-from sims4communitylib.utils.common_type_utils import CommonTypeUtils
+from s4ap.sims4communitylib.enums.enumtypes.common_int import CommonInt
+from s4ap.sims4communitylib.logging._has_s4cl_log import _HasS4CLLog
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.common_service import CommonService
+from s4ap.sims4communitylib.utils.common_injection_utils import CommonInjectionUtils
+from s4ap.sims4communitylib.utils.common_type_utils import CommonTypeUtils
 
 
 class CommonInteractionType(CommonInt):
@@ -51,7 +51,7 @@ class CommonInteractionHandler:
             yield from self._cached_interactions_to_add
         else:
             cached_interactions = list()
-            from sims4communitylib.utils.resources.common_interaction_utils import CommonInteractionUtils
+            from s4ap.sims4communitylib.utils.resources.common_interaction_utils import CommonInteractionUtils
             affordance_manager = CommonInteractionUtils.get_instance_manager()
             for affordance_id in self.interactions_to_add:
                 affordance_instance = affordance_manager.get(affordance_id)
@@ -79,7 +79,7 @@ class CommonScriptObjectInteractionHandler(CommonInteractionHandler):
            def interactions_to_add(self) -> Tuple[int]:
                # Interaction Ids
                # These are the decimal identifiers of the interactions from a package file.
-               from sims4communitylib.enums.interactions_enum import CommonInteractionId
+               from s4ap.sims4communitylib.enums.interactions_enum import CommonInteractionId
                return tuple([int(CommonInteractionId.SIM_CHAT), 2])
 
            def should_add(self, script_object: ScriptObject, *args, **kwargs) -> bool:
@@ -326,7 +326,7 @@ class ExampleInteractionHandler(CommonScriptObjectInteractionHandler):
     def interactions_to_add(self) -> Tuple[int]:
         # Interaction Ids
         # These are the decimal identifiers of the interactions from a package file.
-        from sims4communitylib.enums.interactions_enum import CommonInteractionId
+        from s4ap.sims4communitylib.enums.interactions_enum import CommonInteractionId
         # noinspection PyTypeChecker
         return tuple([int(CommonInteractionId.SIM_CHAT), 2])
 

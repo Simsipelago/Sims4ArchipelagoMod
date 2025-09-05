@@ -16,19 +16,19 @@ from sims.outfits.outfit_enums import OutfitCategory, BodyType, OutfitFilterFlag
 from sims.sim_info import SimInfo
 from sims.sim_info_base_wrapper import SimInfoBaseWrapper
 from sims4.utils import classproperty
-from sims4communitylib.classes.testing.common_test_result import CommonTestResult
-from sims4communitylib.enums.buffs_enum import CommonBuffId
-from sims4communitylib.enums.tags_enum import CommonGameTag
-from sims4communitylib.logging.has_class_log import HasClassLog
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
+from s4ap.sims4communitylib.classes.testing.common_test_result import CommonTestResult
+from s4ap.sims4communitylib.enums.buffs_enum import CommonBuffId
+from s4ap.sims4communitylib.enums.tags_enum import CommonGameTag
+from s4ap.sims4communitylib.logging.has_class_log import HasClassLog
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
     CommonConsoleCommandArgument
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
-from sims4communitylib.utils.common_log_registry import CommonLogRegistry
-from sims4communitylib.utils.common_resource_utils import CommonResourceUtils
-from sims4communitylib.utils.sims.common_age_utils import CommonAgeUtils
-from sims4communitylib.utils.sims.common_buff_utils import CommonBuffUtils
+from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+from s4ap.sims4communitylib.utils.common_log_registry import CommonLogRegistry
+from s4ap.sims4communitylib.utils.common_resource_utils import CommonResourceUtils
+from s4ap.sims4communitylib.utils.sims.common_age_utils import CommonAgeUtils
+from s4ap.sims4communitylib.utils.sims.common_buff_utils import CommonBuffUtils
 from singletons import DEFAULT
 from typing import Tuple, Union, Dict, Callable, Iterator, Set
 
@@ -817,7 +817,7 @@ class CommonOutfitUtils(HasClassLog):
         :return: True, if CAS Parts were copied successfully. False, if not.
         :rtype: bool
         """
-        from sims4communitylib.services.sim.cas.common_sim_outfit_io import CommonSimOutfitIO
+        from s4ap.sims4communitylib.services.sim.cas.common_sim_outfit_io import CommonSimOutfitIO
         outfit_io = CommonSimOutfitIO(sim_info, outfit_category_and_index=from_outfit_category_and_index, mod_identity=mod_identity)
         return outfit_io.apply(change_sim_to_outfit_after_apply=change_sim_to_outfit_after_apply, apply_to_all_outfits_in_same_category=False, apply_to_outfit_category_and_index=to_outfit_category_and_index)
 
@@ -837,7 +837,7 @@ class CommonOutfitUtils(HasClassLog):
         current_outfit = CommonOutfitUtils.get_current_outfit(sim_info)
         outfit_flags = OutfitFilterFlag.USE_EXISTING_IF_APPROPRIATE & OutfitFilterFlag.USE_VALID_FOR_LIVE_RANDOM
         tags = tuple()
-        from sims4communitylib.utils.sims.common_sim_gender_option_utils import CommonSimGenderOptionUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_gender_option_utils import CommonSimGenderOptionUtils
         if CommonSimGenderOptionUtils.prefers_menswear(sim_info):
             tags = (CommonGameTag.GENDER_APPROPRIATE_MALE,)
         elif CommonSimGenderOptionUtils.prefers_womenswear(sim_info):
@@ -862,7 +862,7 @@ class CommonOutfitUtils(HasClassLog):
         current_outfit = CommonOutfitUtils.get_current_outfit(sim_info)
         outfit_flags = OutfitFilterFlag.USE_EXISTING_IF_APPROPRIATE & OutfitFilterFlag.USE_VALID_FOR_LIVE_RANDOM
         tags = tuple()
-        from sims4communitylib.utils.sims.common_sim_gender_option_utils import CommonSimGenderOptionUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_gender_option_utils import CommonSimGenderOptionUtils
         if CommonSimGenderOptionUtils.prefers_menswear(sim_info):
             tags = (CommonGameTag.GENDER_APPROPRIATE_MALE,)
         elif CommonSimGenderOptionUtils.prefers_womenswear(sim_info):
@@ -1105,7 +1105,7 @@ class CommonOutfitUtils(HasClassLog):
 
     @classmethod
     def _print_outfit(cls, sim_info: SimInfo, outfit_category: OutfitCategory, outfit_index: int, output: CommonConsoleCommandOutput):
-        from sims4communitylib.services.sim.cas.common_sim_outfit_io import CommonSimOutfitIO
+        from s4ap.sims4communitylib.services.sim.cas.common_sim_outfit_io import CommonSimOutfitIO
         if not isinstance(outfit_category, OutfitCategory):
             # noinspection PyBroadException
             try:
@@ -1249,7 +1249,7 @@ def _s4clib_testing_print_outfit_tags(output: CommonConsoleCommandOutput, outfit
     )
 )
 def _s4clib_testing_print_outfit_tags_by_cas_part(output: CommonConsoleCommandOutput, outfit_category: str = None, outfit_index: int = 1, sim_info: SimInfo = None):
-    from sims4communitylib.utils.cas.common_cas_utils import CommonCASUtils
+    from s4ap.sims4communitylib.utils.cas.common_cas_utils import CommonCASUtils
     if sim_info is None:
         return
     outfit_category_and_index = CommonOutfitUtils._parse_outfit_category_and_index_from_str(output, outfit_category=outfit_category, outfit_index=outfit_index, sim_info=sim_info)

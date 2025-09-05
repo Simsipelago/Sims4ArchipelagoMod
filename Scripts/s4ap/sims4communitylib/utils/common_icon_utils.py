@@ -7,9 +7,9 @@ Copyright (c) COLONOLNUTTY
 """
 from typing import Any, Union
 from sims4.resources import Types
-from sims4communitylib.enums.enumtypes.common_int import CommonInt
-from sims4communitylib.enums.icons_enum import CommonIconId
-from sims4communitylib.utils.common_resource_utils import CommonResourceUtils
+from s4ap.sims4communitylib.enums.enumtypes.common_int import CommonInt
+from s4ap.sims4communitylib.enums.icons_enum import CommonIconId
+from s4ap.sims4communitylib.utils.common_resource_utils import CommonResourceUtils
 
 
 class CommonIconUtils:

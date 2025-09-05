@@ -8,18 +8,18 @@ Copyright (c) COLONOLNUTTY
 
 from typing import Union, Any, TypeVar, Generic
 
-from sims4communitylib.classes.runnables.contexts.common_runnable_context import CommonRunnableContext
-from sims4communitylib.enums.common_runnable_state_type import CommonRunnableStateType
-from sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
-from sims4communitylib.classes.time.common_alarm_handle import CommonAlarmHandle
-from sims4communitylib.enums.enumtypes.common_int import CommonInt
-from sims4communitylib.enums.enumtypes.common_int_flags import CommonIntFlags
-from sims4communitylib.events.interval.common_interval_event_service import CommonIntervalEventRegistry, \
+from s4ap.sims4communitylib.classes.runnables.contexts.common_runnable_context import CommonRunnableContext
+from s4ap.sims4communitylib.enums.common_runnable_state_type import CommonRunnableStateType
+from s4ap.sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
+from s4ap.sims4communitylib.classes.time.common_alarm_handle import CommonAlarmHandle
+from s4ap.sims4communitylib.enums.enumtypes.common_int import CommonInt
+from s4ap.sims4communitylib.enums.enumtypes.common_int_flags import CommonIntFlags
+from s4ap.sims4communitylib.events.interval.common_interval_event_service import CommonIntervalEventRegistry, \
     CommonIntervalDispatcher
-from sims4communitylib.logging.has_class_log import HasClassLog
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.utils.common_time_utils import CommonTimeUtils
-from sims4communitylib.utils.time.common_alarm_utils import CommonAlarmUtils
+from s4ap.sims4communitylib.logging.has_class_log import HasClassLog
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.utils.common_time_utils import CommonTimeUtils
+from s4ap.sims4communitylib.utils.time.common_alarm_utils import CommonAlarmUtils
 
 CommonRunnableContextType = TypeVar('CommonRunnableContextType', bound=CommonRunnableContext)
 

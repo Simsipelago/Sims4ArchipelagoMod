@@ -8,8 +8,8 @@ Copyright (c) COLONOLNUTTY
 from typing import Union
 from routing.walkstyle.walkstyle_tuning import Walkstyle
 from sims.sim_info import SimInfo
-from sims4communitylib.logging._has_s4cl_class_log import _HasS4CLClassLog
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+from s4ap.sims4communitylib.logging._has_s4cl_class_log import _HasS4CLClassLog
+from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
 
 
 class CommonSimWalkstyleUtils(_HasS4CLClassLog):

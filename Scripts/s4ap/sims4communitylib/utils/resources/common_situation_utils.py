@@ -9,9 +9,9 @@ from typing import Union, Iterator, Tuple, List, Type
 
 import services
 from sims.sim_info import SimInfo
-from sims4communitylib.enums.situations_enum import CommonSituationId
-from sims4communitylib.enums.tags_enum import CommonGameTag
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+from s4ap.sims4communitylib.enums.situations_enum import CommonSituationId
+from s4ap.sims4communitylib.enums.tags_enum import CommonGameTag
+from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
 from situations.situation import Situation
 from situations.situation_job import SituationJob
 from situations.situation_manager import SituationManager
@@ -325,5 +325,5 @@ class CommonSituationUtils:
             return situation_guid
 
         from sims4.resources import Types
-        from sims4communitylib.utils.common_resource_utils import CommonResourceUtils
+        from s4ap.sims4communitylib.utils.common_resource_utils import CommonResourceUtils
         return CommonResourceUtils.load_instance(Types.SITUATION, situation_guid)

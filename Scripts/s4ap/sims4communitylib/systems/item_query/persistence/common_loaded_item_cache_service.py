@@ -7,11 +7,11 @@ Copyright (c) COLONOLNUTTY
 """
 from typing import Generic, TypeVar, Tuple, Union, Dict, Any
 
-from sims4communitylib.systems.item_query.dtos.common_loaded_item import CommonLoadedItem
-from sims4communitylib.systems.item_query.persistence.common_loaded_item_cache import CommonLoadedItemCache
-from sims4communitylib.systems.caching.common_serializable_object_cache_service import \
+from s4ap.sims4communitylib.systems.item_query.dtos.common_loaded_item import CommonLoadedItem
+from s4ap.sims4communitylib.systems.item_query.persistence.common_loaded_item_cache import CommonLoadedItemCache
+from s4ap.sims4communitylib.systems.caching.common_serializable_object_cache_service import \
     CommonSerializableObjectCacheService
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
 
 
 CommonLoadedItemCacheType = TypeVar('CommonLoadedItemCacheType', bound=CommonLoadedItemCache[CommonLoadedItem])

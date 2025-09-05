@@ -8,17 +8,17 @@ Copyright (c) COLONOLNUTTY
 from typing import Any
 
 from server.client import Client
-from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
-from sims4communitylib.events.zone_spin.events.zone_early_load import S4CLZoneEarlyLoadEvent
-from sims4communitylib.events.zone_spin.events.zone_late_load import S4CLZoneLateLoadEvent
-from sims4communitylib.events.zone_spin.events.zone_manager_start_event import S4CLZoneManagerStartEvent
-from sims4communitylib.events.zone_spin.events.zone_post_load import \
+from s4ap.sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
+from s4ap.sims4communitylib.events.zone_spin.events.zone_early_load import S4CLZoneEarlyLoadEvent
+from s4ap.sims4communitylib.events.zone_spin.events.zone_late_load import S4CLZoneLateLoadEvent
+from s4ap.sims4communitylib.events.zone_spin.events.zone_manager_start_event import S4CLZoneManagerStartEvent
+from s4ap.sims4communitylib.events.zone_spin.events.zone_post_load import \
     S4CLZonePostLoadEvent
-from sims4communitylib.events.zone_spin.events.zone_save import S4CLZoneSaveEvent
-from sims4communitylib.events.zone_spin.events.zone_teardown import S4CLZoneTeardownEvent
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.common_service import CommonService
-from sims4communitylib.utils.common_injection_utils import CommonInjectionUtils
+from s4ap.sims4communitylib.events.zone_spin.events.zone_save import S4CLZoneSaveEvent
+from s4ap.sims4communitylib.events.zone_spin.events.zone_teardown import S4CLZoneTeardownEvent
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.common_service import CommonService
+from s4ap.sims4communitylib.utils.common_injection_utils import CommonInjectionUtils
 from zone import Zone
 from zone_manager import ZoneManager
 

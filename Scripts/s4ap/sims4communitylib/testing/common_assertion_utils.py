@@ -7,9 +7,9 @@ Copyright (c) COLONOLNUTTY
 """
 from typing import Any, List, Union, Tuple, Callable, Dict
 
-from sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
-from sims4communitylib.classes.testing.common_test_result import CommonTestResult
-from sims4communitylib.utils.common_collection_utils import CommonCollectionUtils
+from s4ap.sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
+from s4ap.sims4communitylib.classes.testing.common_test_result import CommonTestResult
+from s4ap.sims4communitylib.utils.common_collection_utils import CommonCollectionUtils
 
 
 class CommonAssertionUtils:

@@ -9,11 +9,11 @@ from sims4.resources import Types
 from sims4.tuning.instance_manager import InstanceManager
 from typing import Tuple
 
-from sims4communitylib.classes.mixins.common_affordance_lists_mixin import \
+from s4ap.sims4communitylib.classes.mixins.common_affordance_lists_mixin import \
     CommonAffordanceListsMixin
-from sims4communitylib.classes.mixins.common_interactions_mixin import \
+from s4ap.sims4communitylib.classes.mixins.common_interactions_mixin import \
     CommonInteractionsMixin
-from sims4communitylib.services.resources.modification_handlers.common_instance_manager_modification_handler import \
+from s4ap.sims4communitylib.services.resources.modification_handlers.common_instance_manager_modification_handler import \
     CommonInstanceManagerModificationHandler
 
 

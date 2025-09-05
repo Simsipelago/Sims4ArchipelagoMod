@@ -8,8 +8,8 @@ Copyright (c) COLONOLNUTTY
 from objects.game_object import GameObject
 from objects.pools.pool import SwimmingPool
 from objects.pools.pool_seat import PoolSeat
-from sims4communitylib.enums.tags_enum import CommonGameTag
-from sims4communitylib.utils.objects.common_object_tag_utils import CommonObjectTagUtils
+from s4ap.sims4communitylib.enums.tags_enum import CommonGameTag
+from s4ap.sims4communitylib.utils.objects.common_object_tag_utils import CommonObjectTagUtils
 
 
 class CommonObjectTypeUtils:
@@ -27,8 +27,8 @@ class CommonObjectTypeUtils:
         """
         if not isinstance(game_object, GameObject):
             return False
-        from sims4communitylib.enums.tags_enum import CommonGameTag
-        from sims4communitylib.utils.objects.common_object_tag_utils import CommonObjectTagUtils
+        from s4ap.sims4communitylib.enums.tags_enum import CommonGameTag
+        from s4ap.sims4communitylib.utils.objects.common_object_tag_utils import CommonObjectTagUtils
         return CommonObjectTagUtils.has_game_tags(game_object, (CommonGameTag.BUILD_WINDOW, ))
 
     @staticmethod

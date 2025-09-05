@@ -142,7 +142,7 @@ class CommonCareerTrackUtils:
             return career_track_identifier
 
         from sims4.resources import Types
-        from sims4communitylib.utils.common_resource_utils import CommonResourceUtils
+        from s4ap.sims4communitylib.utils.common_resource_utils import CommonResourceUtils
         return CommonResourceUtils.load_instance(Types.CAREER_TRACK, career_track_identifier)
 
     @staticmethod
@@ -157,7 +157,7 @@ class CommonCareerTrackUtils:
         :rtype: Iterator[TunableCareerTrack]
         """
         from sims4.resources import Types
-        from sims4communitylib.utils.common_resource_utils import CommonResourceUtils
+        from s4ap.sims4communitylib.utils.common_resource_utils import CommonResourceUtils
         for (_, career_track) in CommonResourceUtils.load_all_instances(Types.CAREER_TRACK):
             if include_career_track_callback is not None and not include_career_track_callback(career_track):
                 continue

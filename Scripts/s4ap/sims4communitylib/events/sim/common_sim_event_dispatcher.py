@@ -23,48 +23,48 @@ from sims.sim import Sim
 from sims.sim_info import SimInfo
 from sims.sim_info_types import Age
 from sims.sim_spawner import SimSpawner
-from sims4communitylib.enums.common_age import CommonAge
-from sims4communitylib.enums.common_death_types import CommonDeathType
-from sims4communitylib.enums.common_gender import CommonGender
-from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
-from sims4communitylib.events.sim.events.sim_added_occult_type import S4CLSimAddedOccultTypeEvent
-from sims4communitylib.events.sim.events.sim_after_set_current_outfit import S4CLSimAfterSetCurrentOutfitEvent
-from sims4communitylib.events.sim.events.sim_buff_added import S4CLSimBuffAddedEvent
-from sims4communitylib.events.sim.events.sim_buff_removed import S4CLSimBuffRemovedEvent
-from sims4communitylib.events.sim.events.sim_changed_age import S4CLSimChangedAgeEvent
-from sims4communitylib.events.sim.events.sim_changed_gender_options_body_frame import S4CLSimChangedGenderOptionsBodyFrameEvent
-from sims4communitylib.events.sim.events.sim_changed_gender_options_breasts import \
+from s4ap.sims4communitylib.enums.common_age import CommonAge
+from s4ap.sims4communitylib.enums.common_death_types import CommonDeathType
+from s4ap.sims4communitylib.enums.common_gender import CommonGender
+from s4ap.sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
+from s4ap.sims4communitylib.events.sim.events.sim_added_occult_type import S4CLSimAddedOccultTypeEvent
+from s4ap.sims4communitylib.events.sim.events.sim_after_set_current_outfit import S4CLSimAfterSetCurrentOutfitEvent
+from s4ap.sims4communitylib.events.sim.events.sim_buff_added import S4CLSimBuffAddedEvent
+from s4ap.sims4communitylib.events.sim.events.sim_buff_removed import S4CLSimBuffRemovedEvent
+from s4ap.sims4communitylib.events.sim.events.sim_changed_age import S4CLSimChangedAgeEvent
+from s4ap.sims4communitylib.events.sim.events.sim_changed_gender_options_body_frame import S4CLSimChangedGenderOptionsBodyFrameEvent
+from s4ap.sims4communitylib.events.sim.events.sim_changed_gender_options_breasts import \
     S4CLSimChangedGenderOptionsBreastsEvent
-from sims4communitylib.events.sim.events.sim_changed_gender_options_can_impregnate import \
+from s4ap.sims4communitylib.events.sim.events.sim_changed_gender_options_can_impregnate import \
     S4CLSimChangedGenderOptionsCanImpregnateEvent
-from sims4communitylib.events.sim.events.sim_changed_gender_options_can_reproduce import \
+from s4ap.sims4communitylib.events.sim.events.sim_changed_gender_options_can_reproduce import \
     S4CLSimChangedGenderOptionsCanReproduceEvent
-from sims4communitylib.events.sim.events.sim_changed_gender_options_clothing_preference import S4CLSimChangedGenderOptionsClothingPreferenceEvent
-from sims4communitylib.events.sim.events.sim_changed_gender import S4CLSimChangedGenderEvent
-from sims4communitylib.events.sim.events.sim_changed_occult_type import S4CLSimChangedOccultTypeEvent
-from sims4communitylib.events.sim.events.sim_changed_gender_options_can_be_impregnated import S4CLSimChangedGenderOptionsCanBeImpregnatedEvent
-from sims4communitylib.events.sim.events.sim_changed_gender_options_toilet_usage import S4CLSimChangedGenderOptionsToiletUsageEvent
-from sims4communitylib.events.sim.events.sim_changing_occult_type import S4CLSimChangingOccultTypeEvent
-from sims4communitylib.events.sim.events.sim_died import S4CLSimDiedEvent
-from sims4communitylib.events.sim.events.sim_pre_despawned import S4CLSimPreDespawnedEvent
-from sims4communitylib.events.sim.events.sim_initialized import S4CLSimInitializedEvent
-from sims4communitylib.events.sim.events.sim_loaded import S4CLSimLoadedEvent
-from sims4communitylib.events.sim.events.game_object_added_to_sim_inventory import S4CLGameObjectAddedToSimInventoryEvent
-from sims4communitylib.events.sim.events.game_object_pre_removed_from_sim_inventory import S4CLGameObjectPreRemovedFromSimInventoryEvent
-from sims4communitylib.events.sim.events.sim_relationship_bit_added import S4CLSimRelationshipBitAddedEvent
-from sims4communitylib.events.sim.events.sim_relationship_bit_removed import S4CLSimRelationshipBitRemovedEvent
-from sims4communitylib.events.sim.events.sim_removed_occult_type import S4CLSimRemovedOccultTypeEvent
-from sims4communitylib.events.sim.events.sim_revived import S4CLSimRevivedEvent
-from sims4communitylib.events.sim.events.sim_set_current_outfit import S4CLSimSetCurrentOutfitEvent
-from sims4communitylib.events.sim.events.sim_skill_leveled_up import S4CLSimSkillLeveledUpEvent
-from sims4communitylib.events.sim.events.sim_spawned import S4CLSimSpawnedEvent
-from sims4communitylib.events.sim.events.sim_trait_added import S4CLSimTraitAddedEvent
-from sims4communitylib.events.sim.events.sim_trait_removed import S4CLSimTraitRemovedEvent
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.common_service import CommonService
-from sims4communitylib.utils.cas.common_outfit_utils import CommonOutfitUtils
-from sims4communitylib.utils.common_injection_utils import CommonInjectionUtils
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+from s4ap.sims4communitylib.events.sim.events.sim_changed_gender_options_clothing_preference import S4CLSimChangedGenderOptionsClothingPreferenceEvent
+from s4ap.sims4communitylib.events.sim.events.sim_changed_gender import S4CLSimChangedGenderEvent
+from s4ap.sims4communitylib.events.sim.events.sim_changed_occult_type import S4CLSimChangedOccultTypeEvent
+from s4ap.sims4communitylib.events.sim.events.sim_changed_gender_options_can_be_impregnated import S4CLSimChangedGenderOptionsCanBeImpregnatedEvent
+from s4ap.sims4communitylib.events.sim.events.sim_changed_gender_options_toilet_usage import S4CLSimChangedGenderOptionsToiletUsageEvent
+from s4ap.sims4communitylib.events.sim.events.sim_changing_occult_type import S4CLSimChangingOccultTypeEvent
+from s4ap.sims4communitylib.events.sim.events.sim_died import S4CLSimDiedEvent
+from s4ap.sims4communitylib.events.sim.events.sim_pre_despawned import S4CLSimPreDespawnedEvent
+from s4ap.sims4communitylib.events.sim.events.sim_initialized import S4CLSimInitializedEvent
+from s4ap.sims4communitylib.events.sim.events.sim_loaded import S4CLSimLoadedEvent
+from s4ap.sims4communitylib.events.sim.events.game_object_added_to_sim_inventory import S4CLGameObjectAddedToSimInventoryEvent
+from s4ap.sims4communitylib.events.sim.events.game_object_pre_removed_from_sim_inventory import S4CLGameObjectPreRemovedFromSimInventoryEvent
+from s4ap.sims4communitylib.events.sim.events.sim_relationship_bit_added import S4CLSimRelationshipBitAddedEvent
+from s4ap.sims4communitylib.events.sim.events.sim_relationship_bit_removed import S4CLSimRelationshipBitRemovedEvent
+from s4ap.sims4communitylib.events.sim.events.sim_removed_occult_type import S4CLSimRemovedOccultTypeEvent
+from s4ap.sims4communitylib.events.sim.events.sim_revived import S4CLSimRevivedEvent
+from s4ap.sims4communitylib.events.sim.events.sim_set_current_outfit import S4CLSimSetCurrentOutfitEvent
+from s4ap.sims4communitylib.events.sim.events.sim_skill_leveled_up import S4CLSimSkillLeveledUpEvent
+from s4ap.sims4communitylib.events.sim.events.sim_spawned import S4CLSimSpawnedEvent
+from s4ap.sims4communitylib.events.sim.events.sim_trait_added import S4CLSimTraitAddedEvent
+from s4ap.sims4communitylib.events.sim.events.sim_trait_removed import S4CLSimTraitRemovedEvent
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.common_service import CommonService
+from s4ap.sims4communitylib.utils.cas.common_outfit_utils import CommonOutfitUtils
+from s4ap.sims4communitylib.utils.common_injection_utils import CommonInjectionUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
 from statistics.skill import Skill
 from traits.trait_tracker import TraitTracker
 from traits.traits import Trait
@@ -79,7 +79,7 @@ class CommonSimEventDispatcherService(CommonService):
     """
 
     def _on_sim_change_gender(self, sim_info: SimInfo) -> bool:
-        from sims4communitylib.utils.sims.common_gender_utils import CommonGenderUtils
+        from s4ap.sims4communitylib.utils.sims.common_gender_utils import CommonGenderUtils
         new_gender = CommonGender.get_gender(sim_info)
         if CommonGenderUtils.is_male_gender(new_gender):
             # If they are now Male, it means they used to be Female.
@@ -114,13 +114,13 @@ class CommonSimEventDispatcherService(CommonService):
         return CommonEventRegistry.get().dispatch(S4CLSimInitializedEvent(sim_info))
 
     def _on_sim_load(self, sim_info: SimInfo, *_, **__) -> bool:
-        from sims4communitylib.events.zone_spin.common_zone_spin_event_dispatcher import CommonZoneSpinEventDispatcher
+        from s4ap.sims4communitylib.events.zone_spin.common_zone_spin_event_dispatcher import CommonZoneSpinEventDispatcher
         if CommonZoneSpinEventDispatcher.get().game_loading:
             return False
         return CommonEventRegistry.get().dispatch(S4CLSimLoadedEvent(sim_info))
 
     def _on_sim_spawned(self, sim_info: SimInfo, *_, **__) -> bool:
-        from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
         return CommonEventRegistry.get().dispatch(S4CLSimSpawnedEvent(CommonSimUtils.get_sim_info(sim_info)))
 
     def _on_sim_died(self, sim_info: SimInfo, death_type: CommonDeathType, is_off_lot_death: bool, *_, **__) -> bool:
@@ -133,7 +133,7 @@ class CommonSimEventDispatcherService(CommonService):
         return CommonEventRegistry.get().dispatch(S4CLSimPreDespawnedEvent(sim_info))
 
     def _on_sim_change_age(self, sim_info: SimInfo, new_age: Age, current_age: Age) -> bool:
-        from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
         return CommonEventRegistry.get().dispatch(S4CLSimChangedAgeEvent(CommonSimUtils.get_sim_info(sim_info), CommonAge.convert_from_vanilla(current_age), CommonAge.convert_from_vanilla(new_age)))
 
     def _on_sim_add_occult_type(self, occult_tracker: OccultTracker, occult_type: OccultType) -> bool:
@@ -177,7 +177,7 @@ class CommonSimEventDispatcherService(CommonService):
         CommonEventRegistry.get().dispatch(S4CLSimBuffRemovedEvent(sim_info, buff))
 
     def _on_sim_set_current_outfit(self, sim_info: SimInfo, outfit_category_and_index: Tuple[OutfitCategory, int]) -> None:
-        from sims4communitylib.utils.cas.common_outfit_utils import CommonOutfitUtils
+        from s4ap.sims4communitylib.utils.cas.common_outfit_utils import CommonOutfitUtils
         CommonEventRegistry.get().dispatch(S4CLSimSetCurrentOutfitEvent(sim_info, CommonOutfitUtils.get_current_outfit(sim_info), outfit_category_and_index))
 
     def _after_sim_set_current_outfit(self, sim_info: SimInfo, previous_outfit_category_and_index: Tuple[OutfitCategory, int], outfit_category_and_index: Tuple[OutfitCategory, int]) -> None:
@@ -340,7 +340,7 @@ def _common_on_sim_trait_removed(original, self: TraitTracker, *args, **kwargs):
 
 @CommonEventRegistry.handle_events(ModInfo.get_identity())
 def _common_register_buff_added_or_removed_on_sim_spawned(event_data: S4CLSimSpawnedEvent) -> bool:
-    from sims4communitylib.utils.sims.common_buff_utils import CommonBuffUtils
+    from s4ap.sims4communitylib.utils.sims.common_buff_utils import CommonBuffUtils
     buff_component: BuffComponent = CommonBuffUtils.get_buff_component(event_data.sim_info)
     if not buff_component:
         return False

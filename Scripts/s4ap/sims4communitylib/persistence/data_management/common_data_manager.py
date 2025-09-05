@@ -7,10 +7,10 @@ Copyright (c) COLONOLNUTTY
 """
 from typing import Dict, Any, Type, Tuple
 
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.logging.has_log import HasLog
-from sims4communitylib.persistence.data_stores.common_data_store import CommonDataStore
-from sims4communitylib.persistence.persistence_services.common_persistence_service import CommonPersistenceService
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.logging.has_log import HasLog
+from s4ap.sims4communitylib.persistence.data_stores.common_data_store import CommonDataStore
+from s4ap.sims4communitylib.persistence.persistence_services.common_persistence_service import CommonPersistenceService
 
 
 class CommonDataManager(HasLog):

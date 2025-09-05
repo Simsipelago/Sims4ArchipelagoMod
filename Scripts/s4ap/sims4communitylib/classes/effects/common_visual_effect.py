@@ -10,8 +10,8 @@ from typing import Callable, Union
 import alarms
 from date_and_time import TimeSpan
 from sims.sim import Sim
-from sims4communitylib.logging.has_log import HasLog
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.logging.has_log import HasLog
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
 from vfx import PlayEffect
 from objects.game_object import GameObject
 

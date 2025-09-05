@@ -9,9 +9,9 @@ from typing import Any
 
 from interactions.context import InteractionContext
 from sims.sim import Sim
-from sims4communitylib.classes.interactions.common_immediate_super_interaction import CommonImmediateSuperInteraction
-from sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
-from sims4communitylib.classes.testing.common_test_result import CommonTestResult
+from s4ap.sims4communitylib.classes.interactions.common_immediate_super_interaction import CommonImmediateSuperInteraction
+from s4ap.sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
+from s4ap.sims4communitylib.classes.testing.common_test_result import CommonTestResult
 
 
 class CommonObjectInteraction(CommonImmediateSuperInteraction):

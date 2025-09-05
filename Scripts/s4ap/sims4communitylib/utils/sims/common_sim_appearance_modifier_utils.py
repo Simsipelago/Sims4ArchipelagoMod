@@ -11,8 +11,8 @@ from buffs.appearance_modifier.appearance_modifier import AppearanceModifier
 from buffs.appearance_modifier.appearance_tracker import AppearanceTracker, ModifierInfo
 from cas.cas import OutfitOverrideOptionFlags
 from sims.sim_info import SimInfo
-from sims4communitylib.enums.common_appearance_modifier_priority import CommonAppearanceModifierPriority
-from sims4communitylib.enums.common_appearance_modifier_type import CommonAppearanceModifierType
+from s4ap.sims4communitylib.enums.common_appearance_modifier_priority import CommonAppearanceModifierPriority
+from s4ap.sims4communitylib.enums.common_appearance_modifier_type import CommonAppearanceModifierType
 
 
 class CommonSimAppearanceModifierUtils:

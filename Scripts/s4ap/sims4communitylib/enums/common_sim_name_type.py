@@ -8,7 +8,7 @@ Copyright (c) COLONOLNUTTY
 from typing import Tuple, Iterator
 
 from sims.sim_spawner_enums import SimNameType
-from sims4communitylib.enums.enumtypes.common_int import CommonInt
+from s4ap.sims4communitylib.enums.enumtypes.common_int import CommonInt
 
 
 class CommonSimNameType(CommonInt):

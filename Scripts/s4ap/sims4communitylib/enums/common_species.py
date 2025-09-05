@@ -9,7 +9,7 @@ from typing import Union, Tuple, Iterator
 
 from sims.sim_info import SimInfo
 from sims.sim_info_types import Species, SpeciesExtended
-from sims4communitylib.enums.enumtypes.common_int import CommonInt
+from s4ap.sims4communitylib.enums.enumtypes.common_int import CommonInt
 
 
 class CommonSpecies(CommonInt):
@@ -79,7 +79,7 @@ class CommonSpecies(CommonInt):
         :return: A species matching the Sim or INVALID if no matching species is found.
         :rtype: CommonSpecies
         """
-        from sims4communitylib.utils.sims.common_species_utils import CommonSpeciesUtils
+        from s4ap.sims4communitylib.utils.sims.common_species_utils import CommonSpeciesUtils
         if CommonSpeciesUtils.is_human(sim_info):
             return CommonSpecies.HUMAN
         elif CommonSpeciesUtils.is_fox(sim_info):
@@ -167,7 +167,7 @@ class CommonSpecies(CommonInt):
         :return: The specified value translated to a localized string identifier. If no localized string id is found, the name property of the value will be used instead.
         :rtype: Union[int, str]
         """
-        from sims4communitylib.enums.strings_enum import CommonStringId
+        from s4ap.sims4communitylib.enums.strings_enum import CommonStringId
         display_name_mapping = {
             CommonSpecies.HUMAN: CommonStringId.HUMAN,
             CommonSpecies.LARGE_DOG: CommonStringId.LARGE_DOG,
@@ -177,7 +177,7 @@ class CommonSpecies(CommonInt):
             CommonSpecies.HORSE: CommonStringId.HORSE,
         }
         if isinstance(value, int) and not isinstance(value, CommonSpecies):
-            from sims4communitylib.utils.common_resource_utils import CommonResourceUtils
+            from s4ap.sims4communitylib.utils.common_resource_utils import CommonResourceUtils
             # noinspection PyTypeChecker
             converted_value = CommonResourceUtils.get_enum_by_int_value(value, SpeciesExtended, default_value=None)
             if converted_value is None:

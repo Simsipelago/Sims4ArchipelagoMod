@@ -15,20 +15,20 @@ from pprint import pformat
 from event_testing.resolver import DoubleSimResolver
 from protocolbuffers.Localization_pb2 import LocalizedString
 from sims.sim_info import SimInfo
-from sims4communitylib.dialogs.common_choice_outcome import CommonChoiceOutcome
-from sims4communitylib.dialogs.common_dialog import CommonDialog
-from sims4communitylib.dialogs.common_dialog_navigation_button_tag import CommonDialogNavigationButtonTag
-from sims4communitylib.dialogs.common_ui_dialog_response import CommonUiDialogResponse
-from sims4communitylib.dialogs.common_ui_response_dialog import CommonUiResponseDialog
-from sims4communitylib.enums.strings_enum import CommonStringId
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.commands.common_console_command import CommonConsoleCommand
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
-from sims4communitylib.utils.common_function_utils import CommonFunctionUtils
-from sims4communitylib.utils.localization.common_localized_string_colors import CommonLocalizedStringColor
-from sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+from s4ap.sims4communitylib.dialogs.common_choice_outcome import CommonChoiceOutcome
+from s4ap.sims4communitylib.dialogs.common_dialog import CommonDialog
+from s4ap.sims4communitylib.dialogs.common_dialog_navigation_button_tag import CommonDialogNavigationButtonTag
+from s4ap.sims4communitylib.dialogs.common_ui_dialog_response import CommonUiDialogResponse
+from s4ap.sims4communitylib.dialogs.common_ui_response_dialog import CommonUiResponseDialog
+from s4ap.sims4communitylib.enums.strings_enum import CommonStringId
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.commands.common_console_command import CommonConsoleCommand
+from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+from s4ap.sims4communitylib.utils.common_function_utils import CommonFunctionUtils
+from s4ap.sims4communitylib.utils.localization.common_localized_string_colors import CommonLocalizedStringColor
+from s4ap.sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
 from ui.ui_dialog import UiDialogOption, ButtonType
 
 ON_RTD = os.environ.get('READTHEDOCS', None) == 'True'

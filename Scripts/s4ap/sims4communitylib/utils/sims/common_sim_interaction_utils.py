@@ -15,22 +15,22 @@ from interactions.context import InteractionSource, InteractionContext, QueueIns
 from interactions.interaction_finisher import FinishingType
 from interactions.priority import Priority
 from sims.sim_info import SimInfo
-from sims4communitylib.classes.testing.common_enqueue_result import CommonEnqueueResult
-from sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
-from sims4communitylib.classes.testing.common_test_result import CommonTestResult
-from sims4communitylib.enums.interactions_enum import CommonInteractionId
-from sims4communitylib.logging.has_class_log import HasClassLog
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.notifications.common_basic_notification import CommonBasicNotification
-from sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
+from s4ap.sims4communitylib.classes.testing.common_enqueue_result import CommonEnqueueResult
+from s4ap.sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
+from s4ap.sims4communitylib.classes.testing.common_test_result import CommonTestResult
+from s4ap.sims4communitylib.enums.interactions_enum import CommonInteractionId
+from s4ap.sims4communitylib.logging.has_class_log import HasClassLog
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.notifications.common_basic_notification import CommonBasicNotification
+from s4ap.sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
     CommonConsoleCommandArgument
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
-from sims4communitylib.utils.common_type_utils import CommonTypeUtils
-from sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
-from sims4communitylib.utils.resources.common_interaction_utils import CommonInteractionUtils
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
-from sims4communitylib.utils.sims.common_species_utils import CommonSpeciesUtils
+from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+from s4ap.sims4communitylib.utils.common_type_utils import CommonTypeUtils
+from s4ap.sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
+from s4ap.sims4communitylib.utils.resources.common_interaction_utils import CommonInteractionUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+from s4ap.sims4communitylib.utils.sims.common_species_utils import CommonSpeciesUtils
 
 
 class CommonSimInteractionUtils(HasClassLog):
@@ -159,7 +159,7 @@ class CommonSimInteractionUtils(HasClassLog):
         :return: The decimal identifier of a Stand interaction appropriate for the Sim or -1 if no Stand interaction was found to be appropriate.
         :rtype: Union[int, CommonInteractionId]
         """
-        from sims4communitylib.utils.sims.common_species_utils import CommonSpeciesUtils
+        from s4ap.sims4communitylib.utils.sims.common_species_utils import CommonSpeciesUtils
         if CommonSpeciesUtils.is_human(sim_info):
             return CommonInteractionId.SIM_STAND
         elif CommonSpeciesUtils.is_dog(sim_info):
@@ -183,7 +183,7 @@ class CommonSimInteractionUtils(HasClassLog):
         :return: The decimal identifier of a Stand Passive interaction appropriate for the Sim or -1 if no Stand interaction was found to be appropriate.
         :rtype: Union[int, CommonInteractionId]
         """
-        from sims4communitylib.utils.sims.common_species_utils import CommonSpeciesUtils
+        from s4ap.sims4communitylib.utils.sims.common_species_utils import CommonSpeciesUtils
         if CommonSpeciesUtils.is_human(sim_info):
             return CommonInteractionId.STAND_PASSIVE
         elif CommonSpeciesUtils.is_dog(sim_info):
@@ -1385,7 +1385,7 @@ def _common_show_running_interactions(output: CommonConsoleCommandOutput, sim_in
     try:
         log.enable()
         output(f'Attempting to print all running and queued interactions of Sim {sim_info}')
-        from sims4communitylib.utils.resources.common_interaction_utils import CommonInteractionUtils
+        from s4ap.sims4communitylib.utils.resources.common_interaction_utils import CommonInteractionUtils
         running_interaction_strings: List[str] = list()
         for interaction in CommonSimInteractionUtils.get_running_interactions_gen(sim_info):
             interaction_name = CommonInteractionUtils.get_interaction_short_name(interaction) or interaction.__class__.__name__

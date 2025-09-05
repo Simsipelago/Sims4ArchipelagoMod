@@ -9,13 +9,13 @@ Copyright (c) COLONOLNUTTY
 from typing import Union, Iterator, List, Tuple, Any, Dict, Type, TypeVar, Generic
 
 from sims.sim import Sim
-from sims4communitylib.classes.runnables.contexts.common_runnable_context import CommonRunnableContext
-from sims4communitylib.classes.runnables.contexts.common_runnable_sim_context import CommonRunnableSimContext
+from s4ap.sims4communitylib.classes.runnables.contexts.common_runnable_context import CommonRunnableContext
+from s4ap.sims4communitylib.classes.runnables.contexts.common_runnable_sim_context import CommonRunnableSimContext
 from sims.sim_info import SimInfo
-from sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
-from sims4communitylib.enums.enumtypes.common_int import CommonInt
-from sims4communitylib.enums.enumtypes.common_int_flags import CommonIntFlags
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
+from s4ap.sims4communitylib.enums.enumtypes.common_int import CommonInt
+from s4ap.sims4communitylib.enums.enumtypes.common_int_flags import CommonIntFlags
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
 
 CommonRunnableSimContextType = TypeVar('CommonRunnableSimContextType', bound=CommonRunnableSimContext)
 

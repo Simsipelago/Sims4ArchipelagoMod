@@ -8,7 +8,7 @@ Copyright (c) COLONOLNUTTY
 from typing import Iterator, Union
 
 from interactions.constraints import Constraint, _ConstraintSet, Nowhere
-from sims4communitylib.services.common_service import CommonService
+from s4ap.sims4communitylib.services.common_service import CommonService
 
 
 class CommonPostureConstraintService(CommonService):

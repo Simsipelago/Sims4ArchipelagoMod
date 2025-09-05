@@ -8,13 +8,13 @@ Copyright (c) COLONOLNUTTY
 from typing import Callable, Any, Dict, List, Union, Tuple
 from functools import wraps
 from traceback import format_exc
-from sims4communitylib.exceptions.common_exceptions_handler import CommonExceptionHandler
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.common_service import CommonService
+from s4ap.sims4communitylib.exceptions.common_exceptions_handler import CommonExceptionHandler
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.common_service import CommonService
 # This try catch is here for when tests are being run via PyCharm rather than from in-game.
 try:
-    from sims4communitylib.utils.common_log_registry import CommonLogRegistry
+    from s4ap.sims4communitylib.utils.common_log_registry import CommonLogRegistry
 
     community_test_log_log = CommonLogRegistry().register_log(ModInfo.get_identity(), 'community_test_log')
     community_test_log_log.enable()
@@ -135,7 +135,7 @@ class CommonTestService(CommonService):
         :return: A library of tests for the specified Mod organized by class name.
         :rtype: Dict[str, Any]
         """
-        from sims4communitylib.utils.misc.common_mod_identity_utils import CommonModIdentityUtils
+        from s4ap.sims4communitylib.utils.misc.common_mod_identity_utils import CommonModIdentityUtils
         mod_name = CommonModIdentityUtils.determine_mod_name_from_identifier(mod_identifier, include_version=False).lower()
         for (mod_identity, tests_by_class_name) in self._tests_by_mod_identity.items():
             lower_mod_name = CommonModIdentityUtils.determine_mod_name_from_identifier(mod_identity, include_version=False).lower()
@@ -153,7 +153,7 @@ class CommonTestService(CommonService):
         :return: A collection of tests for the specified Mod.
         :rtype: Tuple[Any]
         """
-        from sims4communitylib.utils.misc.common_mod_identity_utils import CommonModIdentityUtils
+        from s4ap.sims4communitylib.utils.misc.common_mod_identity_utils import CommonModIdentityUtils
         mod_name = CommonModIdentityUtils.determine_mod_name_from_identifier(mod_identifier, include_version=False).lower()
         class_tests_by_class_name = self._tests_by_mod_identity.get(mod_name, dict())
         all_tests: List[Any] = list()
@@ -270,7 +270,7 @@ class CommonTestService(CommonService):
     def _run_tests(self, mod_identifier: Union[str, CommonModIdentity]=None, class_names: Tuple[str]=tuple(), callback: Callable[..., Any]=print):
         total_run_test_count = 0
         total_failed_test_count = 0
-        from sims4communitylib.utils.misc.common_mod_identity_utils import CommonModIdentityUtils
+        from s4ap.sims4communitylib.utils.misc.common_mod_identity_utils import CommonModIdentityUtils
         if mod_identifier:
             to_run_mod_name = CommonModIdentityUtils.determine_mod_name_from_identifier(mod_identifier, include_version=False).lower()
         else:
@@ -278,7 +278,7 @@ class CommonTestService(CommonService):
         for (mod_identity, class_tests_by_class_name) in self.all_tests.items():
             mod_name = mod_identity.name
             if to_run_mod_name:
-                from sims4communitylib.utils.misc.common_mod_identity_utils import CommonModIdentityUtils
+                from s4ap.sims4communitylib.utils.misc.common_mod_identity_utils import CommonModIdentityUtils
                 cleaned_mod_name = CommonModIdentityUtils.determine_mod_name_from_identifier(mod_identity, include_version=False).lower()
                 if cleaned_mod_name != to_run_mod_name:
                     continue
@@ -320,9 +320,9 @@ class CommonTestService(CommonService):
 
 
 try:
-    from sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
+    from s4ap.sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
         CommonConsoleCommandArgument
-    from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+    from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
 
     @CommonConsoleCommand(
         ModInfo.get_identity(),

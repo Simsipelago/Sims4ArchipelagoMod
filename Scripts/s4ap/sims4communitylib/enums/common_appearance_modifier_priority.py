@@ -8,7 +8,7 @@ Copyright (c) COLONOLNUTTY
 from typing import Union, Iterator, Tuple
 
 from buffs.appearance_modifier.appearance_modifier import AppearanceModifierPriority
-from sims4communitylib.enums.enumtypes.common_int import CommonInt
+from s4ap.sims4communitylib.enums.enumtypes.common_int import CommonInt
 
 
 class CommonAppearanceModifierPriority(CommonInt):

@@ -10,11 +10,11 @@ from pprint import pformat
 from typing import Dict, Any, Callable
 from typing import Union
 from sims.sim_info import SimInfo
-from sims4communitylib.classes.serialization.common_serializable import CommonSerializable
-from sims4communitylib.logging.has_class_log import HasClassLog
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.utils.common_type_utils import CommonTypeUtils
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+from s4ap.sims4communitylib.classes.serialization.common_serializable import CommonSerializable
+from s4ap.sims4communitylib.logging.has_class_log import HasClassLog
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.utils.common_type_utils import CommonTypeUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
 
 
 class _CommonSimDataStorageMetaclass(type):
@@ -61,7 +61,7 @@ class _CommonSimDataStorage(HasClassLog, metaclass=_CommonSimDataStorageMetaclas
         self._sim_info = sim_info
         self._data: Dict[str, Any] = dict()
         if sim_info is not None:
-            from sims4communitylib.utils.sims.common_sim_name_utils import CommonSimNameUtils
+            from s4ap.sims4communitylib.utils.sims.common_sim_name_utils import CommonSimNameUtils
             sim_name = CommonSimNameUtils.get_full_name(sim_info)
             if sim_name is not None:
                 self._data['sim_name'] = sim_name
@@ -186,7 +186,7 @@ class CommonSimDataStorage(_CommonSimDataStorage):
             @classmethod
             def get_mod_identity(cls) -> CommonModIdentity:
                 # !!!Override with the CommonModIdentity of your own mod!!!
-                from sims4communitylib.modinfo import ModInfo
+                from s4ap.sims4communitylib.modinfo import ModInfo
                 return ModInfo.get_identity()
 
             @property
@@ -220,7 +220,7 @@ class _ExampleSimDataStorage(CommonSimDataStorage):
     @classmethod
     def get_mod_identity(cls) -> CommonModIdentity:
         # !!!Override with the CommonModIdentity of your own mod!!!
-        from sims4communitylib.modinfo import ModInfo
+        from s4ap.sims4communitylib.modinfo import ModInfo
         return ModInfo.get_identity()
 
     @property

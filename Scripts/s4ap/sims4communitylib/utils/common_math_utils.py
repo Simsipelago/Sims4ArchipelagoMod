@@ -8,7 +8,7 @@ Copyright (c) COLONOLNUTTY
 import math
 import sims4.math as sims_math
 
-from sims4communitylib.classes.math.common_vector3 import CommonVector3
+from s4ap.sims4communitylib.classes.math.common_vector3 import CommonVector3
 
 
 class CommonMathUtils:

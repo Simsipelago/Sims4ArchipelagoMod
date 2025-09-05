@@ -9,10 +9,10 @@ from typing import Union
 
 from sims.sim_info import SimInfo
 from sims.sim_info_types import Species, SpeciesExtended
-from sims4communitylib.enums.traits_enum import CommonTraitId
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.utils.common_log_registry import CommonLogRegistry
-from sims4communitylib.utils.sims.common_trait_utils import CommonTraitUtils
+from s4ap.sims4communitylib.enums.traits_enum import CommonTraitId
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.utils.common_log_registry import CommonLogRegistry
+from s4ap.sims4communitylib.utils.sims.common_trait_utils import CommonTraitUtils
 
 log = CommonLogRegistry.get().register_log(ModInfo.get_identity(), 'common_species_utils')
 
@@ -75,7 +75,7 @@ class CommonSpeciesUtils:
             raise AssertionError('Argument sim_info was None')
         if other_sim_info is None:
             raise AssertionError('Argument other_sim_info was None')
-        from sims4communitylib.enums.common_species import CommonSpecies
+        from s4ap.sims4communitylib.enums.common_species import CommonSpecies
         species_one = CommonSpecies.get_species(sim_info)
         species_two = CommonSpecies.get_species(other_sim_info)
         log.format(species_one=species_one, species_two=species_two, sim_one=sim_info, other_sim_info=other_sim_info)
@@ -275,8 +275,8 @@ class CommonSpeciesUtils:
         :return: True, if the Sim is a Large Dog. False, if not.
         :rtype: bool
         """
-        from sims4communitylib.utils.sims.common_trait_utils import CommonTraitUtils
-        from sims4communitylib.enums.traits_enum import CommonTraitId
+        from s4ap.sims4communitylib.utils.sims.common_trait_utils import CommonTraitUtils
+        from s4ap.sims4communitylib.enums.traits_enum import CommonTraitId
         return cls.is_dog_species(cls.get_species(sim_info)) and CommonTraitUtils.has_trait(sim_info, CommonTraitId.SPECIES_EXTENDED_LARGE_DOGS)
 
     @classmethod
@@ -290,8 +290,8 @@ class CommonSpeciesUtils:
         :return: True, if the Sim is a Small Dog. False, if not.
         :rtype: bool
         """
-        from sims4communitylib.utils.sims.common_trait_utils import CommonTraitUtils
-        from sims4communitylib.enums.traits_enum import CommonTraitId
+        from s4ap.sims4communitylib.utils.sims.common_trait_utils import CommonTraitUtils
+        from s4ap.sims4communitylib.enums.traits_enum import CommonTraitId
         return cls.is_dog_species(cls.get_species(sim_info)) and CommonTraitUtils.has_trait(sim_info, CommonTraitId.SPECIES_EXTENDED_SMALL_DOGS)
 
     @classmethod
@@ -305,8 +305,8 @@ class CommonSpeciesUtils:
         :return: True, if the Sim is a Cat. False, if not.
         :rtype: bool
         """
-        from sims4communitylib.utils.sims.common_trait_utils import CommonTraitUtils
-        from sims4communitylib.enums.traits_enum import CommonTraitId
+        from s4ap.sims4communitylib.utils.sims.common_trait_utils import CommonTraitUtils
+        from s4ap.sims4communitylib.enums.traits_enum import CommonTraitId
         return cls.is_cat_species(cls.get_species(sim_info)) or CommonTraitUtils.has_trait(sim_info, CommonTraitId.SPECIES_CAT)
 
     @classmethod

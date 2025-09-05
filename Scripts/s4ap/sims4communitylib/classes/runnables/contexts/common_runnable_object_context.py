@@ -8,13 +8,13 @@ Copyright (c) COLONOLNUTTY
 
 from typing import Union, Tuple, Any, Dict
 
-from sims4communitylib.classes.runnables.contexts.common_runnable_context import CommonRunnableContext
+from s4ap.sims4communitylib.classes.runnables.contexts.common_runnable_context import CommonRunnableContext
 from objects.game_object import GameObject
-from sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
-from sims4communitylib.enums.enumtypes.common_int import CommonInt
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.utils.common_type_utils import CommonTypeUtils
-from sims4communitylib.utils.objects.common_object_utils import CommonObjectUtils
+from s4ap.sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
+from s4ap.sims4communitylib.enums.enumtypes.common_int import CommonInt
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.utils.common_type_utils import CommonTypeUtils
+from s4ap.sims4communitylib.utils.objects.common_object_utils import CommonObjectUtils
 
 
 class CommonRunnableObjectContext(CommonRunnableContext):

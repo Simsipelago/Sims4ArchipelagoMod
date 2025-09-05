@@ -8,10 +8,10 @@ Copyright (c) COLONOLNUTTY
 from typing import Tuple, Any, Callable, Iterator
 from protocolbuffers.Localization_pb2 import LocalizedString
 from sims.sim_info import SimInfo
-from sims4communitylib.dialogs.common_input_text_field import CommonInputTextField
-from sims4communitylib.enums.common_character_restrictions import CommonCharacterRestriction
-from sims4communitylib.enums.strings_enum import CommonStringId
-from sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
+from s4ap.sims4communitylib.dialogs.common_input_text_field import CommonInputTextField
+from s4ap.sims4communitylib.enums.common_character_restrictions import CommonCharacterRestriction
+from s4ap.sims4communitylib.enums.strings_enum import CommonStringId
+from s4ap.sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
 from ui.ui_dialog_generic import UiDialogTextInputOkCancel
 
 

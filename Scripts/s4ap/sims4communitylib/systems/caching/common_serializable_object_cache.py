@@ -7,7 +7,7 @@ Copyright (c) COLONOLNUTTY
 """
 from typing import Union, Dict, Any, Type, Tuple, TypeVar, Generic, List
 
-from sims4communitylib.classes.serialization.common_serializable import CommonSerializable
+from s4ap.sims4communitylib.classes.serialization.common_serializable import CommonSerializable
 
 CommonSerializableObjectCacheType = TypeVar('CommonSerializableObjectCacheType', bound=CommonSerializable)
 

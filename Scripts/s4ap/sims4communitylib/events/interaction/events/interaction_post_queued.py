@@ -7,8 +7,8 @@ Copyright (c) COLONOLNUTTY
 """
 from interactions.base.interaction import Interaction
 from interactions.interaction_queue import InteractionQueue
-from sims4communitylib.classes.testing.common_test_result import CommonTestResult
-from sims4communitylib.events.event_handling.common_event import CommonEvent
+from s4ap.sims4communitylib.classes.testing.common_test_result import CommonTestResult
+from s4ap.sims4communitylib.events.event_handling.common_event import CommonEvent
 
 
 class S4CLInteractionPostQueuedEvent(CommonEvent):
@@ -23,8 +23,8 @@ class S4CLInteractionPostQueuedEvent(CommonEvent):
     .. highlight:: python
     .. code-block:: python
 
-        from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
-        from sims4communitylib.modinfo import ModInfo
+        from s4ap.sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
+        from s4ap.sims4communitylib.modinfo import ModInfo
 
         class ExampleEventListener:
 

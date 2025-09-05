@@ -12,8 +12,8 @@ from interactions.context import InteractionContext
 from protocolbuffers.Localization_pb2 import LocalizedString
 from sims.sim import Sim
 from sims4.utils import flexmethod
-from sims4communitylib.logging.has_class_log import HasClassLog
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.logging.has_class_log import HasClassLog
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
 
 
 class CommonInteractionOverrideName(HasClassLog):

@@ -8,8 +8,8 @@ Copyright (c) COLONOLNUTTY
 from event_testing.resolver import Resolver
 from event_testing.test_based_score import TestBasedScore
 from sims4.math import Threshold
-from sims4communitylib.logging.has_class_log import HasClassLog
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.logging.has_class_log import HasClassLog
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
 
 
 class CommonTestBasedScore(TestBasedScore, HasClassLog):

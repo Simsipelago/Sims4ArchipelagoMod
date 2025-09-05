@@ -7,8 +7,8 @@ Copyright (c) COLONOLNUTTY
 """
 from typing import Tuple, Type, Iterator
 
-from sims4communitylib.classes.enums.common_versioned_enum_value_collection import CommonVersionedEnumValueCollection
-from sims4communitylib.enums.common_sim_demographic_types import CommonSimDemographicType
+from s4ap.sims4communitylib.classes.enums.common_versioned_enum_value_collection import CommonVersionedEnumValueCollection
+from s4ap.sims4communitylib.enums.common_sim_demographic_types import CommonSimDemographicType
 
 
 class CommonVersionedSimDemographicTypeCollection(CommonVersionedEnumValueCollection[CommonSimDemographicType]):

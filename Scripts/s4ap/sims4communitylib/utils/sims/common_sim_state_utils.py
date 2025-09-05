@@ -7,10 +7,10 @@ Copyright (c) COLONOLNUTTY
 """
 import services
 from sims.sim_info import SimInfo
-from sims4communitylib.classes.testing.common_test_result import CommonTestResult
-from sims4communitylib.enums.buffs_enum import CommonBuffId
-from sims4communitylib.utils.sims.common_buff_utils import CommonBuffUtils
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+from s4ap.sims4communitylib.classes.testing.common_test_result import CommonTestResult
+from s4ap.sims4communitylib.enums.buffs_enum import CommonBuffId
+from s4ap.sims4communitylib.utils.sims.common_buff_utils import CommonBuffUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
 
 
 class CommonSimStateUtils:
@@ -43,7 +43,7 @@ class CommonSimStateUtils:
         :return: The result of testing. True, if the sim is wearing a towel. False, if not.
         :rtype: CommonTestResult
         """
-        from sims4communitylib.utils.cas.common_outfit_utils import CommonOutfitUtils
+        from s4ap.sims4communitylib.utils.cas.common_outfit_utils import CommonOutfitUtils
         return CommonOutfitUtils.is_wearing_towel(sim_info)
 
     @staticmethod
@@ -57,7 +57,7 @@ class CommonSimStateUtils:
         :return: True, if the Sim is in sunlight. False, if the Sim is not in sunlight.
         :rtype: bool
         """
-        from sims4communitylib.utils.common_time_utils import CommonTimeUtils
+        from s4ap.sims4communitylib.utils.common_time_utils import CommonTimeUtils
         sim = CommonSimUtils.get_sim_instance(sim_info)
         return CommonTimeUtils.get_time_service().is_in_sunlight(sim)
 

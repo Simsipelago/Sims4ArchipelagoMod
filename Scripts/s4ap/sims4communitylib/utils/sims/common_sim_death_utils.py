@@ -12,33 +12,33 @@ from interactions.utils.death import DeathType, DeathTracker
 from objects.game_object import GameObject
 from sims.ghost import Ghost
 from sims.sim_info import SimInfo
-from sims4communitylib.classes.math.common_location import CommonLocation
-from sims4communitylib.classes.math.common_transform import CommonTransform
-from sims4communitylib.classes.math.common_vector3 import CommonVector3
-from sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
-from sims4communitylib.classes.testing.common_test_result import CommonTestResult
-from sims4communitylib.enums.common_death_types import CommonDeathType
-from sims4communitylib.enums.common_region_id import CommonRegionId
-from sims4communitylib.logging._has_s4cl_class_log import _HasS4CLClassLog
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
+from s4ap.sims4communitylib.classes.math.common_location import CommonLocation
+from s4ap.sims4communitylib.classes.math.common_transform import CommonTransform
+from s4ap.sims4communitylib.classes.math.common_vector3 import CommonVector3
+from s4ap.sims4communitylib.classes.testing.common_execution_result import CommonExecutionResult
+from s4ap.sims4communitylib.classes.testing.common_test_result import CommonTestResult
+from s4ap.sims4communitylib.enums.common_death_types import CommonDeathType
+from s4ap.sims4communitylib.enums.common_region_id import CommonRegionId
+from s4ap.sims4communitylib.logging._has_s4cl_class_log import _HasS4CLClassLog
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
     CommonConsoleCommandArgument
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
-from sims4communitylib.utils.common_function_utils import CommonFunctionUtils
-from sims4communitylib.utils.common_time_utils import CommonTimeUtils
-from sims4communitylib.utils.location.common_location_utils import CommonLocationUtils
-from sims4communitylib.utils.objects.common_object_spawn_utils import CommonObjectSpawnUtils
-from sims4communitylib.utils.objects.common_object_state_utils import CommonObjectStateUtils
-from sims4communitylib.utils.objects.common_object_utils import CommonObjectUtils
-from sims4communitylib.utils.resources.common_interaction_utils import CommonInteractionUtils
-from sims4communitylib.utils.sims.common_buff_utils import CommonBuffUtils
-from sims4communitylib.utils.sims.common_household_utils import CommonHouseholdUtils
-from sims4communitylib.utils.sims.common_occult_utils import CommonOccultUtils
-from sims4communitylib.utils.sims.common_sim_interaction_utils import CommonSimInteractionUtils
-from sims4communitylib.utils.sims.common_sim_location_utils import CommonSimLocationUtils
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
-from sims4communitylib.utils.sims.common_species_utils import CommonSpeciesUtils
-from sims4communitylib.utils.time.common_alarm_utils import CommonAlarmUtils
+from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+from s4ap.sims4communitylib.utils.common_function_utils import CommonFunctionUtils
+from s4ap.sims4communitylib.utils.common_time_utils import CommonTimeUtils
+from s4ap.sims4communitylib.utils.location.common_location_utils import CommonLocationUtils
+from s4ap.sims4communitylib.utils.objects.common_object_spawn_utils import CommonObjectSpawnUtils
+from s4ap.sims4communitylib.utils.objects.common_object_state_utils import CommonObjectStateUtils
+from s4ap.sims4communitylib.utils.objects.common_object_utils import CommonObjectUtils
+from s4ap.sims4communitylib.utils.resources.common_interaction_utils import CommonInteractionUtils
+from s4ap.sims4communitylib.utils.sims.common_buff_utils import CommonBuffUtils
+from s4ap.sims4communitylib.utils.sims.common_household_utils import CommonHouseholdUtils
+from s4ap.sims4communitylib.utils.sims.common_occult_utils import CommonOccultUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_interaction_utils import CommonSimInteractionUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_location_utils import CommonSimLocationUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+from s4ap.sims4communitylib.utils.sims.common_species_utils import CommonSpeciesUtils
+from s4ap.sims4communitylib.utils.time.common_alarm_utils import CommonAlarmUtils
 
 
 class CommonSimDeathUtils(_HasS4CLClassLog):

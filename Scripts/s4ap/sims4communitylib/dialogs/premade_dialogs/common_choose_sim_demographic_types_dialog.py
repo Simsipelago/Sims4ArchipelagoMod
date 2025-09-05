@@ -8,19 +8,19 @@ Copyright (c) COLONOLNUTTY
 from typing import Callable, Tuple, Union, Iterator
 
 from protocolbuffers.Localization_pb2 import LocalizedString
-from sims4communitylib.dialogs.option_dialogs.common_choose_objects_option_dialog import CommonChooseObjectsOptionDialog
-from sims4communitylib.dialogs.option_dialogs.options.common_dialog_option_context import CommonDialogOptionContext
-from sims4communitylib.dialogs.option_dialogs.options.objects.common_dialog_action_option import \
+from s4ap.sims4communitylib.dialogs.option_dialogs.common_choose_objects_option_dialog import CommonChooseObjectsOptionDialog
+from s4ap.sims4communitylib.dialogs.option_dialogs.options.common_dialog_option_context import CommonDialogOptionContext
+from s4ap.sims4communitylib.dialogs.option_dialogs.options.objects.common_dialog_action_option import \
     CommonDialogActionOption
-from sims4communitylib.dialogs.option_dialogs.options.objects.common_dialog_select_option import \
+from s4ap.sims4communitylib.dialogs.option_dialogs.options.objects.common_dialog_select_option import \
     CommonDialogSelectOption
-from sims4communitylib.enums.common_sim_demographic_types import CommonSimDemographicType
-from sims4communitylib.enums.strings_enum import CommonStringId
-from sims4communitylib.logging._has_s4cl_log import _HasS4CLLog
-from sims4communitylib.utils.common_collection_utils import CommonCollectionUtils
-from sims4communitylib.utils.common_icon_utils import CommonIconUtils
-from sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
-from sims4communitylib.utils.localization.common_localized_string_colors import CommonLocalizedStringColor
+from s4ap.sims4communitylib.enums.common_sim_demographic_types import CommonSimDemographicType
+from s4ap.sims4communitylib.enums.strings_enum import CommonStringId
+from s4ap.sims4communitylib.logging._has_s4cl_log import _HasS4CLLog
+from s4ap.sims4communitylib.utils.common_collection_utils import CommonCollectionUtils
+from s4ap.sims4communitylib.utils.common_icon_utils import CommonIconUtils
+from s4ap.sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
+from s4ap.sims4communitylib.utils.localization.common_localized_string_colors import CommonLocalizedStringColor
 
 
 class CommonChooseSimDemographicTypesDialog(_HasS4CLLog):

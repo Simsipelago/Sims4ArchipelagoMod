@@ -7,7 +7,7 @@ Copyright (c) COLONOLNUTTY
 """
 
 # This class is obsolete, please use CommonFundsSource from common_funds_sources instead.
-from sims4communitylib.enums.common_funds_sources import CommonFundsSource
+from s4ap.sims4communitylib.enums.common_funds_sources import CommonFundsSource
 
 
 CommonFundType = CommonFundsSource

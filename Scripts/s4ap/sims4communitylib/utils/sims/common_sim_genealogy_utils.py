@@ -9,9 +9,9 @@ from typing import Union, Tuple
 
 from sims.genealogy_tracker import GenealogyTracker, FamilyRelationshipIndex
 from sims.sim_info import SimInfo
-from sims4communitylib.enums.relationship_bits_enum import CommonRelationshipBitId
-from sims4communitylib.utils.sims.common_relationship_utils import CommonRelationshipUtils
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+from s4ap.sims4communitylib.enums.relationship_bits_enum import CommonRelationshipBitId
+from s4ap.sims4communitylib.utils.sims.common_relationship_utils import CommonRelationshipUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
 
 
 class CommonSimGenealogyUtils:

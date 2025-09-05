@@ -49,10 +49,10 @@ except:
     class LoadingTags:
         pass
 
-from sims4communitylib.classes.common_resource_key import CommonResourceKey
-from sims4communitylib.enums.enumtypes.common_int import Int, CommonInt
-from sims4communitylib.enums.enumtypes.common_int_flags import CommonIntFlags
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.classes.common_resource_key import CommonResourceKey
+from s4ap.sims4communitylib.enums.enumtypes.common_int import Int, CommonInt
+from s4ap.sims4communitylib.enums.enumtypes.common_int_flags import CommonIntFlags
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
 
 CommonEnumTypeValueType = TypeVar('CommonEnumTypeValueType', int, CommonInt, CommonIntFlags, Int, DynamicEnum, DynamicEnumLocked)
 

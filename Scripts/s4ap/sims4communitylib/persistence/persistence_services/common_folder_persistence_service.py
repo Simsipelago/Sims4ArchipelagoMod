@@ -8,11 +8,11 @@ Copyright (c) COLONOLNUTTY
 import os
 from typing import Dict, Any
 
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.persistence.persistence_services.common_persistence_service import CommonPersistenceService
-from sims4communitylib.utils.common_collection_utils import CommonCollectionUtils
-from sims4communitylib.utils.common_json_io_utils import CommonJSONIOUtils
-from sims4communitylib.utils.common_log_registry import CommonLogRegistry
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.persistence.persistence_services.common_persistence_service import CommonPersistenceService
+from s4ap.sims4communitylib.utils.common_collection_utils import CommonCollectionUtils
+from s4ap.sims4communitylib.utils.common_json_io_utils import CommonJSONIOUtils
+from s4ap.sims4communitylib.utils.common_log_registry import CommonLogRegistry
 
 
 class CommonFolderPersistenceService(CommonPersistenceService):
@@ -49,9 +49,9 @@ class CommonFolderPersistenceService(CommonPersistenceService):
         self._main_file_name = main_file_name
         self._combined_file_name = combined_file_name
         self._allow_duplicates_in_collections = allow_duplicates_in_collections
-        from sims4communitylib.utils.common_log_utils import CommonLogUtils
+        from s4ap.sims4communitylib.utils.common_log_utils import CommonLogUtils
         self._data_folder_path = data_folder_path or CommonLogUtils.get_mod_data_location_path()
-        from sims4communitylib.s4cl_configuration import S4CLConfiguration
+        from s4ap.sims4communitylib.s4cl_configuration import S4CLConfiguration
         self._create_combined_file = create_combined_file or S4CLConfiguration().create_combined_json
 
     # noinspection PyMissingOrEmptyDocstring

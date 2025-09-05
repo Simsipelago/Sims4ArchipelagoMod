@@ -8,14 +8,14 @@ Copyright (c) COLONOLNUTTY
 import os
 from typing import Union, Generic, TypeVar, Tuple, Dict, Any
 
-from sims4communitylib.systems.caching.common_serializable_object_cache import CommonSerializableObjectCache
-from sims4communitylib.classes.serialization.common_serializable import CommonSerializable
-from sims4communitylib.logging.has_log import HasLog
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.services.common_service import CommonService
-from sims4communitylib.utils.common_io_utils import CommonIOUtils
-from sims4communitylib.utils.common_json_io_utils import CommonJSONIOUtils
-from sims4communitylib.utils.common_log_utils import CommonLogUtils
+from s4ap.sims4communitylib.systems.caching.common_serializable_object_cache import CommonSerializableObjectCache
+from s4ap.sims4communitylib.classes.serialization.common_serializable import CommonSerializable
+from s4ap.sims4communitylib.logging.has_log import HasLog
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.services.common_service import CommonService
+from s4ap.sims4communitylib.utils.common_io_utils import CommonIOUtils
+from s4ap.sims4communitylib.utils.common_json_io_utils import CommonJSONIOUtils
+from s4ap.sims4communitylib.utils.common_log_utils import CommonLogUtils
 
 
 CommonSerializableObjectCacheType = TypeVar('CommonSerializableObjectCacheType', bound=CommonSerializableObjectCache[CommonSerializable])

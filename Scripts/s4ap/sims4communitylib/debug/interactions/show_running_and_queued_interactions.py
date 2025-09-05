@@ -10,15 +10,15 @@ from typing import Any, List
 from distributor.shared_messages import IconInfoData
 from interactions.context import InteractionContext
 from sims.sim import Sim
-from sims4communitylib.classes.interactions.common_immediate_super_interaction import CommonImmediateSuperInteraction
-from sims4communitylib.classes.testing.common_test_result import CommonTestResult
-from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.notifications.common_basic_notification import CommonBasicNotification
-from sims4communitylib.utils.common_type_utils import CommonTypeUtils
-from sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
-from sims4communitylib.utils.sims.common_sim_name_utils import CommonSimNameUtils
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+from s4ap.sims4communitylib.classes.interactions.common_immediate_super_interaction import CommonImmediateSuperInteraction
+from s4ap.sims4communitylib.classes.testing.common_test_result import CommonTestResult
+from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.notifications.common_basic_notification import CommonBasicNotification
+from s4ap.sims4communitylib.utils.common_type_utils import CommonTypeUtils
+from s4ap.sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_name_utils import CommonSimNameUtils
+from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
 
 
 class S4CLDebugShowRunningAndQueuedInteractionsInteraction(CommonImmediateSuperInteraction):
@@ -50,8 +50,8 @@ class S4CLDebugShowRunningAndQueuedInteractionsInteraction(CommonImmediateSuperI
     def on_started(self, interaction_sim: Sim, interaction_target: Sim) -> bool:
         target_sim_info = CommonSimUtils.get_sim_info(interaction_target)
         target_sim_name = CommonSimNameUtils.get_full_name(target_sim_info)
-        from sims4communitylib.utils.sims.common_sim_interaction_utils import CommonSimInteractionUtils
-        from sims4communitylib.utils.resources.common_interaction_utils import CommonInteractionUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_interaction_utils import CommonSimInteractionUtils
+        from s4ap.sims4communitylib.utils.resources.common_interaction_utils import CommonInteractionUtils
         running_interaction_strings: List[str] = list()
         for interaction in CommonSimInteractionUtils.get_running_interactions_gen(target_sim_info):
             interaction_name = CommonInteractionUtils.get_interaction_short_name(interaction)

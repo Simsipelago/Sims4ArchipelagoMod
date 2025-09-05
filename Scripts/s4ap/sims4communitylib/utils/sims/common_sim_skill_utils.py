@@ -10,12 +10,12 @@ from typing import Union, Iterator
 from server_commands.argument_helpers import TunableInstanceParam
 from sims.sim_info import SimInfo
 from sims4.resources import Types
-from sims4communitylib.enums.skills_enum import CommonSkillId
-from sims4communitylib.modinfo import ModInfo
-from sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
+from s4ap.sims4communitylib.enums.skills_enum import CommonSkillId
+from s4ap.sims4communitylib.modinfo import ModInfo
+from s4ap.sims4communitylib.services.commands.common_console_command import CommonConsoleCommand, \
     CommonConsoleCommandArgument
-from sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
-from sims4communitylib.utils.resources.common_skill_utils import CommonSkillUtils
+from s4ap.sims4communitylib.services.commands.common_console_command_output import CommonConsoleCommandOutput
+from s4ap.sims4communitylib.utils.resources.common_skill_utils import CommonSkillUtils
 from statistics.skill import Skill
 
 
@@ -330,7 +330,7 @@ class CommonSimSkillUtils:
         :return: An iterator of Skills that are available for the specified Sim.
         :rtype: Iterator[Skill]
         """
-        from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
+        from s4ap.sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
         sim = CommonSimUtils.get_sim_instance(sim_info)
         if sim is None:
             return tuple()

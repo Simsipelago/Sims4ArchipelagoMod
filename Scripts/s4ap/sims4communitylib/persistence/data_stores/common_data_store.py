@@ -7,7 +7,7 @@ Copyright (c) COLONOLNUTTY
 """
 from typing import Dict, Any, Callable, Tuple
 
-from sims4communitylib.classes.serialization.common_serializable import CommonSerializable
+from s4ap.sims4communitylib.classes.serialization.common_serializable import CommonSerializable
 
 
 class CommonDataStore:
