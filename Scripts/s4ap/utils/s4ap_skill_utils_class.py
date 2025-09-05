@@ -1,5 +1,5 @@
 import services
-from typing import Callable, Iterator
+from typing import Callable, Iterator, Union
 from s4ap.utils.s4ap_sim_utils import S4APSimUtils
 from server_commands.argument_helpers import TunableInstanceParam
 from sims.sim_info import SimInfo
