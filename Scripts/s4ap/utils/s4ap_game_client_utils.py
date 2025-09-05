@@ -1,4 +1,7 @@
+from typing import Union
+
 import services
+from server.client import Client
 from server.clientmanager import ClientManager
 
 class S4APGameClientUtils:
