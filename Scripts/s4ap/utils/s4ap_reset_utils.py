@@ -1,7 +1,7 @@
 from s4ap.enums.S4APLocalization import S4APTraitId
 from s4ap.logging.s4ap_logger import S4APLogger
 from s4ap.utils.s4ap_household_utils import S4APHouseholdUtils
-from s4ap.utils.s4ap_skill_utils import get_all_skills_available_for_sim_gen
+from s4ap.utils.s4ap_skill_utils import S4APSkillUtils
 from server_commands.argument_helpers import TunableInstanceParam
 from sims4.resources import Types
 from sims4communitylib.enums.traits_enum import CommonTraitId
@@ -13,7 +13,7 @@ logger.enable()
 class ResetSimData:
     def reset_all_skills(self):
         for sim_info in S4APHouseholdUtils.get_sim_info_of_all_sims_in_active_household_generator():
-            for skill in get_all_skills_available_for_sim_gen(sim_info):
+            for skill in S4APSkillUtils.get_all_skills_available_for_sim_gen(sim_info):
                 sim_info.remove_statistic(skill)
 
     def show_reset_notif(self):

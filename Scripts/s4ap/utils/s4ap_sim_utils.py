@@ -1,3 +1,4 @@
+from sims.sim_info import SimInfo
 
 class S4APSimUtils:
 
