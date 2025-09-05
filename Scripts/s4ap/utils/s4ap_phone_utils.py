@@ -7,6 +7,7 @@ from s4ap.logging.s4ap_logger import S4APLogger
 from s4ap.modinfo import ModInfo
 from s4ap.persistance.ap_session_data_store import S4APSessionStoreUtils
 from s4ap.utils.s4ap_career_utils import S4APCareerUtils
+from s4ap.utils.s4ap_generic_utils import S4APUtils
 from s4ap.utils.s4ap_household_utils import S4APHouseholdUtils
 from s4ap.utils.s4ap_skill_utils import S4APSkillUtils
 from server_commands.argument_helpers import TunableInstanceParam
@@ -148,13 +149,10 @@ def _resync_locations(event_data: S4CLSimTraitAddedEvent):
                         locations.append(milestone_display_name)
         print_json(locations, 'locations_cached.json')
         print_json(True, 'sync.json')
-        title = LocalizationHelperTuning.get_raw_text('Locations Resynced')
-        description = LocalizationHelperTuning.get_raw_text('')
-        dialog = UiDialogNotification.TunableFactory().default(
-            title=title,
-            text=description
+        S4APUtils.show_basic_notification(
+            'Locations Resynced',
+            ''
         )
-        dialog.show_dialog()
 
 @CommonEventRegistry.handle_events(ModInfo.get_identity())
 def _show_aspiration_and_career(event_data: S4CLSimTraitAddedEvent):
