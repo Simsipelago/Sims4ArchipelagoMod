@@ -1,4 +1,4 @@
-from lib.typing import Tuple
+from typing import Tuple
 
 from s4ap.modinfo import ModInfo
 from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity

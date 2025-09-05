@@ -16,7 +16,7 @@ from s4ap.utils.s4ap_trait_utils import S4APTraitUtils
 from sims4.resources import Types
 from s4ap.sims4communitylib.events.event_handling.common_event import CommonEvent
 from s4ap.sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
-from lib.collections import Counter
+from collections import Counter
 log = S4APLogger.get_log()
 log.enable()
 

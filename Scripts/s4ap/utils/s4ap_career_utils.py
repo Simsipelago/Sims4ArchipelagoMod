@@ -1,6 +1,6 @@
 from careers.career_tuning import Career, CareerLevel, TunableCareerTrack
-from lib.random import random
-from lib.typing import Callable, Iterator, Tuple, Union
+from random import random
+from typing import Callable, Iterator, Tuple, Union
 from services import get_instance_manager
 from sims.sim_info import SimInfo
 from sims4.resources import Types

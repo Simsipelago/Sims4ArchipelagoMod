@@ -1,5 +1,5 @@
 import services
-from lib.typing import Union
+from typing import Union
 from s4ap.utils.s4ap_game_client_utils import S4APGameClientUtils
 from sims.sim import Sim
 from sims.sim_info import SimInfo

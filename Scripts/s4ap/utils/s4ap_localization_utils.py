@@ -1,6 +1,6 @@
 from protocolbuffers.Localization_pb2 import LocalizedString
 
-from lib.typing import Any
+from typing import Any
 from sims4.localization import LocalizationHelperTuning, _create_localized_string, create_tokens
 
 class S4APLocalizationUtils:

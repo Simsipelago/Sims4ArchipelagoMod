@@ -1,5 +1,5 @@
 import services
-from lib.typing import Union
+from typing import Union
 from s4ap.modinfo import ModInfo
 from services.persistence_service import SaveGameData
 from sims4.resources import Types

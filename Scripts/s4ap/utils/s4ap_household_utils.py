@@ -1,6 +1,6 @@
 import services
 from services import active_household
-from lib.typing import Iterator, Union
+from typing import Iterator, Union
 from sims.household import Household
 from sims.sim_info import SimInfo
 
