@@ -5,7 +5,7 @@ from s4ap.events.skill_events import SimSkillLeveledUpEvent
 from s4ap.logging.s4ap_logger import S4APLogger
 from s4ap.modinfo import ModInfo
 from s4ap.utils.s4ap_sim_utils import S4APSimUtils
-from s4ap.utils.s4ap_skill_utils import S4APSkillUtils
+from s4ap.utils.s4ap_skill_utils_class import S4APSkillUtils
 from sims.sim_info import SimInfo
 from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
 from sims4communitylib.services.common_service import CommonService
