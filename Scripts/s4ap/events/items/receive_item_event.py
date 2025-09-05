@@ -17,7 +17,7 @@ from sims4.resources import Types
 from sims4communitylib.events.event_handling.common_event import CommonEvent
 from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
 from sims4communitylib.notifications.common_basic_notification import CommonBasicNotification
-from collections import Counter
+from lib.collections import Counter
 log = S4APLogger.get_log()
 log.enable()
 
