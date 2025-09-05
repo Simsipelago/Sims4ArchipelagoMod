@@ -1,4 +1,4 @@
-from lib.typing import Iterator, Optional
+from lib.typing import Iterator, Optional, Union
 from s4ap.utils.s4ap_generic_utils import S4APUtils
 from sims.sim_info import SimInfo
 from sims4.resources import Types
