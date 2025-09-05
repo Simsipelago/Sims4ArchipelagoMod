@@ -60,12 +60,6 @@ class S4APSessionStoreUtils:
                     ok_text=S4APLocalizationUtils.create_from_string('Overwrite'),
                     cancel_text=S4APLocalizationUtils.create_from_string('Cancel'),
                 )
-                # dialog = CommonOkCancelDialog(
-                #     CommonLocalizationUtils.create_localized_string('Warning!',
-                #                                                     text_color=CommonLocalizedStringColor.RED),
-                #     description_identifier="There's a mismatch with your AP session data. If you press 'Overwrite,' all previous items will be resynced, and your Sims' skill levels will reset. If you'd rather keep your current progress, select 'Cancel' and switch to a different save file so you can come back to this session later.",
-                #     ok_text_identifier='Overwrite'
-                # )
                 # Wrap the callbacks manually
                 def on_option_selected(dialog_instance: UiDialogOkCancel):
                     if dialog_instance.accepted:
