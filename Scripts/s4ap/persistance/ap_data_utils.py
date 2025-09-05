@@ -1,4 +1,4 @@
-from typing import Type, Union, Dict, Any
+from lib.typing import Type, Union, Dict, Any
 
 from s4ap.modinfo import ModInfo
 from s4ap.persistance.ap_data_manager import S4APDataManager

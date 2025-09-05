@@ -1,4 +1,4 @@
-from typing import Any
+from lib.typing import Any
 from s4ap.jsonio.s4ap_json import print_json
 from s4ap.events.Utils.allow_read_items import AllowReceiveItems
 from s4ap.logging.s4ap_logger import S4APLogger
