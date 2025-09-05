@@ -147,3 +147,18 @@ class S4APCareerUtils:
             if hasattr(career_track, 'branches') and career_track.branches is not None:
                 return tuple(career_track.branches)
         return tuple()
+
+    @staticmethod
+    def get_work_performance(career: Career) -> float:
+        """get_work_performance(career)
+
+        Add an amount to the work performance of a career.
+
+        :param career: The career to modify.
+        :type career: Career
+        :return: The amount of work performance acquired in the specified Career.
+        :rtype: float
+        """
+        if career is None:
+            return 0.0
+        return career.work_performance
