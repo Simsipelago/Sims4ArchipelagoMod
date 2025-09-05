@@ -1,5 +1,6 @@
 import services
 from lib.typing import Union
+from s4ap.utils.s4ap_game_client_utils import S4APGameClientUtils
 from sims.sim import Sim
 from sims.sim_info import SimInfo
 from sims.sim_info_base_wrapper import SimInfoBaseWrapper
@@ -52,3 +53,18 @@ class S4APSimUtils:
         :rtype: SimInfoManager
         """
         return services.sim_info_manager()
+
+    @classmethod
+    def get_active_sim_info(cls) -> Union[SimInfo, None]:
+        """get_active_sim_info()
+
+        Retrieve a SimInfo object of the Currently Active Sim.
+
+        :return: The SimInfo of the Active Sim or None if not found.
+        :rtype: Union[SimInfo, None]
+        """
+        client = S4APGameClientUtils.get_first_game_client()
+        if client is None:
+            return None
+        # noinspection PyPropertyAccess
+        return client.active_sim_info
