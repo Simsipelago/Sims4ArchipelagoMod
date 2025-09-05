@@ -7,7 +7,6 @@ from sims4communitylib.events.zone_spin.common_zone_spin_event_dispatcher import
 from sims4communitylib.exceptions.common_exceptions_handler import CommonExceptionHandler
 from s4ap.utils.s4ap_save_utils import S4APSaveUtils
 from sims4.localization import LocalizationHelperTuning
-from sims4communitylib.notifications.common_basic_notification import CommonBasicNotification
 from ui.ui_dialog_notification import UiDialogNotification
 
 class S4APUtils:
@@ -33,6 +32,7 @@ class S4APUtils:
                                                  exception=ex)
             return False
 
+    @staticmethod
     def load_instance(self, instance_type: Types, instance_id: int):
         """Load a resource instance (Trait, Buff, Mood, etc.) directly from the game."""
         instance_manager = services.get_instance_manager(instance_type)
@@ -40,11 +40,13 @@ class S4APUtils:
             return None
         return instance_manager.get(instance_id)
 
-    def load_icon_by_id(self, icon_id: int):
+    @staticmethod
+    def load_icon_by_id(icon_id: int):
         manager = services.get_instance_manager(Types.PNG)
         return manager.get(icon_id)  # Returns vanilla ResourceKey / instance
 
-    def show_basic_notification(self, title_text: Union[int, str], description_text: Union[int, str]):
+    @staticmethod
+    def show_basic_notification(title_text: Union[int, str], description_text: Union[int, str]):
         """Show a simple vanilla notification to the player."""
         title = LocalizationHelperTuning.get_raw_text(title_text)
         description = LocalizationHelperTuning.get_raw_text(description_text)
