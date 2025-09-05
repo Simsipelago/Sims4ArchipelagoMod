@@ -4,7 +4,6 @@ from s4ap.logging.s4ap_logger import S4APLogger
 from s4ap.modinfo import ModInfo
 from s4ap.utils.s4ap_generic_utils import S4APUtils
 from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
-from sims4communitylib.notifications.common_basic_notification import CommonBasicNotification
 
 logger = S4APLogger.get_log()
 logger.enable()
@@ -36,9 +35,8 @@ def _handle_send_check_event(event_data: SendLocationEvent):
     if event_data.location_name not in json_list["Locations"]:
         json_list["Locations"].append(event_data.location_name)
         print_json(json_list, 'locations_cached.json')
-        notif = CommonBasicNotification(
-            title_identifier='Saving on check',
-            description_identifier=event_data.location_name
+        S4APUtils.show_basic_notification(
+            'Saving on check',
+            event_data.location_name
         )
-        notif.show()
         S4APUtils.trigger_autosave()

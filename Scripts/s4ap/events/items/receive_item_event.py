@@ -16,7 +16,6 @@ from s4ap.utils.s4ap_trait_utils import S4APTraitUtils
 from sims4.resources import Types
 from sims4communitylib.events.event_handling.common_event import CommonEvent
 from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
-from sims4communitylib.notifications.common_basic_notification import CommonBasicNotification
 from lib.collections import Counter
 log = S4APLogger.get_log()
 log.enable()
@@ -179,9 +178,9 @@ class HandleReceiveItemEvent:
                     skill = skill.lower().replace('mixology', 'bartending')
                 lock_skills(count, skill, False)
 
-    def show_received_notification(self, items, players, locations):
-        notif = CommonBasicNotification(
-            title_identifier='Received Items',
-            description_identifier='\n'.join(
+    @staticmethod
+    def show_received_notification(items, players, locations):
+        S4APUtils.show_basic_notification(
+            'Received Items',
+            '\n'.join(
                 [f'{item} from {player} ({location})' for item, player, location in zip(items, players, locations)]))
-        notif.show()
