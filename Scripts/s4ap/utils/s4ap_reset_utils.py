@@ -2,7 +2,7 @@ from s4ap.enums.S4APLocalization import S4APTraitId
 from s4ap.logging.s4ap_logger import S4APLogger
 from s4ap.utils.s4ap_generic_utils import S4APUtils
 from s4ap.utils.s4ap_household_utils import S4APHouseholdUtils
-from s4ap.utils.s4ap_skill_utils import S4APSkillUtils
+from s4ap.utils.s4ap_skill_utils_class import S4APSkillUtils
 from server_commands.argument_helpers import TunableInstanceParam
 from sims4.localization import LocalizationHelperTuning
 from sims4.resources import Types
