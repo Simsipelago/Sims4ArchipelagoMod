@@ -7,7 +7,7 @@ from sims4communitylib.events.zone_spin.events.zone_late_load import S4CLZoneLat
 from sims4communitylib.logging.has_class_log import HasClassLog
 from sims4communitylib.mod_support.mod_identity import CommonModIdentity
 from sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
-from lot51_core.utils.dialog import DialogHelper
+from lot51_core.utils import DialogHelper
 
 
 class S4APLogger(HasClassLog):
