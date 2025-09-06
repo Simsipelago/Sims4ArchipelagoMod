@@ -63,7 +63,7 @@ class S4APSessionStoreUtils:
                     on_ok=_ok_chosen,
                     on_cancel=_cancel_chosen
                 )
-                dialog.show()
+                dialog.show_dialog()
                 return True
             else:  # Settings exist and match
                 logger.debug("AP session data matched")
@@ -99,7 +99,7 @@ class S4APSessionStoreUtils:
                 on_ok=_ok_chosen,
                 on_cancel=_cancel_chosen
             )
-            dialog.show()
+            dialog.show_dialog()
             return True
 
     def check_index_value(self, index: str) -> bool:

@@ -1,5 +1,5 @@
 from sims.sim_info import SimInfo
-from sims4communitylib.events.event_handling.common_event import CommonEvent
+from s4ap.sims4communitylib.events.event_handling.common_event import CommonEvent
 from statistics.skill import Skill
 
 
