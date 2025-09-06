@@ -2,12 +2,13 @@ from s4ap.enums.S4APLocalization import S4APStringId
 from s4ap.modinfo import ModInfo
 from s4ap.utils.s4ap_generic_utils import S4APUtils
 from s4ap.utils.s4ap_localization_utils import S4APLocalizationUtils
+from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
+from sims4communitylib.events.zone_spin.events.zone_late_load import S4CLZoneLateLoadEvent
+from sims4communitylib.logging.has_class_log import HasClassLog
+from sims4communitylib.mod_support.mod_identity import CommonModIdentity
 from sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
-from s4ap.sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
-from s4ap.sims4communitylib.events.zone_spin.events.zone_late_load import S4CLZoneLateLoadEvent
-from s4ap.sims4communitylib.logging.has_class_log import HasClassLog
-from s4ap.sims4communitylib.mod_support.mod_identity import CommonModIdentity
 from lot51_core.utils import DialogHelper
+
 
 class S4APLogger(HasClassLog):
     @classmethod

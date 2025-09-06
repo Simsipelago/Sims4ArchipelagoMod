@@ -1,4 +1,4 @@
-from s4ap.sims4communitylib.events.event_handling.common_event import CommonEvent
+from sims4communitylib.events.event_handling.common_event import CommonEvent
 
 
 class AllowReceiveItems(CommonEvent):

@@ -5,9 +5,9 @@ from s4ap.logging.s4ap_logger import S4APLogger
 from s4ap.modinfo import ModInfo
 from s4ap.utils.s4ap_household_utils import S4APHouseholdUtils
 from s4ap.utils.s4ap_sim_utils import S4APSimUtils
-from s4ap.sims4communitylib.events.event_handling.common_event import CommonEvent
-from s4ap.sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
-from s4ap.sims4communitylib.services.common_service import CommonService
+from sims4communitylib.events.event_handling.common_event import CommonEvent
+from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
+from sims4communitylib.services.common_service import CommonService
 from lot51_core.utils.injection import inject_to
 
 log = S4APLogger.get_log()
