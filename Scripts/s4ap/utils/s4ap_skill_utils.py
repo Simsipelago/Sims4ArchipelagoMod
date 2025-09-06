@@ -1,5 +1,7 @@
 import re
 
+import services
+from typing import Callable, Iterator, Union
 from s4ap.enums.S4APLocalization import S4APTraitId
 from s4ap.events.skill_events import SimSkillLeveledUpEvent
 from s4ap.logging.s4ap_logger import S4APLogger
@@ -9,8 +11,9 @@ from s4ap.utils.s4ap_household_utils import S4APHouseholdUtils
 from s4ap.utils.s4ap_sim_utils import S4APSimUtils
 from server_commands.argument_helpers import TunableInstanceParam
 from sims4.resources import Types
-from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
 from s4ap.utils.s4ap_skill_utils_class import S4APSkillUtils
+from s4ap.sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
+from statistics.skill import Skill
 
 logger = S4APLogger.get_log()
 logger.enable()

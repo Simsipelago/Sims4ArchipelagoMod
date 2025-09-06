@@ -7,10 +7,10 @@ from s4ap.jsonio.s4ap_json import read_json, print_json
 from s4ap.logging.s4ap_logger import S4APLogger
 from s4ap.modinfo import ModInfo
 from s4ap.persistance.ap_session_data_store import S4APSessionStoreUtils
-from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
-from sims4communitylib.events.interval.common_interval_event_service import CommonIntervalEventRegistry
-from sims4communitylib.events.save.events.save_loaded import S4CLSaveLoadedEvent
-from sims4communitylib.utils.common_log_utils import CommonLogUtils
+from s4ap.sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
+from s4ap.sims4communitylib.events.interval.common_interval_event_service import CommonIntervalEventRegistry
+from s4ap.sims4communitylib.events.save.events.save_loaded import S4CLSaveLoadedEvent
+from s4ap.sims4communitylib.utils.common_log_utils import CommonLogUtils
 
 logger = S4APLogger.get_log()
 logger.enable()

@@ -3,9 +3,9 @@ from typing import Type, Union, Dict, Any
 from s4ap.modinfo import ModInfo
 from s4ap.persistance.ap_data_manager import S4APDataManager
 from s4ap.persistance.ap_data_store import S4APGenericDataStore
-from sims4communitylib.persistence.data_management.common_data_manager_registry import CommonDataManagerRegistry
-from sims4communitylib.persistence.data_stores.common_data_store import CommonDataStore
-from sims4communitylib.services.common_service import CommonService
+from s4ap.sims4communitylib.persistence.data_management.common_data_manager_registry import CommonDataManagerRegistry
+from s4ap.sims4communitylib.persistence.data_stores.common_data_store import CommonDataStore
+from s4ap.sims4communitylib.services.common_service import CommonService
 
 
 class S4APDataManagerUtils(CommonService):

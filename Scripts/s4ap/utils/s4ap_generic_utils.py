@@ -1,14 +1,13 @@
 import services
 from typing import Any, Callable, Optional, Union
-
 from lot51_core.utils.dialog import DialogHelper
 from s4ap.modinfo import ModInfo
 from s4ap.utils.s4ap_sim_utils import S4APSimUtils
 from services.persistence_service import SaveGameData
 from sims.sim_info import SimInfo
 from sims4.resources import Types
-from sims4communitylib.events.zone_spin.common_zone_spin_event_dispatcher import CommonZoneSpinEventDispatcher
-from sims4communitylib.exceptions.common_exceptions_handler import CommonExceptionHandler
+from s4ap.sims4communitylib.events.zone_spin.common_zone_spin_event_dispatcher import CommonZoneSpinEventDispatcher
+from s4ap.sims4communitylib.exceptions.common_exceptions_handler import CommonExceptionHandler
 from s4ap.utils.s4ap_save_utils import S4APSaveUtils
 from sims4.localization import LocalizationHelperTuning
 from ui.ui_dialog import UiDialogOkCancel

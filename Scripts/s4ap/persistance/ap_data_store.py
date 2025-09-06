@@ -1,6 +1,6 @@
 from typing import Any, Dict
 
-from sims4communitylib.persistence.data_stores.common_data_store import CommonDataStore
+from s4ap.sims4communitylib.persistence.data_stores.common_data_store import CommonDataStore
 
 
 class S4APSettings:

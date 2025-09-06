@@ -14,8 +14,8 @@ from s4ap.utils.s4ap_sim_utils import S4APSimUtils
 from s4ap.utils.s4ap_skill_utils import lock_skills
 from s4ap.utils.s4ap_trait_utils import S4APTraitUtils
 from sims4.resources import Types
-from sims4communitylib.events.event_handling.common_event import CommonEvent
-from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
+from s4ap.sims4communitylib.events.event_handling.common_event import CommonEvent
+from s4ap.sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
 from collections import Counter
 log = S4APLogger.get_log()
 log.enable()
