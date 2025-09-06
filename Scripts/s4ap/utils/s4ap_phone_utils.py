@@ -9,7 +9,7 @@ from s4ap.persistance.ap_session_data_store import S4APSessionStoreUtils
 from s4ap.utils.s4ap_career_utils import S4APCareerUtils
 from s4ap.utils.s4ap_generic_utils import S4APUtils
 from s4ap.utils.s4ap_household_utils import S4APHouseholdUtils
-from s4ap.utils.s4ap_skill_utils import S4APSkillUtils
+from s4ap.utils.s4ap_skill_utils_class import S4APSkillUtils
 from server_commands.argument_helpers import TunableInstanceParam
 from services import get_instance_manager
 from sims4.localization import LocalizationHelperTuning

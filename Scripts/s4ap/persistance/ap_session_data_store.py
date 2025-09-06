@@ -51,21 +51,19 @@ class S4APSessionStoreUtils:
                     return False  # if okay is chosen then save seed values and resync items
 
                 # Prompt the user to either overwrite the previous session_data, or stop parsing the data packet and wait for the connection_status.json to update
-                dialog = UiDialogOkCancel.TunableFactory().default(
-                    title = S4APLocalizationUtils.create_from_string("<font color='#9C1919'>Warning!</font>"),
-                    description=S4APLocalizationUtils.create_from_string("There's a mismatch with your AP session data. If you press 'Overwrite,' all previous items will be resynced, and your Sims' skill levels will reset. If you'd rather keep your current progress, select 'Cancel' and switch to a different save file so you can come back to this session later."),
-                    ok_text=S4APLocalizationUtils.create_from_string('Overwrite'),
-                    cancel_text=S4APLocalizationUtils.create_from_string('Cancel'),
+                dialog = S4APUtils.show_ok_cancel_dialog(
+                    title=S4APLocalizationUtils.create_from_string("<font color='#9C1919'>Warning!</font>"),
+                    text=S4APLocalizationUtils.create_from_string(
+                        "There's a mismatch with your AP session data. If you press 'Overwrite,' all previous "
+                        "items will be resynced, and your Sims' skill levels will reset. If you'd rather keep your "
+                        "current progress, select 'Cancel' and switch to a different save file so you can come back later."
+                    ),
+                    ok_text=S4APLocalizationUtils.create_from_string("Overwrite"),
+                    cancel_text=S4APLocalizationUtils.create_from_string("Cancel"),
+                    on_ok=_ok_chosen,
+                    on_cancel=_cancel_chosen
                 )
-                # Wrap the callbacks manually
-                def on_option_selected(dialog_instance: UiDialogOkCancel):
-                    if dialog_instance.accepted:
-                        _ok_chosen(dialog_instance)
-                    else:
-                        _cancel_chosen(dialog_instance)
-
-                dialog.add_listener(on_option_selected)
-                dialog.show_dialog()
+                dialog.show()
                 return True
             else:  # Settings exist and match
                 logger.debug("AP session data matched")
@@ -90,21 +88,18 @@ class S4APSessionStoreUtils:
                 return True
 
             # Prompt the user to either overwrite the previous session_data, or stop parsing the data packet and wait for the connection_status.json to update
-            dialog = UiDialogOkCancel.TunableFactory().default(
-                title = S4APLocalizationUtils.create_from_string("<font color='#9C1919'>Warning!</font>"),
-                description=S4APLocalizationUtils.create_from_string("Pressing 'Connect' will reset your Sims' skill levels and will sync the game to the client. If you don't want to use this save, click 'Cancel' and switch to a different one."),
-                ok_text=S4APLocalizationUtils.create_from_string('Connect'),
-                cancel_text=S4APLocalizationUtils.create_from_string('Cancel'),
+            dialog = S4APUtils.show_ok_cancel_dialog(
+                title=S4APLocalizationUtils.create_from_string("<font color='#9C1919'>Warning!</font>"),
+                text=S4APLocalizationUtils.create_from_string(
+                    "Pressing 'Connect' will reset your Sims' skill levels and will sync the game to the client. "
+                    "If you don't want to use this save, click 'Cancel' and switch to a different one."
+                ),
+                ok_text=S4APLocalizationUtils.create_from_string("Connect"),
+                cancel_text=S4APLocalizationUtils.create_from_string("Cancel"),
+                on_ok=_ok_chosen,
+                on_cancel=_cancel_chosen
             )
-
-            def on_option_selected(dialog_instance: UiDialogOkCancel):
-                if dialog_instance.accepted:
-                    _ok_chosen(dialog_instance)
-                else:
-                    _cancel_chosen(dialog_instance)
-
-            dialog.add_listener(on_option_selected)
-            dialog.show_dialog()
+            dialog.show()
             return True
 
     def check_index_value(self, index: str) -> bool:
