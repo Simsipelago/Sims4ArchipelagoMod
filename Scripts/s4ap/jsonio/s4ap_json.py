@@ -1,8 +1,8 @@
 import os
 
 from s4ap.logging.s4ap_logger import S4APLogger
-from s4ap.sims4communitylib.utils.common_json_io_utils import CommonJSONIOUtils
-from s4ap.sims4communitylib.utils.common_log_utils import CommonLogUtils
+from sims4communitylib.utils.common_json_io_utils import CommonJSONIOUtils
+from sims4communitylib.utils.common_log_utils import CommonLogUtils
 
 log = S4APLogger.get_log()
 log.enable()

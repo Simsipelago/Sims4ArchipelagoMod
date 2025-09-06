@@ -14,8 +14,8 @@ from server_commands.argument_helpers import TunableInstanceParam
 from services import get_instance_manager
 from sims4.localization import LocalizationHelperTuning
 from sims4.resources import Types
-from s4ap.sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
-from s4ap.sims4communitylib.events.sim.events.sim_trait_added import S4CLSimTraitAddedEvent
+from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
+from sims4communitylib.events.sim.events.sim_trait_added import S4CLSimTraitAddedEvent
 from ui.ui_dialog_notification import UiDialogNotification
 from ui.ui_dialog_picker import ObjectPickerRow, UiObjectPicker
 
