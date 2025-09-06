@@ -51,7 +51,7 @@ class S4APSessionStoreUtils:
                     return False  # if okay is chosen then save seed values and resync items
 
                 # Prompt the user to either overwrite the previous session_data, or stop parsing the data packet and wait for the connection_status.json to update
-                S4APUtils.show_ok_cancel_dialog(
+                dialog = S4APUtils.show_ok_cancel_dialog(
                     title=S4APLocalizationUtils.create_from_string("<font color='#9C1919'>Warning!</font>"),
                     text=S4APLocalizationUtils.create_from_string(
                         "There's a mismatch with your AP session data. If you press 'Overwrite,' all previous "
@@ -60,9 +60,10 @@ class S4APSessionStoreUtils:
                     ),
                     ok_text=S4APLocalizationUtils.create_from_string("Overwrite"),
                     cancel_text=S4APLocalizationUtils.create_from_string("Cancel"),
-                    on_ok=lambda d: _ok_chosen(d) or None,
-                    on_cancel=lambda d: _cancel_chosen(d) or None
+                    on_ok=_ok_chosen,
+                    on_cancel=_cancel_chosen
                 )
+                dialog.show()
                 return True
             else:  # Settings exist and match
                 logger.debug("AP session data matched")
@@ -87,7 +88,7 @@ class S4APSessionStoreUtils:
                 return True
 
             # Prompt the user to either overwrite the previous session_data, or stop parsing the data packet and wait for the connection_status.json to update
-            S4APUtils.show_ok_cancel_dialog(
+            dialog = S4APUtils.show_ok_cancel_dialog(
                 title=S4APLocalizationUtils.create_from_string("<font color='#9C1919'>Warning!</font>"),
                 text=S4APLocalizationUtils.create_from_string(
                     "Pressing 'Connect' will reset your Sims' skill levels and will sync the game to the client. "
@@ -95,9 +96,10 @@ class S4APSessionStoreUtils:
                 ),
                 ok_text=S4APLocalizationUtils.create_from_string("Connect"),
                 cancel_text=S4APLocalizationUtils.create_from_string("Cancel"),
-                on_ok=lambda d: _ok_chosen(d) or None,
-                on_cancel=lambda d: _cancel_chosen(d) or None
+                on_ok=_ok_chosen,
+                on_cancel=_cancel_chosen
             )
+            dialog.show()
             return True
 
     def check_index_value(self, index: str) -> bool:

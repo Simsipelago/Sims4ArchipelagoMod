@@ -1,5 +1,7 @@
 import services
-from typing import Callable, Optional, Union
+from typing import Any, Callable, Optional, Union
+
+from lot51_core.utils.dialog import DialogHelper
 from s4ap.modinfo import ModInfo
 from s4ap.utils.s4ap_sim_utils import S4APSimUtils
 from services.persistence_service import SaveGameData
@@ -68,8 +70,8 @@ class S4APUtils:
             text,
             ok_text,
             cancel_text,
-            on_ok: Optional[Callable[[UiDialogOkCancel], None]] = None,
-            on_cancel: Optional[Callable[[UiDialogOkCancel], None]] = None,
+            on_ok: Optional[Callable[[UiDialogOkCancel], Any]] = None,
+            on_cancel: Optional[Callable[[UiDialogOkCancel], Any]] = None,
             owner: Optional[SimInfo] = None
     ):
         """Show an Ok/Cancel dialog with optional handlers for each response.
@@ -88,14 +90,6 @@ class S4APUtils:
             # Skip showing the dialog if no active sim yet
             return
 
-        dialog = UiDialogOkCancel.TunableFactory().default(
-            active_sim,
-            title=title,
-            text=text,
-            ok_text=ok_text,
-            cancel_text=cancel_text
-        )
-
         def _on_response(dialog_instance: UiDialogOkCancel):
             if dialog_instance.accepted:
                 if on_ok is not None:
@@ -104,6 +98,22 @@ class S4APUtils:
                 if on_cancel is not None:
                     on_cancel(dialog_instance)
 
-        dialog.add_listener(_on_response)
-        dialog.show_dialog()
+        dialog = DialogHelper.create_dialog(
+            title,
+            text,
+            ok_text,
+            callback=_on_response
+        )
+        # dialog = UiDialogOkCancel.TunableFactory().default(
+        #     active_sim,
+        #     title=title,
+        #     text=text,
+        #     ok_text=ok_text,
+        #     cancel_text=cancel_text
+        # )
+
+
+
+        # dialog.add_listener(_on_response)
+        # dialog.show_dialog()
         return dialog
