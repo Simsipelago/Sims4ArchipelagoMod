@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<I c="Trait" s="3616689009" i="trait" m="traits.traits" n="Cactus_S4AP_Trait5">
+  <T n="display_name_gender_neutral">0xC9249D53</T>
+  <L n="ages">
+    <E>ADULT</E>
+    <E>CHILD</E>
+    <E>ELDER</E>
+    <E>TEEN</E>
+    <E>YOUNGADULT</E>
+  </L>
+  <T n="icon">2f7d0004:00000000:30f0846c783606f9</T>
+  <T n="display_name">0xC9249D53</T>
+  <E n="trait_type">HIDDEN</E>
+  <L n="buffs">
+    <U>
+      <T n="buff_type">2382407906</T>
+    </U>
+  </L>
+</I>

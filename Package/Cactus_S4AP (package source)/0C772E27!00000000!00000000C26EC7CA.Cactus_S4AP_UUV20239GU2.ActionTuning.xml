@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<I c="LootActions" s="3262040010" i="action" m="interactions.utils.loot" n="Cactus_S4AP_UUV20239GU2">
+  <L n="loot_actions">
+    <V t="trait_add">
+      <U n="trait_add">
+        <T n="trait">2241086516</T>
+        <T n="subject">Actor</T>
+      </U>
+    </V>
+  </L>
+</I>

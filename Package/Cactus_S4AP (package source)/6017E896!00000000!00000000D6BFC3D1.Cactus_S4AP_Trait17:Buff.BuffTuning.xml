@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<I c="Buff" s="3602891729" i="buff" m="buffs.buff" n="Cactus_S4AP_Trait17:Buff">
+  <U n="game_effect_modifier">
+    <L n="_game_effect_modifiers">
+      <V t="autonomy_modifier">
+        <U n="autonomy_modifier">
+          <L n="stat_use_multiplier">
+            <U>
+              <T n="key">16703</T>
+              <U n="value">
+                <E n="apply_direction">INCREASE</E>
+                <T n="multiplier">0</T>
+              </U>
+            </U>
+          </L>
+        </U>
+      </V>
+    </L>
+  </U>
+  <T n="visible">False</T>
+</I>
