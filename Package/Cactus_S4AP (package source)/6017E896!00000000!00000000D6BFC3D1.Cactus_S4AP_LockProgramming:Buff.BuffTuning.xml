@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<I c="Buff" s="3602891729" i="buff" m="buffs.buff" n="Cactus_S4AP_Trait17:Buff">
+<I c="Buff" s="3602891729" i="buff" m="buffs.buff" n="Cactus_S4AP_LockProgramming:Buff">
   <U n="game_effect_modifier">
     <L n="_game_effect_modifiers">
       <V t="autonomy_modifier">
