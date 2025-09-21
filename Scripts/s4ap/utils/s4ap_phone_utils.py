@@ -70,9 +70,10 @@ def _handle_show_max_skills_phone(event_data: S4CLSimTraitAddedEvent):
             ))
             option += 1
 
-        picker = UiObjectPicker.TunableFactory().default
-        picker.title = LocalizationHelperTuning.get_raw_text('Max Possible Skills')
-        picker.text = LocalizationHelperTuning.get_raw_text('The highest you can level your skills to.')
+        picker = UiObjectPicker.TunableFactory().default(
+            title=LocalizationHelperTuning.get_raw_text('Max Possible Skills'),
+            text=LocalizationHelperTuning.get_raw_text('The highest you can level your skills to.')
+        )
 
         # Add the ObjectPickerRow objects directly
         for row in options:
