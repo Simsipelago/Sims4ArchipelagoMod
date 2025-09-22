@@ -104,16 +104,5 @@ class S4APUtils:
             ok_text,
             callback=_on_response
         )
-        # dialog = UiDialogOkCancel.TunableFactory().default(
-        #     active_sim,
-        #     title=title,
-        #     text=text,
-        #     ok_text=ok_text,
-        #     cancel_text=cancel_text
-        # )
 
-
-
-        # dialog.add_listener(_on_response)
-        # dialog.show_dialog()
         return dialog
