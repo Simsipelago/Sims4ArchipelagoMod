@@ -1,40 +1,9 @@
 import services
-from s4ap.enums import S4APLocalization
 from s4ap.utils.s4ap_localization_utils import S4APLocalizationUtils
 from sims4.resources import Types, get_resource_key
-from ui.ui_dialog import UiDialogOk, UiDialogOkCancel
 from ui.ui_dialog_picker import ObjectPickerRow, ObjectPickerType, UiObjectPicker
 
 class S4APDialog:
-    class OkCancelDialog:
-
-        def __init__(self, sim, title=str(), text=str(), text_ok=S4APLocalization.String.OK, text_cancel=S4APLocalization.String.CANCEL,
-                     has_cancel_button=False, callback=None):
-            self.sim = sim
-            self.title = S4APLocalizationUtils.localize(title)
-            self.text = S4APLocalizationUtils.localize(text)
-            self.text_ok = S4APLocalizationUtils.localize(text_ok)
-            self.text_cancel = S4APLocalizationUtils.localize(text_cancel)
-            self.has_cancel_button = has_cancel_button
-            self.callback = callback
-
-        def show_dialog(self):
-            if self.has_cancel_button:
-                dialog = UiDialogOkCancel.TunableFactory().default(self.sim, text=lambda *args, **kwargs: self.text,
-                                                                   title=lambda *args, **kwargs: self.title,
-                                                                   text_ok=lambda *args, **kwargs: self.text_ok,
-                                                                   text_cancel=lambda *args, **kwargs: self.text_cancel)
-            else:
-                dialog = UiDialogOk.TunableFactory().default(self.sim, text=lambda *args, **kwargs: self.text,
-                                                             title=lambda *args, **kwargs: self.title,
-                                                             text_ok=lambda *args, **kwargs: self.text_ok)
-            if self.callback is not None:
-                dialog.add_listener(self._internal_callback)
-            dialog.show_dialog()
-
-        def _internal_callback(self, dialog):
-            if dialog.accepted:
-                self.callback()
 
     class ObjectPickerDialog:
 
