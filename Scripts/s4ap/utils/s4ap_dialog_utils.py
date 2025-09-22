@@ -1,4 +1,5 @@
 import services
+from s4ap.enums import S4APLocalization
 from s4ap.utils.s4ap_localization_utils import S4APLocalizationUtils
 from sims4.resources import Types, get_resource_key
 from ui.ui_dialog import UiDialogOk, UiDialogOkCancel
@@ -7,7 +8,7 @@ from ui.ui_dialog_picker import ObjectPickerRow, ObjectPickerType, UiObjectPicke
 class S4APDialog:
     class OkCancelDialog:
 
-        def __init__(self, sim, title=str(), text=str(), text_ok=String.OK, text_cancel=String.CANCEL,
+        def __init__(self, sim, title=str(), text=str(), text_ok=S4APLocalization.String.OK, text_cancel=S4APLocalization.String.CANCEL,
                      has_cancel_button=False, callback=None):
             self.sim = sim
             self.title = S4APLocalizationUtils.localize(title)
