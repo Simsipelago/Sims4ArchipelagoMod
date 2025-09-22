@@ -12,14 +12,11 @@ from s4ap.utils.s4ap_generic_utils import S4APUtils
 from s4ap.utils.s4ap_household_utils import S4APHouseholdUtils
 from s4ap.utils.s4ap_skill_utils_class import S4APSkillUtils
 from server_commands.argument_helpers import TunableInstanceParam
-from services import get_instance_manager
 from sims4.localization import LocalizationHelperTuning
 from sims4.resources import Types
-from sims4communitylib.dialogs.choose_object_dialog import CommonChooseObjectDialog
 from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
 from sims4communitylib.events.sim.events.sim_trait_added import S4CLSimTraitAddedEvent
-from ui.ui_dialog_notification import UiDialogNotification
-from ui.ui_dialog_picker import ObjectPickerRow, UiObjectPicker
+from ui.ui_dialog_picker import ObjectPickerRow
 
 logger = S4APLogger.get_log()
 logger.enable()
