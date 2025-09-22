@@ -150,7 +150,7 @@ def _resync_locations(event_data: S4CLSimTraitAddedEvent):
         DialogHelper.create_notification(
             'Locations Resynced',
             ''
-        )
+        ).show_dialog()
 
 @CommonEventRegistry.handle_events(ModInfo.get_identity())
 def _show_aspiration_and_career(event_data: S4CLSimTraitAddedEvent):

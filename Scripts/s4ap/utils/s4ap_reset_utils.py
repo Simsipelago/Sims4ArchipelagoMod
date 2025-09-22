@@ -23,7 +23,7 @@ class ResetSimData:
         DialogHelper.create_notification(
             'Progress Reset Completed',
             "Your Sim's skills have been successfully reset. Please switch to a different sim or leave the lot and revisit to ensure the changes are visible in the UI."
-        )
+        ).show_dialog()
 
     def remove_all_s4ap_traits(self):
         # Get all traits from the base class CommonTraitId

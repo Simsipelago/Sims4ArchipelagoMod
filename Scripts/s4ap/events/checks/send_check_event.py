@@ -39,5 +39,5 @@ def _handle_send_check_event(event_data: SendLocationEvent):
         DialogHelper.create_notification(
             'Saving on check',
             event_data.location_name
-        )
+        ).show_dialog()
         S4APUtils.trigger_autosave()

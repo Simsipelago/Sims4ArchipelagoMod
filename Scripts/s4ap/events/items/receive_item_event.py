@@ -184,4 +184,4 @@ class HandleReceiveItemEvent:
         DialogHelper.create_notification(
             'Received Items',
             '\n'.join(
-                [f'{item} from {player} ({location})' for item, player, location in zip(items, players, locations)]))
+                [f'{item} from {player} ({location})' for item, player, location in zip(items, players, locations)])).show_dialog()

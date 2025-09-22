@@ -25,7 +25,7 @@ class S4APLogger(HasClassLog):
         DialogHelper.create_notification(
             S4APLocalizationUtils.localize(S4APStringId.S4AP_LOADED),
             'Loaded Sims 4 Archipelago Mod (' + ModInfo.get_identity().version + ')'
-        )
+        ).show_dialog()
         # S4APUtils.show_basic_notification(
         #     S4APLocalizationUtils.localize(S4APStringId.S4AP_LOADED),
         #     'Loaded Sims 4 Archipelago Mod (' + ModInfo.get_identity().version + ')'
