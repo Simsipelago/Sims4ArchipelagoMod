@@ -71,6 +71,10 @@ def _handle_show_max_skills_phone(event_data: S4CLSimTraitAddedEvent):
             ))
             option += 1
 
+        # def _on_chosen(_, outcome: CommonChoiceOutcome):
+        #     if outcome == CommonChoiceOutcome.CHOICE_MADE:
+        #         dialog.show(on_chosen=_on_chosen)
+
         # dialog = CommonChooseObjectDialog(
         #     'Max Possible Skills',
         #     'The highest you can level your skills to.',
