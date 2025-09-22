@@ -1,3 +1,4 @@
+from lot51_core.utils.dialog import DialogHelper
 from s4ap.events.Utils.send_location_event import SendLocationEvent
 from s4ap.jsonio.s4ap_json import print_json, read_json
 from s4ap.logging.s4ap_logger import S4APLogger
@@ -35,7 +36,7 @@ def _handle_send_check_event(event_data: SendLocationEvent):
     if event_data.location_name not in json_list["Locations"]:
         json_list["Locations"].append(event_data.location_name)
         print_json(json_list, 'locations_cached.json')
-        S4APUtils.show_basic_notification(
+        DialogHelper.create_notification(
             'Saving on check',
             event_data.location_name
         )

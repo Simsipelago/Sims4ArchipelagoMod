@@ -1,6 +1,7 @@
 import re
 
 from aspirations.aspiration_types import AspriationType
+from lot51_core.utils.dialog import DialogHelper
 from s4ap.enums.S4APLocalization import S4APTraitId, HashLookup, S4APBaseGameSkills
 from s4ap.jsonio.s4ap_json import print_json
 from s4ap.logging.s4ap_logger import S4APLogger
@@ -146,7 +147,7 @@ def _resync_locations(event_data: S4CLSimTraitAddedEvent):
                         locations.append(milestone_display_name)
         print_json(locations, 'locations_cached.json')
         print_json(True, 'sync.json')
-        S4APUtils.show_basic_notification(
+        DialogHelper.create_notification(
             'Locations Resynced',
             ''
         )

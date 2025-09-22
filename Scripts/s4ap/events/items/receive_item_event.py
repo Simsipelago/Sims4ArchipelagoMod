@@ -1,5 +1,6 @@
 import time
 
+from lot51_core.utils.dialog import DialogHelper
 from protocolbuffers import Consts_pb2
 
 from s4ap.enums.S4APLocalization import S4APTraitId
@@ -180,7 +181,7 @@ class HandleReceiveItemEvent:
 
     @staticmethod
     def show_received_notification(items, players, locations):
-        S4APUtils.show_basic_notification(
+        DialogHelper.create_notification(
             'Received Items',
             '\n'.join(
                 [f'{item} from {player} ({location})' for item, player, location in zip(items, players, locations)]))
