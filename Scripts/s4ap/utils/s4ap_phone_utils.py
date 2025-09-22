@@ -7,6 +7,7 @@ from s4ap.logging.s4ap_logger import S4APLogger
 from s4ap.modinfo import ModInfo
 from s4ap.persistance.ap_session_data_store import S4APSessionStoreUtils
 from s4ap.utils.s4ap_career_utils import S4APCareerUtils
+from s4ap.utils.s4ap_dialog_utils import S4APDialog
 from s4ap.utils.s4ap_generic_utils import S4APUtils
 from s4ap.utils.s4ap_household_utils import S4APHouseholdUtils
 from s4ap.utils.s4ap_skill_utils_class import S4APSkillUtils
@@ -71,30 +72,16 @@ def _handle_show_max_skills_phone(event_data: S4CLSimTraitAddedEvent):
             ))
             option += 1
 
-        # def _on_chosen(_, outcome: CommonChoiceOutcome):
-        #     if outcome == CommonChoiceOutcome.CHOICE_MADE:
-        #         dialog.show(on_chosen=_on_chosen)
+        sim = event_data.sim_info.get_sim_instance()
 
-        # dialog = CommonChooseObjectDialog(
-        #     'Max Possible Skills',
-        #     'The highest you can level your skills to.',
-        #     choices=options
-        # )
-        # dialog.show(on_chosen=_on_chosen)
-
-        picker = UiObjectPicker.TunableFactory().default(
-            title=LocalizationHelperTuning.get_raw_text('Max Possible Skills'),
-            text=LocalizationHelperTuning.get_raw_text('The highest you can level your skills to.')
+        picker = S4APDialog.ObjectPickerDialog(
+            sim=sim,
+            title='Max Possible Skills',
+            text='The highest you can level your skills to.',
+            picker_rows=options
         )
 
-        # Add the ObjectPickerRow objects directly
-        for row in options:
-            picker.add_row(row.option_id, row.name, icon_resource_key=row.icon)
-
-        def _on_chosen(dialog, option_id):
-            pass  # no action needed
-
-        picker.show(_on_chosen)
+        picker.show_dialog()
 
 @CommonEventRegistry.handle_events(ModInfo.get_identity())
 def _resync_locations(event_data: S4CLSimTraitAddedEvent):
