@@ -194,20 +194,13 @@ def _show_aspiration_and_career(event_data: S4CLSimTraitAddedEvent):
             (3, LocalizationHelperTuning.get_raw_text(display), 5906963266871873908)
         ]
 
-        # Create the picker
-        picker = UiObjectPicker.TunableFactory().default
+        sim = event_data.sim_info.get_sim_instance()
 
-        # Set title and description
-        picker.title = LocalizationHelperTuning.get_raw_text('Your Yaml Options Plus Skill Multiplier')
-        picker.text = LocalizationHelperTuning.get_raw_text('Options + Skill Multiplier')
+        picker = S4APDialog.ObjectPickerDialog(
+            sim=sim,
+            title='Your Yaml Options Plus Skill Multiplier',
+            text='Options + Skill Multiplier',
+            picker_rows=options
+        )
 
-        # Add the rows
-        for opt_id, name, icon_id in options:
-            icon = get_instance_manager(Types.PNG).get(icon_id)
-            picker.add_row(opt_id, name, icon_resource_key=icon)
-
-        # Show dialog
-        def _on_chosen(dialog, option_id):
-            pass # player chose something, no need to do anything about it
-
-        picker.show(_on_chosen)
+        picker.show_dialog()
