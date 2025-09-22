@@ -14,6 +14,7 @@ from server_commands.argument_helpers import TunableInstanceParam
 from services import get_instance_manager
 from sims4.localization import LocalizationHelperTuning
 from sims4.resources import Types
+from sims4communitylib.dialogs.choose_object_dialog import CommonChooseObjectDialog
 from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
 from sims4communitylib.events.sim.events.sim_trait_added import S4CLSimTraitAddedEvent
 from ui.ui_dialog_notification import UiDialogNotification
@@ -69,6 +70,13 @@ def _handle_show_max_skills_phone(event_data: S4CLSimTraitAddedEvent):
                 icon=item_info[1]
             ))
             option += 1
+
+        # dialog = CommonChooseObjectDialog(
+        #     'Max Possible Skills',
+        #     'The highest you can level your skills to.',
+        #     choices=options
+        # )
+        # dialog.show(on_chosen=_on_chosen)
 
         picker = UiObjectPicker.TunableFactory().default(
             title=LocalizationHelperTuning.get_raw_text('Max Possible Skills'),
