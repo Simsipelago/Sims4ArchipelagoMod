@@ -21,7 +21,7 @@ class S4APSessionStoreUtils:
     def __init__(self) -> None:
         self._data_manager = S4APDataManagerUtils()
 
-    def check_session_values(self, host_name: str, port: str, seed_name: str, player: str) -> bool:
+    def check_session_values(self, host_name: str, port: str, seed_name: str, player: str, slot: int) -> bool:
         """ Check session store to make sure it's the same settings as before and send a warning otherwise
             :returns True, if settings don't exist or equal those that were used before """
         if self._get_value(S4APSettings.SEED_NAME) is not None:  # Check if Seed was previously saved
@@ -29,7 +29,8 @@ class S4APSessionStoreUtils:
             if self._get_value(S4APSettings.SEED_NAME) != seed_name or \
                     self._get_value(S4APSettings.HOST_NAME) != host_name or \
                     self._get_value(S4APSettings.PORT_NUMBER) != port or \
-                    self._get_value(S4APSettings.PLAYER) != player:  # Settings don't match
+                    self._get_value(S4APSettings.PLAYER) != player or \
+                    self._get_value(S4APSettings.SLOT):  # Settings don't match
                 logger.warn("AP session data mismatch")
 
                 def _cancel_chosen(_: UiDialogOkCancel):
@@ -43,7 +44,7 @@ class S4APSessionStoreUtils:
                     reset.remove_all_s4ap_traits()
                     reset.show_reset_notif()
                     S4APDataManagerUtils.get().reset()
-                    self.save_seed_values(host_name, port, seed_name, player)
+                    self.save_seed_values(host_name, port, seed_name, player, slot)
                     print_json({}, 'items.json')
                     print_json(True, 'sync.json')
                     print_json({}, 'locations_cached.json')
@@ -123,12 +124,13 @@ class S4APSessionStoreUtils:
             self.set_index_value(index)
             return False
 
-    def save_seed_values(self, host_name: str, port: str, seed_name: str, player: str):
+    def save_seed_values(self, host_name: str, port: str, seed_name: str, player: str, slot: int):
         """ Overwrite Session specific values. """
         self._set_value(S4APSettings.SEED_NAME, seed_name)
         self._set_value(S4APSettings.HOST_NAME, host_name)
         self._set_value(S4APSettings.PORT_NUMBER, port)
         self._set_value(S4APSettings.PLAYER, player)
+        self._set_value(S4APSettings.SLOT, slot)
         S4APUtils.trigger_autosave()
         logger.debug("Session data saved successfully")
 
@@ -168,6 +170,9 @@ class S4APSessionStoreUtils:
 
     def get_career(self) -> set:
         return self._get_value(S4APSettings.CAREER)
+
+    def get_slot(self) -> int:
+        return self._get_value(S4APSettings.SLOT)
 
     def _get_value(self, key: str) -> Any:
         generic_settings_data_store: S4APGenericDataStore = self._data_manager.get_generic_settings_data()
