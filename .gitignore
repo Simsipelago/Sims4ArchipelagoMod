@@ -2,13 +2,13 @@
 .idea
 
 # EA Scripts
-EA
+EA/*
+!EA/README.md
 
 # Libraries
-Libraries/**/*
+Libraries/*/
 
 # Additional non mod related items
-Scripts/compile
 Scripts/rel
 Scripts/randomizer
 Scripts/s4cl_sample_mod_scripts
@@ -33,7 +33,6 @@ Utilities/*.pyc
 **/*.pyc
 */*.pyc
 */*.pyo
-custom_scripts_for_decompile
 custom_scripts_for_decompile/*.py
 custom_scripts_for_decompile/*.pyc
 custom_scripts_for_decompile/*.pyo
@@ -52,10 +51,7 @@ custom_scripts_for_decompile/**/*.py
 **/*.lnk
 **/*.xml___jb_old___
 Tunings/Temp
-Utilities
-decompile_scripts.py
 settings.py
 Pipfile
 .DS_Store
 # Project exclude paths
-/Release/

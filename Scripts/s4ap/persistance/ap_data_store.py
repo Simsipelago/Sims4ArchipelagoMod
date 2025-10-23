@@ -16,6 +16,7 @@ class S4APSettings:
     SENDERS = 'senders'  # The players who sent the item
     GOAL = 'goal' # the goal of the game
     CAREER = 'career' # the chosen career for logic
+    SLOT = 'slot' # From RoomInfo and if set checked to ensure bleeding doesn't happen (the slot number of the slot)
 
 class S4APGenericDataStore(CommonDataStore):
     """ Manager of generic stuff. """
@@ -48,4 +49,5 @@ class S4APGenericDataStore(CommonDataStore):
             S4APSettings.SENDERS: None,
             S4APSettings.GOAL: None,
             S4APSettings.CAREER: None,
+            S4APSettings.SLOT: None,
         }.copy()
