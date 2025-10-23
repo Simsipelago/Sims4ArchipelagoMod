@@ -31,7 +31,7 @@ class S4APSessionStoreUtils:
                     self._get_value(S4APSettings.HOST_NAME) != host_name or \
                     self._get_value(S4APSettings.PORT_NUMBER) != port or \
                     self._get_value(S4APSettings.PLAYER) != player or \
-                    self._get_value(S4APSettings.SLOT):  # Settings don't match
+                    self._get_value(S4APSettings.SLOT) != slot:  # Settings don't match
                 logger.warn("AP session data mismatch")
 
                 def _cancel_chosen(_: UiDialogOkCancel):
