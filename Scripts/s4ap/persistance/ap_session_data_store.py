@@ -164,9 +164,15 @@ class S4APSessionStoreUtils:
     def get_slot(self) -> int:
         return self._get_value(S4APSettings.SLOT)
 
-    def _get_value(self, key: str) -> Any:
-        generic_settings_data_store: S4APGenericDataStore = self._data_manager.get_generic_settings_data()
-        return generic_settings_data_store.get_value_by_key(key)
+    def _get_value(self, key: str, default=None) -> Any:
+        try:
+            generic_settings_data_store: S4APGenericDataStore = self._data_manager.get_generic_settings_data()
+            value = generic_settings_data_store.get_value_by_key(key)
+            return value if value is not None else default
+        except Exception as ex:
+            logger.error(f"Failed to read key '{key}' from session store: {ex}")
+            return default
+
 
     def _set_value(self, key: str, value: Any):
         generic_settings_data_store: S4APGenericDataStore = self._data_manager.get_generic_settings_data()
