@@ -80,12 +80,11 @@ def parse_message(data):
         data_store.save_goal_and_career(goal, career)
         if data_store.check_session_values(host_name=host, port=port, seed_name=seed_name,
                                            player=slot_name, slot=slot):
+            cancel = False  # if values match then don't cancel
+        else:
             # if settings don't match then cancels
             cancel = True
             print_json({})
-
-        else:
-            cancel = False  # if values match then don't cancel
     elif not cancel:
         if cmd == ap_cmds.RECEIVEDITEMS:
             logger.debug("cmd RECEIVEDITEMS received")

@@ -36,7 +36,7 @@ class S4APSessionStoreUtils:
 
                 def _cancel_chosen(_: UiDialogOkCancel):
                     # If cancel is chosen, stop parsing data until connection_status.json changes
-                    return True
+                    return False
 
                 def _ok_chosen(_: UiDialogOkCancel):
                     logger.debug("Ok Chosen, Saving data...")
@@ -50,7 +50,7 @@ class S4APSessionStoreUtils:
                     print_json(True, 'sync.json')
                     print_json({}, 'locations_cached.json')
                     CommonEventRegistry.get().dispatch(AllowReceiveItems(True))
-                    return False  # if okay is chosen then save seed values and resync items
+                    return True  # if okay is chosen then save seed values and resync items
 
                 # Prompt the user to either overwrite the previous session_data, or stop parsing the data packet and wait for the connection_status.json to update
                 dialog = CommonOkCancelDialog(
@@ -60,10 +60,10 @@ class S4APSessionStoreUtils:
                     ok_text_identifier='Overwrite'
                 )
                 dialog.show(on_ok_selected=_ok_chosen, on_cancel_selected=_cancel_chosen)
-                return True
+                return False
             else:  # Settings exist and match
                 logger.debug("AP session data matched")
-                return False
+                return True
         else:
             logger.debug("Storing initial AP session data")
 
@@ -78,10 +78,10 @@ class S4APSessionStoreUtils:
                 print_json({}, 'locations_cached.json')
                 CommonEventRegistry.get().dispatch(AllowReceiveItems(True))
                 self.save_seed_values(host_name, port, seed_name, player)
-                return False
+                return True
 
             def _cancel_chosen(_: UiDialogOkCancel):
-                return True
+                return False
 
             # Prompt the user to either overwrite the previous session_data, or stop parsing the data packet and wait for the connection_status.json to update
             dialog = CommonOkCancelDialog(
@@ -91,7 +91,7 @@ class S4APSessionStoreUtils:
                 ok_text_identifier='Connect'
             )
             dialog.show(on_ok_selected=_ok_chosen, on_cancel_selected=_cancel_chosen)
-            return True
+            return False
 
     def check_index_value(self, index: str) -> bool:
         """Checks The Index from ReceivedItems to make sure it matches
