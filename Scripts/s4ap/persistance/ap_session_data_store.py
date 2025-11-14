@@ -60,6 +60,11 @@ class S4APSessionStoreUtils:
                     reset.show_reset_notif()
                     S4APDataManagerUtils.get().reset()
                     self.save_seed_values(host_name, port, seed_name, player, slot)
+                    logger.debug(f"Saved values: host={self._get_value(S4APSettings.HOST_NAME)}, "
+                                 f"port={self._get_value(S4APSettings.PORT_NUMBER)}, "
+                                 f"seed={self._get_value(S4APSettings.SEED_NAME)}, "
+                                 f"player={self._get_value(S4APSettings.PLAYER)}, "
+                                 f"slot={self._get_value(S4APSettings.SLOT)}")
                     print_json({}, 'items.json')
                     print_json(True, 'sync.json')
                     print_json({}, 'locations_cached.json')
