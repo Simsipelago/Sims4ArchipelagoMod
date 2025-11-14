@@ -24,11 +24,13 @@ class S4APSessionStoreUtils:
 
     def check_session_values(self, host_name: str, port: str, seed_name: str, player: str, slot: int) -> bool:
         """ Check session store to make sure it's the same settings as before and send a warning otherwise
-            :returns True, if settings don't exist or equal those that were used before """
-        if self._get_value(S4APSettings.SEED_NAME) is not None:  # Check if Seed was previously saved
+            :returns False, if settings don't exist or equal those that were used before """
+
+        stored_seed = self._get_value(S4APSettings.SEED_NAME)
+
+        if stored_seed is not None:  # Check if Seed was previously saved
             logger.debug("Seed found")
 
-            stored_seed = self._get_value(S4APSettings.SEED_NAME)
             stored_host_name = self._get_value(S4APSettings.HOST_NAME)
             stored_port = self._get_value(S4APSettings.PORT_NUMBER)
             stored_player = self._get_value(S4APSettings.PLAYER)
