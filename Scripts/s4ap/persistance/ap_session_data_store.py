@@ -34,6 +34,11 @@ class S4APSessionStoreUtils:
             stored_player = self._get_value(S4APSettings.PLAYER)
             stored_slot = self._get_value(S4APSettings.SLOT)
 
+            logger.debug(f"Stored seed: {stored_seed}, host: {stored_host_name}, port: {stored_port}, "
+                         f"player: {stored_player}, slot: {stored_slot}")
+            logger.debug(f"Incoming seed: {seed_name}, host: {host_name}, port: {port}, "
+                         f"player: {player}, slot: {slot}")
+
             if stored_seed != seed_name or \
                     stored_host_name != host_name or \
                     stored_port != port or \
