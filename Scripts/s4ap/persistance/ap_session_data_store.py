@@ -27,11 +27,18 @@ class S4APSessionStoreUtils:
             :returns True, if settings don't exist or equal those that were used before """
         if self._get_value(S4APSettings.SEED_NAME) is not None:  # Check if Seed was previously saved
             logger.debug("Seed found")
-            if self._get_value(S4APSettings.SEED_NAME) != seed_name or \
-                    self._get_value(S4APSettings.HOST_NAME) != host_name or \
-                    self._get_value(S4APSettings.PORT_NUMBER) != port or \
-                    self._get_value(S4APSettings.PLAYER) != player or \
-                    self._get_value(S4APSettings.SLOT) != slot:  # Settings don't match
+
+            stored_seed = self._get_value(S4APSettings.SEED_NAME)
+            stored_host_name = self._get_value(S4APSettings.HOST_NAME)
+            stored_port = self._get_value(S4APSettings.PORT_NUMBER)
+            stored_player = self._get_value(S4APSettings.PLAYER)
+            stored_slot = self._get_value(S4APSettings.SLOT)
+
+            if stored_seed != seed_name or \
+                    stored_host_name != host_name or \
+                    stored_port != port or \
+                    stored_player != player or \
+                    stored_slot != slot:  # Settings don't match
                 logger.warn("AP session data mismatch")
 
                 def _cancel_chosen(_: UiDialogOkCancel):
