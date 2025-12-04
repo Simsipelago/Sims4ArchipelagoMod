@@ -49,5 +49,5 @@ class S4APGenericDataStore(CommonDataStore):
             S4APSettings.SENDERS: None,
             S4APSettings.GOAL: None,
             S4APSettings.CAREER: None,
-            S4APSettings.SLOT: None,
+            S4APSettings.SLOT: 1,
         }.copy()
