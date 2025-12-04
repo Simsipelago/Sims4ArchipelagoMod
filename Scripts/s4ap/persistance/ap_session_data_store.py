@@ -30,7 +30,7 @@ class S4APSessionStoreUtils:
                     self._get_value(S4APSettings.HOST_NAME) != host_name or \
                     self._get_value(S4APSettings.PORT_NUMBER) != port or \
                     self._get_value(S4APSettings.PLAYER) != player or \
-                    self._get_value(S4APSettings.SLOT):  # Settings don't match
+                    self._get_value(S4APSettings.SLOT) != slot:  # Settings don't match
                 logger.warn("AP session data mismatch")
 
                 def _cancel_chosen(_: UiDialogOkCancel):
@@ -82,7 +82,7 @@ class S4APSessionStoreUtils:
                 print_json(True, 'sync.json')
                 print_json({}, 'locations_cached.json')
                 CommonEventRegistry.get().dispatch(AllowReceiveItems(True))
-                self.save_seed_values(host_name, port, seed_name, player)
+                self.save_seed_values(host_name, port, seed_name, player, slot)
                 return False
 
             def _cancel_chosen(_: UiDialogOkCancel):
