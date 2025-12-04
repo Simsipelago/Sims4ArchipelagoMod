@@ -133,7 +133,7 @@ class S4APSessionStoreUtils:
             self.set_index_value(index)
             return False
 
-    def save_seed_values(self, host_name: str, port: str, seed_name: str, player: str, slot: int):
+    def save_seed_values(self, host_name: str, port: int, seed_name: str, player: str, slot: int):
         """ Overwrite Session specific values. """
         self._set_value(S4APSettings.SEED_NAME, seed_name)
         self._set_value(S4APSettings.HOST_NAME, host_name)
