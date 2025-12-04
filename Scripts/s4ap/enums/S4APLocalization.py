@@ -1,4 +1,3 @@
-import enum
 from enum import Int
 
 class S4APTraitId(Int):
