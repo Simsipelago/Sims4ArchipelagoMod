@@ -96,7 +96,7 @@ class S4APSessionStoreUtils:
                 print_json(True, 'sync.json')
                 print_json({}, 'locations_cached.json')
                 CommonEventRegistry.get().dispatch(AllowReceiveItems(True))
-                self.save_seed_values(host_name, port, seed_name, player)
+                self.save_seed_values(host_name, port, seed_name, player, slot)
                 return True
 
             def _cancel_chosen(_: UiDialogOkCancel):
