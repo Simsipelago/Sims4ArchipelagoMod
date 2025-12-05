@@ -1,4 +1,4 @@
-from typing import Any, List
+from typing import Any
 
 import services
 from s4ap.jsonio.s4ap_json import print_json
@@ -43,15 +43,18 @@ class S4APSessionStoreUtils:
             logger.debug(f"Incoming seed: {seed_name}, host: {host_name}, port: {port}, "
                          f"player: {player}, slot: {slot}")
 
-            if isinstance(slot, List):
+            if isinstance(slot, list):
                 logger.warn("The slot coming in from the connection_status.json is a list. This means your APWorld is out of date. Please update.")
                 return False
 
-            if isinstance(stored_slot, List):
+            if isinstance(stored_slot, list):
                 logger.error("The stored seed in the slot's json file is a List. This will cause an error. Cancelling slot check. Please check to make sure that your APWorld is of version 1.7.4 or greater.")
                 logger.info("In order to fix this, you will have to open the correct json file for this slot and edit it manually. PLEASE MAKE SURE YOU UPDATE YOUR APWORLD NONETHELESS!")
-                slot_id = services.get_persistence_service().get_save_slot_proto_buff().slot_id
-                logger.info(f"Correct json file for this slot: s4ap_main_guid_{slot_id}.json")
+                try:
+                    slot_id = services.get_persistence_service().get_save_slot_proto_buff().slot_id
+                    logger.info(f"Correct json file for this slot: s4ap_main_guid_{slot_id}.json")
+                except Exception as ex:
+                    logger.error("Failed to retrieve save slot ID for this slot.", exception=ex)
                 return False
 
             if (str(stored_seed), str(stored_host_name), int(stored_port), str(stored_player), int(stored_slot)) != \
