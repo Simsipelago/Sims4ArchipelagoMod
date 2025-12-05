@@ -188,7 +188,11 @@ class S4APSessionStoreUtils:
             generic_settings_data_store: S4APGenericDataStore = self._data_manager.get_generic_settings_data()
             value = generic_settings_data_store.get_value_by_key(key)
             return value if value is not None else default
+        except KeyError:
+            # Key not present in store
+            return default
         except Exception as ex:
+            # Catch any other errors (corrupted store, etc.) to prevent crashes
             logger.error(f"Failed to read key '{key}' from session store: {ex}")
             return default
 
