@@ -22,21 +22,33 @@ class S4APSessionStoreUtils:
     def __init__(self) -> None:
         self._data_manager = S4APDataManagerUtils()
 
-    def check_session_values(self, host_name: str, port: str, seed_name: str, player: str, slot: int) -> bool:
+    def check_session_values(self, host_name: str, port: int, seed_name: str, player: str, slot: int) -> bool:
         """ Check session store to make sure it's the same settings as before and send a warning otherwise
-            :returns True, if settings don't exist or equal those that were used before """
-        if self._get_value(S4APSettings.SEED_NAME) is not None:  # Check if Seed was previously saved
+            :returns True, if stored settings exist and all values match the incoming parameters; False otherwise. """
+
+        stored_seed = self._get_value(S4APSettings.SEED_NAME)
+
+        if stored_seed is not None:  # Check if Seed was previously saved
             logger.debug("Seed found")
-            if self._get_value(S4APSettings.SEED_NAME) != seed_name or \
-                    self._get_value(S4APSettings.HOST_NAME) != host_name or \
-                    self._get_value(S4APSettings.PORT_NUMBER) != port or \
-                    self._get_value(S4APSettings.PLAYER) != player or \
-                    self._get_value(S4APSettings.SLOT) != slot:  # Settings don't match
+
+            stored_host_name = self._get_value(S4APSettings.HOST_NAME)
+            stored_port = self._get_value(S4APSettings.PORT_NUMBER, default=0)
+            stored_player = self._get_value(S4APSettings.PLAYER)
+            stored_slot = self._get_value(S4APSettings.SLOT, default=0)
+
+            logger.debug(f"Stored seed: {stored_seed}, host: {stored_host_name}, port: {stored_port}, "
+                         f"player: {stored_player}, slot: {stored_slot}")
+            logger.debug(f"Incoming seed: {seed_name}, host: {host_name}, port: {port}, "
+                         f"player: {player}, slot: {slot}")
+
+            if (str(stored_seed), str(stored_host_name), int(stored_port), str(stored_player), int(stored_slot)) != \
+                    (seed_name, host_name, port, player, slot):
+                # Settings don't match
                 logger.warn("AP session data mismatch")
 
                 def _cancel_chosen(_: UiDialogOkCancel):
                     # If cancel is chosen, stop parsing data until connection_status.json changes
-                    return True
+                    return False
 
                 def _ok_chosen(_: UiDialogOkCancel):
                     logger.debug("Ok Chosen, Saving data...")
@@ -46,11 +58,16 @@ class S4APSessionStoreUtils:
                     reset.show_reset_notif()
                     S4APDataManagerUtils.get().reset()
                     self.save_seed_values(host_name, port, seed_name, player, slot)
+                    logger.debug(f"Saved values: host={self._get_value(S4APSettings.HOST_NAME)}, "
+                                 f"port={self._get_value(S4APSettings.PORT_NUMBER)}, "
+                                 f"seed={self._get_value(S4APSettings.SEED_NAME)}, "
+                                 f"player={self._get_value(S4APSettings.PLAYER)}, "
+                                 f"slot={self._get_value(S4APSettings.SLOT)}")
                     print_json({}, 'items.json')
                     print_json(True, 'sync.json')
                     print_json({}, 'locations_cached.json')
                     CommonEventRegistry.get().dispatch(AllowReceiveItems(True))
-                    return False  # if okay is chosen then save seed values and resync items
+                    return True  # if okay is chosen then save seed values and resync items
 
                 # Prompt the user to either overwrite the previous session_data, or stop parsing the data packet and wait for the connection_status.json to update
                 dialog = CommonOkCancelDialog(
@@ -60,10 +77,10 @@ class S4APSessionStoreUtils:
                     ok_text_identifier='Overwrite'
                 )
                 dialog.show(on_ok_selected=_ok_chosen, on_cancel_selected=_cancel_chosen)
-                return True
+                return False
             else:  # Settings exist and match
                 logger.debug("AP session data matched")
-                return False
+                return True
         else:
             logger.debug("Storing initial AP session data")
 
@@ -77,11 +94,11 @@ class S4APSessionStoreUtils:
                 print_json(True, 'sync.json')
                 print_json({}, 'locations_cached.json')
                 CommonEventRegistry.get().dispatch(AllowReceiveItems(True))
-                self.save_seed_values(host_name, port, seed_name, player)
-                return False
+                self.save_seed_values(host_name, port, seed_name, player, slot)
+                return True
 
             def _cancel_chosen(_: UiDialogOkCancel):
-                return True
+                return False
 
             # Prompt the user to either overwrite the previous session_data, or stop parsing the data packet and wait for the connection_status.json to update
             dialog = CommonOkCancelDialog(
@@ -91,7 +108,7 @@ class S4APSessionStoreUtils:
                 ok_text_identifier='Connect'
             )
             dialog.show(on_ok_selected=_ok_chosen, on_cancel_selected=_cancel_chosen)
-            return True
+            return False
 
     def check_index_value(self, index: str) -> bool:
         """Checks The Index from ReceivedItems to make sure it matches
@@ -114,7 +131,7 @@ class S4APSessionStoreUtils:
             self.set_index_value(index)
             return False
 
-    def save_seed_values(self, host_name: str, port: str, seed_name: str, player: str, slot: int):
+    def save_seed_values(self, host_name: str, port: int, seed_name: str, player: str, slot: int):
         """ Overwrite Session specific values. """
         self._set_value(S4APSettings.SEED_NAME, seed_name)
         self._set_value(S4APSettings.HOST_NAME, host_name)
@@ -164,9 +181,19 @@ class S4APSessionStoreUtils:
     def get_slot(self) -> int:
         return self._get_value(S4APSettings.SLOT)
 
-    def _get_value(self, key: str) -> Any:
-        generic_settings_data_store: S4APGenericDataStore = self._data_manager.get_generic_settings_data()
-        return generic_settings_data_store.get_value_by_key(key)
+    def _get_value(self, key: str, default=None) -> Any:
+        try:
+            generic_settings_data_store: S4APGenericDataStore = self._data_manager.get_generic_settings_data()
+            value = generic_settings_data_store.get_value_by_key(key)
+            return value if value is not None else default
+        except KeyError:
+            # Key not present in store
+            return default
+        except Exception as ex:
+            # Catch any other errors (corrupted store, etc.) to prevent crashes
+            logger.error(f"Failed to read key '{key}' from session store: {ex}")
+            return default
+
 
     def _set_value(self, key: str, value: Any):
         generic_settings_data_store: S4APGenericDataStore = self._data_manager.get_generic_settings_data()
