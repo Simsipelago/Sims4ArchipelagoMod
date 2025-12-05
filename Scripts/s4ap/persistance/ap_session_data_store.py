@@ -32,9 +32,9 @@ class S4APSessionStoreUtils:
             logger.debug("Seed found")
 
             stored_host_name = self._get_value(S4APSettings.HOST_NAME)
-            stored_port = self._get_value(S4APSettings.PORT_NUMBER, default=0)
+            stored_port = self._get_value(S4APSettings.PORT_NUMBER, default=38281)
             stored_player = self._get_value(S4APSettings.PLAYER)
-            stored_slot = self._get_value(S4APSettings.SLOT, default=0)
+            stored_slot = self._get_value(S4APSettings.SLOT, default=1)
 
             logger.debug(f"Stored seed: {stored_seed}, host: {stored_host_name}, port: {stored_port}, "
                          f"player: {stored_player}, slot: {stored_slot}")
