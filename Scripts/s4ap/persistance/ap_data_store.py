@@ -6,17 +6,17 @@ from sims4communitylib.persistence.data_stores.common_data_store import CommonDa
 class S4APSettings:
     MOD_VERSION = 'mod_version'  # Fixed at time of first start
     SEED_NAME = 'seed_name'  # From RoomInfo and if set checked against it to prevent booting of multiple seeds per save
-    HOST_NAME: str = 'host'  # From Login and if set checked against it to prevent booting of multiple seeds per save
-    PORT_NUMBER: int = 'port'  # From Login and if set checked against it to prevent booting of multiple seeds per save
-    PLAYER: str = 'player'  # From RoomInfo and if set checked against it to prevent booting of multiple seeds per save
+    HOST_NAME = 'host'  # From Login and if set checked against it to prevent booting of multiple seeds per save
+    PORT_NUMBER = 'port'  # From Login and if set checked against it to prevent booting of multiple seeds per save
+    PLAYER = 'player'  # From RoomInfo and if set checked against it to prevent booting of multiple seeds per save
     INDEX = 'index'  # Index received from ReceivedItems
-    ITEMS: List[str] = 'items'  # Items received from ReceivedItems
-    ITEM_IDS: List[int] = 'item_ids'  # Item ids received from ReceivedItems
-    LOCATIONS: List[str] = 'locations'  # The Locations for the received items in ReceivedItems
-    SENDERS: List[str] = 'senders'  # The players who sent the item
-    GOAL: str = 'goal' # the goal of the game
-    CAREER: str = 'career' # the chosen career for logic
-    SLOT: int = 'slot' # From RoomInfo and if set checked to ensure bleeding doesn't happen (the slot number of the slot)
+    ITEMS = 'items'  # Items received from ReceivedItems
+    ITEM_IDS = 'item_ids'  # Item ids received from ReceivedItems
+    LOCATIONS = 'locations'  # The Locations for the received items in ReceivedItems
+    SENDERS = 'senders'  # The players who sent the item
+    GOAL = 'goal' # the goal of the game
+    CAREER = 'career' # the chosen career for logic
+    SLOT = 'slot' # From RoomInfo and if set checked to ensure bleeding doesn't happen (the slot number of the slot)
 
 class S4APGenericDataStore(CommonDataStore):
     """ Manager of generic stuff. """
