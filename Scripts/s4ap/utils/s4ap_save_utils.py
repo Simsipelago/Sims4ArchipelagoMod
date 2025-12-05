@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, Union
 
 import services
 
@@ -13,10 +13,13 @@ class S4APSaveUtils:
         :return: The current save slot.
         :return: Any
         """
-        return services.get_persistence_service().get_save_slot_proto_buff()
+        persistence_service = services.get_persistence_service()
+        if persistence_service is None:
+            return None
+        return persistence_service.get_save_slot_proto_buff()
 
     @staticmethod
-    def get_save_slot_id() -> int:
+    def get_save_slot_id() -> Union[int, None]:
         """get_save_slot_id()
 
         Retrieve the identifier for the current save slot.
@@ -24,4 +27,7 @@ class S4APSaveUtils:
         :return: The identifier for the current save slot.
         :return: int
         """
-        return S4APSaveUtils.get_save_slot().slot_id
+        save_slot = S4APSaveUtils.get_save_slot()
+        if save_slot is None:
+            return None
+        return save_slot.slot_id
