@@ -41,11 +41,9 @@ class S4APSessionStoreUtils:
             logger.debug(f"Incoming seed: {seed_name}, host: {host_name}, port: {port}, "
                          f"player: {player}, slot: {slot}")
 
-            if str(stored_seed) != seed_name or \
-                    str(stored_host_name) != host_name or \
-                    int(stored_port) != port or \
-                    str(stored_player) != player or \
-                    int(stored_slot) != slot:  # Settings don't match
+            if (str(stored_seed), str(stored_host_name), int(stored_port), str(stored_player), int(stored_slot)) != \
+                    (seed_name, host_name, port, player, slot):
+                # Settings don't match
                 logger.warn("AP session data mismatch")
 
                 def _cancel_chosen(_: UiDialogOkCancel):
