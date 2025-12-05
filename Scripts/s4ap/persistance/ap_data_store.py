@@ -6,8 +6,8 @@ from sims4communitylib.persistence.data_stores.common_data_store import CommonDa
 class S4APSettings:
     MOD_VERSION = 'mod_version'  # Fixed at time of first start
     SEED_NAME = 'seed_name'  # From RoomInfo and if set checked against it to prevent booting of multiple seeds per save
-    HOST_NAME = 'host'  # From Login and if set checked against it to prevent booting of multiple seeds per save
-    PORT_NUMBER = 'port'  # From Login and if set checked against it to prevent booting of multiple seeds per save
+    HOST_NAME: str = 'host'  # From Login and if set checked against it to prevent booting of multiple seeds per save
+    PORT_NUMBER: int = 'port'  # From Login and if set checked against it to prevent booting of multiple seeds per save
     PLAYER = 'player'  # From RoomInfo and if set checked against it to prevent booting of multiple seeds per save
     INDEX = 'index'  # Index received from ReceivedItems
     ITEMS = 'items'  # Items received from ReceivedItems
@@ -16,7 +16,7 @@ class S4APSettings:
     SENDERS = 'senders'  # The players who sent the item
     GOAL = 'goal' # the goal of the game
     CAREER = 'career' # the chosen career for logic
-    SLOT = 'slot' # From RoomInfo and if set checked to ensure bleeding doesn't happen (the slot number of the slot)
+    SLOT: int = 'slot' # From RoomInfo and if set checked to ensure bleeding doesn't happen (the slot number of the slot)
 
 class S4APGenericDataStore(CommonDataStore):
     """ Manager of generic stuff. """
