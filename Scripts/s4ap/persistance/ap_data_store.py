@@ -39,8 +39,8 @@ class S4APGenericDataStore(CommonDataStore):
         return {
             S4APSettings.MOD_VERSION: self._version,
             S4APSettings.SEED_NAME: None,
-            S4APSettings.HOST_NAME: None,
-            S4APSettings.PORT_NUMBER: 0,
+            S4APSettings.HOST_NAME: "archipelago.gg",
+            S4APSettings.PORT_NUMBER: 38281,
             S4APSettings.PLAYER: None,
             S4APSettings.INDEX: None,
             S4APSettings.ITEMS: None,
