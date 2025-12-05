@@ -35,7 +35,7 @@ class S4APTraitUtils:
 
         try:
             trait_id = int(trait)
-        except Exception:
+        except (TypeError, ValueError):
             return None
 
         return S4APUtils.load_instance(Types.TRAIT, trait_id)

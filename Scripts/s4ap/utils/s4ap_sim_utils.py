@@ -10,7 +10,7 @@ class S4APSimUtils:
 
     @staticmethod
     def get_sim_first_name(sim_info: SimInfo):
-        if sim_info is None or not hasattr('first_name'):
+        if sim_info is None or not hasattr(sim_info, 'first_name'):
             return ''
         return getattr(sim_info, 'first_name')
 

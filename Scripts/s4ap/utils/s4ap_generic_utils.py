@@ -38,7 +38,7 @@ class S4APUtils:
             return False
 
     @staticmethod
-    def load_instance(self, instance_type: Types, instance_id: int):
+    def load_instance(instance_type: Types, instance_id: int):
         """Load a resource instance (Trait, Buff, Mood, etc.) directly from the game."""
         instance_manager = services.get_instance_manager(instance_type)
         if instance_manager is None:
