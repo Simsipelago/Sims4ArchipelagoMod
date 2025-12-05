@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, List
 from s4ap.jsonio.s4ap_json import print_json
 from s4ap.events.Utils.allow_read_items import AllowReceiveItems
 from s4ap.logging.s4ap_logger import S4APLogger
@@ -40,6 +40,14 @@ class S4APSessionStoreUtils:
                          f"player: {stored_player}, slot: {stored_slot}")
             logger.debug(f"Incoming seed: {seed_name}, host: {host_name}, port: {port}, "
                          f"player: {player}, slot: {slot}")
+
+            if isinstance(slot, List):
+                logger.warn("The slot coming in from the connection_status.json is a list. This means your APWorld is out of date. Please update.")
+                return False
+
+            if isinstance(stored_slot, List):
+                logger.error("The stored seed in the slot's json file is a List. This will cause an error. Cancelling slot check. Please check to make sure that your APWorld is of version 1.7.4 or greater.")
+                return False
 
             if (str(stored_seed), str(stored_host_name), int(stored_port), str(stored_player), int(stored_slot)) != \
                     (seed_name, host_name, port, player, slot):
