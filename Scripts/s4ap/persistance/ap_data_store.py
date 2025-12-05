@@ -1,4 +1,4 @@
-from typing import Any, Dict, List
+from typing import Any, Dict
 
 from sims4communitylib.persistence.data_stores.common_data_store import CommonDataStore
 
