@@ -47,6 +47,9 @@ class S4APSessionStoreUtils:
 
             if isinstance(stored_slot, List):
                 logger.error("The stored seed in the slot's json file is a List. This will cause an error. Cancelling slot check. Please check to make sure that your APWorld is of version 1.7.4 or greater.")
+                logger.info("In order to fix this, you will have to open the correct json file for this slot and edit it manually. PLEASE MAKE SURE YOU UPDATE YOUR APWORLD NONETHELESS!")
+                save_guid = 0
+                logger.info(f"Correct json file for this slot: s4ap_main_guid_{save_guid}.json")
                 return False
 
             if (str(stored_seed), str(stored_host_name), int(stored_port), str(stored_player), int(stored_slot)) != \
