@@ -1,4 +1,6 @@
 from typing import Any, List
+
+import services
 from s4ap.jsonio.s4ap_json import print_json
 from s4ap.events.Utils.allow_read_items import AllowReceiveItems
 from s4ap.logging.s4ap_logger import S4APLogger
@@ -48,8 +50,8 @@ class S4APSessionStoreUtils:
             if isinstance(stored_slot, List):
                 logger.error("The stored seed in the slot's json file is a List. This will cause an error. Cancelling slot check. Please check to make sure that your APWorld is of version 1.7.4 or greater.")
                 logger.info("In order to fix this, you will have to open the correct json file for this slot and edit it manually. PLEASE MAKE SURE YOU UPDATE YOUR APWORLD NONETHELESS!")
-                save_guid = 0
-                logger.info(f"Correct json file for this slot: s4ap_main_guid_{save_guid}.json")
+                slot_id = services.get_persistence_service().get_save_slot_proto_buff().slot_id
+                logger.info(f"Correct json file for this slot: s4ap_main_guid_{slot_id}.json")
                 return False
 
             if (str(stored_seed), str(stored_host_name), int(stored_port), str(stored_player), int(stored_slot)) != \
