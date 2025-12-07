@@ -39,15 +39,15 @@ class S4APGenericDataStore(CommonDataStore):
         return {
             S4APSettings.MOD_VERSION: self._version,
             S4APSettings.SEED_NAME: None,
-            S4APSettings.HOST_NAME: None,
-            S4APSettings.PORT_NUMBER: 0,
-            S4APSettings.PLAYER: None,
-            S4APSettings.INDEX: None,
-            S4APSettings.ITEMS: None,
-            S4APSettings.ITEM_IDS: None,
-            S4APSettings.LOCATIONS: None,
-            S4APSettings.SENDERS: None,
-            S4APSettings.GOAL: None,
-            S4APSettings.CAREER: None,
-            S4APSettings.SLOT: None,
+            S4APSettings.HOST_NAME: "archipelago.gg", # this should be a string
+            S4APSettings.PORT_NUMBER: 38281, # this should be an integer
+            S4APSettings.PLAYER: None, # this should be a string
+            S4APSettings.INDEX: None, # this should be an integer
+            S4APSettings.ITEMS: None, # this should be a List[str] (a list of strings)
+            S4APSettings.ITEM_IDS: None, # this should be a List[int] (a list of integers)
+            S4APSettings.LOCATIONS: None, # this should be a List[str] (a list of strings)
+            S4APSettings.SENDERS: None, # this should be a List[str] (a list of strings)
+            S4APSettings.GOAL: None, # this should be a string
+            S4APSettings.CAREER: None, # currently this is a string, but in future versions, it will be a set coming from AP, which will probably deserialize as a list? i don't know exactly how JSON deserialization works with S4CL.
+            S4APSettings.SLOT: 1, # this should be an integer, if it isn't, something has gone terribly wrong here
         }.copy()
