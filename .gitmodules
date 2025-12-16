@@ -4,3 +4,6 @@
 [submodule "Package/src"]
 	path = Package/src
 	url = https://github.com/Simsipelago/Sims4ArchipelagoPackage.git
+[submodule "Libraries/lot51_core"]
+	path = Libraries/lot51_core
+	url = https://github.com/lot51/core-library.git
