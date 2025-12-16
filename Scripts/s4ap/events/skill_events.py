@@ -29,6 +29,6 @@ class SimSkillLeveledUpEvent(CommonEvent):
 
     @property
     def skill_id(self) -> Optional[int]:
-        """The decimal identifier of the Skill."""
+        """The decimal identifier of the Skill, or None if the Skill has no guid64 attribute."""
         from s4ap.utils.s4ap_skill_utils_class import S4APSkillUtils
         return S4APSkillUtils.get_skill_id(self.skill)
