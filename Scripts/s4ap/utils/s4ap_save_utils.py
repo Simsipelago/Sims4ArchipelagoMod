@@ -11,7 +11,7 @@ class S4APSaveUtils:
         Retrieve the current save slot.
 
         :return: The current save slot.
-        :return: Any
+        :return: Union[int, None]
         """
         persistence_service = services.get_persistence_service()
         if persistence_service is None:
