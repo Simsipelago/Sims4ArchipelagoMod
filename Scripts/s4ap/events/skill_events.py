@@ -1,3 +1,5 @@
+from typing import Optional
+
 from sims.sim_info import SimInfo
 from sims4communitylib.events.event_handling.common_event import CommonEvent
 from statistics.skill import Skill
@@ -26,7 +28,7 @@ class SimSkillLeveledUpEvent(CommonEvent):
         return self._skill
 
     @property
-    def skill_id(self) -> int:
+    def skill_id(self) -> Optional[int]:
         """The decimal identifier of the Skill."""
         from s4ap.utils.s4ap_skill_utils_class import S4APSkillUtils
         return S4APSkillUtils.get_skill_id(self.skill)
