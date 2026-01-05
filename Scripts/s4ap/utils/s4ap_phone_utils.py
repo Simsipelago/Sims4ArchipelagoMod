@@ -182,7 +182,6 @@ def _show_aspiration_and_career(event_data: S4CLSimTraitAddedEvent):
         career_data = data_store.get_career()
 
         if career_data:
-            career_data = data_store.get_career()
             if isinstance(career_data, list):
                 if len(career_data) == 1:
                     options.append(
@@ -190,6 +189,7 @@ def _show_aspiration_and_career(event_data: S4CLSimTraitAddedEvent):
                          LocalizationHelperTuning.get_raw_text(career_data[0].replace("_", " ").title()),
                          12028399282094277793)
                     )
+                    row_id += 1
                 else:
                     for career in career_data:
                         options.append(
@@ -204,6 +204,7 @@ def _show_aspiration_and_career(event_data: S4CLSimTraitAddedEvent):
                      LocalizationHelperTuning.get_raw_text("Can't find the career"),
                      12028399282094277793)
                 )
+                row_id += 1
 
         # ---------- Skill Multiplier ----------
         options.append((
