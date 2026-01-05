@@ -183,22 +183,14 @@ def _show_aspiration_and_career(event_data: S4CLSimTraitAddedEvent):
 
         if career_data:
             if isinstance(career_data, list):
-                if len(career_data) == 1:
+                for career in career_data: # list with items in it
                     options.append(
                         (row_id,
-                         LocalizationHelperTuning.get_raw_text(career_data[0].replace("_", " ").title()),
+                         LocalizationHelperTuning.get_raw_text(career.replace("_", " ").title()),
                          12028399282094277793)
                     )
                     row_id += 1
-                else:
-                    for career in career_data:
-                        options.append(
-                            (row_id,
-                             LocalizationHelperTuning.get_raw_text(career.replace("_", " ").title()),
-                             12028399282094277793)
-                        )
-                        row_id += 1
-        else:
+        else: # none or empty list
             options.append(
                 (row_id,
                  LocalizationHelperTuning.get_raw_text("Can't find the career"),
