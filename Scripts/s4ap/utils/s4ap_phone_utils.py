@@ -165,13 +165,13 @@ def _show_aspiration_and_career(event_data: S4CLSimTraitAddedEvent):
             goal = "Can't find the aspiration"
 
         options = [
-            (1, LocalizationHelperTuning.get_raw_text(goal.replace("_", " ").title()), 1903793975082081275),
+            S4APDialog.ObjectPickerDialog.create_picker_row(1, LocalizationHelperTuning.get_raw_text(goal.replace("_", " ").title()), 1903793975082081275),
         ]
 
         row_id = 2
 
         # ---------- Careers Header ----------
-        options.append((
+        options.append(S4APDialog.ObjectPickerDialog.create_picker_row(
             row_id,
             LocalizationHelperTuning.get_raw_text("──────── Careers ────────"),
             0
@@ -185,21 +185,21 @@ def _show_aspiration_and_career(event_data: S4CLSimTraitAddedEvent):
             if isinstance(career_data, list):
                 for career in career_data: # list with items in it
                     options.append(
-                        (row_id,
+                        S4APDialog.ObjectPickerDialog.create_picker_row(row_id,
                          LocalizationHelperTuning.get_raw_text(career.replace("_", " ").title()),
                          12028399282094277793)
                     )
                     row_id += 1
         else: # none or empty list
             options.append(
-                (row_id,
+                S4APDialog.ObjectPickerDialog.create_picker_row(row_id,
                  LocalizationHelperTuning.get_raw_text("Can't find the career"),
                  12028399282094277793)
             )
             row_id += 1
 
         # ---------- Skill Multiplier ----------
-        options.append((
+        options.append(S4APDialog.ObjectPickerDialog.create_picker_row(
             row_id,
             LocalizationHelperTuning.get_raw_text("──────── Skill Bonus ────────"),
             0
@@ -226,7 +226,7 @@ def _show_aspiration_and_career(event_data: S4CLSimTraitAddedEvent):
             display = 'No Skill Multiplier'
 
         options.append(
-            (row_id, LocalizationHelperTuning.get_raw_text(display), 5906963266871873908)
+            S4APDialog.ObjectPickerDialog.create_picker_row(row_id, LocalizationHelperTuning.get_raw_text(display), 5906963266871873908)
         )
 
         # ---------- Show Picker ----------
