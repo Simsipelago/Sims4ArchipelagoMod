@@ -164,29 +164,36 @@ def _show_aspiration_and_career(event_data: S4CLSimTraitAddedEvent):
         else:
             goal = 'Cant find the aspiration'
 
-        career_data = data_store.get_career()
-
         options = [
             (1, LocalizationHelperTuning.get_raw_text(goal.replace("_", " ").title()), 1903793975082081275),
         ]
 
-        career_display = "Can't find the career"
+        career_data = data_store.get_career()
         row_id = 2
 
         if career_data:
             career_data = data_store.get_career()
             if isinstance(career_data, list):
                 if len(career_data) == 1:
-                    career_display = career_data[0]
-                else:
-                    # Multiple careers → join them nicely
-                    career_display = ', '.join(
-                        c.replace("_", " ").title()
-                        for c in career_data
+                    options.append(
+                        (row_id,
+                         LocalizationHelperTuning.get_raw_text(career_data[0].replace("_", " ").title()),
+                         12028399282094277793)
                     )
-                # Case: single string
-            elif isinstance(career_data, str):
-                career_display = career_data
+                else:
+                    for career in career_data:
+                        options.append(
+                            (row_id,
+                             LocalizationHelperTuning.get_raw_text(career.replace("_", " ").title()),
+                             12028399282094277793)
+                        )
+                        row_id += 1
+            else:
+                options.append(
+                    (row_id,
+                     LocalizationHelperTuning.get_raw_text("Can't find the career"),
+                     12028399282094277793)
+                )
         if data_store.get_items() is not None:
             item = 'Skill Gain Multiplier'
             if data_store.get_items().count(item) is not None:
@@ -206,11 +213,9 @@ def _show_aspiration_and_career(event_data: S4CLSimTraitAddedEvent):
         else:
             display = 'No Skill Multiplier'
         # Build rows as tuples: (id, name, icon)
-        options = [
-            (1, LocalizationHelperTuning.get_raw_text(goal.replace("_", " ").title()), 1903793975082081275),
-            (2, LocalizationHelperTuning.get_raw_text(career.replace("_", " ").title()), 12028399282094277793),
-            (3, LocalizationHelperTuning.get_raw_text(display), 5906963266871873908)
-        ]
+        options.append(
+            (row_id + 1, LocalizationHelperTuning.get_raw_text(display), 5906963266871873908)
+        )
 
         sim = event_data.sim_info.get_sim_instance()
 
