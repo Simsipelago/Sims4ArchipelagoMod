@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, List
 
 import services
 from s4ap.jsonio.s4ap_json import print_json
@@ -178,7 +178,7 @@ class S4APSessionStoreUtils:
         self._set_value(S4APSettings.SENDERS, senders)
         S4APUtils.trigger_autosave()
 
-    def save_goal_and_career(self, goal: str, career: set):
+    def save_goal_and_career(self, goal: str, career: List[str]):
         self._set_value(S4APSettings.GOAL, goal)
         self._set_value(S4APSettings.CAREER, career)
         S4APUtils.trigger_autosave()
@@ -201,7 +201,7 @@ class S4APSessionStoreUtils:
     def get_goal(self) -> str:
         return self._get_value(S4APSettings.GOAL)
 
-    def get_career(self) -> set:
+    def get_career(self) -> List[str]:
         return self._get_value(S4APSettings.CAREER)
 
     def get_slot(self) -> int:

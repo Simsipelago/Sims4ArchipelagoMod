@@ -48,6 +48,6 @@ class S4APGenericDataStore(CommonDataStore):
             S4APSettings.LOCATIONS: None, # this should be a List[str] (a list of strings)
             S4APSettings.SENDERS: None, # this should be a List[str] (a list of strings)
             S4APSettings.GOAL: None, # this should be a string
-            S4APSettings.CAREER: None, # currently this is a string, but in future versions, it will be a set coming from AP, which will probably deserialize as a list? i don't know exactly how JSON deserialization works with S4CL.
+            S4APSettings.CAREER: None, # currently this is a string, but in future versions, it will be a set coming from AP, which will probably deserialize as a list? i don't know exactly how JSON deserialization works with S4CL. from poking around, it'll be a list of strings, so it's been adjusted accordingly.
             S4APSettings.SLOT: 1, # this should be an integer, if it isn't, something has gone terribly wrong here
         }.copy()
