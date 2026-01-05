@@ -185,32 +185,35 @@ def _show_aspiration_and_career(event_data: S4CLSimTraitAddedEvent):
             if isinstance(career_data, list):
                 for career in career_data: # list with items in it
                     options.append(
-                        S4APDialog.ObjectPickerDialog.create_picker_row(row_id,
-                        LocalizationHelperTuning.get_raw_text(career.replace("_", " ").title()),
-                         12028399282094277793)
+                        ObjectPickerRow(
+                        name=row_id,
+                        option_id=LocalizationHelperTuning.get_raw_text(career.replace("_", " ").title()),
+                        icon=12028399282094277793)
                     )
                     row_id += 1
             elif isinstance(career_data, str):
                 # Legacy support for string career data
                 options.append(
-                    S4APDialog.ObjectPickerDialog.create_picker_row(row_id,
-                    LocalizationHelperTuning.get_raw_text(career_data.replace("_", " ").title()),
-                    12028399282094277793)
+                    ObjectPickerRow(
+                    option_id=row_id,
+                    name=LocalizationHelperTuning.get_raw_text(career_data.replace("_", " ").title()),
+                    icon=12028399282094277793)
                 )
                 row_id += 1
         else: # none or empty list
             options.append(
-                S4APDialog.ObjectPickerDialog.create_picker_row(row_id,
-                LocalizationHelperTuning.get_raw_text("Can't find the career"),
-                12028399282094277793)
+                ObjectPickerRow(
+                option_id=row_id,
+                name=LocalizationHelperTuning.get_raw_text("Can't find the career"),
+                icon=12028399282094277793)
             )
             row_id += 1
 
         # ---------- Skill Multiplier ----------
-        options.append(S4APDialog.ObjectPickerDialog.create_picker_row(
-            row_id,
-            LocalizationHelperTuning.get_raw_text("──────── Skill Bonus ────────"),
-            0
+        options.append(ObjectPickerRow(
+            option_id=row_id,
+            name=LocalizationHelperTuning.get_raw_text("──────── Skill Bonus ────────"),
+            icon=0
         ))
         row_id += 1
 
@@ -234,7 +237,7 @@ def _show_aspiration_and_career(event_data: S4CLSimTraitAddedEvent):
             display = 'No Skill Multiplier'
 
         options.append(
-            S4APDialog.ObjectPickerDialog.create_picker_row(row_id, LocalizationHelperTuning.get_raw_text(display), 5906963266871873908)
+            ObjectPickerRow(option_id=row_id, name=LocalizationHelperTuning.get_raw_text(display), icon=5906963266871873908)
         )
 
         # ---------- Show Picker ----------
