@@ -168,8 +168,18 @@ def _show_aspiration_and_career(event_data: S4CLSimTraitAddedEvent):
             (1, LocalizationHelperTuning.get_raw_text(goal.replace("_", " ").title()), 1903793975082081275),
         ]
 
-        career_data = data_store.get_career()
         row_id = 2
+
+        # ---------- Careers Header ----------
+        options.append((
+            row_id,
+            LocalizationHelperTuning.get_raw_text("──────── Careers ────────"),
+            0
+        ))
+        row_id += 1
+
+        # ---------- Careers ----------
+        career_data = data_store.get_career()
 
         if career_data:
             career_data = data_store.get_career()
@@ -194,6 +204,15 @@ def _show_aspiration_and_career(event_data: S4CLSimTraitAddedEvent):
                      LocalizationHelperTuning.get_raw_text("Can't find the career"),
                      12028399282094277793)
                 )
+
+        # ---------- Skill Multiplier ----------
+        options.append((
+            row_id,
+            LocalizationHelperTuning.get_raw_text("──────── Skill Bonus ────────"),
+            0
+        ))
+        row_id += 1
+
         if data_store.get_items() is not None:
             item = 'Skill Gain Multiplier'
             if data_store.get_items().count(item) is not None:
@@ -212,10 +231,12 @@ def _show_aspiration_and_career(event_data: S4CLSimTraitAddedEvent):
                 display = 'No Skill Multiplier'
         else:
             display = 'No Skill Multiplier'
-        # Build rows as tuples: (id, name, icon)
+
         options.append(
             (row_id + 1, LocalizationHelperTuning.get_raw_text(display), 5906963266871873908)
         )
+
+        # ---------- Show Picker ----------
 
         sim = event_data.sim_info.get_sim_instance()
 
