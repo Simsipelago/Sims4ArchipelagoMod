@@ -163,10 +163,30 @@ def _show_aspiration_and_career(event_data: S4CLSimTraitAddedEvent):
             goal = data_store.get_goal()
         else:
             goal = 'Cant find the aspiration'
-        if data_store.get_career() is not None:
-            career = data_store.get_career()
-        else:
-            career = 'Cant find the career'
+
+        career_data = data_store.get_career()
+
+        options = [
+            (1, LocalizationHelperTuning.get_raw_text(goal.replace("_", " ").title()), 1903793975082081275),
+        ]
+
+        career_display = "Can't find the career"
+        row_id = 2
+
+        if career_data:
+            career_data = data_store.get_career()
+            if isinstance(career_data, list):
+                if len(career_data) == 1:
+                    career_display = career_data[0]
+                else:
+                    # Multiple careers → join them nicely
+                    career_display = ', '.join(
+                        c.replace("_", " ").title()
+                        for c in career_data
+                    )
+                # Case: single string
+            elif isinstance(career_data, str):
+                career_display = career_data
         if data_store.get_items() is not None:
             item = 'Skill Gain Multiplier'
             if data_store.get_items().count(item) is not None:
