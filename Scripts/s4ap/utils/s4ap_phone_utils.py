@@ -186,15 +186,23 @@ def _show_aspiration_and_career(event_data: S4CLSimTraitAddedEvent):
                 for career in career_data: # list with items in it
                     options.append(
                         S4APDialog.ObjectPickerDialog.create_picker_row(row_id,
-                         LocalizationHelperTuning.get_raw_text(career.replace("_", " ").title()),
+                        LocalizationHelperTuning.get_raw_text(career.replace("_", " ").title()),
                          12028399282094277793)
                     )
                     row_id += 1
+            elif isinstance(career_data, str):
+                # Legacy support for string career data
+                options.append(
+                    S4APDialog.ObjectPickerDialog.create_picker_row(row_id,
+                    LocalizationHelperTuning.get_raw_text(career_data.replace("_", " ").title()),
+                    12028399282094277793)
+                )
+                row_id += 1
         else: # none or empty list
             options.append(
                 S4APDialog.ObjectPickerDialog.create_picker_row(row_id,
-                 LocalizationHelperTuning.get_raw_text("Can't find the career"),
-                 12028399282094277793)
+                LocalizationHelperTuning.get_raw_text("Can't find the career"),
+                12028399282094277793)
             )
             row_id += 1
 

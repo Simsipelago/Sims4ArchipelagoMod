@@ -97,8 +97,14 @@ class S4APSessionStoreUtils:
                     on_ok=_ok_chosen,
                     on_cancel=_cancel_chosen
                 )
-                dialog.show_dialog()
-                return True
+
+                if dialog is not None:
+                    dialog.show_dialog()
+                    return True
+                else:
+                    logger.warn("No active Sim to show dialog. Treating as cancel.")
+                    return False
+
             else:  # Settings exist and match
                 logger.debug("AP session data matched")
                 return True
@@ -133,8 +139,13 @@ class S4APSessionStoreUtils:
                 on_ok=_ok_chosen,
                 on_cancel=_cancel_chosen
             )
-            dialog.show_dialog()
-            return True
+
+            if dialog is not None:
+                dialog.show_dialog()
+                return True
+            else:
+                logger.warn("No active Sim to show dialog. Treating as cancel.")
+                return False
 
     def check_index_value(self, index: str) -> bool:
         """Checks The Index from ReceivedItems to make sure it matches
