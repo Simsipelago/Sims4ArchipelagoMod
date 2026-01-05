@@ -198,13 +198,13 @@ def _show_aspiration_and_career(event_data: S4CLSimTraitAddedEvent):
                              12028399282094277793)
                         )
                         row_id += 1
-            else:
-                options.append(
-                    (row_id,
-                     LocalizationHelperTuning.get_raw_text("Can't find the career"),
-                     12028399282094277793)
-                )
-                row_id += 1
+        else:
+            options.append(
+                (row_id,
+                 LocalizationHelperTuning.get_raw_text("Can't find the career"),
+                 12028399282094277793)
+            )
+            row_id += 1
 
         # ---------- Skill Multiplier ----------
         options.append((
