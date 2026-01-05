@@ -162,7 +162,7 @@ def _show_aspiration_and_career(event_data: S4CLSimTraitAddedEvent):
         if data_store.get_goal() is not None:
             goal = data_store.get_goal()
         else:
-            goal = 'Cant find the aspiration'
+            goal = "Can't find the aspiration"
 
         options = [
             (1, LocalizationHelperTuning.get_raw_text(goal.replace("_", " ").title()), 1903793975082081275),
