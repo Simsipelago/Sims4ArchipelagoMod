@@ -234,7 +234,7 @@ def _show_aspiration_and_career(event_data: S4CLSimTraitAddedEvent):
             display = 'No Skill Multiplier'
 
         options.append(
-            (row_id + 1, LocalizationHelperTuning.get_raw_text(display), 5906963266871873908)
+            (row_id, LocalizationHelperTuning.get_raw_text(display), 5906963266871873908)
         )
 
         # ---------- Show Picker ----------
