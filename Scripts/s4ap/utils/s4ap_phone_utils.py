@@ -186,8 +186,8 @@ def _show_aspiration_and_career(event_data: S4CLSimTraitAddedEvent):
                 for career in career_data: # list with items in it
                     options.append(
                         ObjectPickerRow(
-                        name=row_id,
-                        option_id=LocalizationHelperTuning.get_raw_text(career.replace("_", " ").title()),
+                        option_id=row_id,
+                        name=LocalizationHelperTuning.get_raw_text(career.replace("_", " ").title()),
                         icon=12028399282094277793)
                     )
                     row_id += 1
