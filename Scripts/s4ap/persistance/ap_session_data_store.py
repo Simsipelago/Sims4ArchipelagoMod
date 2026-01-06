@@ -23,7 +23,7 @@ class S4APSessionStoreUtils:
     def __init__(self) -> None:
         self._data_manager = S4APDataManagerUtils()
 
-    def check_session_values(self, host_name: str, port: int, seed_name: str, player: str, slot: int) -> bool:
+    def check_session_values(self, host_name: str, port: int, seed_name: str, player: str, slot: int, on_complete: Callable[[bool], None] | None = None) -> bool:
         """ Check session store to make sure it's the same settings as before and send a warning otherwise
             :returns True, if stored settings exist and all values match the incoming parameters; False otherwise. """
 
@@ -44,6 +44,8 @@ class S4APSessionStoreUtils:
 
             if isinstance(slot, list):
                 logger.warn("The slot coming in from the connection_status.json is a list. This means your APWorld is out of date. Please update.")
+                if on_complete:
+                    on_complete(False)
                 return False
 
             if isinstance(stored_slot, list):
@@ -54,6 +56,8 @@ class S4APSessionStoreUtils:
                     logger.info(f"Correct json file for this slot: s4ap_main_guid_{slot_id}.json")
                 except Exception as ex:
                     logger.error("Failed to retrieve save slot ID for this slot.", exception=ex)
+                if on_complete:
+                    on_complete(False)
                 return False
 
             if (str(stored_seed), str(stored_host_name), int(stored_port), str(stored_player), int(stored_slot)) != \
@@ -63,6 +67,9 @@ class S4APSessionStoreUtils:
 
                 def _cancel_chosen(_: UiDialogOkCancel):
                     # If cancel is chosen, stop parsing data until connection_status.json changes
+                    logger.info("User cancelled session dialog")
+                    if on_complete:
+                        on_complete(False)
                     return False
 
                 def _ok_chosen(_: UiDialogOkCancel):
@@ -82,6 +89,8 @@ class S4APSessionStoreUtils:
                     print_json(True, 'sync.json')
                     print_json({}, 'locations_cached.json')
                     CommonEventRegistry.get().dispatch(AllowReceiveItems(True))
+                    if on_complete:
+                        on_complete(True)
                     return True  # if okay is chosen then save seed values and resync items
 
                 # Prompt the user to either overwrite the previous session_data, or stop parsing the data packet and wait for the connection_status.json to update
@@ -100,10 +109,22 @@ class S4APSessionStoreUtils:
 
                 if dialog is not None:
                     dialog.show_dialog()
-                    return True
+                    if on_complete:
+                        logger.debug("Async dialog shown; awaiting user choice")
+                        return False
+                    else:
+                        logger.error(
+                            "check_session_values called synchronously with dialog! "
+                            "This path is deprecated and unsafe."
+                        )
+                        return True
                 else:
                     logger.warn("No active Sim to show dialog. Treating as cancel.")
-                    return False
+                    if on_complete:
+                        on_complete(False)
+                        return False
+                    else:
+                        return False
 
             else:  # Settings exist and match
                 logger.debug("AP session data matched")
@@ -122,9 +143,14 @@ class S4APSessionStoreUtils:
                 print_json({}, 'locations_cached.json')
                 CommonEventRegistry.get().dispatch(AllowReceiveItems(True))
                 self.save_seed_values(host_name, port, seed_name, player, slot)
-                return True
+                # existing reset/save logic
+                if on_complete:
+                    on_complete(True)
 
             def _cancel_chosen(_: UiDialogOkCancel):
+                logger.info("User cancelled session dialog")
+                if on_complete:
+                    on_complete(False)
                 return False
 
             # Prompt the user to either overwrite the previous session_data, or stop parsing the data packet and wait for the connection_status.json to update
@@ -142,10 +168,15 @@ class S4APSessionStoreUtils:
 
             if dialog is not None:
                 dialog.show_dialog()
-                return True
-            else:
-                logger.warn("No active Sim to show dialog. Treating as cancel.")
-                return False
+                if on_complete:
+                    logger.debug("Async dialog shown; awaiting user choice")
+                    return False  # prevent auto-continue
+                else:
+                    logger.error(
+                        "check_session_values called synchronously with dialog! "
+                        "This path is deprecated and unsafe."
+                    )
+                    return True  # legacy behavior
 
     def check_index_value(self, index: str) -> bool:
         """Checks The Index from ReceivedItems to make sure it matches
