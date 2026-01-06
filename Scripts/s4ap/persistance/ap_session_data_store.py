@@ -125,7 +125,7 @@ class S4APSessionStoreUtils:
                 return True
 
             def _cancel_chosen(_: UiDialogOkCancel):
-                return True
+                return False
 
             # Prompt the user to either overwrite the previous session_data, or stop parsing the data packet and wait for the connection_status.json to update
             dialog = S4APUtils.show_ok_cancel_dialog(
