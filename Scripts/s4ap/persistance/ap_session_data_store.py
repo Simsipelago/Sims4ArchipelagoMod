@@ -1,4 +1,4 @@
-from typing import Any, List
+from typing import Any, List, Callable, Optional
 
 import services
 from s4ap.jsonio.s4ap_json import print_json
@@ -23,7 +23,7 @@ class S4APSessionStoreUtils:
     def __init__(self) -> None:
         self._data_manager = S4APDataManagerUtils()
 
-    def check_session_values(self, host_name: str, port: int, seed_name: str, player: str, slot: int, on_complete: Callable[[bool], None] | None = None) -> bool:
+    def check_session_values(self, host_name: str, port: int, seed_name: str, player: str, slot: int, on_complete: Optional[Callable[[bool], None]] = None) -> bool:
         """ Check session store to make sure it's the same settings as before and send a warning otherwise
             :returns True, if stored settings exist and all values match the incoming parameters; False otherwise. """
 
