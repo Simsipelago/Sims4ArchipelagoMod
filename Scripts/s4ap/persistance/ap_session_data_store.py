@@ -177,6 +177,11 @@ class S4APSessionStoreUtils:
                         "This path is deprecated and unsafe."
                     )
                     return True  # legacy behavior
+            else:
+                logger.warn("No active Sim to show dialog. Treating as cancel.")
+                if on_complete:
+                    on_complete(False)
+                return False
 
     def check_index_value(self, index: str) -> bool:
         """Checks The Index from ReceivedItems to make sure it matches
