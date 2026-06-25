@@ -1,9 +1,6 @@
-from sims4communitylib.enums.icons_enum import CommonIconId
-from sims4communitylib.enums.strings_enum import CommonStringId
-from sims4communitylib.enums.traits_enum import CommonTraitId
+from enum import Int
 
-
-class S4APTraitId(CommonTraitId):
+class S4APTraitId(Int):
     LOCK_MIXOLOGY_SKILL: 'S4APTraitId' = 3494693146
     LOCK_MISCHIEF_SKILL: 'S4APTraitId' = 3494693147
     LOCK_HANDINESS_SKILL: 'S4APTraitId' = 3494693148
@@ -24,6 +21,8 @@ class S4APTraitId(CommonTraitId):
     LOCK_CHARISMA_SKILL: 'S4APTraitId' = 3616689011
     LOCK_GUITAR_SKILL: 'S4APTraitId' = 3616689014
     LOCK_LOGIC_SKILL: 'S4APTraitId' = 3616689015
+    LOCK_DANCING_SKILL: 'S4APTraitId' = 12200723547750862070
+    LOCK_BAKING_SKILL: 'S4APTraitId' = 733402260
     SKILL_GAIN_BOOST_2_5X: 'S4APTraitId' = 3616689008
     SKILL_GAIN_BOOST_3X: 'S4APTraitId' = 3511470832
     SKILL_GAIN_BOOST_3_5X: 'S4APTraitId' = 3511470833
@@ -31,7 +30,7 @@ class S4APTraitId(CommonTraitId):
     SHOW_RECEIVED_SKILLS: 'S4APTraitId' = 3511470836
     RESYNC_LOCATIONS: 'S4APTraitId' = 2224316686
     SHOW_YAML_OPTIONS: 'S4APTraitId' = 2241086516
-class S4APStringId(CommonStringId):
+class S4APStringId(Int):
     # ap_client
     CONNECTION_REFUSED: 'S4APStringId' = 0x964EABE6
     CONNECTION_ERROR: 'S4APStringId' = 0xC50BC4AF
@@ -55,7 +54,7 @@ class S4APStringId(CommonStringId):
     CONFLICTING_CONNECTION_DATA_DESC: 'S4APStringId' = 0x3E4E79D3
 
 
-class S4APIconId(CommonIconId):
+class S4APIconId(Int):
     AP_LOGO_BLUE: 'S4APIconId' = 0xBD85B76B1017163F
 
 class S4APBaseGameSkills:
@@ -242,7 +241,7 @@ class HashLookup:
             2252361604: 'Competent Wordsmith (Bestselling Author 2)',
             1903266201: 'Novelest Novelist (Bestselling Author 3)',
             2893015914: 'Bestselling Author (Bestselling Author 4)',
-            669436583: 'Tone Deaf (Musical Genius 1)',
+            669436583: 'Tone-Deaf (Musical Genius 1)',
             527786058: 'Fine Tuned (Musical Genius 2)',
             3847573573: 'Harmonious (Musical Genius 3)',
             3320148467: 'Musical Genius (Musical Genius 4)',
@@ -276,11 +275,11 @@ class HashLookup:
             3410479215: 'The Great Landscaper (Mansion Baron 2)',
             1430851502: 'Home Renovator (Mansion Baron 3)',
             3008497549: 'Mansion Baron (Mansion Baron 4)',
-            1603920936: 'Prudent Student (Renaissance Sim / Nerd Brain 1',
+            1603920936: 'Prudent Student (Renaissance Sim / Nerd Brain 1)',
             3576085519: 'Jack of Some Trades (Renaissance Sim 2)',
             3843569882: 'Pantologist (Renaissance Sim 3)',
             517310505: 'Renaissance Sim (Renaissance Sim 4)',
-            2769839652: 'With The Program (Computer Whiz 1)',
+            2769839652: 'With the Program (Computer Whiz 1)',
             1394699556: 'Technically Adept (Computer Whiz 2)',
             1896269241: 'Computer Geek (Computer Whiz 3)',
             2969693962: 'Computer Whiz (Computer Whiz 4)',
@@ -311,7 +310,7 @@ class HashLookup:
             2167317685: 'Funny (Joke Star 3)',
             2867786966: 'Joke Star (Joke Star 4)',
             2179132818: 'New in Town (Party Animal / Friend of the World 1)',
-            6359719: 'Well liked (Friend of the World 2)',
+            6359719: 'Well Liked (Friend of the World 2)',
             3307311430: 'Super Friend (Friend of the World 3)',
             3184496709: 'Friend of the World (Friend of the World 4)',
             1596456398: 'Welcoming Host (Party Animal 2)',

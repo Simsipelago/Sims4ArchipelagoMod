@@ -1,26 +1,22 @@
 import re
 
 from aspirations.aspiration_types import AspriationType
+from lot51_core.utils.dialog import DialogHelper
 from s4ap.enums.S4APLocalization import S4APTraitId, HashLookup, S4APBaseGameSkills
 from s4ap.jsonio.s4ap_json import print_json
 from s4ap.logging.s4ap_logger import S4APLogger
 from s4ap.modinfo import ModInfo
 from s4ap.persistance.ap_session_data_store import S4APSessionStoreUtils
+from s4ap.utils.s4ap_career_utils import S4APCareerUtils
+from s4ap.utils.s4ap_dialog_utils import S4APDialog
+from s4ap.utils.s4ap_generic_utils import S4APUtils
+from s4ap.utils.s4ap_household_utils import S4APHouseholdUtils
+from s4ap.utils.s4ap_skill_utils_class import S4APSkillUtils
 from server_commands.argument_helpers import TunableInstanceParam
+from sims4.localization import LocalizationHelperTuning
 from sims4.resources import Types
-from sims4communitylib.dialogs.choose_object_dialog import CommonChooseObjectDialog
-from sims4communitylib.dialogs.common_choice_outcome import CommonChoiceOutcome
 from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
 from sims4communitylib.events.sim.events.sim_trait_added import S4CLSimTraitAddedEvent
-from sims4communitylib.notifications.common_basic_notification import CommonBasicNotification
-from sims4communitylib.utils.common_icon_utils import CommonIconUtils
-from sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
-from sims4communitylib.utils.resources.common_skill_utils import CommonSkillUtils
-from sims4communitylib.utils.sims.common_career_utils import CommonCareerUtils
-from sims4communitylib.utils.sims.common_household_utils import CommonHouseholdUtils
-from sims4communitylib.utils.sims.common_sim_career_utils import CommonSimCareerUtils
-from sims4communitylib.utils.sims.common_sim_skill_utils import CommonSimSkillUtils
-from sims4communitylib.utils.sims.common_trait_utils import CommonTraitUtils
 from ui.ui_dialog_picker import ObjectPickerRow
 
 logger = S4APLogger.get_log()
@@ -30,7 +26,9 @@ logger.enable()
 @CommonEventRegistry.handle_events(ModInfo.get_identity())
 def _handle_show_max_skills_phone(event_data: S4CLSimTraitAddedEvent):
     if event_data.trait_id == S4APTraitId.SHOW_RECEIVED_SKILLS:
-        CommonTraitUtils.remove_trait(event_data.sim_info, S4APTraitId.SHOW_RECEIVED_SKILLS)
+        received_skills_trait_instance = TunableInstanceParam(Types.TRAIT)(S4APTraitId.SHOW_RECEIVED_SKILLS)
+        if event_data.sim_info.has_trait(received_skills_trait_instance):
+            event_data.sim_info.remove_trait(received_skills_trait_instance)
         data_store = S4APSessionStoreUtils()
         options = []
         skills_and_levels = {}
@@ -67,34 +65,35 @@ def _handle_show_max_skills_phone(event_data: S4CLSimTraitAddedEvent):
         for item, item_info in sorted(skills.items()):
             options.append(ObjectPickerRow(
                 option_id=option,
-                name=CommonLocalizationUtils.create_localized_string(
-                    f'{item} Max is {item_info[0] or 2}'),
+                name = LocalizationHelperTuning.get_raw_text(f'{item} Max is {item_info[0] or 2}'),
                 icon=item_info[1]
             ))
             option += 1
 
-        def _on_chosen(_, outcome: CommonChoiceOutcome):
-            if outcome == CommonChoiceOutcome.CHOICE_MADE:
-                dialog.show(on_chosen=_on_chosen)
+        sim = event_data.sim_info.get_sim_instance()
 
-        dialog = CommonChooseObjectDialog(
-            'Max Possible Skills',
-            'The highest you can level your skills to.',
-            choices=options
+        picker = S4APDialog.ObjectPickerDialog(
+            sim=sim,
+            title='Max Possible Skills',
+            text='The highest you can level your skills to.',
+            picker_rows=options
         )
-        dialog.show(on_chosen=_on_chosen)
+
+        picker.show_dialog()
 
 @CommonEventRegistry.handle_events(ModInfo.get_identity())
 def _resync_locations(event_data: S4CLSimTraitAddedEvent):
     if event_data.trait_id == S4APTraitId.RESYNC_LOCATIONS:
-        CommonTraitUtils.remove_trait(event_data.sim_info, S4APTraitId.RESYNC_LOCATIONS)
+        resync_trait_instance = TunableInstanceParam(Types.TRAIT)(S4APTraitId.RESYNC_LOCATIONS)
+        if event_data.sim_info.has_trait(resync_trait_instance):
+            event_data.sim_info.remove_trait(resync_trait_instance)
         lookup = HashLookup()
         locations = []
         skill_dict = {}
         careers_dict = {}
-        for sim_info in CommonHouseholdUtils.get_sim_info_of_all_sims_in_active_household_generator():
-            for skill in CommonSkillUtils.get_all_skills_gen():
-                skill_level = CommonSimSkillUtils.get_current_skill_level(sim_info, skill, False)
+        for sim_info in S4APHouseholdUtils.get_sim_info_of_all_sims_in_active_household_generator():
+            for skill in S4APSkillUtils.get_all_skills_gen():
+                skill_level = S4APSkillUtils.get_current_skill_level(sim_info, skill)
                 skill_name = skill.skill_type.__name__
                 if skill_name.startswith("statistic_Skill_AdultMajor_") or 'fitness' in skill_name.lower():
                     skill_name = skill_name.replace("statistic_Skill_AdultMajor_", "")
@@ -122,8 +121,8 @@ def _resync_locations(event_data: S4CLSimTraitAddedEvent):
                 for level in range(2, int(skill_level) + 1):
                     location_name = f'{skill_new_name.title()} Skill {level}'
                     locations.append(location_name)
-            for career in CommonSimCareerUtils.get_all_careers_for_sim_gen(sim_info):
-                career_id = CommonCareerUtils.get_career_guid(career)
+            for career in S4APCareerUtils.get_all_careers_for_sim_gen(sim_info):
+                career_id = S4APCareerUtils.get_career_guid(career)
                 career_level = career.user_level
                 if careers_dict.get(career_id) is not None:
                     if career_level > careers_dict.get(career_id):
@@ -131,9 +130,9 @@ def _resync_locations(event_data: S4CLSimTraitAddedEvent):
                 else:
                     careers_dict[career_id] = career_level
             for career_guid, level in careers_dict.items():
-                career = CommonCareerUtils.load_career_by_guid(career_guid)
+                career = S4APCareerUtils.load_career_by_guid(career_guid)
                 for i in range(1, level + 1):
-                    (_, _, career_track) = CommonCareerUtils.determine_entry_level_into_career_from_user_level(career, i)
+                    (_, _, career_track) = S4APCareerUtils.determine_entry_level_into_career_from_user_level(career, i)
                     career_hash =  career_track.get_career_name(sim_info).hash
                     career_name = lookup.get_career_name(career_hash, i)
                     if career_name is not None:
@@ -148,25 +147,76 @@ def _resync_locations(event_data: S4CLSimTraitAddedEvent):
                         locations.append(milestone_display_name)
         print_json(locations, 'locations_cached.json')
         print_json(True, 'sync.json')
-        notif = CommonBasicNotification(
+        DialogHelper.create_notification(
             'Locations Resynced',
             ''
-        )
-        notif.show()
+        ).show_dialog()
 
 @CommonEventRegistry.handle_events(ModInfo.get_identity())
 def _show_aspiration_and_career(event_data: S4CLSimTraitAddedEvent):
     if event_data.trait_id == S4APTraitId.SHOW_YAML_OPTIONS:
-        CommonTraitUtils.remove_trait(event_data.sim_info, S4APTraitId.SHOW_YAML_OPTIONS)
+        yaml_options_trait_instance = TunableInstanceParam(Types.TRAIT)(S4APTraitId.SHOW_YAML_OPTIONS)
+        if event_data.sim_info.has_trait(yaml_options_trait_instance):
+            event_data.sim_info.remove_trait(yaml_options_trait_instance)
         data_store = S4APSessionStoreUtils()
         if data_store.get_goal() is not None:
             goal = data_store.get_goal()
         else:
-            goal = 'Cant find the aspiration'
-        if data_store.get_career() is not None:
-            career = data_store.get_career()
-        else:
-            career = 'Cant find the career'
+            goal = "Can't find the aspiration"
+
+        options = [
+            S4APDialog.ObjectPickerDialog.create_picker_row(1, LocalizationHelperTuning.get_raw_text(goal.replace("_", " ").title()), 1903793975082081275),
+        ]
+
+        row_id = 2
+
+        # ---------- Careers Header ----------
+        options.append(S4APDialog.ObjectPickerDialog.create_picker_row(
+            row_id,
+            LocalizationHelperTuning.get_raw_text("──────── Careers ────────"),
+            0
+        ))
+        row_id += 1
+
+        # ---------- Careers ----------
+        career_data = data_store.get_career()
+
+        if career_data:
+            if isinstance(career_data, list):
+                for career in career_data: # list with items in it
+                    options.append(
+                        ObjectPickerRow(
+                        option_id=row_id,
+                        name=LocalizationHelperTuning.get_raw_text(career.replace("_", " ").title()),
+                        icon=12028399282094277793)
+                    )
+                    row_id += 1
+            elif isinstance(career_data, str):
+                # Legacy support for string career data
+                options.append(
+                    ObjectPickerRow(
+                    option_id=row_id,
+                    name=LocalizationHelperTuning.get_raw_text(career_data.replace("_", " ").title()),
+                    icon=12028399282094277793)
+                )
+                row_id += 1
+        else: # none or empty list
+            options.append(
+                ObjectPickerRow(
+                option_id=row_id,
+                name=LocalizationHelperTuning.get_raw_text("Can't find the career"),
+                icon=12028399282094277793)
+            )
+            row_id += 1
+
+        # ---------- Skill Multiplier ----------
+        options.append(ObjectPickerRow(
+            option_id=row_id,
+            name=LocalizationHelperTuning.get_raw_text("──────── Skill Bonus ────────"),
+            icon=0
+        ))
+        row_id += 1
+
         if data_store.get_items() is not None:
             item = 'Skill Gain Multiplier'
             if data_store.get_items().count(item) is not None:
@@ -185,30 +235,20 @@ def _show_aspiration_and_career(event_data: S4CLSimTraitAddedEvent):
                 display = 'No Skill Multiplier'
         else:
             display = 'No Skill Multiplier'
-        def _on_chosen(_, outcome: CommonChoiceOutcome):
-            if outcome == CommonChoiceOutcome.CHOICE_MADE:
-                dialog.show(on_chosen=_on_chosen)
-        options = [
-            ObjectPickerRow(
-                option_id=1,
-                name= CommonLocalizationUtils.create_localized_string(goal.replace("_", " ").title()),
-                icon= CommonIconUtils.load_icon_by_id(1903793975082081275)
-            ),
-            ObjectPickerRow(
-                option_id=2,
-                name= CommonLocalizationUtils.create_localized_string(career.replace("_", " ").title()),
-                icon= CommonIconUtils.load_icon_by_id(12028399282094277793)
-            ),
-            ObjectPickerRow(
-                option_id=3,
-                name= CommonLocalizationUtils.create_localized_string(display),
-                icon= CommonIconUtils.load_icon_by_id(5906963266871873908)
-            )
-        ]
 
-        dialog = CommonChooseObjectDialog(
-            'Your Yaml Options Plus Skill Multiplier',
-            'Options + Skill Multiplier',
-            choices=options
+        options.append(
+            ObjectPickerRow(option_id=row_id, name=LocalizationHelperTuning.get_raw_text(display), icon=5906963266871873908)
         )
-        dialog.show(on_chosen=_on_chosen)
+
+        # ---------- Show Picker ----------
+
+        sim = event_data.sim_info.get_sim_instance()
+
+        picker = S4APDialog.ObjectPickerDialog(
+            sim=sim,
+            title='Your Yaml Options Plus Skill Multiplier',
+            text='Options + Skill Multiplier',
+            picker_rows=options
+        )
+
+        picker.show_dialog()

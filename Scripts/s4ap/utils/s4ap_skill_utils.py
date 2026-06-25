@@ -1,31 +1,29 @@
 import re
 
 from s4ap.enums.S4APLocalization import S4APTraitId
-from s4ap.events.skill_event_dispatcher import SimSkillLeveledUpEvent
+from s4ap.events.skill_events import SimSkillLeveledUpEvent
 from s4ap.logging.s4ap_logger import S4APLogger
 from s4ap.modinfo import ModInfo
 from s4ap.persistance.ap_session_data_store import S4APSessionStoreUtils
+from s4ap.utils.s4ap_household_utils import S4APHouseholdUtils
+from s4ap.utils.s4ap_sim_utils import S4APSimUtils
 from server_commands.argument_helpers import TunableInstanceParam
 from sims4.resources import Types
 from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
-from sims4communitylib.utils.sims.common_household_utils import CommonHouseholdUtils
-from sims4communitylib.utils.sims.common_sim_name_utils import CommonSimNameUtils
-from sims4communitylib.utils.sims.common_sim_skill_utils import CommonSimSkillUtils
-from sims4communitylib.utils.sims.common_trait_utils import CommonTraitUtils
+from s4ap.utils.s4ap_skill_utils_class import S4APSkillUtils
 
 logger = S4APLogger.get_log()
 logger.enable()
 
-
 def lock_skills(skillcap: int, skill_name, from_level_up: bool):
     try:
+        logger.debug(f"Processing level up for {skill_name}")
         logger.debug(f"Skill cap is {skillcap}")
         data_store = S4APSessionStoreUtils()
         if skillcap < 2:
             skillcap = 2
         if not skill_name.startswith("statistic_Skill_AdultMajor_") and not 'fitness' in skill_name.lower():
             skill_name = f"statistic_Skill_AdultMajor_{skill_name}"
-        logger.debug(f'{skill_name}')
         skill_id = skill_name.replace("statistic_Skill_AdultMajor_", '')
         skill_id = re.sub(r'(?<=[a-z])(?=[A-Z])', '_', skill_id)
         if 'bartending' in skill_id.lower():
@@ -55,18 +53,18 @@ def lock_skills(skillcap: int, skill_name, from_level_up: bool):
         logger.debug(f"Skill Id: {skill_id}")
         logger.debug(f"Trait: {trait}")
         skill = TunableInstanceParam(Types.STATISTIC)(skill_name)
-        for sim_info in CommonHouseholdUtils.get_sim_info_of_all_sims_in_active_household_generator():
-            current_level = CommonSimSkillUtils.get_current_skill_level(sim_info, skill, False)
-            logger.debug(f"{CommonSimNameUtils.get_first_name(sim_info)}'s Current level is {current_level}.")
+        for sim_info in S4APHouseholdUtils.get_sim_info_of_all_sims_in_active_household_generator():
+            current_level = S4APSkillUtils.get_current_skill_level(sim_info, skill)
+            logger.debug(f"{S4APSimUtils.get_sim_first_name(sim_info)}'s Current {skill_id} level is {current_level}.")
             if skillcap > current_level:
-                logger.debug('Skill cap is > than current level')
+                logger.debug(f"{skill_id} skill cap is greater than current level, unlocking skill.")
                 remove_lock_trait(sim_info, trait)
             elif skillcap == current_level:
-                logger.debug('Skill cap is == as current level')
+                logger.debug(f"{skill_id} skill cap is the same as the current level, locking skill.")
                 add_lock_trait(sim_info, trait)
             elif skillcap < current_level:
-                logger.debug('Skill cap is < than current level')
-                CommonSimSkillUtils.set_current_skill_level(sim_info, skill, skillcap)
+                logger.debug(f"{skill_id} skill cap is less than current level, locking skill and setting skill level to {skillcap}")
+                S4APSkillUtils.set_current_skill_level(sim_info, skill, skillcap)
                 add_lock_trait(sim_info, trait)
     except Exception as ex:
         logger.debug(f"Exception occurred: {ex}")
@@ -75,7 +73,9 @@ def add_lock_trait(sim_info, trait):
     trait_upper = trait.upper()
     if hasattr(S4APTraitId, trait_upper):
         trait_id = getattr(S4APTraitId, trait_upper)
-        CommonTraitUtils.add_trait(sim_info, trait_id)
+        trait_instance = TunableInstanceParam(Types.TRAIT)(trait_id)
+        if not sim_info.has_trait(trait_instance):
+            sim_info.add_trait(trait_instance)
         logger.debug(trait_id)
     logger.debug(trait_upper)
 
@@ -84,7 +84,9 @@ def remove_lock_trait(sim_info, trait):
     trait_upper = trait.upper()
     if hasattr(S4APTraitId, trait_upper):
         trait_id = getattr(S4APTraitId, trait_upper)
-        CommonTraitUtils.remove_trait(sim_info, trait_id)
+        trait_instance = TunableInstanceParam(Types.TRAIT)(trait_id)
+        if sim_info.has_trait(trait_instance):
+            sim_info.remove_trait(trait_instance)
         logger.debug(trait_id)
     logger.debug(trait_upper)
 

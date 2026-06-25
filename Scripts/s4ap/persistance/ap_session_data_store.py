@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, List, Callable, Optional
 
 import services
 from s4ap.jsonio.s4ap_json import print_json
@@ -7,11 +7,10 @@ from s4ap.logging.s4ap_logger import S4APLogger
 from s4ap.persistance.ap_data_store import S4APGenericDataStore, S4APSettings
 from s4ap.persistance.ap_data_utils import S4APDataManagerUtils
 from s4ap.utils.s4ap_generic_utils import S4APUtils
+from s4ap.utils.s4ap_localization_utils import S4APLocalizationUtils
 from s4ap.utils.s4ap_reset_utils import ResetSimData
 from sims4communitylib.dialogs.ok_cancel_dialog import CommonOkCancelDialog
 from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
-from sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
-from sims4communitylib.utils.localization.common_localized_string_colors import CommonLocalizedStringColor
 from ui.ui_dialog import UiDialogOkCancel
 
 logger = S4APLogger.get_log()
@@ -24,7 +23,7 @@ class S4APSessionStoreUtils:
     def __init__(self) -> None:
         self._data_manager = S4APDataManagerUtils()
 
-    def check_session_values(self, host_name: str, port: int, seed_name: str, player: str, slot: int) -> bool:
+    def check_session_values(self, host_name: str, port: int, seed_name: str, player: str, slot: int, on_complete: Optional[Callable[[bool], None]] = None) -> bool:
         """ Check session store to make sure it's the same settings as before and send a warning otherwise
             :returns True, if stored settings exist and all values match the incoming parameters; False otherwise. """
 
@@ -45,6 +44,8 @@ class S4APSessionStoreUtils:
 
             if isinstance(slot, list):
                 logger.warn("The slot coming in from the connection_status.json is a list. This means your APWorld is out of date. Please update.")
+                if on_complete:
+                    on_complete(False)
                 return False
 
             if isinstance(stored_slot, list):
@@ -55,6 +56,8 @@ class S4APSessionStoreUtils:
                     logger.info(f"Correct json file for this slot: s4ap_main_guid_{slot_id}.json")
                 except Exception as ex:
                     logger.error("Failed to retrieve save slot ID for this slot.", exception=ex)
+                if on_complete:
+                    on_complete(False)
                 return False
 
             if (str(stored_seed), str(stored_host_name), int(stored_port), str(stored_player), int(stored_slot)) != \
@@ -64,6 +67,9 @@ class S4APSessionStoreUtils:
 
                 def _cancel_chosen(_: UiDialogOkCancel):
                     # If cancel is chosen, stop parsing data until connection_status.json changes
+                    logger.info("User cancelled session dialog")
+                    if on_complete:
+                        on_complete(False)
                     return False
 
                 def _ok_chosen(_: UiDialogOkCancel):
@@ -83,17 +89,43 @@ class S4APSessionStoreUtils:
                     print_json(True, 'sync.json')
                     print_json({}, 'locations_cached.json')
                     CommonEventRegistry.get().dispatch(AllowReceiveItems(True))
+                    if on_complete:
+                        on_complete(True)
                     return True  # if okay is chosen then save seed values and resync items
 
                 # Prompt the user to either overwrite the previous session_data, or stop parsing the data packet and wait for the connection_status.json to update
-                dialog = CommonOkCancelDialog(
-                    CommonLocalizationUtils.create_localized_string('Warning!',
-                                                                    text_color=CommonLocalizedStringColor.RED),
-                    description_identifier="There's a mismatch with your AP session data. If you press 'Overwrite,' all previous items will be resynced, and your Sims' skill levels will reset. If you'd rather keep your current progress, select 'Cancel' and switch to a different save file so you can come back to this session later.",
-                    ok_text_identifier='Overwrite'
+                dialog = S4APUtils.show_ok_cancel_dialog(
+                    title=S4APLocalizationUtils.create_from_string("<font color='#9C1919'>Warning!</font>"),
+                    text=S4APLocalizationUtils.create_from_string(
+                        "There's a mismatch with your AP session data. If you press 'Overwrite,' all previous "
+                        "items will be resynced, and your Sims' skill levels will reset. If you'd rather keep your "
+                        "current progress, select 'Cancel' and switch to a different save file so you can come back later."
+                    ),
+                    ok_text=S4APLocalizationUtils.create_from_string("Overwrite"),
+                    cancel_text=S4APLocalizationUtils.create_from_string("Cancel"),
+                    on_ok=_ok_chosen,
+                    on_cancel=_cancel_chosen
                 )
-                dialog.show(on_ok_selected=_ok_chosen, on_cancel_selected=_cancel_chosen)
-                return False
+
+                if dialog is not None:
+                    dialog.show_dialog()
+                    if on_complete:
+                        logger.debug("Async dialog shown; awaiting user choice")
+                        return False
+                    else:
+                        logger.error(
+                            "check_session_values called synchronously with dialog! "
+                            "This path is deprecated and unsafe."
+                        )
+                        return True
+                else:
+                    logger.warn("No active Sim to show dialog. Treating as cancel.")
+                    if on_complete:
+                        on_complete(False)
+                        return False
+                    else:
+                        return False
+
             else:  # Settings exist and match
                 logger.debug("AP session data matched")
                 return True
@@ -111,20 +143,45 @@ class S4APSessionStoreUtils:
                 print_json({}, 'locations_cached.json')
                 CommonEventRegistry.get().dispatch(AllowReceiveItems(True))
                 self.save_seed_values(host_name, port, seed_name, player, slot)
-                return True
+                # existing reset/save logic
+                if on_complete:
+                    on_complete(True)
 
             def _cancel_chosen(_: UiDialogOkCancel):
+                logger.info("User cancelled session dialog")
+                if on_complete:
+                    on_complete(False)
                 return False
 
             # Prompt the user to either overwrite the previous session_data, or stop parsing the data packet and wait for the connection_status.json to update
-            dialog = CommonOkCancelDialog(
-                CommonLocalizationUtils.create_localized_string('Warning!',
-                                                                text_color=CommonLocalizedStringColor.RED),
-                description_identifier="Pressing 'Connect' will reset your Sims' skill levels and will sync the game to the client. If you don't want to use this save, click 'Cancel' and switch to a different one.",
-                ok_text_identifier='Connect'
+            dialog = S4APUtils.show_ok_cancel_dialog(
+                title=S4APLocalizationUtils.create_from_string("<font color='#9C1919'>Warning!</font>"),
+                text=S4APLocalizationUtils.create_from_string(
+                    "Pressing 'Connect' will reset your Sims' skill levels and will sync the game to the client. "
+                    "If you don't want to use this save, click 'Cancel' and switch to a different one."
+                ),
+                ok_text=S4APLocalizationUtils.create_from_string("Connect"),
+                cancel_text=S4APLocalizationUtils.create_from_string("Cancel"),
+                on_ok=_ok_chosen,
+                on_cancel=_cancel_chosen
             )
-            dialog.show(on_ok_selected=_ok_chosen, on_cancel_selected=_cancel_chosen)
-            return False
+
+            if dialog is not None:
+                dialog.show_dialog()
+                if on_complete:
+                    logger.debug("Async dialog shown; awaiting user choice")
+                    return False  # prevent auto-continue
+                else:
+                    logger.error(
+                        "check_session_values called synchronously with dialog! "
+                        "This path is deprecated and unsafe."
+                    )
+                    return True  # legacy behavior
+            else:
+                logger.warn("No active Sim to show dialog. Treating as cancel.")
+                if on_complete:
+                    on_complete(False)
+                return False
 
     def check_index_value(self, index: str) -> bool:
         """Checks The Index from ReceivedItems to make sure it matches
@@ -168,7 +225,7 @@ class S4APSessionStoreUtils:
         self._set_value(S4APSettings.SENDERS, senders)
         S4APUtils.trigger_autosave()
 
-    def save_goal_and_career(self, goal: str, career: str):
+    def save_goal_and_career(self, goal: str, career: List[str]):
         self._set_value(S4APSettings.GOAL, goal)
         self._set_value(S4APSettings.CAREER, career)
         S4APUtils.trigger_autosave()
@@ -191,7 +248,7 @@ class S4APSessionStoreUtils:
     def get_goal(self) -> str:
         return self._get_value(S4APSettings.GOAL)
 
-    def get_career(self) -> str:
+    def get_career(self) -> List[str]:
         return self._get_value(S4APSettings.CAREER)
 
     def get_slot(self) -> int:

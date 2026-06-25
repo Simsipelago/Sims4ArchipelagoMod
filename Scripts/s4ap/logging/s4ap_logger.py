@@ -1,11 +1,13 @@
 from s4ap.enums.S4APLocalization import S4APStringId
 from s4ap.modinfo import ModInfo
+from s4ap.utils.s4ap_generic_utils import S4APUtils
+from s4ap.utils.s4ap_localization_utils import S4APLocalizationUtils
 from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
 from sims4communitylib.events.zone_spin.events.zone_late_load import S4CLZoneLateLoadEvent
 from sims4communitylib.logging.has_class_log import HasClassLog
 from sims4communitylib.mod_support.mod_identity import CommonModIdentity
-from sims4communitylib.notifications.common_basic_notification import CommonBasicNotification
 from sims4communitylib.utils.localization.common_localization_utils import CommonLocalizationUtils
+from lot51_core.utils.dialog import DialogHelper
 
 
 class S4APLogger(HasClassLog):
@@ -20,11 +22,14 @@ class S4APLogger(HasClassLog):
     @staticmethod
     def show_loaded_notification() -> None:
         """ Show that the mod has loaded. """
-        notification = CommonBasicNotification(
-            CommonLocalizationUtils.create_localized_string(S4APStringId.S4AP_LOADED),
+        DialogHelper.create_notification(
+            S4APLocalizationUtils.localize(S4APStringId.S4AP_LOADED),
             'Loaded Sims 4 Archipelago Mod (' + ModInfo.get_identity().version + ')'
-        )
-        notification.show()
+        ).show_dialog()
+        # S4APUtils.show_basic_notification(
+        #     S4APLocalizationUtils.localize(S4APStringId.S4AP_LOADED),
+        #     'Loaded Sims 4 Archipelago Mod (' + ModInfo.get_identity().version + ')'
+        # )
 
     @staticmethod
     @CommonEventRegistry.handle_events('s4ap_loaded')

@@ -1,20 +1,22 @@
 import time
 
+from lot51_core.utils.dialog import DialogHelper
+from protocolbuffers import Consts_pb2
+
 from s4ap.enums.S4APLocalization import S4APTraitId
 from s4ap.logging.s4ap_logger import S4APLogger
 from s4ap.modinfo import ModInfo
 from s4ap.persistance.ap_session_data_store import S4APSessionStoreUtils
+from s4ap.utils.s4ap_career_utils import S4APCareerUtils
+from s4ap.utils.s4ap_generic_utils import S4APUtils
+from s4ap.utils.s4ap_household_utils import S4APHouseholdUtils
+from s4ap.utils.s4ap_sim_currency_utils import S4APSimCurrencyUtils
+from s4ap.utils.s4ap_sim_utils import S4APSimUtils
 from s4ap.utils.s4ap_skill_utils import lock_skills
-from sims4communitylib.enums.common_currency_modify_reasons import CommonCurrencyModifyReason
+from s4ap.utils.s4ap_trait_utils import S4APTraitUtils
+from sims4.resources import Types
 from sims4communitylib.events.event_handling.common_event import CommonEvent
 from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
-from sims4communitylib.notifications.common_basic_notification import CommonBasicNotification
-from sims4communitylib.utils.sims.common_career_utils import CommonCareerUtils
-from sims4communitylib.utils.sims.common_household_utils import CommonHouseholdUtils
-from sims4communitylib.utils.sims.common_sim_career_utils import CommonSimCareerUtils
-from sims4communitylib.utils.sims.common_sim_currency_utils import CommonSimCurrencyUtils
-from sims4communitylib.utils.sims.common_sim_utils import CommonSimUtils
-from sims4communitylib.utils.sims.common_trait_utils import CommonTraitUtils
 from collections import Counter
 log = S4APLogger.get_log()
 log.enable()
@@ -129,16 +131,16 @@ class HandleReceiveItemEvent:
             log.debug(f'Processing {item}')
             if 'Simoleons' in item:  # Simoleon items are either '5000 Simoleons' or '2000 Simoleons'
                 number = item.split()[0]
-                CommonSimCurrencyUtils.add_simoleons_to_household(CommonSimUtils.get_active_sim_info(), int(number),
-                                                                  CommonCurrencyModifyReason.CHEAT)
+                S4APSimCurrencyUtils.add_simoleons_to_household(S4APSimUtils.get_active_sim_info(), int(number),
+                                                                  Consts_pb2.TELEMETRY_MONEY_CHEAT)
                 time.sleep(0.2)
             elif 'boost' in item.lower():
                 if 'career' in item.lower():
-                    for sim_info in CommonHouseholdUtils.get_sim_info_of_all_sims_in_active_household_generator():
-                        for career in CommonSimCareerUtils.get_all_careers_for_sim_gen(sim_info):
+                    for sim_info in S4APHouseholdUtils.get_sim_info_of_all_sims_in_active_household_generator():
+                        for career in S4APCareerUtils.get_all_careers_for_sim_gen(sim_info):
                             if career is None:
                                 break
-                            old_work_performance = CommonCareerUtils.get_work_performance(career)
+                            old_work_performance = S4APCareerUtils.get_work_performance(career)
                             work_performance_left_to_add = 100 - old_work_performance
                             career.add_work_performance(work_performance_left_to_add)
                             career.resend_career_data()
@@ -157,10 +159,12 @@ class HandleReceiveItemEvent:
                     rem_traits = (S4APTraitId.SKILL_GAIN_BOOST_2_5X, S4APTraitId.SKILL_GAIN_BOOST_3X,
                                   S4APTraitId.SKILL_GAIN_BOOST_3_5X)
                     add_trait = S4APTraitId.SKILL_GAIN_BOOST_4X
-                for sim_info in CommonHouseholdUtils.get_sim_info_of_all_sims_in_active_household_generator():
+                for sim_info in S4APHouseholdUtils.get_sim_info_of_all_sims_in_active_household_generator():
                     if rem_traits is not None:
-                        CommonTraitUtils.remove_traits(sim_info, rem_traits)
-                    CommonTraitUtils.add_trait(sim_info, add_trait)
+                        S4APTraitUtils.remove_traits(sim_info, rem_traits)
+                    trait_obj = S4APUtils.load_instance(Types.TRAIT, add_trait)
+                    if trait_obj and not sim_info.has_trait(trait_obj):
+                        sim_info.add_trait(trait_obj)
             elif 'skill' in item.lower():
                 count = data_store.get_items().count(item)
                 count += 2
@@ -175,9 +179,9 @@ class HandleReceiveItemEvent:
                     skill = skill.lower().replace('mixology', 'bartending')
                 lock_skills(count, skill, False)
 
-    def show_received_notification(self, items, players, locations):
-        notif = CommonBasicNotification(
-            title_identifier='Received Items',
-            description_identifier='\n'.join(
-                [f'{item} from {player} ({location})' for item, player, location in zip(items, players, locations)]))
-        notif.show()
+    @staticmethod
+    def show_received_notification(items, players, locations):
+        DialogHelper.create_notification(
+            'Received Items',
+            '\n'.join(
+                [f'{item} from {player} ({location})' for item, player, location in zip(items, players, locations)])).show_dialog()
