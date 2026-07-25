@@ -10,6 +10,7 @@ from s4ap.persistance.ap_session_data_store import S4APSessionStoreUtils
 from s4ap.utils.s4ap_career_utils import S4APCareerUtils
 from s4ap.utils.s4ap_generic_utils import S4APUtils
 from s4ap.utils.s4ap_household_utils import S4APHouseholdUtils
+from s4ap.utils.s4ap_localization_utils import S4APLocalizationUtils
 from s4ap.utils.s4ap_sim_currency_utils import S4APSimCurrencyUtils
 from s4ap.utils.s4ap_sim_utils import S4APSimUtils
 from s4ap.utils.s4ap_skill_utils import lock_skills
@@ -182,6 +183,7 @@ class HandleReceiveItemEvent:
     @staticmethod
     def show_received_notification(items, players, locations):
         DialogHelper.create_notification(
-            'Received Items',
-            '\n'.join(
-                [f'{item} from {player} ({location})' for item, player, location in zip(items, players, locations)])).show_dialog()
+            S4APLocalizationUtils.create_from_string('Received Items'),
+            S4APLocalizationUtils.create_from_string(
+                '\n'.join(
+                    [f'{item} from {player} ({location})' for item, player, location in zip(items, players, locations)]))).show_dialog()

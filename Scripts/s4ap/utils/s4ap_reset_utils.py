@@ -3,6 +3,7 @@ from s4ap.enums.S4APLocalization import S4APTraitId
 from s4ap.logging.s4ap_logger import S4APLogger
 from s4ap.utils.s4ap_generic_utils import S4APUtils
 from s4ap.utils.s4ap_household_utils import S4APHouseholdUtils
+from s4ap.utils.s4ap_localization_utils import S4APLocalizationUtils
 from s4ap.utils.s4ap_skill_utils_class import S4APSkillUtils
 from server_commands.argument_helpers import TunableInstanceParam
 from sims4.localization import LocalizationHelperTuning
@@ -21,8 +22,9 @@ class ResetSimData:
 
     def show_reset_notif(self):
         DialogHelper.create_notification(
-            'Progress Reset Completed',
-            "Your Sim's skills have been successfully reset. Please switch to a different sim or leave the lot and revisit to ensure the changes are visible in the UI."
+            S4APLocalizationUtils.create_from_string('Progress Reset Completed'),
+            S4APLocalizationUtils.create_from_string(
+                "Your Sim's skills have been successfully reset. Please switch to a different sim or leave the lot and revisit to ensure the changes are visible in the UI.")
         ).show_dialog()
 
     def remove_all_s4ap_traits(self):
