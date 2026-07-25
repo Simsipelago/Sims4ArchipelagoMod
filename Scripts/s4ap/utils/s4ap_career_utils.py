@@ -1,5 +1,5 @@
+import random
 from careers.career_tuning import Career, CareerLevel, TunableCareerTrack
-from random import random
 from typing import Callable, Iterator, Tuple, Union, List
 from services import get_instance_manager
 from sims.sim_info import SimInfo
@@ -49,6 +49,7 @@ class S4APCareerUtils:
         if career is None:
             return None, None, None
         track = S4APCareerUtils.get_starting_career_track(career)
+        return S4APCareerUtils.determine_entry_level_into_career_track_by_user_level(track, desired_user_level)
 
     @classmethod
     def get_starting_career_track(cls, career: Career) -> Union[TunableCareerTrack, None]:
@@ -96,25 +97,22 @@ class S4APCareerUtils:
         if career_track is None:
             return tuple()
         if include_branches:
-            if career_track is None:
-                return tuple()
-            if include_branches:
-                # noinspection PyUnresolvedReferences
-                if hasattr(career_track, 'career_levels') and career_track.career_levels is not None:
-                    career_levels: List[CareerLevel] = list(career_track.career_levels)
-                    branches = cls.get_branches(career_track)
-                    for branch_career_track in branches:
-                        sub_career_levels = cls.get_career_levels(branch_career_track,
-                                                                  include_branches=include_branches)
-                        if not sub_career_levels:
-                            continue
-                        career_levels.extend(sub_career_levels)
-                    return tuple(career_levels)
-            else:
-                # noinspection PyUnresolvedReferences
-                if hasattr(career_track, 'career_levels') and career_track.career_levels is not None:
-                    return tuple(career_track.career_levels)
-            return tuple()
+            # noinspection PyUnresolvedReferences
+            if hasattr(career_track, 'career_levels') and career_track.career_levels is not None:
+                career_levels: List[CareerLevel] = list(career_track.career_levels)
+                branches = cls.get_branches(career_track)
+                for branch_career_track in branches:
+                    sub_career_levels = cls.get_career_levels(branch_career_track,
+                                                              include_branches=include_branches)
+                    if not sub_career_levels:
+                        continue
+                    career_levels.extend(sub_career_levels)
+                return tuple(career_levels)
+        else:
+            # noinspection PyUnresolvedReferences
+            if hasattr(career_track, 'career_levels') and career_track.career_levels is not None:
+                return tuple(career_track.career_levels)
+        return tuple()
 
     @classmethod
     def get_branches(cls, career_track: TunableCareerTrack, include_sub_branches: bool = False) -> Tuple[

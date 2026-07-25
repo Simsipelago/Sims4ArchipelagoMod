@@ -11,10 +11,11 @@ from s4ap.utils.s4ap_career_utils import S4APCareerUtils
 from s4ap.utils.s4ap_dialog_utils import S4APDialog
 from s4ap.utils.s4ap_generic_utils import S4APUtils
 from s4ap.utils.s4ap_household_utils import S4APHouseholdUtils
+from s4ap.utils.s4ap_localization_utils import S4APLocalizationUtils
 from s4ap.utils.s4ap_skill_utils_class import S4APSkillUtils
 from server_commands.argument_helpers import TunableInstanceParam
 from sims4.localization import LocalizationHelperTuning
-from sims4.resources import Types
+from sims4.resources import Types, get_resource_key
 from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
 from sims4communitylib.events.sim.events.sim_trait_added import S4CLSimTraitAddedEvent
 from ui.ui_dialog_picker import ObjectPickerRow
@@ -148,8 +149,8 @@ def _resync_locations(event_data: S4CLSimTraitAddedEvent):
         print_json(locations, 'locations_cached.json')
         print_json(True, 'sync.json')
         DialogHelper.create_notification(
-            'Locations Resynced',
-            ''
+            S4APLocalizationUtils.create_from_string('Locations Resynced'),
+            S4APLocalizationUtils.create_from_string('')
         ).show_dialog()
 
 @CommonEventRegistry.handle_events(ModInfo.get_identity())
@@ -165,7 +166,7 @@ def _show_aspiration_and_career(event_data: S4CLSimTraitAddedEvent):
             goal = "Can't find the aspiration"
 
         options = [
-            S4APDialog.ObjectPickerDialog.create_picker_row(1, LocalizationHelperTuning.get_raw_text(goal.replace("_", " ").title()), 1903793975082081275),
+            S4APDialog.ObjectPickerDialog.create_picker_row(1, LocalizationHelperTuning.get_raw_text(goal.replace("_", " ").title()), icon_id=1903793975082081275),
         ]
 
         row_id = 2
@@ -174,7 +175,7 @@ def _show_aspiration_and_career(event_data: S4CLSimTraitAddedEvent):
         options.append(S4APDialog.ObjectPickerDialog.create_picker_row(
             row_id,
             LocalizationHelperTuning.get_raw_text("──────── Careers ────────"),
-            0
+            icon_id=0
         ))
         row_id += 1
 
@@ -188,7 +189,7 @@ def _show_aspiration_and_career(event_data: S4CLSimTraitAddedEvent):
                         ObjectPickerRow(
                         option_id=row_id,
                         name=LocalizationHelperTuning.get_raw_text(career.replace("_", " ").title()),
-                        icon=12028399282094277793)
+                        icon=get_resource_key(12028399282094277793, Types.PNG))
                     )
                     row_id += 1
             elif isinstance(career_data, str):
@@ -197,7 +198,7 @@ def _show_aspiration_and_career(event_data: S4CLSimTraitAddedEvent):
                     ObjectPickerRow(
                     option_id=row_id,
                     name=LocalizationHelperTuning.get_raw_text(career_data.replace("_", " ").title()),
-                    icon=12028399282094277793)
+                    icon=get_resource_key(12028399282094277793, Types.PNG))
                 )
                 row_id += 1
         else: # none or empty list
@@ -205,7 +206,7 @@ def _show_aspiration_and_career(event_data: S4CLSimTraitAddedEvent):
                 ObjectPickerRow(
                 option_id=row_id,
                 name=LocalizationHelperTuning.get_raw_text("Can't find the career"),
-                icon=12028399282094277793)
+                icon=get_resource_key(12028399282094277793, Types.PNG))
             )
             row_id += 1
 
@@ -213,7 +214,7 @@ def _show_aspiration_and_career(event_data: S4CLSimTraitAddedEvent):
         options.append(ObjectPickerRow(
             option_id=row_id,
             name=LocalizationHelperTuning.get_raw_text("──────── Skill Bonus ────────"),
-            icon=0
+            icon=get_resource_key(0, Types.PNG)
         ))
         row_id += 1
 
@@ -237,7 +238,7 @@ def _show_aspiration_and_career(event_data: S4CLSimTraitAddedEvent):
             display = 'No Skill Multiplier'
 
         options.append(
-            ObjectPickerRow(option_id=row_id, name=LocalizationHelperTuning.get_raw_text(display), icon=5906963266871873908)
+            ObjectPickerRow(option_id=row_id, name=LocalizationHelperTuning.get_raw_text(display), icon=get_resource_key(5906963266871873908, Types.PNG))
         )
 
         # ---------- Show Picker ----------

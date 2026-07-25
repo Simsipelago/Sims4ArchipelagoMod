@@ -4,6 +4,7 @@ from s4ap.jsonio.s4ap_json import print_json, read_json
 from s4ap.logging.s4ap_logger import S4APLogger
 from s4ap.modinfo import ModInfo
 from s4ap.utils.s4ap_generic_utils import S4APUtils
+from s4ap.utils.s4ap_localization_utils import S4APLocalizationUtils
 from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
 
 logger = S4APLogger.get_log()
@@ -37,7 +38,7 @@ def _handle_send_check_event(event_data: SendLocationEvent):
         json_list["Locations"].append(event_data.location_name)
         print_json(json_list, 'locations_cached.json')
         DialogHelper.create_notification(
-            'Saving on check',
-            event_data.location_name
+            S4APLocalizationUtils.create_from_string('Saving on check'),
+            S4APLocalizationUtils.create_from_string(event_data.location_name)
         ).show_dialog()
         S4APUtils.trigger_autosave()
