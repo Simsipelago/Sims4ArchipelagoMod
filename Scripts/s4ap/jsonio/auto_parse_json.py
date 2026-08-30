@@ -92,9 +92,10 @@ def parse_message(data):
                                            on_complete=_on_session_check_complete):
             cancel = False  # if values match then don't cancel
         else:
-            # if settings don't match then cancels
+            # Settings don't match (or first connect): the outcome is still pending, so only
+            # block items. The final decision, including clearing items.json on a completed
+            # rejection, is handled by _on_session_check_complete once the user responds.
             cancel = True
-            print_json({})
     elif not cancel:
         if cmd == ap_cmds.RECEIVEDITEMS:
             logger.debug("cmd RECEIVEDITEMS received")
