@@ -114,10 +114,10 @@ class S4APSessionStoreUtils:
                         return False
                     else:
                         logger.error(
-                            "check_session_values called synchronously with dialog! "
-                            "This path is deprecated and unsafe."
+                            "check_session_values called synchronously with dialog and no callback! "
+                            "Treating as cancel. Callers must supply an on_complete callback."
                         )
-                        return True
+                        return False
                 else:
                     logger.warn("No active Sim to show dialog. Treating as cancel.")
                     if on_complete:
@@ -173,14 +173,15 @@ class S4APSessionStoreUtils:
                     return False  # prevent auto-continue
                 else:
                     logger.error(
-                        "check_session_values called synchronously with dialog! "
-                        "This path is deprecated and unsafe."
+                        "check_session_values called synchronously with dialog and no callback! "
+                        "Treating as cancel. Callers must supply an on_complete callback."
                     )
-                    return True  # legacy behavior
+                    return False  # treat as cancel instead of auto-continuing
             else:
                 logger.warn("No active Sim to show dialog. Treating as cancel.")
                 if on_complete:
                     on_complete(False)
+                    return False
                 return False
 
     def check_index_value(self, index: str) -> bool:
