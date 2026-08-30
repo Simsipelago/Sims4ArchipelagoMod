@@ -32,14 +32,27 @@ def _handle_send_check_event(event_data: SendLocationEvent):
     from s4ap.persistance.ap_session_data_store import S4APSessionStoreUtils
     data_store = S4APSessionStoreUtils()
     global json_list
-    if not isinstance(json_list, dict) or "Locations" not in json_list:
-        json_list = {"Locations": [], "Seed": data_store.get_seed_name()}
+    needs_persist = False
+    if isinstance(json_list, list):
+        # Legacy cache: a bare list of location names. Wrap it, preserving its contents.
+        json_list = {"Locations": list(json_list)}
+        needs_persist = True
+    elif not isinstance(json_list, dict) or not isinstance(json_list.get("Locations"), list):
+        json_list = {"Locations": []}
+        needs_persist = True
+    if json_list.get("Seed") != data_store.get_seed_name():
+        json_list["Seed"] = data_store.get_seed_name()
+        needs_persist = True
+
     if event_data.location_name not in json_list["Locations"]:
         json_list["Locations"].append(event_data.location_name)
-        json_list["Seed"] = data_store.get_seed_name()
+        needs_persist = True
         print_json(json_list, 'locations_cached.json')
         DialogHelper.create_notification(
             S4APLocalizationUtils.create_from_string('Saving on check'),
             S4APLocalizationUtils.create_from_string(event_data.location_name)
         ).show_dialog()
         S4APUtils.trigger_autosave()
+    elif needs_persist:
+        # Duplicate event (or repair-only): persist the corrected structure and seed.
+        print_json(json_list, 'locations_cached.json')
