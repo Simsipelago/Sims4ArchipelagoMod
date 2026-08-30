@@ -36,6 +36,7 @@ def _handle_send_check_event(event_data: SendLocationEvent):
         json_list = {"Locations": [], "Seed": data_store.get_seed_name()}
     if event_data.location_name not in json_list["Locations"]:
         json_list["Locations"].append(event_data.location_name)
+        json_list["Seed"] = data_store.get_seed_name()
         print_json(json_list, 'locations_cached.json')
         DialogHelper.create_notification(
             S4APLocalizationUtils.create_from_string('Saving on check'),
