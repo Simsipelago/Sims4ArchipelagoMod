@@ -78,13 +78,24 @@ def parse_message(data):
         slot = data["slot"]
         data_store = S4APSessionStoreUtils()
         data_store.save_goal_and_career(goal, career)
+
+        def _on_session_check_complete(accepted: bool):
+            global cancel
+            if accepted:
+                cancel = False
+            else:
+                cancel = True
+                print_json({})
+
         if data_store.check_session_values(host_name=host, port=port, seed_name=seed_name,
-                                           player=slot_name, slot=slot):
+                                           player=slot_name, slot=slot,
+                                           on_complete=_on_session_check_complete):
             cancel = False  # if values match then don't cancel
         else:
-            # if settings don't match then cancels
+            # Settings don't match (or first connect): the outcome is still pending, so only
+            # block items. The final decision, including clearing items.json on a completed
+            # rejection, is handled by _on_session_check_complete once the user responds.
             cancel = True
-            print_json({})
     elif not cancel:
         if cmd == ap_cmds.RECEIVEDITEMS:
             logger.debug("cmd RECEIVEDITEMS received")
