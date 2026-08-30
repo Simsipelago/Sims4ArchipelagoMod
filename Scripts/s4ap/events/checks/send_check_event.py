@@ -11,7 +11,7 @@ logger = S4APLogger.get_log()
 logger.enable()
 
 
-json_list = read_json('locations_cached')
+json_list = read_json('locations_cached.json')
 
 victorylist = {'Bodybuilder (Bodybuilder 4)', 'Painter Extraordinaire (Painter Extraordinaire 4)',
                'Bestselling Author (Bestselling Author 4)', 'Musical Genius (Musical Genius 4)',
@@ -32,7 +32,7 @@ def _handle_send_check_event(event_data: SendLocationEvent):
     from s4ap.persistance.ap_session_data_store import S4APSessionStoreUtils
     data_store = S4APSessionStoreUtils()
     global json_list
-    if json_list is None and data_store.get_seed_name() is not None:
+    if not isinstance(json_list, dict) or "Locations" not in json_list:
         json_list = {"Locations": [], "Seed": data_store.get_seed_name()}
     if event_data.location_name not in json_list["Locations"]:
         json_list["Locations"].append(event_data.location_name)
