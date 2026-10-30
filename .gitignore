@@ -56,3 +56,5 @@ Pipfile
 .DS_Store
 # Project exclude paths
 /Libraries/core-library/lot51_core/*
+/.venv/
+/.env
