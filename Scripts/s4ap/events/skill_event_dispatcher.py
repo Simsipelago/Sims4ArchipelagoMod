@@ -10,6 +10,7 @@ from sims.sim_info import SimInfo
 from sims4communitylib.events.event_handling.common_event_registry import CommonEventRegistry
 from sims4communitylib.services.common_service import CommonService
 from lot51_core.utils.injection import inject_to
+from lot51_core.services.events import event_service, event_handler
 from statistics.skill import Skill
 
 logger = S4APLogger.get_log()
@@ -21,7 +22,7 @@ class HandleSkillLevelUp(CommonService):
             return
         if not skill.tracker._owner.is_npc:
             sim_info = S4APSimUtils.get_sim_info(skill.tracker._owner)
-            CommonEventRegistry.get().dispatch(SimSkillLeveledUpEvent(sim_info, skill, new_skill_level))
+            event_service.process_event("s4ap.skill_leveled_up", event_data=SimSkillLeveledUpEvent(sim_info, skill, new_skill_level))
 
 @inject_to(Skill, Skill._handle_skill_up.__name__)
 def _common_on_sim_skill_level_up(original, self, *args, **kwargs):
@@ -30,10 +31,10 @@ def _common_on_sim_skill_level_up(original, self, *args, **kwargs):
     return result
 
 
-@CommonEventRegistry.handle_events(ModInfo.get_identity())
+@event_handler("s4ap.skill_leveled_up")
 def _on_skill_level_up(event_data: SimSkillLeveledUpEvent):
     if event_data.new_skill_level < 2:
-        return None
+        return
     skill_id = event_data.skill.skill_type.__name__.replace("statistic_Skill_AdultMajor_", '')
     skill_id = re.sub(r'(?<=[a-z])(?=[A-Z])', ' ', skill_id).lower()
     if 'fitness' in skill_id:

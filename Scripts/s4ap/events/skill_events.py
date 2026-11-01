@@ -1,16 +1,15 @@
+from dataclasses import dataclass
+from statistics.skill import Skill
 from typing import Optional
 
 from sims.sim_info import SimInfo
-from sims4communitylib.events.event_handling.common_event import CommonEvent
-from statistics.skill import Skill
 
 
-class SimSkillLeveledUpEvent(CommonEvent):
-
-    def __init__(self, sim_info: SimInfo, skill: Skill, new_skill_level: int):
-        self._sim_info = sim_info
-        self._skill = skill
-        self._new_skill_level = new_skill_level
+@dataclass
+class SimSkillLeveledUpEvent:
+    _sim_info: SimInfo
+    _skill: Skill
+    _new_skill_level: int
 
     @property
     def new_skill_level(self) -> int:
